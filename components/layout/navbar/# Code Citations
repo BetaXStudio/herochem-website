@@ -1,0 +1,6047 @@
+# Code Citations
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+   
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav class
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+     
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div class
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+       
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <Mobile
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu}
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+     
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+     
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div class
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+       
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div class
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div className
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div className="
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div className="flex
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div className="flex w
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div className="flex w-full
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div className="flex w-full md
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div className="flex w-full md:w
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div className="flex w-full md:w-
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div className="flex w-full md:w-1
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div className="flex w-full md:w-1/
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div className="flex w-full md:w-1/3
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div className="flex w-full md:w-1/3">
+
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div className="flex w-full md:w-1/3">
+         
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div className="flex w-full md:w-1/3">
+          <
+```
+
+
+## License: unknown
+https://github.com/alxclark/aside/blob/201edd3bdc218107afb6408a50b124fb92a424e9/examples/next/components/layout/navbar/index.tsx
+
+```
+(
+    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      <div className="block flex-none md:hidden">
+        <MobileMenu menu={menu} />
+      </div>
+      <div className="flex w-full items-center">
+        <div className="flex w-full md:w-1/3">
+          <Link
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+         
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+           
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <Logo
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+           
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div class
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div className
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div className="
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div className="ml
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div className="ml-
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div className="ml-2
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div className="ml-2 flex
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div className="ml-2 flex-none
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div className="ml-2 flex-none text
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div className="ml-2 flex-none text-sm
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div className="ml-2 flex-none text-sm font
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div className="ml-2 flex-none text-sm font-medium
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div className="ml-2 flex-none text-sm font-medium uppercase
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div className="ml-2 flex-none text-sm font-medium uppercase md
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg
+```
+
+
+## License: MIT
+https://github.com/broomva/vortex-marketplace/blob/60a8d3e8d3b06ed82d2968bc77d2aba3fe9a411b/components/layout/navbar/index.tsx
+
+```
+="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+          >
+            <LogoSquare />
+            <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+               
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+               
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+               
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                 
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                 
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                 
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+               
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+               
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+               
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+             
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+             
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+             
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+           
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+           
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+           
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+         
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+         
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+         
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+       
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+       
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+       
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+       
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+       
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+       
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+         
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+         
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+         
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Susp
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Susp
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Susp
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<Search
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<Search
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<Search
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+           
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+           
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+           
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+         
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+         
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+         
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Susp
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Susp
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Susp
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+       
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+       
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+       
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+       
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+       
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+       
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div class
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div class
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div class
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w-
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w-
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w-
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w-1
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w-1
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w-1
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w-1/
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w-1/
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w-1/
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w-1/3
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w-1/3
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w-1/3
+```
+
+
+## License: MIT
+https://github.com/vercel/commerce/blob/610b0e86928bffeea94201dd0eeb9b62e9b1f5c0/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w-1/3">
+```
+
+
+## License: unknown
+https://github.com/luisrf8/commerce/blob/a1531bcedc2958e69e794137f656442b2e701fc9/components/layout/navbar/index.jsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w-1/3">
+```
+
+
+## License: unknown
+https://github.com/CamilinLopez/ecommy/blob/8c2b62d363e00227ff766e22e1d2b3d89830112b/components/layout/navbar/index.tsx
+
+```
+="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="hidden justify-center md:flex md:w-1/3">
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        </div>
+        <div className="flex justify-end md:w-1/3">
+```
+
