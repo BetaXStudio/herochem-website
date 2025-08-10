@@ -120,7 +120,7 @@ function ProductsModal({ isOpen, onClose, category }: ProductsModalProps) {
 	if (!isOpen) return null;
 
 	return (
-		<div className="fixed inset-0 z-50 flex items-center justify-center">
+		<div className="fixed inset-0 z-50 flex items-center justify-center max-[800px]:items-start max-[800px]:pt-[55px] max-[800px]:pb-[50px]">
 			{/* Backdrop with blur - darker background */}
 			<div
 				className="absolute inset-0 backdrop-blur-sm"
@@ -133,19 +133,24 @@ function ProductsModal({ isOpen, onClose, category }: ProductsModalProps) {
 
 			{/* Modal with animation */}
 			<div
-				className="relative bg-white rounded-lg shadow-xl w-full max-w-6xl mx-4 max-h-[90vh] overflow-hidden"
+				className="relative bg-white shadow-xl w-full max-w-6xl mx-4 max-h-[90vh] max-[800px]:max-h-[calc(90vh-105px)]"
 				style={{
 					backgroundColor: 'white',
 					border: '2px solid rgb(64,64,74)',
 					boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
 					animation: 'modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+					borderRadius: '6px'
 				}}
 			>
 				<div
-					className="sticky top-0 flex items-center justify-between p-6 border-b"
+					className="sticky top-0 flex items-center justify-between border-b"
 					style={{
 						borderColor: 'rgb(64,64,74)',
 						backgroundColor: 'rgb(64,64,74)',
+						borderTopLeftRadius: '6px',
+						borderTopRightRadius: '6px',
+						margin: '-2px -2px 0 -2px',
+						padding: '24px 26px'
 					}}
 				>
 					<div>
@@ -165,7 +170,7 @@ function ProductsModal({ isOpen, onClose, category }: ProductsModalProps) {
 					</button>
 				</div>
 
-				<div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+				<div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)] max-[800px]:max-h-[calc(90vh-225px)]">
 					<div className="prose prose-gray max-w-none">
 						<div className="space-y-4 text-gray-700 leading-relaxed">
 							<p>

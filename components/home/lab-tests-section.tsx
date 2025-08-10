@@ -1,6 +1,7 @@
 'use client';
 
 import { BeakerIcon, ChartBarIcon, DocumentCheckIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
+import { useEffect } from 'react';
 
 const labFeatures = [
   {
@@ -31,10 +32,22 @@ interface LabTestsModalProps {
 }
 
 export function LabTestsModal({ isOpen, onClose }: LabTestsModalProps) {
+  // Blockiere Body-Scroll wenn Modal offen ist
+  useEffect(() => {
+    if (isOpen) {
+      const originalStyle = window.getComputedStyle(document.body).overflow;
+      document.body.style.overflow = 'hidden';
+      
+      return () => {
+        document.body.style.overflow = originalStyle;
+      };
+    }
+  }, [isOpen]);
+  
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center max-[800px]:items-start max-[800px]:pt-[55px] max-[800px]:pb-[50px]">
       {/* Backdrop with blur - darker background */}
       <div 
         className="absolute inset-0 backdrop-blur-sm"
@@ -59,7 +72,10 @@ export function LabTestsModal({ isOpen, onClose }: LabTestsModalProps) {
           className="flex items-center justify-between p-6 border-b"
           style={{ 
             borderColor: 'rgb(64,64,74)', 
-            backgroundColor: 'rgb(64,64,74)' 
+            backgroundColor: 'rgb(64,64,74)',
+            borderTopLeftRadius: '6px',
+            borderTopRightRadius: '6px',
+            margin: '-2px -2px 0 -2px'
           }}
         >
           <div>

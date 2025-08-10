@@ -3,15 +3,13 @@ import { useSearchParams } from 'next/navigation';
 import React, { Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useSimpleCart } from '../../components/cart/simple-cart-context';
-import CategoriesSidebar from './CategoriesSidebar';
-import { 
-  products, 
-  getFilteredProducts, 
-  getAvailableFilters,
-  type CategoryLabel,
-  type Brand,
-  type Product 
+import {
+    getAvailableFilters,
+    getFilteredProducts,
+    type CategoryLabel,
+    type Product
 } from '../../lib/products-database';
+import CategoriesSidebar from './CategoriesSidebar';
 
 export const dynamic = 'force-dynamic';
 

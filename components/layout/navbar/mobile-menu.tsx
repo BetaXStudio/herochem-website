@@ -1,6 +1,6 @@
 'use client';
 
-import { Dialog, Transition } from '@headlessui/react';
+import { Transition } from '@headlessui/react';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { Fragment, Suspense, useEffect, useState } from 'react';
@@ -53,11 +53,12 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
       <button
         onClick={openMobileMenu}
         aria-label="Open mobile menu"
-        className="flex h-11 w-11 items-center justify-center rounded-md text-white transition-colors md:hidden"
+        className="flex h-11 w-11 items-center justify-center rounded-md text-white transition-colors md:hidden relative"
         style={{
           backgroundColor: isOpen ? 'rgba(40, 40, 47, 0.9)' : 'rgba(45, 45, 52, 0.8)',
           border: isOpen ? '1px solid rgba(233, 17, 17, 0.5)' : '1px solid rgba(255, 255, 255, 0.2)',
-          boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6), inset 0 -1px 0 rgba(255, 255, 255, 0.05)'
+          boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6), inset 0 -1px 0 rgba(255, 255, 255, 0.05)',
+          zIndex: 9999
         }}
         onMouseEnter={(e) => {
           if (!isOpen) {
@@ -75,38 +76,63 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
         <Bars3Icon className="h-4" />
       </button>
       <Transition show={isOpen}>
-        <Dialog onClose={closeMobileMenu} className="relative z-50">
-          <Transition.Child
-            as={Fragment}
-            enter="transition-all ease-in-out duration-300"
-            enterFrom="opacity-0 backdrop-blur-none"
-            enterTo="opacity-100 backdrop-blur-[.5px]"
-            leave="transition-all ease-in-out duration-200"
-            leaveFrom="opacity-100 backdrop-blur-[.5px]"
-            leaveTo="opacity-0 backdrop-blur-none"
+        {/* Backdrop */}
+        <Transition.Child
+          as={Fragment}
+          enter="transition-all ease-in-out duration-300"
+          enterFrom="opacity-0 backdrop-blur-none"
+          enterTo="opacity-100 backdrop-blur-[.5px]"
+          leave="transition-all ease-in-out duration-200"
+          leaveFrom="opacity-100 backdrop-blur-[.5px]"
+          leaveTo="opacity-0 backdrop-blur-none"
+        >
+          <div 
+            className="fixed bg-black/30" 
+            style={{
+              top: '47px',
+              left: '0',
+              right: '0', 
+              bottom: '0',
+              zIndex: 40
+            }}
+            aria-hidden="true"
+            onClick={closeMobileMenu}
+          />
+        </Transition.Child>
+        
+        {/* Menu Panel */}
+        <Transition.Child
+          as={Fragment}
+          enter="transition-all ease-in-out duration-300"
+          enterFrom="translate-x-[-100%]"
+          enterTo="translate-x-0"
+          leave="transition-all ease-in-out duration-200"
+          leaveFrom="translate-x-0"
+          leaveTo="translate-x-[-100%]"
+        >
+          <div 
+            className="fixed left-0 right-0 flex w-full flex-col pb-6 overflow-hidden"
+            style={{ 
+              top: '47px',
+              height: 'calc(100vh - 47px)',
+              background: 'linear-gradient(135deg, rgb(64,64,74) 0%, rgb(45,45,52) 100%)',
+              boxShadow: 'inset 1px 0 0 rgba(255,255,255,0.1), inset 0 4px 12px rgba(0,0,0,0.4), inset 0 2px 6px rgba(0,0,0,0.25)',
+              zIndex: 41
+            }}
           >
-            <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
-          </Transition.Child>
-          <Transition.Child
-            as={Fragment}
-            enter="transition-all ease-in-out duration-300"
-            enterFrom="translate-x-[-100%]"
-            enterTo="translate-x-0"
-            leave="transition-all ease-in-out duration-200"
-            leaveFrom="translate-x-0"
-            leaveTo="translate-x-[-100%]"
-          >
-            <Dialog.Panel 
-              className="fixed bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col pb-6 overflow-hidden"
-              style={{ 
-                background: 'linear-gradient(135deg, rgba(64,64,74,0.95) 0%, rgba(45,45,52,0.95) 100%)',
-                backdropFilter: 'blur(20px)',
-                boxShadow: 'inset 1px 0 0 rgba(255,255,255,0.1)'
-              }}
-            >
+              {/* Top Shadow Overlay - bleibt über den scrollenden Buttons */}
+              <div 
+                className="absolute left-0 right-0 pointer-events-none"
+                style={{
+                  top: '0',
+                  height: '20px',
+                  background: 'linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)',
+                  zIndex: 50
+                }}
+              />
               <div className="p-4 overflow-y-auto flex-1">
                 {/* Search Bar */}
-                <div className="mb-4 w-full" style={{ marginTop: '44px' }}>
+                <div className="mb-4 w-full" style={{ marginTop: '8px' }}>
                   <Suspense fallback={<SearchSkeleton />}>
                     <Search />
                   </Suspense>
@@ -268,11 +294,30 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                   </ul>
                 </nav>
 
+                {/* Transparenter Überstand am Ende für bessere Scroll-Erreichbarkeit */}
+                <div style={{ height: '100px', width: '100%' }} />
+
               </div>
-            </Dialog.Panel>
+            </div>
           </Transition.Child>
-        </Dialog>
-      </Transition>
+        
+        {/* Transparenter Layer über dem Mobile Menu Button zum Schließen */}
+        {isOpen && (
+          <div
+            className="fixed"
+            style={{
+              top: '8px', // Position des Mobile Menu Buttons
+              left: '8px', // Position des Mobile Menu Buttons  
+              width: '44px', // Größe des Mobile Menu Buttons
+              height: '44px', // Größe des Mobile Menu Buttons
+              zIndex: 9999, // Über allem anderen
+              cursor: 'pointer'
+            }}
+            onClick={closeMobileMenu}
+            aria-label="Close mobile menu"
+          />
+        )}
+        </Transition>
     </>
   );
 }

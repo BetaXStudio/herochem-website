@@ -1,6 +1,7 @@
 'use client';
 
 import { ChatBubbleLeftRightIcon, PhoneIcon } from '@heroicons/react/24/outline';
+import React, { useEffect, useState } from 'react';
 
 interface CommunityModalProps {
   isOpen: boolean;
@@ -8,6 +9,18 @@ interface CommunityModalProps {
 }
 
 export function CommunityModal({ isOpen, onCloseAction }: CommunityModalProps) {
+  // Blockiere Body-Scroll wenn Modal offen ist
+  useEffect(() => {
+    if (isOpen) {
+      const originalStyle = window.getComputedStyle(document.body).overflow;
+      document.body.style.overflow = 'hidden';
+      
+      return () => {
+        document.body.style.overflow = originalStyle;
+      };
+    }
+  }, [isOpen]);
+  
   if (!isOpen) return null;
 
   const handleTelegramJoin = () => {
@@ -21,7 +34,7 @@ export function CommunityModal({ isOpen, onCloseAction }: CommunityModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center max-[800px]:items-start max-[800px]:pt-[55px] max-[800px]:pb-[50px]">
       {/* Backdrop with blur - darker background */}
       <div 
         className="absolute inset-0 backdrop-blur-sm"
@@ -34,7 +47,7 @@ export function CommunityModal({ isOpen, onCloseAction }: CommunityModalProps) {
       
       {/* Modal with animation */}
       <div 
-        className="relative bg-white rounded-lg shadow-xl w-full max-w-2xl mx-4"
+        className="relative bg-white rounded-lg shadow-xl w-full max-w-2xl mx-4 max-h-[90vh] max-[800px]:max-h-[calc(90vh-105px)] flex flex-col"
         style={{
           backgroundColor: 'white',
           border: '2px solid rgb(64,64,74)',
@@ -46,7 +59,10 @@ export function CommunityModal({ isOpen, onCloseAction }: CommunityModalProps) {
           className="flex items-center justify-between p-6 border-b"
           style={{ 
             borderColor: 'rgb(64,64,74)', 
-            backgroundColor: 'rgb(64,64,74)' 
+            backgroundColor: 'rgb(64,64,74)',
+            borderTopLeftRadius: '6px',
+            borderTopRightRadius: '6px',
+            margin: '-2px -2px 0 -2px'
           }}
         >
           <div>
@@ -61,17 +77,21 @@ export function CommunityModal({ isOpen, onCloseAction }: CommunityModalProps) {
           </button>
         </div>
         
-        <div className="p-6">
+        <div className="p-6 overflow-y-auto flex-1" style={{ 
+          WebkitOverflowScrolling: 'touch',
+          touchAction: 'pan-y',
+          overscrollBehavior: 'contain'
+        }}>
           <div className="text-center mb-6">
             <h3 className="text-xl font-semibold text-gray-800 mb-2">
-              Become Part of Our Exclusive Community
+              Become Part of Our Community
             </h3>
             <p className="text-gray-600">
               Get exclusive access to offers, news and direct support
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 max-[800px]:grid-cols-1 gap-6 pb-[50px]">
             {/* Telegram Card */}
             <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
               <div className="text-center">
@@ -133,8 +153,6 @@ const features = [
   }
 ];
 
-import React, { useState } from 'react';
-
 const faqs = [
   { question: 'Where do you ship from?', answer: 'All our products are shipped from Europe.' },
   // ...existing questions...
@@ -172,21 +190,43 @@ const faqs = [
 
 export function FAQModal({ isOpen, onCloseAction }: { isOpen: boolean; onCloseAction: () => void }) {
   const [openIndex, setOpenIndex] = useState<string | number | null>(null);
+  
+  // Blockiere Body-Scroll wenn Modal offen ist
+  useEffect(() => {
+    if (isOpen) {
+      const originalStyle = window.getComputedStyle(document.body).overflow;
+      document.body.style.overflow = 'hidden';
+      
+      return () => {
+        document.body.style.overflow = originalStyle;
+      };
+    }
+  }, [isOpen]);
+  
   if (!isOpen) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center max-[800px]:items-start max-[800px]:pt-[55px] max-[800px]:pb-[50px]"
+      style={{ touchAction: 'none' }}
+    >
       <div 
         className="absolute inset-0 backdrop-blur-sm"
         style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)', animation: 'backdropFadeIn 0.3s ease-out' }}
         onClick={onCloseAction}
       />
       <div 
-        className="relative bg-white rounded-lg shadow-xl w-full max-w-2xl mx-4 max-h-[70vh] flex flex-col"
-        style={{ backgroundColor: 'white', border: '2px solid rgb(64,64,74)', boxShadow: '0 8px 32px rgba(0,0,0,0.3)', animation: 'modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)' }}
+        className="relative bg-white rounded-lg shadow-xl w-full max-w-2xl mx-4 max-h-[80vh] flex flex-col max-[800px]:max-h-[calc(80vh-105px)]"
+        style={{ 
+          backgroundColor: 'white', 
+          border: '2px solid rgb(64,64,74)', 
+          boxShadow: '0 8px 32px rgba(0,0,0,0.3)', 
+          animation: 'modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+          touchAction: 'auto'
+        }}
       >
         <div 
           className="flex items-center justify-between p-6 border-b"
-          style={{ borderColor: 'rgb(64,64,74)', backgroundColor: 'rgb(64,64,74)' }}
+          style={{ borderColor: 'rgb(64,64,74)', backgroundColor: 'rgb(64,64,74)', borderTopLeftRadius: '6px', borderTopRightRadius: '6px', margin: '-2px -2px 0 -2px' }}
         >
           <div>
             <h2 className="text-xl font-semibold text-white" style={{ fontFamily: 'Calibri, Arial, sans-serif' }}>Frequently Asked Questions</h2>
@@ -199,8 +239,16 @@ export function FAQModal({ isOpen, onCloseAction }: { isOpen: boolean; onCloseAc
             ×
           </button>
         </div>
-        <div className="p-6 overflow-y-auto flex-1">
-          <div className="space-y-2">
+        <div 
+          className="p-6 overflow-y-auto flex-1 max-[800px]:max-h-[calc(80vh-200px)]" 
+          style={{ 
+            maxHeight: 'calc(80vh - 140px)',
+            WebkitOverflowScrolling: 'touch',
+            touchAction: 'pan-y',
+            overscrollBehavior: 'contain'
+          }}
+        >
+          <div className="space-y-2 max-[800px]:pb-[50px]">
             {/* Popular Questions heading above the first FAQ */}
             <div className="py-2 text-2xl font-bold text-red-500" style={{fontFamily: 'Calibri, Arial, sans-serif'}}>
               Popular Questions
