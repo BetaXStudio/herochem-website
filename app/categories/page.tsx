@@ -1082,7 +1082,7 @@ function CategoriesContent() {
                           {availableFilters.map((filter) => (
                             <button
                               key={filter}
-                              onClick={() => handleFilterSelection(filter)}
+                              onClick={() => filter && handleFilterSelection(filter)}
                               className={`block px-6 py-3 w-full text-white uppercase text-center ${
                                 selectedFilter === filter 
                                   ? 'bg-gradient-to-r from-red-500/30 to-red-600/40 text-white shadow-lg' 
