@@ -56,20 +56,23 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
         className="flex h-11 w-11 items-center justify-center rounded-md text-white transition-colors md:hidden relative"
         style={{
           backgroundColor: isOpen ? 'rgba(40, 40, 47, 0.9)' : 'rgba(45, 45, 52, 0.8)',
-          border: isOpen ? '1px solid rgba(233, 17, 17, 0.5)' : '1px solid rgba(255, 255, 255, 0.2)',
-          boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6), inset 0 -1px 0 rgba(255, 255, 255, 0.05)',
-          zIndex: 9999
+          border: 'none',
+          boxShadow: isOpen 
+            ? 'inset 0 3px 6px rgba(0, 0, 0, 0.5), inset 0 5px 10px rgba(0, 0, 0, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.08), 0 0 0 1px rgba(233, 17, 17, 0.5), 0 4px 12px 0 rgba(0,0,0,0.35)' 
+            : 'inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 4px 8px rgba(0, 0, 0, 0.2), inset 0 -1px 0 rgba(255, 255, 255, 0.1)',
+          zIndex: 9999,
+          transition: 'all 0.3s ease'
         }}
         onMouseEnter={(e) => {
           if (!isOpen) {
-            e.currentTarget.style.backgroundColor = 'rgba(40, 40, 47, 0.9)';
-            e.currentTarget.style.borderColor = 'rgba(233, 17, 17, 0.3)';
+            e.currentTarget.style.backgroundColor = 'rgba(233, 17, 17, 0.15)';
+            e.currentTarget.style.boxShadow = 'inset 0 3px 6px rgba(0, 0, 0, 0.5), inset 0 5px 10px rgba(0, 0, 0, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.08), 0 0 0 1px rgba(233, 17, 17, 0.3), 0 4px 12px 0 rgba(0,0,0,0.3)';
           }
         }}
         onMouseLeave={(e) => {
           if (!isOpen) {
             e.currentTarget.style.backgroundColor = 'rgba(45, 45, 52, 0.8)';
-            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+            e.currentTarget.style.boxShadow = 'inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 4px 8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)';
           }
         }}
       >

@@ -3,15 +3,11 @@
 import { ShoppingCartIcon, TrashIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import { useState } from 'react';
-import AuthModal from '../auth/auth-modal';
-import CheckoutModal from './checkout-modal';
 import { useSimpleCart } from './simple-cart-context';
 
 export default function SimpleCartModal() {
-  const { items, totalItems, totalPrice, updateQuantity, removeItem, isHydrated } = useSimpleCart();
+  const { items, totalItems, totalPrice, updateQuantity, removeItem, isHydrated, setIsCheckoutOpen } = useSimpleCart();
   const [isOpen, setIsOpen] = useState(false);
-  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
@@ -47,6 +43,7 @@ export default function SimpleCartModal() {
         <ShoppingCartIcon 
           className="h-4 w-4 text-white group-hover:text-[#eb1313] transition-colors duration-200" 
         />
+        {/* Always render badge but control visibility with opacity only */}
         <div 
           className="absolute -top-1.5 -right-1.5 bg-[#e91111] text-white text-xs font-bold rounded-full flex items-center justify-center transition-opacity duration-200"
           style={{
@@ -54,11 +51,11 @@ export default function SimpleCartModal() {
             height: '14px',
             fontSize: '9px',
             boxShadow: '0 2px 4px rgba(0,0,0,0.3)',
-            opacity: isHydrated && totalItems > 0 ? 1 : 0,
-            visibility: isHydrated && totalItems > 0 ? 'visible' : 'hidden'
+            opacity: (!isHydrated || totalItems === 0) ? 0 : 1,
+            visibility: 'visible' // Always visible, opacity controls display
           }}
         >
-          {isHydrated ? totalItems : 0}
+          {!isHydrated ? 0 : totalItems}
         </div>
       </button>
       
@@ -72,7 +69,7 @@ export default function SimpleCartModal() {
           position: 'fixed',
           top: '47px',
           right: '0px',
-          height: 'calc(100vh - 119px)',
+          height: 'calc(100vh - 150px)', // Increased bottom margin for mobile
           zIndex: 9998,
           boxShadow: '-4px 0 24px rgba(27, 26, 26, 0.15), -2px 0 8px rgba(0, 0, 0, 0.1)'
         }}
@@ -177,75 +174,48 @@ export default function SimpleCartModal() {
               </div>
 
               {/* Cart Footer with Total */}
-              <div className="border-t p-4"
+              <div className="border-t pb-safe"
                    style={{
                      borderColor: 'rgb(64,64,74)',
                      backgroundColor: 'rgb(64,64,74)'
                    }}>
-                <div className="space-y-2 mb-3">
-                  <div className="flex justify-between text-sm text-white">
-                    <span>Items ({totalItems})</span>
-                    <span>€{totalPrice.toFixed(2)}</span>
+                {/* Content with padding and mobile-safe bottom margin */}
+                <div className="p-4 pb-24 md:pb-4">
+                  <div className="space-y-2 mb-3">
+                    <div className="flex justify-between text-sm text-white">
+                      <span>Items ({isHydrated ? totalItems : 0})</span>
+                      <span>€{isHydrated ? totalPrice.toFixed(2) : '0.00'}</span>
+                    </div>
+                    <div className="flex justify-between text-sm text-white">
+                      <span>Shipping</span>
+                      <span>Calculated at checkout</span>
+                    </div>
+                    <div className="flex justify-between text-lg font-bold text-white">
+                      <span>Total</span>
+                      <span>€{isHydrated ? totalPrice.toFixed(2) : '0.00'}</span>
+                    </div>
                   </div>
-                  <div className="flex justify-between text-sm text-white">
-                    <span>Shipping</span>
-                    <span>Calculated at checkout</span>
-                  </div>
-                  <div className="flex justify-between text-lg font-bold text-white">
-                    <span>Total</span>
-                    <span>€{totalPrice.toFixed(2)}</span>
-                  </div>
-                </div>
 
-                <button
-                  className="w-full rounded-md py-2 px-4 text-sm font-medium text-black transition-colors duration-200"
-                  style={{
-                    backgroundColor: 'white',
-                    boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
-                  }}
-                  onClick={() => {
-                    setIsCheckoutOpen(true);
-                    setIsOpen(false);
-                  }}
-                >
-                  Proceed to Checkout
-                </button>
+                  <button
+                    className="w-full rounded-md py-3 px-4 text-sm font-medium text-black transition-colors duration-200 mb-4 md:mb-0"
+                    style={{
+                      backgroundColor: 'white',
+                      boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+                      minHeight: '44px' // Ensure minimum touch target size
+                    }}
+                    onClick={() => {
+                      setIsCheckoutOpen(true);
+                      setIsOpen(false);
+                    }}
+                  >
+                    Proceed to Checkout
+                  </button>
+                </div>
               </div>
             </>
           )}
         </div>
       </div>
-      
-      {/* Checkout Modal */}
-      <CheckoutModal 
-        isOpen={isCheckoutOpen}
-        onClose={() => setIsCheckoutOpen(false)}
-        onAuthRequired={() => {
-          setIsCheckoutOpen(false);
-          setIsAuthModalOpen(true);
-        }}
-        cartItems={items.map(item => ({
-          id: item.id,
-          title: item.name,
-          handle: item.id, // Verwende ID als Handle falls nicht verfügbar
-          quantity: item.quantity,
-          price: item.price,
-          variant: undefined, // SimpleCart hat keine Varianten
-          image: item.image || ''
-        }))}
-      />
-      
-      {/* Auth Modal */}
-      <AuthModal 
-        isOpen={isAuthModalOpen}
-        onCloseAction={() => {
-          setIsAuthModalOpen(false);
-          // Nach dem Login/Register wird das Checkout Modal wieder geöffnet
-          setTimeout(() => {
-            setIsCheckoutOpen(true);
-          }, 300);
-        }}
-      />
     </>
   );
 }

@@ -2,6 +2,9 @@ import Footer from 'components/layout/footer';
 import { Navbar } from 'components/layout/navbar';
 import { Suspense } from 'react';
 import { AuthProvider } from '../components/auth/auth-context';
+import { AuthModalProvider } from '../components/auth/auth-modal-context';
+import AuthModalWrapper from '../components/auth/auth-modal-wrapper';
+import CheckoutModalWrapper from '../components/cart/checkout-modal-wrapper';
 import { SimpleCartProvider } from '../components/cart/simple-cart-context';
 import './globals.css';
 
@@ -27,13 +30,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="bg-neutral-950 text-neutral-100 min-h-screen hide-scrollbar">
         <AuthProvider>
-          <SimpleCartProvider>
-            <Suspense fallback={<div>Loading...</div>}>
-              <Navbar />
-            </Suspense>
-            <main className="min-h-screen bg-neutral-950 text-neutral-100 pt-[47px] hide-scrollbar">{children}</main>
-            <Footer />
-          </SimpleCartProvider>
+          <AuthModalProvider>
+            <SimpleCartProvider>
+              <Suspense fallback={<div>Loading...</div>}>
+                <Navbar />
+              </Suspense>
+              <main className="min-h-screen bg-neutral-950 text-neutral-100 pt-[47px] hide-scrollbar">{children}</main>
+              <Footer />
+              <AuthModalWrapper />
+              <CheckoutModalWrapper />
+            </SimpleCartProvider>
+          </AuthModalProvider>
         </AuthProvider>
       </body>
     </html>

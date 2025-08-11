@@ -30,7 +30,7 @@ const categories: { label: CategoryLabel; icon: string }[] = [
 export default function CategoriesSidebar({ currentCategory, onSelectCategory }: SidebarProps) {
   return (
     <div 
-      className="w-64 min-h-screen border-r"
+      className="w-64 border-r min-h-full"
       style={{ 
         paddingTop: '0.25rem',
         animation: 'fadeInPage 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',

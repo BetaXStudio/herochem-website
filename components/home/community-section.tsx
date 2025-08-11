@@ -24,8 +24,8 @@ export function CommunityModal({ isOpen, onCloseAction }: CommunityModalProps) {
   if (!isOpen) return null;
 
   const handleTelegramJoin = () => {
-    // Dummy function - would redirect to Telegram
-    alert('Redirecting to Telegram Channel... (Demo Function)');
+    // Redirect to Telegram channel
+    window.open('https://t.me/+D3jZTdMoVXZmM2Iy', '_blank');
   };
 
   const handleWhatsAppJoin = () => {

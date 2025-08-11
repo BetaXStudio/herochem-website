@@ -20,6 +20,11 @@ interface SimpleCartContextType {
   totalItems: number;
   totalPrice: number;
   isHydrated: boolean;
+  // Checkout modal state
+  isCheckoutOpen: boolean;
+  setIsCheckoutOpen: (open: boolean) => void;
+  isAuthModalOpen: boolean;
+  setIsAuthModalOpen: (open: boolean) => void;
 }
 
 const SimpleCartContext = createContext<SimpleCartContextType | undefined>(undefined);
@@ -27,6 +32,9 @@ const SimpleCartContext = createContext<SimpleCartContextType | undefined>(undef
 export function SimpleCartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<SimpleCartItem[]>([]);
   const [isHydrated, setIsHydrated] = useState(false);
+  // Checkout modal states
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   // Load cart from localStorage on start
   useEffect(() => {
@@ -107,7 +115,12 @@ export function SimpleCartProvider({ children }: { children: React.ReactNode }) 
       clearCart,
       totalItems: isHydrated ? totalItems : 0,
       totalPrice: isHydrated ? totalPrice : 0,
-      isHydrated
+      isHydrated,
+      // Checkout modal state
+      isCheckoutOpen,
+      setIsCheckoutOpen,
+      isAuthModalOpen,
+      setIsAuthModalOpen
     }}>
       {children}
     </SimpleCartContext.Provider>

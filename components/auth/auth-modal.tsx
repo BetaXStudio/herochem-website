@@ -1,7 +1,7 @@
 'use client';
 
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from './auth-context';
 
 interface AuthModalProps {
@@ -19,6 +19,18 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
   const [success, setSuccess] = useState('');
 
   const { signIn, signUp } = useAuth();
+
+  // Blockiere Body-Scroll wenn Modal offen ist
+  useEffect(() => {
+    if (isOpen) {
+      const originalStyle = window.getComputedStyle(document.body).overflow;
+      document.body.style.overflow = 'hidden';
+      
+      return () => {
+        document.body.style.overflow = originalStyle;
+      };
+    }
+  }, [isOpen]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -81,35 +93,45 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[10000] flex items-center justify-center max-[800px]:items-start max-[800px]:pt-20">
-      {/* Backdrop with blur - transparent background */}
+    <React.Fragment>
+      {/* Separater Blur-Layer über den gesamten Screen - über allem außer dem Modal */}
       <div 
-        className="absolute inset-0 backdrop-blur-sm"
+        className="fixed inset-0 z-[10026]"
         style={{ 
-          backgroundColor: 'rgba(0, 0, 0, 0.1)',
-          animation: 'backdropFadeIn 0.3s ease-out'
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
+          backdropFilter: 'blur(4px)',
+          WebkitBackdropFilter: 'blur(4px)',
+          animation: 'backdropFadeIn 0.3s ease-out',
+          top: window.innerWidth <= 800 ? '0px' : '47px' // Mobile: kein Offset, Desktop: 47px
         }}
         onClick={handleClose}
       />
       
-      {/* Modal with animation */}
+      {/* Modal Container */}
       <div 
-        className="relative bg-white rounded-lg shadow-xl w-full max-w-md mx-4"
-        style={{
-          backgroundColor: 'white',
-          border: '2px solid rgb(64,64,74)',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
-          animation: 'modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
-        }}
+        className="fixed inset-0 z-[10030] flex items-center justify-center max-[800px]:items-start max-[800px]:pt-[55px] max-[800px]:pb-[50px]"
+        style={{ touchAction: 'none', pointerEvents: 'none' }}
       >
-        {/* Header */}
+        {/* Modal with animation */}
         <div 
-          className="flex items-center justify-between p-6 border-b"
-          style={{ 
-            borderColor: 'rgb(64,64,74)', 
-            backgroundColor: 'rgb(64,64,74)' 
+          className="relative bg-white rounded-lg shadow-xl w-full max-w-md mx-4 max-h-[90vh] max-[800px]:max-h-[calc(90vh-105px)] flex flex-col"
+          style={{
+            backgroundColor: 'white',
+            border: '2px solid rgb(64,64,74)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+            animation: 'modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+            touchAction: 'auto',
+            pointerEvents: 'auto'
           }}
         >
+          {/* Header */}
+          <div 
+            className="flex items-center justify-between p-6 border-b"
+            style={{ 
+              borderColor: 'rgb(64,64,74)', 
+              backgroundColor: 'rgb(64,64,74)' 
+            }}
+          >
           <h2 className="text-xl font-semibold text-white" style={{ fontFamily: 'Calibri, Arial, sans-serif' }}>
             {isLogin ? 'Login' : 'Register'}
           </h2>
@@ -123,8 +145,15 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
         </div>
 
         {/* Content */}
-        <div className="p-6">
-          <form onSubmit={handleSubmit} className="space-y-4" autoComplete="on">
+        <div 
+          className="p-6 overflow-y-auto flex-1" 
+          style={{ 
+            WebkitOverflowScrolling: 'touch',
+            touchAction: 'pan-y',
+            overscrollBehavior: 'contain'
+          }}
+        >
+          <form onSubmit={handleSubmit} className="space-y-4 max-[800px]:pb-[50px]" autoComplete="on">
             {/* Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-black mb-2">
@@ -235,7 +264,8 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
             </p>
           </div>
         </div>
+              </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 }

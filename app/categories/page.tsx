@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 import { useSimpleCart } from '../../components/cart/simple-cart-context';
 import { productDetails, type ProductDetail } from '../../lib/product-details-database';
 import {
+    getAvailableFilters,
     getFilteredProducts as getFilteredProductsFromDB,
     products,
     type Brand,
@@ -68,8 +69,11 @@ const STATIC_STYLES = {
 };
 
 // Static arrays for dropdown options
-const FILTER_OPTIONS = ['Gain', 'Definition', 'Base', 'Allround'];
-const SORTING_OPTIONS = ['Price (Low > High)', 'Price (High > Low)', 'Most Viewed', 'Recommend'];
+const SORTING_OPTIONS = [
+  { label: 'Name A-Z', value: 'name' },
+  { label: 'Price (Low → High)', value: 'price-low' },
+  { label: 'Price (High → Low)', value: 'price-high' }
+];
 
 // Memoized Produktkachel-Komponente für bessere Performance mit React.memo und shallowEqual
 const ProductCard = memo(({ product, onAddToCart, onDetailsClick }: { 
@@ -349,6 +353,17 @@ function CategoriesContent() {
   const [selectedProductDetails, setSelectedProductDetails] = useState<ProductDetail | null>(null);
   const searchParams = useSearchParams();
   const { addItem } = useSimpleCart();
+
+  // Dynamische Filter basierend auf der aktuellen Kategorie
+  const availableFilters = useMemo(() => {
+    return getAvailableFilters(currentCategory);
+  }, [currentCategory]);
+
+  // Get current sorting label
+  const currentSortingLabel = useMemo(() => {
+    const sortingOption = SORTING_OPTIONS.find(option => option.value === selectedSorting);
+    return sortingOption ? sortingOption.label : 'Sort By';
+  }, [selectedSorting]);
   
   // Memoized filtered products with deeper optimization
   const filteredProducts = useMemo(() => {
@@ -381,6 +396,11 @@ function CategoriesContent() {
     setCurrentPage(1);
   }, [currentCategory, selectedBrand, selectedFilter, selectedSorting]);
 
+  // Reset filter when category changes
+  useEffect(() => {
+    setSelectedFilter('');
+  }, [currentCategory]);
+
   // Optimized event handlers with RAF for better performance
   const handleBrandSelection = useCallback((brand: 'deus' | 'astera') => {
     // Prevent deselection if the same brand is already selected
@@ -394,8 +414,8 @@ function CategoriesContent() {
     setIsFilterOpen(false);
   }, []);
 
-  const handleSortingSelection = useCallback((sorting: string) => {
-    setSelectedSorting(sorting);
+  const handleSortingSelection = useCallback((sortValue: string) => {
+    setSelectedSorting(sortValue);
     setIsSortingOpen(false);
   }, []);
 
@@ -1017,27 +1037,28 @@ function CategoriesContent() {
             <div className="mb-6 ml-1">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  {/* Filter Button */}
-                  <div className="relative dropdown-container">
-                    <button
-                      onClick={toggleFilterDropdown}
-                      className="flex items-center gap-1 text-white rounded-md px-1.5 py-1 text-xs transition-colors duration-300"
-                      style={{
-                        background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
-                        backdropFilter: 'blur(16px)',
-                        border: '1px solid rgba(255,255,255,0.15)',
-                        boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
-                        ...STATIC_STYLES.button
-                      }}
-                    >
-                      <img 
-                        src="/filter.png" 
-                        alt="Filter" 
-                        className="w-3 h-3 object-contain"
-                        style={{ filter: 'brightness(0) invert(1)', transform: 'translateZ(0)' }}
-                      />
-                      <span>Filter</span>
-                      <svg className={`w-3 h-3 transition-transform ${isFilterOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ transform: 'translateZ(0)' }}>
+                  {/* Filter Button - nur anzeigen wenn Filter verfügbar sind */}
+                  {availableFilters.length > 0 && (
+                    <div className="relative dropdown-container">
+                      <button
+                        onClick={toggleFilterDropdown}
+                        className="flex items-center gap-1 text-white rounded-md px-1.5 py-1 text-xs transition-colors duration-300"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
+                          backdropFilter: 'blur(16px)',
+                          border: '1px solid rgba(255,255,255,0.15)',
+                          boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
+                          ...STATIC_STYLES.button
+                        }}
+                      >
+                        <img 
+                          src="/filter.png" 
+                          alt="Filter" 
+                          className="w-3 h-3 object-contain"
+                          style={{ filter: 'brightness(0) invert(1)', transform: 'translateZ(0)' }}
+                        />
+                        <span>Filter</span>
+                        <svg className={`w-3 h-3 transition-transform ${isFilterOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ transform: 'translateZ(0)' }}>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
@@ -1058,7 +1079,7 @@ function CategoriesContent() {
                         }}
                       >
                         <div className="py-1">
-                          {FILTER_OPTIONS.map((filter) => (
+                          {availableFilters.map((filter) => (
                             <button
                               key={filter}
                               onClick={() => handleFilterSelection(filter)}
@@ -1084,6 +1105,7 @@ function CategoriesContent() {
                       </div>
                     )}
                   </div>
+                  )}
 
                   {/* Sorting Button */}
                   <div className="relative dropdown-container">
@@ -1104,7 +1126,7 @@ function CategoriesContent() {
                         className="w-3 h-3 object-contain"
                         style={{ filter: 'brightness(0) invert(1)', transform: 'translateZ(0)' }}
                       />
-                      <span>Sort By</span>
+                      <span>{currentSortingLabel}</span>
                       <svg className={`w-3 h-3 transition-transform ${isSortingOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ transform: 'translateZ(0)' }}>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
@@ -1128,10 +1150,10 @@ function CategoriesContent() {
                         <div className="py-1">
                           {SORTING_OPTIONS.map((sorting) => (
                             <button
-                              key={sorting}
-                              onClick={() => handleSortingSelection(sorting)}
+                              key={sorting.value}
+                              onClick={() => handleSortingSelection(sorting.value)}
                               className={`block px-6 py-3 w-full text-white uppercase text-center ${
-                                selectedSorting === sorting 
+                                selectedSorting === sorting.value 
                                   ? 'bg-gradient-to-r from-red-500/30 to-red-600/40 text-white shadow-lg' 
                                   : 'text-white hover:bg-gradient-to-r hover:from-red-500/20 hover:to-red-600/30 hover:text-white hover:shadow-lg'
                               }`}
@@ -1145,7 +1167,7 @@ function CategoriesContent() {
                                 transform: 'translateZ(0)' 
                               }}
                             >
-                              {sorting}
+                              {sorting.label}
                             </button>
                           ))}
                         </div>
@@ -1165,7 +1187,7 @@ function CategoriesContent() {
                         className="w-5 h-5 object-contain"
                         style={{ filter: 'brightness(0) invert(1)' }}
                       />
-                      <span>{selectedSorting}</span>
+                      <span>{currentSortingLabel}</span>
                       <button
                         onClick={clearSorting}
                         className="relative flex h-7 w-7 items-center justify-center rounded-md border border-neutral-600 text-white transition-colors hover:bg-neutral-700 ml-1"
@@ -1274,7 +1296,7 @@ function CategoriesContent() {
         <>
           {createPortal(
             <div 
-              className="fixed inset-0 z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 z-50 flex items-center justify-center p-2 md:p-4"
               style={{ 
                 backgroundColor: 'rgba(0, 0, 0, 0.8)',
                 backdropFilter: 'blur(10px)'
@@ -1284,7 +1306,7 @@ function CategoriesContent() {
               onTouchMove={(e) => e.stopPropagation()}
             >
               <div 
-                className="relative max-w-4xl w-full max-h-[75vh] overflow-y-auto rounded-2xl p-6 hide-scrollbar"
+                className="relative w-full max-w-[95vw] md:max-w-4xl max-h-[70vh] md:max-h-[75vh] overflow-y-auto overflow-x-hidden rounded-2xl p-3 md:p-6 hide-scrollbar"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.06) 50%, rgba(0, 0, 0, 0.3) 100%)',
                   backdropFilter: 'blur(20px)',
@@ -1324,14 +1346,14 @@ function CategoriesContent() {
                 </button>
 
                 {/* Modal Content */}
-                <div className="pr-12">
+                <div className="px-1 md:pr-12 md:px-0">
                   {/* Product Image and Basic Info */}
-                  <div className="flex flex-col md:flex-row gap-6 mb-6">
+                  <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-4 md:mb-6">
                     <div className="flex-shrink-0">
                       <img 
                         src={selectedProductDetails.image} 
                         alt={selectedProductDetails.name}
-                        className="w-48 h-48 object-cover rounded-lg"
+                        className="w-32 h-32 md:w-48 md:h-48 object-cover rounded-lg mx-auto md:mx-0"
                         style={{
                           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(0, 0, 0, 0.2) 100%)',
                           border: '1px solid rgba(255, 255, 255, 0.1)'
@@ -1339,17 +1361,17 @@ function CategoriesContent() {
                       />
                     </div>
                     <div className="flex-1">
-                      <h2 className="text-2xl font-bold text-white mb-2">{selectedProductDetails.name}</h2>
-                      <p className="text-gray-300 mb-3">{selectedProductDetails.description}</p>
+                      <h2 className="text-xl md:text-2xl font-bold text-white mb-2">{selectedProductDetails.name}</h2>
+                      <p className="text-gray-300 mb-3 text-sm md:text-base">{selectedProductDetails.description}</p>
                       <div className="flex items-center gap-4 mb-4">
-                        <span className="text-3xl font-bold text-white">€{selectedProductDetails.price.toFixed(2)}</span>
+                        <span className="text-2xl md:text-3xl font-bold text-white">€{selectedProductDetails.price.toFixed(2)}</span>
                         {selectedProductDetails.filterType && (
-                          <span className="bg-[#e91111] text-white px-3 py-1 rounded-full text-sm font-semibold">
+                          <span className="bg-[#e91111] text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm font-semibold">
                             {selectedProductDetails.filterType}
                           </span>
                         )}
                       </div>
-                      <div className="flex gap-2 text-sm">
+                      <div className="flex gap-2 text-xs md:text-sm">
                         <span className="bg-gray-700 text-white px-2 py-1 rounded capitalize">
                           {selectedProductDetails.category.toLowerCase()}
                         </span>

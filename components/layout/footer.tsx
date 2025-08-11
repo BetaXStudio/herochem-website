@@ -5,7 +5,6 @@ export default function Footer() {
       style={{ 
         background: 'linear-gradient(135deg, rgba(64,64,74,0.95) 0%, rgba(45,45,52,0.95) 100%)',
         backdropFilter: 'blur(20px)',
-        borderTop: '1px solid rgba(255,255,255,0.1)',
         boxShadow: '0 -8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
         zIndex: 10 
       }}
@@ -21,8 +20,7 @@ export default function Footer() {
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
                 backdropFilter: 'blur(16px)',
-                border: '1px solid rgba(255,255,255,0.15)',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)'
+                boxShadow: '0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1)'
               }}
             >
               <div className="mb-1">
@@ -45,8 +43,7 @@ export default function Footer() {
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
                 backdropFilter: 'blur(16px)',
-                border: '1px solid rgba(255,255,255,0.15)',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)'
+                boxShadow: '0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1)'
               }}
             >
               <div className="mb-1">
@@ -69,8 +66,7 @@ export default function Footer() {
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
                 backdropFilter: 'blur(16px)',
-                border: '1px solid rgba(255,255,255,0.15)',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)'
+                boxShadow: '0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1)'
               }}
             >
               <div className="mb-1">
@@ -93,8 +89,7 @@ export default function Footer() {
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
                 backdropFilter: 'blur(16px)',
-                border: '1px solid rgba(255,255,255,0.15)',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)'
+                boxShadow: '0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1)'
               }}
             >
               <div className="mb-1">

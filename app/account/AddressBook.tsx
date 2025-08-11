@@ -286,7 +286,7 @@ export default function AddressBook() {
                         </p>
                         <p className="text-neutral-300 text-sm">{address.country}</p>
                       </div>
-                      <div className="flex space-x-2">
+                      <div className="flex space-x-2 md:flex-row flex-col md:space-x-2 md:space-y-0 space-x-0 space-y-2">
                         <button
                           onClick={() => handleEditAddress(address)}
                           className="px-3 py-1 bg-neutral-600 text-white rounded-md hover:bg-neutral-500 transition-colors duration-200 text-sm"

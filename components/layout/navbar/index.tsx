@@ -1,6 +1,6 @@
 "use client";
 import { useAuth } from 'components/auth/auth-context';
-import AuthModal from 'components/auth/auth-modal';
+import { useAuthModal } from 'components/auth/auth-modal-context';
 import SimpleCartModal from 'components/cart/simple-cart-modal';
 import LogoSquare from 'components/logo-square';
 import Link from 'next/link';
@@ -14,7 +14,7 @@ export function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingFadeOut, setIsLoadingFadeOut] = useState(false);
-  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const { openModal } = useAuthModal();
   const { user, signOut, isHydrated } = useAuth();
   let closeTimeout: NodeJS.Timeout | null = null;
 
@@ -247,83 +247,85 @@ export function Navbar() {
         </div>
         <div className="flex justify-end md:w-1/4 gap-2 md:gap-4 lg:gap-6">
           <div className="flex items-center" style={{ gap: 'calc(0.5rem - 5pt)' }}>
-            {/* Always render the same structure - only functionality changes */}
-            {user ? (
-              <div className="flex items-center gap-2">
-                <Link
-                  href="/account"
-                  className={`uppercase px-2 py-1 rounded flex items-center gap-1 text-sm whitespace-nowrap group ${
-                    isAccountPage 
-                      ? 'text-[#e91111]' 
-                      : 'text-white hover:text-[#e91111]'
-                  }`}
+            {/* Always render the same div structure to prevent hydration mismatch */}
+            <div className="flex items-center gap-2">
+              {isHydrated && user ? (
+                <>
+                  <Link
+                    href="/account"
+                    className={`uppercase px-2 py-1 rounded flex items-center gap-1 text-sm whitespace-nowrap group ${
+                      isAccountPage 
+                        ? 'text-[#e91111]' 
+                        : 'text-white hover:text-[#e91111]'
+                    }`}
+                    style={{ textDecoration: 'none' }}
+                    onMouseEnter={(e) => {
+                      if (!isAccountPage) {
+                        const img = e.currentTarget.querySelector('img');
+                        if (img) {
+                          img.style.filter = 'brightness(0) saturate(100%) invert(18%) sepia(99%) saturate(7490%) hue-rotate(357deg) brightness(97%) contrast(108%)';
+                        }
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isAccountPage) {
+                        const img = e.currentTarget.querySelector('img');
+                        if (img) {
+                          img.style.filter = 'brightness(0) invert(1)';
+                        }
+                      }
+                    }}
+                  >
+                    <img 
+                      src="/login.png" 
+                      alt="Account Icon" 
+                      className="object-contain w-[22px] h-[22px] min-w-[22px] min-h-[22px] max-w-[22px] max-h-[22px] flex-shrink-0" 
+                      style={{ 
+                        filter: isAccountPage 
+                          ? 'brightness(0) saturate(100%) invert(18%) sepia(99%) saturate(7490%) hue-rotate(357deg) brightness(97%) contrast(108%)'
+                          : 'brightness(0) invert(1)'
+                      }}
+                    />
+                    MY ACCOUNT
+                  </Link>
+                  <button
+                    onClick={signOut}
+                    className="text-white uppercase hover:text-[#e91111] px-2 py-1 rounded text-sm whitespace-nowrap mr-3 max-[800px]:hidden"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    LOGOUT
+                  </button>
+                </>
+              ) : (
+                <button
+                  onClick={isHydrated ? openModal : undefined}
+                  className="text-white uppercase hover:text-[#e91111] px-2 py-1 rounded flex items-center gap-1 text-sm whitespace-nowrap mr-3 group"
                   style={{ textDecoration: 'none' }}
-                  onMouseEnter={(e) => {
-                    if (!isAccountPage) {
-                      const img = e.currentTarget.querySelector('img');
-                      if (img) {
-                        img.style.filter = 'brightness(0) saturate(100%) invert(18%) sepia(99%) saturate(7490%) hue-rotate(357deg) brightness(97%) contrast(108%)';
-                      }
+                  onMouseEnter={isHydrated ? (e) => {
+                    const img = e.currentTarget.querySelector('img');
+                    if (img) {
+                      img.style.filter = 'brightness(0) saturate(100%) invert(18%) sepia(99%) saturate(7490%) hue-rotate(357deg) brightness(97%) contrast(108%)';
                     }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isAccountPage) {
-                      const img = e.currentTarget.querySelector('img');
-                      if (img) {
-                        img.style.filter = 'brightness(0) invert(1)';
-                      }
+                  } : undefined}
+                  onMouseLeave={isHydrated ? (e) => {
+                    const img = e.currentTarget.querySelector('img');
+                    if (img) {
+                      img.style.filter = 'brightness(0) invert(1)';
                     }
-                  }}
+                  } : undefined}
                 >
                   <img 
                     src="/login.png" 
-                    alt="Account Icon" 
-                    className="object-contain w-[22px] h-[22px] min-w-[22px] min-h-[22px] max-w-[22px] max-h-[22px] flex-shrink-0" 
+                    alt="Login Icon" 
+                    className="object-contain w-[22px] h-[22px] min-w-[22px] min-h-[22px] max-w-[22px] max-h-[22px] flex-shrink-0 transition-all duration-300" 
                     style={{ 
-                      filter: isAccountPage 
-                        ? 'brightness(0) saturate(100%) invert(18%) sepia(99%) saturate(7490%) hue-rotate(357deg) brightness(97%) contrast(108%)'
-                        : 'brightness(0) invert(1)'
+                      filter: 'brightness(0) invert(1)'
                     }}
                   />
-                  MY ACCOUNT
-                </Link>
-                <button
-                  onClick={signOut}
-                  className="text-white uppercase hover:text-[#e91111] px-2 py-1 rounded text-sm whitespace-nowrap mr-3 max-[800px]:hidden"
-                  style={{ textDecoration: 'none' }}
-                >
-                  LOGOUT
+                  LOGIN / REGISTER
                 </button>
-              </div>
-            ) : (
-              <button
-                onClick={isHydrated ? () => setAuthModalOpen(true) : undefined}
-                className="text-white uppercase hover:text-[#e91111] px-2 py-1 rounded flex items-center gap-1 text-sm whitespace-nowrap mr-3 group"
-                style={{ textDecoration: 'none' }}
-                onMouseEnter={isHydrated ? (e) => {
-                  const img = e.currentTarget.querySelector('img');
-                  if (img) {
-                    img.style.filter = 'brightness(0) saturate(100%) invert(18%) sepia(99%) saturate(7490%) hue-rotate(357deg) brightness(97%) contrast(108%)';
-                  }
-                } : undefined}
-                onMouseLeave={isHydrated ? (e) => {
-                  const img = e.currentTarget.querySelector('img');
-                  if (img) {
-                    img.style.filter = 'brightness(0) invert(1)';
-                  }
-                } : undefined}
-              >
-                <img 
-                  src="/login.png" 
-                  alt="Login Icon" 
-                  className="object-contain w-[22px] h-[22px] min-w-[22px] min-h-[22px] max-w-[22px] max-h-[22px] flex-shrink-0 transition-all duration-300" 
-                  style={{ 
-                    filter: 'brightness(0) invert(1)'
-                  }}
-                />
-                LOGIN / REGISTER
-              </button>
-            )}
+              )}
+            </div>
             <SimpleCartModal />
           </div>
         </div>
@@ -337,13 +339,6 @@ export function Navbar() {
         >
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#e91111]"></div>
         </div>
-      )}
-      {/* Auth Modal */}
-      {isHydrated && (
-        <AuthModal 
-          isOpen={authModalOpen} 
-          onCloseAction={() => setAuthModalOpen(false)} 
-        />
       )}
     </nav>
   );

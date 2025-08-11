@@ -135,8 +135,7 @@ export default function RewardPoints() {
       {/* No Reward Points */}
       {!balance && transactions.length === 0 ? (
         <div className="bg-neutral-800 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-white mb-4 text-center">Reward Points</h3>
-          <div className="text-center py-8">
+          <div className="text-center pt-4 pb-8">
             <div className="mb-4 flex justify-center">
               <img 
                 src="/diamond.png" 
