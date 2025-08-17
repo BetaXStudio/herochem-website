@@ -1553,7 +1553,7 @@ export const productDetails: ProductDetail[] = [
     id: 'inj-deus-019',
     name: 'DEUS TRENBOMED E 200',
     description: 'Trenbolone Enanthate 200mg',
-    price: 50.99,
+    price: 50.00,
     image: '/products/deus inject/DEUS TRENBOMED E 200.png',
     category: 'INJECTION',
     brand: 'deus',
@@ -1638,7 +1638,7 @@ export const productDetails: ProductDetail[] = [
     id: 'inj-deus-020',
     name: 'DEUS TRESTOLONE A 100',
     description: 'Trestolone Acetate 100mg',
-    price: 50.99,
+    price: 100.00,
     image: '/products/deus inject/DEUS TRESTOLONE A 100.png',
     category: 'INJECTION',
     brand: 'deus',
@@ -1723,7 +1723,7 @@ export const productDetails: ProductDetail[] = [
     id: 'inj-deus-021',
     name: 'DEUS TRESTOLONE E 100',
     description: 'Trestolone Enanthate 100mg',
-    price: 50.99,
+    price: 100.00,
     image: '/products/deus inject/DEUS TRESTOLONE E 100.png',
     category: 'INJECTION',
     brand: 'deus',
@@ -1808,7 +1808,7 @@ export const productDetails: ProductDetail[] = [
     id: 'inj-deus-022',
     name: 'DEUS WINIMED 50',
     description: 'Stanozolol 50mg',
-    price: 50.99,
+    price: 33.00,
     image: '/products/deus inject/DEUS WINIMED 50.png',
     category: 'INJECTION',
     brand: 'deus',
@@ -1893,7 +1893,7 @@ export const productDetails: ProductDetail[] = [
     id: 'oral-deus-001',
     name: 'DEUS ANADROMED 50',
     description: 'Oxymetholone 50mg',
-    price: 50.99,
+    price: 27.00,
     image: '/products/deus oral/DEUS ANADROMED 50.png',
     category: 'ORAL',
     brand: 'deus',
@@ -1978,7 +1978,7 @@ export const productDetails: ProductDetail[] = [
     id: 'oral-deus-002',
     name: 'DEUS ANAVAMED 10',
     description: 'Oxandrolone 10mg',
-    price: 50.99,
+    price: 23.00,
     image: '/products/deus oral/DEUS ANAVAMED 10.png',
     category: 'ORAL',
     brand: 'deus',
@@ -2063,7 +2063,7 @@ export const productDetails: ProductDetail[] = [
     id: 'oral-deus-003',
     name: 'DEUS DIANAMED 10',
     description: 'Methandienone 10mg',
-    price: 50.99,
+    price: 10.00,
     image: '/products/deus oral/DEUS DIANAMED 10.png',
     category: 'ORAL',
     brand: 'deus',
@@ -2148,7 +2148,7 @@ export const productDetails: ProductDetail[] = [
     id: 'oral-deus-004',
     name: 'DEUS HALOMED 5',
     description: 'Fluoxymesterone 5mg',
-    price: 50.99,
+    price: 45.00,
     image: '/products/deus oral/DEUS HALOMED 5.png',
     category: 'ORAL',
     brand: 'deus',
@@ -2233,7 +2233,7 @@ export const productDetails: ProductDetail[] = [
     id: 'oral-deus-005',
     name: 'DEUS PRIMOMED 25',
     description: 'Methenolone Acetate 25mg',
-    price: 50.99,
+    price: 75.00,
     image: '/products/deus oral/DEUS PRIMOMED 25.png',
     category: 'ORAL',
     brand: 'deus',
@@ -2318,7 +2318,7 @@ export const productDetails: ProductDetail[] = [
     id: 'oral-deus-006',
     name: 'DEUS PROVIMED 25',
     description: 'Mesterolone 25mg',
-    price: 50.99,
+    price: 23.00,
     image: '/products/deus oral/DEUS PROVIMED 25.png',
     category: 'ORAL',
     brand: 'deus',
@@ -2403,7 +2403,7 @@ export const productDetails: ProductDetail[] = [
     id: 'oral-deus-007',
     name: 'DEUS SUPERMED 10',
     description: 'Methyldrostanolone 10mg',
-    price: 50.99,
+    price: 41.00,
     image: '/products/deus oral/DEUS SUPERMED 10.png',
     category: 'ORAL',
     brand: 'deus',
@@ -2488,7 +2488,7 @@ export const productDetails: ProductDetail[] = [
     id: 'oral-deus-008',
     name: 'DEUS TURIMED 10',
     description: '4-Chlorodehydromethyltestosterone 10mg',
-    price: 50.99,
+    price: 17.00,
     image: '/products/deus oral/DEUS TURIMED 10.png',
     category: 'ORAL',
     brand: 'deus',
@@ -2573,7 +2573,7 @@ export const productDetails: ProductDetail[] = [
     id: 'oral-deus-009',
     name: 'DEUS WINIMED 10',
     description: 'Stanozolol 10mg',
-    price: 50.99,
+    price: 11.00,
     image: '/products/deus oral/DEUS WINIMED 10.png',
     category: 'ORAL',
     brand: 'deus',
@@ -2658,7 +2658,7 @@ export const productDetails: ProductDetail[] = [
     id: 'sarms-deus-001',
     name: 'DEUS GW501516 10 CARDARINE',
     description: 'SARM 10mg',
-    price: 59.99,
+    price: 35.00,
     image: '/products/deus sarms/DEUS GW501516 10 CARDARINE.png',
     category: 'SARMS',
     brand: 'deus',
@@ -2743,7 +2743,7 @@ export const productDetails: ProductDetail[] = [
     id: 'sarms-deus-002',
     name: 'DEUS LGD4033 10 LIGANDROL',
     description: 'SARM 10mg',
-    price: 59.99,
+    price: 60.00,
     image: '/products/deus sarms/DEUS LGD4033 10 LIGANDROL.png',
     category: 'SARMS',
     brand: 'deus',
@@ -2828,7 +2828,7 @@ export const productDetails: ProductDetail[] = [
     id: 'sarms-deus-003',
     name: 'DEUS MK677 10 IBUTAMOREN',
     description: 'SARM 10mg',
-    price: 59.99,
+    price: 40.00,
     image: '/products/deus sarms/DEUS MK677 10 IBUTAMOREN.png',
     category: 'SARMS',
     brand: 'deus',
@@ -2913,7 +2913,7 @@ export const productDetails: ProductDetail[] = [
     id: 'sarms-deus-004',
     name: 'DEUS MK2866 10 OSTARINE',
     description: 'SARM 10mg',
-    price: 59.99,
+    price: 33.00,
     image: '/products/deus sarms/DEUS MK2866 10 OSTARINE.png',
     category: 'SARMS',
     brand: 'deus',
@@ -2998,7 +2998,7 @@ export const productDetails: ProductDetail[] = [
     id: 'sarms-deus-005',
     name: 'DEUS RAD140 10 TESTOLONE',
     description: 'SARM 10mg',
-    price: 59.99,
+    price: 50.00,
     image: '/products/deus sarms/DEUS RAD140 10 TESTOLONE.png',
     category: 'SARMS',
     brand: 'deus',
@@ -3083,7 +3083,7 @@ export const productDetails: ProductDetail[] = [
     id: 'sarms-deus-006',
     name: 'DEUS S4 25 ANDARINE',
     description: 'SARM 25mg',
-    price: 59.99,
+    price: 45.00,
     image: '/products/deus sarms/DEUS S4 25 ANDARINE.png',
     category: 'SARMS',
     brand: 'deus',
@@ -3168,7 +3168,7 @@ export const productDetails: ProductDetail[] = [
     id: 'sarms-deus-007',
     name: 'DEUS S23 10',
     description: 'SARM 10mg',
-    price: 59.99,
+    price: 35.00,
     image: '/products/deus sarms/DEUS S23 10.png',
     category: 'SARMS',
     brand: 'deus',
@@ -3253,7 +3253,7 @@ export const productDetails: ProductDetail[] = [
     id: 'sarms-deus-008',
     name: 'DEUS SR9009 10 STENABOLIC',
     description: 'SARM 10mg',
-    price: 59.99,
+    price: 35.00,
     image: '/products/deus sarms/DEUS SR9009 10 STENABOLIC.png',
     category: 'SARMS',
     brand: 'deus',
@@ -3338,7 +3338,7 @@ export const productDetails: ProductDetail[] = [
     id: 'sarms-deus-009',
     name: 'DEUS YK11 5',
     description: 'SARM 5mg',
-    price: 59.99,
+    price: 55.00,
     image: '/products/deus sarms/DEUS YK11 5.png',
     category: 'SARMS',
     brand: 'deus',
@@ -3423,7 +3423,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-001',
     name: 'DEUS BPC-157',
     description: 'BPC-157 Pentadecapeptide 5mg',
-    price: 89.99,
+    price: 35.00,
     image: '/products/deus peptides & hgh/DEUS BPC-157.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -3508,7 +3508,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-002',
     name: 'DEUS CJC-1295 DAC',
     description: 'Tetrasubstitued 30-Amino Acid Peptide Hormone 2mg',
-    price: 79.99,
+    price: 30.00,
     image: '/products/deus peptides & hgh/DEUS CJC-1295 DAC.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -3593,7 +3593,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-003',
     name: 'DEUS DEUSTROPIN 4/12',
     description: 'Recombinant Human Growth Hormone [rDNA origin] 12IU',
-    price: 199.99,
+    price: 190.00,
     image: '/products/deus peptides & hgh/DEUS DEUSTROPIN 4:12.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -3678,7 +3678,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-004',
     name: 'DEUS DSIP',
     description: 'Delta Sleep-Inducing Peptide 5mg',
-    price: 69.99,
+    price: 35.00,
     image: '/products/deus peptides & hgh/DEUS DSIP.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -3763,7 +3763,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-005',
     name: 'DEUS EPITHALON',
     description: 'Epithalamine 10mg',
-    price: 99.99,
+    price: 30.00,
     image: '/products/deus peptides & hgh/DEUS EPITHALON.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -3848,7 +3848,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-006',
     name: 'DEUS EPO',
     description: 'Erythropoietin 3000IU',
-    price: 149.99,
+    price: 0.00,
     image: '/products/deus peptides & hgh/DEUS EPO.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -3933,7 +3933,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-007',
     name: 'DEUS FOLLISTATIN',
     description: 'Activin-Binding Protein 1mg',
-    price: 179.99,
+    price: 60.00,
     image: '/products/deus peptides & hgh/DEUS FOLLISTATIN.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -4018,7 +4018,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-008',
     name: 'DEUS GHRP-2',
     description: 'Growth Hormone-Releasing Peptide 2 10mg',
-    price: 79.99,
+    price: 35.00,
     image: '/products/deus peptides & hgh/DEUS GHRP-2.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -4103,7 +4103,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-009',
     name: 'DEUS GHRP-6',
     description: 'Growth Hormone-Releasing Peptide 6 10mg',
-    price: 79.99,
+    price: 35.00,
     image: '/products/deus peptides & hgh/DEUS GHRP-6.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -4188,7 +4188,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-010',
     name: 'DEUS HCG',
     description: 'Human Chorionic Gonadotropin 5000IU',
-    price: 69.99,
+    price: 40.00,
     image: '/products/deus peptides & hgh/DEUS HCG.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -4273,7 +4273,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-011',
     name: 'DEUS HEXARELIN',
     description: 'Growth Hormone-Releasing Peptide 2mg',
-    price: 89.99,
+    price: 30.00,
     image: '/products/deus peptides & hgh/DEUS HEXARELIN.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -4358,7 +4358,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-012',
     name: 'DEUS HGH FRAGMENT 176-191',
     description: 'Recombinant Human Growth Hormone Fragment 176-191 5mg',
-    price: 89.99,
+    price: 40.00,
     image: '/products/deus peptides & hgh/DEUS HGH FRAGMENT 176-191.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -4441,7 +4441,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-013',
     name: 'DEUS HMG',
     description: 'Human Menopausal Gonadotropin 0.15mg',
-    price: 79.99,
+    price: 40.00,
     image: '/products/deus peptides & hgh/DEUS HMG.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -4524,7 +4524,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-014',
     name: 'DEUS IGF-1 DES',
     description: 'Insulin-Like Growth Factor 1 DES 1mg',
-    price: 159.99,
+    price: 0.00,
     image: '/products/deus peptides & hgh/DEUS IGF-1 DES.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -4607,7 +4607,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-015',
     name: 'DEUS IGF-1 LR3',
     description: 'Long Arginine 3-IGF-1 1mg',
-    price: 159.99,
+    price: 0.00,
     image: '/products/deus peptides & hgh/DEUS IGF-1 LR3.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -4690,7 +4690,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-016',
     name: 'DEUS IPAMORELIN',
     description: 'Growth Hormone-Releasing Peptide 2mg',
-    price: 89.99,
+    price: 20.00,
     image: '/products/deus peptides & hgh/DEUS IPAMORELIN.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -4773,7 +4773,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-017',
     name: 'DEUS MELANOTAN II',
     description: 'Melanotan II Peptide Hormone 10mg',
-    price: 69.99,
+    price: 30.00,
     image: '/products/deus peptides & hgh/DEUS MELANOTAN II.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -4856,7 +4856,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-018',
     name: 'DEUS MOD GRF 1-29',
     description: 'Tetrasubstitued 29-Amino Acid Peptide Hormone 2mg',
-    price: 79.99,
+    price: 20.00,
     image: '/products/deus peptides & hgh/DEUS MOD GRF 1-29.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -4937,7 +4937,7 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-019',
     name: 'DEUS MOTS-C',
     description: 'Mitochondrial-Derived Peptide 10mg',
-    price: 129.99,
+    price: 50.00,
     image: '/products/deus peptides & hgh/DEUS MOTS-C.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
@@ -5020,14 +5020,14 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-020',
     name: 'DEUS PEG MGF',
     description: 'Pegylated Mechano Growth Factor 2mg',
-    price: 139.99,
+    price: 33.00,
     image: '/products/deus peptides & hgh/DEUS PEG MGF.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
     filterType: 'Gain',
     details: `
       <div class="product-details">
-        <h1 class="product-title">DEUS PEG MGF</h1><div class="product-description"><p>; ; ; ; ; \* ;; ; ; ; DEUS PEG MGF\ (Pegylated Mechano Growth Factor)\ '95</p><p><strong>CAS number:</strong> 'a0108174-48-7 \ '95</p><p><strong>Molecular Weight:</strong> 'a02888.16 g/mol \ '95</p><p><strong>Formula:</strong> 'a0C121H200N420O39\ \AppleTypeServices\AppleTypeServicesF65539</p><p><strong>Overview \ \AppleTypeServices PEG MGF (Pegylated Mechano Growth Factor)'a0is a man-made analog of Insulin-like Growth Factor 1. It is used in the treatment of muscle wasting, osteoporosis and wound healing. It is manufactured as PEG MGF 2mg per vial injections containing 2mg of Pegylated Mechano Growth Factor and excipients.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 PEG MGF</strong></p><p><strong>Mechanism of Action \ \AppleTypeServices As an analog of IGF-1, PEG MGF stimulates growth across cells and causes differentiation of tissues. It binds to the IGF1 receptor to promote growth in almost every part of the body. It also signals several growth pathways that result in increased growth and it inhibits the pathway of cellular death. It is this feature that makes it useful in treating muscle wasting, osteoporosis and useful for wound healing. Pegylation of MGF is what increases the half-life to about 2 to 3 days, from just a few minutes. \ \AppleTypeServices\AppleTypeServicesF65539 PEG MGF (Pegylated Mechano Growth Factor)</strong></p><p><strong>DOsage \ \AppleTypeServices As directed by the physician. \ \AppleTypeServices\AppleTypeServicesF65539 PEG MGF (Pegylated Mechano Growth Factor)'a0</strong></p><p><strong>Side Effects \ \AppleTypeServices Hypoglycemia. \ \AppleTypeServices\AppleTypeServicesF65539 PEG MGF (Pegylated Mechano Growth Factor)</strong></p><p><strong>Interactions \ \AppleTypeServices Glucose lowering agents \ \</strong></p><p><strong>Composition \ Pegylated Mechano Growth Factor . . . 2mg Excipients . . . . . . . . . . . . . . . . . . . . . q.s</strong></p></div>
+        <h1 class="product-title">DEUS PEG MGF</h1><div class="product-description"><p>DEUS PEG MGF (Pegylated Mechano Growth Factor)</p><p><strong>CAS number:</strong> 108174-48-7</p><p><strong>Molecular Weight:</strong> 2888.16 g/mol</p><p><strong>Formula:</strong> C121H200N420O39</p><p><strong>Overview:</strong> PEG MGF (Pegylated Mechano Growth Factor) is a man-made analog of Insulin-like Growth Factor 1. It is used in the treatment of muscle wasting, osteoporosis and wound healing. It is manufactured as PEG MGF 2mg per vial injections containing 2mg of Pegylated Mechano Growth Factor and excipients.</p><p><strong>Mechanism of Action:</strong> As an analog of IGF-1, PEG MGF stimulates growth across cells and causes differentiation of tissues. It binds to the IGF1 receptor to promote growth in almost every part of the body. It also signals several growth pathways that result in increased growth and it inhibits the pathway of cellular death. It is this feature that makes it useful in treating muscle wasting, osteoporosis and useful for wound healing. Pegylation of MGF is what increases the half-life to about 2 to 3 days, from just a few minutes.</p><p><strong>Dosage:</strong> As directed by the physician.</p><p><strong>Side Effects:</strong> Hypoglycemia.</p><p><strong>Interactions:</strong> Glucose lowering agents</p><p><strong>Composition:</strong> Pegylated Mechano Growth Factor . . . 2mg<br>Excipients . . . q.s</p></div>
       </div>
       <style>
         .product-details {
@@ -5085,14 +5085,14 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-021',
     name: 'DEUS PNC-27',
     description: 'PNC-27 Anti-Cancer Peptide 5mg',
-    price: 199.99,
+    price: 50.00,
     image: '/products/deus peptides & hgh/DEUS PNC-27.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
     filterType: 'Base',
     details: `
       <div class="product-details">
-        <h1 class="product-title">DEUS PNC-27</h1><div class="product-description"><p>; ; ; ; ; ; \* ;; ; ; ; ; DEUS PNC-27\ (PNC-27 Anti-Cancer Peptide)\ '95</p><p><strong>CAS number:</strong> 'a01159861-00-3 \ '95</p><p><strong>Molecular Weight:</strong> 'a04029.2 g/mol \ '95</p><p><strong>Formula:</strong> 'a0C188H293N53O44S\ \AppleTypeServices\AppleTypeServicesF65539</p><p><strong>Overview \ \AppleTypeServices PNC-27 Anti-Cancer Peptide is a medication used in the treatment of cancer.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 PNC-27 Anti-Cancer Peptide</strong></p><p><strong>Mechanism of Action \ \AppleTypeServices PNC-27 Anticancer peptide is a peptide that is selective in killing cancer cells, without affecting the cells of the host. It does this by causing necrosis in the cancer cells. PNC-27 kills cancer cells by forming pores in the membrane of cancer cells leading to their death.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 PNC-27</strong></p><p><strong>Dosage \ \AppleTypeServices As directed by the physician. \ \AppleTypeServices\AppleTypeServicesF65539 PNC-27</strong></p><p><strong>Side Effects \ \AppleTypeServices Infections . \ \AppleTypeServices\AppleTypeServicesF65539 PNC-27</strong></p><p><strong>Interactions \ \AppleTypeServices Not Available. \ \</strong></p><p><strong>Composition \ PNC-27 Anti-Cancer Peptide . . . 5mg Excipients . . . . . . . . . . . . . . . . . . . . . q.s</strong></p></div>
+        <h1 class="product-title">DEUS PNC-27</h1><div class="product-description"><p>DEUS PNC-27 (PNC-27 Anti-Cancer Peptide)</p><p><strong>CAS number:</strong> 1159861-00-3</p><p><strong>Molecular Weight:</strong> 4029.2 g/mol</p><p><strong>Formula:</strong> C188H293N53O44S</p><p><strong>Overview:</strong> PNC-27 Anti-Cancer Peptide is a medication used in the treatment of cancer.</p><p><strong>Mechanism of Action:</strong> PNC-27 Anticancer peptide is a peptide that is selective in killing cancer cells, without affecting the cells of the host. It does this by causing necrosis in the cancer cells. PNC-27 kills cancer cells by forming pores in the membrane of cancer cells leading to their death.</p><p><strong>Dosage:</strong> As directed by the physician.</p><p><strong>Side Effects:</strong> Infections.</p><p><strong>Interactions:</strong> Not Available.</p><p><strong>Composition:</strong> PNC-27 Anti-Cancer Peptide . . . 5mg<br>Excipients . . . q.s</p></div>
       </div>
       <style>
         .product-details {
@@ -5150,14 +5150,14 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-022',
     name: 'DEUS PT-141',
     description: 'Bremelanotide 10mg',
-    price: 89.99,
+    price: 30.00,
     image: '/products/deus peptides & hgh/DEUS PT-141.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
     filterType: 'Base',
     details: `
       <div class="product-details">
-        <h1 class="product-title">DEUS PT-141</h1><div class="product-description"><p>; ; ; ; ; \* ;; ; ; ; DEUS PT-141\ (Bremelanotide)\ '95</p><p><strong>CAS number:</strong> 'a0189691-06-3 \ '95</p><p><strong>Molecular Weight:</strong> 'a01025.18 g/mol \ '95</p><p><strong>Formula:</strong> 'a0C50H68N14O10\ \AppleTypeServices\AppleTypeServicesF65539</p><p><strong>Overview \ \AppleTypeServices PT-141 (Bremelanotide) is a medication that is used in the treatment of hypoactive sexual desire disorder (HSDD). It is manufactured as 10mg/vial injections which contain Bremelanotide 10mg and excipients.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 Bremelanotide</strong></p><p><strong>Mechanism of Action \ \AppleTypeServices Bremelanotide is a melanocortin Receptor agonist. It acts on M1 - M5 receptors to exert its effect which is to increase libido in the absence of underlying medical problems.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 Bremelanotide</strong></p><p><strong>Dosage \ \AppleTypeServices One injection before sexual activity.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 Bremelanotide</strong></p><p><strong>Side Effects \ \AppleTypeServices Nausea and vomiting, cough, injection site reactions, headache, cough. \ \AppleTypeServices\AppleTypeServicesF65539 Bremelanotide</strong></p><p><strong>Interactions \ \AppleTypeServices COX inhibitors, Naltrexone. \ \</strong></p><p><strong>Composition \ Bremelanotide . . . . . . . . . . . . . . 10mg Excipients . . . . . . . . . . . . . . . . . . . . . q.s</strong></p></div>
+        <h1 class="product-title">DEUS PT-141</h1><div class="product-description"><p>DEUS PT-141 (Bremelanotide)</p><p><strong>CAS number:</strong> 189691-06-3</p><p><strong>Molecular Weight:</strong> 1025.18 g/mol</p><p><strong>Formula:</strong> C50H68N14O10</p><p><strong>Overview:</strong> PT-141 (Bremelanotide) is a medication that is used in the treatment of hypoactive sexual desire disorder (HSDD). It is manufactured as 10mg/vial injections which contain Bremelanotide 10mg and excipients.</p><p><strong>Mechanism of Action:</strong> Bremelanotide is a melanocortin Receptor agonist. It acts on M1 - M5 receptors to exert its effect which is to increase libido in the absence of underlying medical problems.</p><p><strong>Dosage:</strong> One injection before sexual activity.</p><p><strong>Side Effects:</strong> Nausea and vomiting, cough, injection site reactions, headache, cough.</p><p><strong>Interactions:</strong> COX inhibitors, Naltrexone.</p><p><strong>Composition:</strong> Bremelanotide . . . 10mg<br>Excipients . . . q.s</p></div>
       </div>
       <style>
         .product-details {
@@ -5215,14 +5215,14 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-023',
     name: 'DEUS SELANK',
     description: 'Seeland Anxiolytic Peptide 5mg',
-    price: 79.99,
+    price: 15.00,
     image: '/products/deus peptides & hgh/DEUS SELANK.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
     filterType: 'Base',
     details: `
       <div class="product-details">
-        <h1 class="product-title">DEUS SELANK</h1><div class="product-description"><p>; ; ; ; ; \* ;; ; ; ; DEUS SELANK\ (Selank Anxiolytic Peptide)\ '95</p><p><strong>CAS number:</strong> 'a0129954-34-3 \ '95</p><p><strong>Molecular Weight:</strong> 'a0751.89 g/mol \ '95</p><p><strong>Formula:</strong> 'a0C33H57N11O9\ \AppleTypeServices\AppleTypeServicesF65539</p><p><strong>Overview \ \AppleTypeServices Selank is a synthetic analog of tuftsin, and it is used in the treatment of anxiety, depression and used to also improve cognitive functions. Selank is manufactured as 5mg/vial subcutaneous injections that contain Selank Anxiolytic Peptide 5mg and excipients.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 Selank</strong></p><p><strong>Mechanism of Action \ \AppleTypeServices As an analog of tuftsin, selank is an immunomodulator. It exact</strong></p><p><strong>mechanism of action in bringing about its anxiolytic is not completely understood. However, it has been shown that it modulates the GABA neurotransmitter. It also induces the metabolism of serotonin and enhances the expression of brain-derived neurotrophic factor, both of which are involved regulation of mood. It exerts its anxiolytic effects without causing sedation or addiction. It also influences memory formation and enhances the process of learning. Selank also boosts immune responses.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 Selank</strong></p><p><strong>Dosage \ \AppleTypeServices As directed by the physician. \ \AppleTypeServices\AppleTypeServicesF65539 Selank</strong></p><p><strong>Side Effects \ \AppleTypeServices Headache, hair loss, fatigue, dizziness. \ \AppleTypeServices\AppleTypeServicesF65539 Selank</strong></p><p><strong>Interactions \ \AppleTypeServices Benzodiazepines. \ \</strong></p><p><strong>Composition \ Selank Anxiolytic Peptide . . . . . . 5mg Excipients . . . . . . . . . . . . . . . . . . . . . q.s</strong></p></div>
+        <h1 class="product-title">DEUS SELANK</h1><div class="product-description"><p>DEUS SELANK (Selank Anxiolytic Peptide)</p><p><strong>CAS number:</strong> 129954-34-3</p><p><strong>Molecular Weight:</strong> 751.89 g/mol</p><p><strong>Formula:</strong> C33H57N11O9</p><p><strong>Overview:</strong> Selank is a synthetic analog of tuftsin, and it is used in the treatment of anxiety, depression and used to also improve cognitive functions. Selank is manufactured as 5mg/vial subcutaneous injections that contain Selank Anxiolytic Peptide 5mg and excipients.</p><p><strong>Mechanism of Action:</strong> As an analog of tuftsin, selank is an immunomodulator. Its exact mechanism of action in bringing about its anxiolytic effects is not completely understood. However, it has been shown that it modulates the GABA neurotransmitter. It also induces the metabolism of serotonin and enhances the expression of brain-derived neurotrophic factor, both of which are involved in regulation of mood. It exerts its anxiolytic effects without causing sedation or addiction. It also influences memory formation and enhances the process of learning. Selank also boosts immune responses.</p><p><strong>Dosage:</strong> As directed by the physician.</p><p><strong>Side Effects:</strong> Headache, hair loss, fatigue, dizziness.</p><p><strong>Interactions:</strong> Benzodiazepines.</p><p><strong>Composition:</strong> Selank Anxiolytic Peptide . . . 5mg<br>Excipients . . . q.s</p></div>
       </div>
       <style>
         .product-details {
@@ -5280,14 +5280,14 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-024',
     name: 'DEUS SEMAGLUTIDE',
     description: 'Glucagon-Like Peptide-1 GLP-1 5mg',
-    price: 149.99,
+    price: 100.00,
     image: '/products/deus peptides & hgh/DEUS SEMAGLUTIDE.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
     filterType: 'Definition',
     details: `
       <div class="product-details">
-        <h1 class="product-title">DEUS SEMAGLUTIDE</h1><div class="product-description"><p>; ; ; ; ; \* ;; ; ; ; DEUS SEMAGLUTIDE\ (Glucagon-Like Peptide-1 (GLP-1))\ '95</p><p><strong>CAS number:</strong> 'a0910463-68-2 \ '95</p><p><strong>Molecular Weight:</strong> 'a04113.64 g/mol \ '95</p><p><strong>Formula:</strong> 'a0C187H291N45O59\ \AppleTypeServices\AppleTypeServicesF65539</p><p><strong>Overview \ \AppleTypeServices SEMAGLUTIDE'a0is an agonist of the Glucagon-Like Peptide 1 receptor. It is used in the treatment of Type 2 diabetes. SEMAGLUTIDE is manufactured as 5mg/vial injections which contain Glucagon-Like Peptide-1 (GLP-1) 5mg and excipients.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 SEMAGLUTIDE</strong></p><p><strong>Mechanism of Action \ \AppleTypeServices SEMAGLUTIDE acts on the GLP-1 receptor to exert its effects. Once it binds to this receptor, a</strong></p><p><strong>cascade of events is set in motion which results in the increased production of Insulin, inhibition of glucagon and delay of gastric emptying. The secreted insulin helps to mop up glucose and achieve blood sugar control. It has an advantage over other insulin secretagogues in that they have a lower risk of causing hypoglycemia.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 SEMAGLUTIDE</strong></p><p><strong>Dosage \ \AppleTypeServices As directed by the physician. \ \AppleTypeServices\AppleTypeServicesF65539 SEMAGLUTIDE</strong></p><p><strong>Side Effects \ \AppleTypeServices Hypoglycemia, redness or inflammation at the injection site, nausea, vomiting, pancreas or gall bladder disease. \ \AppleTypeServices\AppleTypeServicesF65539 SEMAGLUTIDE</strong></p><p><strong>Interactions \ \AppleTypeServices Beta-blockers, diabetes medications. \ \</strong></p><p><strong>Composition \ Glucagon-Like Peptide-1 (GLP-1)'a0. . . 5mg Excipients . . . . . . . . . . . . . . . . . . . . . q.s</strong></p></div>
+        <h1 class="product-title">DEUS SEMAGLUTIDE</h1><div class="product-description"><p>DEUS SEMAGLUTIDE (Glucagon-Like Peptide-1 (GLP-1))</p><p><strong>CAS number:</strong> 910463-68-2</p><p><strong>Molecular Weight:</strong> 4113.64 g/mol</p><p><strong>Formula:</strong> C187H291N45O59</p><p><strong>Overview:</strong> SEMAGLUTIDE is an agonist of the Glucagon-Like Peptide 1 receptor. It is used in the treatment of Type 2 diabetes. SEMAGLUTIDE is manufactured as 5mg/vial injections which contain Glucagon-Like Peptide-1 (GLP-1) 5mg and excipients.</p><p><strong>Mechanism of Action:</strong> SEMAGLUTIDE acts on the GLP-1 receptor to exert its effects. Once it binds to this receptor, a cascade of events is set in motion which results in the increased production of Insulin, inhibition of glucagon and delay of gastric emptying. The secreted insulin helps to mop up glucose and achieve blood sugar control. It has an advantage over other insulin secretagogues in that they have a lower risk of causing hypoglycemia.</p><p><strong>Dosage:</strong> As directed by the physician.</p><p><strong>Side Effects:</strong> Hypoglycemia, redness or inflammation at the injection site, nausea, vomiting, pancreas or gall bladder disease.</p><p><strong>Interactions:</strong> Beta-blockers, diabetes medications.</p><p><strong>Composition:</strong> Glucagon-Like Peptide-1 (GLP-1) . . . 5mg<br>Excipients . . . q.s</p></div>
       </div>
       <style>
         .product-details {
@@ -5345,14 +5345,14 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-025',
     name: 'DEUS SEMAX',
     description: 'Semax Heptapeptide 5mg',
-    price: 79.99,
+    price: 15.00,
     image: '/products/deus peptides & hgh/DEUS SEMAX.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
     filterType: 'Base',
     details: `
       <div class="product-details">
-        <h1 class="product-title">DEUS SEMAX</h1><div class="product-description"><p>; ; ; ; ; \* ;; ; ; ; DEUS SEMAX\ (Semax Heptapeptide)\ '95</p><p><strong>CAS number:</strong> 'a080714-61-0 \ '95</p><p><strong>Molecular Weight:</strong> 'a0813.93 g/mol \ '95</p><p><strong>Formula:</strong> 'a0C37H51N9O10S\ \AppleTypeServices\AppleTypeServicesF65539</p><p><strong>Overview \ \AppleTypeServices SEMAX'a0is a medication that belongs to the family of neuropeptides. It is used to treat cognitive disorders stroke, TIA, prevent cardiovascular disorders and to also boost the immune system. It is manufactured as 5mg/vial subcutaneous injections which contain SEMAX Heptapetide 5mg and excipients.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 SEMAX</strong></p><p><strong>Mechanism of Action \ \AppleTypeServices SEMAX has been shown to act as an antagonist of one of the melanocortin receptors (M4). It inhibits the effects of this receptor and also increases the production of brain-derived neurotrophic factor, which is essential in long-term memory and neural development.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 SEMAX</strong></p><p><strong>Dosage \ \AppleTypeServices As directed by the physician. \ \AppleTypeServices\AppleTypeServicesF65539 SEMAX</strong></p><p><strong>Side Effects \ \AppleTypeServices Hairloss, hyperglycemia. \ \AppleTypeServices\AppleTypeServicesF65539 SEMAX</strong></p><p><strong>interactions \ \AppleTypeServices Diabetes medications. \ \</strong></p><p><strong>Composition \ Semax Heptapeptide . . . . . . . . . 5mg Excipients . . . . . . . . . . . . . . . . . . . . . q.s</strong></p></div>
+        <h1 class="product-title">DEUS SEMAX</h1><div class="product-description"><p>DEUS SEMAX (Semax Heptapeptide)</p><p><strong>CAS number:</strong> 80714-61-0</p><p><strong>Molecular Weight:</strong> 813.93 g/mol</p><p><strong>Formula:</strong> C37H51N9O10S</p><p><strong>Overview:</strong> SEMAX is a medication that belongs to the family of neuropeptides. It is used to treat cognitive disorders stroke, TIA, prevent cardiovascular disorders and to also boost the immune system. It is manufactured as 5mg/vial subcutaneous injections which contain SEMAX Heptapetide 5mg and excipients.</p><p><strong>Mechanism of Action:</strong> SEMAX has been shown to act as an antagonist of one of the melanocortin receptors (M4). It inhibits the effects of this receptor and also increases the production of brain-derived neurotrophic factor, which is essential in long-term memory and neural development.</p><p><strong>Dosage:</strong> As directed by the physician.</p><p><strong>Side Effects:</strong> Hairloss, hyperglycemia.</p><p><strong>Interactions:</strong> Diabetes medications.</p><p><strong>Composition:</strong> Semax Heptapeptide . . . 5mg<br>Excipients . . . q.s</p></div>
       </div>
       <style>
         .product-details {
@@ -5410,14 +5410,14 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-026',
     name: 'DEUS TB-500',
     description: 'Thymosin Beta-4 2mg',
-    price: 119.99,
+    price: 30.00,
     image: '/products/deus peptides & hgh/DEUS TB-500.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
     filterType: 'Base',
     details: `
       <div class="product-details">
-        <h1 class="product-title">DEUS TB-500</h1><div class="product-description"><p>; ; ; ; ; \* ;; ; ; ; DEUS TB-500\ (Thymosin Beta-4)\ '95</p><p><strong>CAS number:</strong> 'a0885340-08-9 \ '95</p><p><strong>Molecular Weight:</strong> 'a0889.01 g/mol \ '95</p><p><strong>Formula:</strong> 'a0C38H68N10O14\ \AppleTypeServices\AppleTypeServicesF65539</p><p><strong>Overview \ \AppleTypeServices TB-500 (Thymosin Beta-4) is a man-made peptide that is an analog of the Thymosin Beta 4 protein found in humans. This medication is used to treat ulcers, dry eye, and to accelerate wound healing. it is manufactured as 2mg/vial injections which contain 2mg of Thymosin Beta -4'a0 and excipients.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 TB-500 (Thymosin Beta-4)</strong></p><p><strong>Mechanism of Action \ \AppleTypeServices TB-500 has been shown to cause angiogenesis in tissues, collagen deposition and migration of keratinocytes, all of which have a resultant positive effect on wound healing.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 TB-500 (Thymosin Beta-4)</strong></p><p><strong>Dosage \ \AppleTypeServices 2mg daily subcutaneous injections. \ \AppleTypeServices\AppleTypeServicesF65539 TB-500 (Thymosin Beta-4)</strong></p><p><strong>Side Effects \ \AppleTypeServices Headaches, fever, dizziness.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 TB-500 (Thymosin Beta-4)</strong></p><p><strong>Interactions \ \AppleTypeServices Not Available. \ \</strong></p><p><strong>Composition \ Thymosin Beta-4 . . . . . . . . . . . . . 2mg Excipients . . . . . . . . . . . . . . . . . . . . . q.s</strong></p></div>
+        <h1 class="product-title">DEUS TB-500</h1><div class="product-description"><p>DEUS TB-500 (Thymosin Beta-4)</p><p><strong>CAS number:</strong> 885340-08-9</p><p><strong>Molecular Weight:</strong> 889.01 g/mol</p><p><strong>Formula:</strong> C38H68N10O14</p><p><strong>Overview:</strong> TB-500 (Thymosin Beta-4) is a man-made peptide that is an analog of the Thymosin Beta 4 protein found in humans. This medication is used to treat ulcers, dry eye, and to accelerate wound healing. It is manufactured as 2mg/vial injections which contain 2mg of Thymosin Beta-4 and excipients.</p><p><strong>Mechanism of Action:</strong> TB-500 has been shown to cause angiogenesis in tissues, collagen deposition and migration of keratinocytes, all of which have a resultant positive effect on wound healing.</p><p><strong>Dosage:</strong> 2mg daily subcutaneous injections.</p><p><strong>Side Effects:</strong> Headaches, fever, dizziness.</p><p><strong>Interactions:</strong> Not Available.</p><p><strong>Composition:</strong> Thymosin Beta-4 . . . 2mg<br>Excipients . . . q.s</p></div>
       </div>
       <style>
         .product-details {
@@ -5475,14 +5475,14 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-027',
     name: 'DEUS THYMOSIN A1',
     description: 'Thymic Factor 10mg',
-    price: 99.99,
+    price: 60.00,
     image: '/products/deus peptides & hgh/DEUS THYMOSIN A1.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
     filterType: 'Base',
     details: `
       <div class="product-details">
-        <h1 class="product-title">DEUS THYMOSIN A1</h1><div class="product-description"><p>; ; ; ; ; \* ;; ; ; ; DEUS THYMOSIN A1\ (Thymosin Alpha-1)\ '95</p><p><strong>CAS number:</strong> 'a062304-98-7 \ '95</p><p><strong>Molecular Weight:</strong> 'a03108.32 g/mol \ '95</p><p><strong>Formula:</strong> 'a0C129H215N33O55\ \AppleTypeServices\AppleTypeServicesF65539</p><p><strong>Overview \ \AppleTypeServices THYMOSIN A1 (Thymosin Alpha-1) is a synthetic peptide fragment that is used to treat hepatitis B and C, acute respiratory distress syndrome, tuberculosis, peritonitis HIV and cancer.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 THYMOSIN A1 (Thymosin Alpha-1)</strong></p><p><strong>Mechanism of Action'a0 \ \AppleTypeServices THYMOSIN A1 (Thymosin Alpha-1) is involved in the restoration of immune function and acts to enhance cell-mediated immunity by the T-cells. It affects T-cell maturation, differentiation and function.'a0 It acts on several receptors that lead to the proliferation of other immune cells. It also enhances the response of the innate immunity. It has a half-life of about 3hrs. \ \AppleTypeServices\AppleTypeServicesF65539 THYMOSIN A1 (Thymosin Alpha-1)'a0</strong></p><p><strong>Dosage \ \AppleTypeServices As prescribed by the physician. \ \AppleTypeServices\AppleTypeServicesF65539 THYMOSIN A1 (Thymosin Alpha-1)'a0</strong></p><p><strong>Side Effects \ \AppleTypeServices Irritation at the injection site, cytokine storm. \ \AppleTypeServices\AppleTypeServicesF65539 THYMOSIN A1 (Thymosin Alpha-1)</strong></p><p><strong>Interactions \ \AppleTypeServices Not available. \ \</strong></p><p><strong>Composition \ Thymosin Alpha-1 . . . . . . . . . . . 10mg Excipients . . . . . . . . . . . . . . . . . . . . . q.s</strong></p></div>
+        <h1 class="product-title">DEUS THYMOSIN A1</h1><div class="product-description"><p>DEUS THYMOSIN A1 (Thymosin Alpha-1)</p><p><strong>CAS number:</strong> 62304-98-7</p><p><strong>Molecular Weight:</strong> 3108.32 g/mol</p><p><strong>Formula:</strong> C129H215N33O55</p><p><strong>Overview:</strong> THYMOSIN A1 (Thymosin Alpha-1) is a synthetic peptide fragment that is used to treat hepatitis B and C, acute respiratory distress syndrome, tuberculosis, peritonitis HIV and cancer.</p><p><strong>Mechanism of Action:</strong> THYMOSIN A1 (Thymosin Alpha-1) is involved in the restoration of immune function and acts to enhance cell-mediated immunity by the T-cells. It affects T-cell maturation, differentiation and function. It acts on several receptors that lead to the proliferation of other immune cells. It also enhances the response of the innate immunity. It has a half-life of about 3hrs.</p><p><strong>Dosage:</strong> As prescribed by the physician.</p><p><strong>Side Effects:</strong> Irritation at the injection site, cytokine storm.</p><p><strong>Interactions:</strong> Not available.</p><p><strong>Composition:</strong> Thymosin Alpha-1 . . . 10mg<br>Excipients . . . q.s</p></div>
       </div>
       <style>
         .product-details {
@@ -5540,14 +5540,14 @@ export const productDetails: ProductDetail[] = [
     id: 'peptides-deus-028',
     name: 'DEUS TIRZEPATIDE',
     description: 'GIP and GLP-1 Receptor agonist 10mg',
-    price: 189.99,
+    price: 100.00,
     image: '/products/deus peptides & hgh/DEUS TIRZEPATIDE.png',
     category: 'PEPTIDES & HGH',
     brand: 'deus',
     filterType: 'Definition',
     details: `
       <div class="product-details">
-        <h1 class="product-title">DEUS TIRZEPATIDE</h1><div class="product-description"><p>; ; ; ; ; \* ;; ; ; ; DEUS TIRZEPATIDE\ (GIP and GLP-1 Receptor agonist)\ '95</p><p><strong>CAS number:</strong> 'a02023788-19-2 \ '95</p><p><strong>Molecular Weight:</strong> 4813.53 g/mol \ '95</p><p><strong>Formula:</strong> C225H348N48O68\ \ \AppleTypeServices\AppleTypeServicesF65539</p><p><strong>Overview \ \AppleTypeServices Tirzepatide is a novel dual GIP (Glucose-dependent Insulinotropic Polypeptide) and GLP-1 (Glucagon-like Peptide-1) receptor agonist. It is a synthetic peptide designed to mimic the actions of both GIP and GLP-1, two incretin hormones that play key roles in regulating blood glucose and energy metabolism. Tirzepatide is used primarily in the management of type 2 diabetes and obesity due to its potent effects on improving glycemic control and promoting weight loss. It is marketed as a subcutaneous injectable medication. \ \AppleTypeServices\AppleTypeServicesF65539 Tirzepatide (GIP and GLP-1 Receptor agonist)</strong></p><p><strong>Mechanism of Action \ \AppleTypeServices Tirzepatide acts by binding to and activating both GIP and GLP-1 receptors. This dual agonism enhances insulin secretion in a glucose-dependent manner and reduces glucagon levels, helping to regulate blood sugar. The GIP component promotes insulin sensitivity, while the GLP-1 component slows gastric emptying, reduces appetite, and increases satiety. Together, these effects contribute to improved glycemic control, weight reduction, and better metabolic outcomes. GIP (Glucose-dependent Insulinotropic Polypeptide):</strong> Increases insulin secretion and improves fat metabolism. GLP-1 (Glucagon-like Peptide-1): Enhances insulin release, reduces glucagon secretion, and delays gastric emptying, leading to better blood sugar control and appetite suppression. \ \AppleTypeServices\AppleTypeServicesF65539 Tirzepatide (GIP and GLP-1 Receptor agonist)</p><p><strong>Dosage \ \AppleTypeServices Tirzepatide is typically administered as a subcutaneous injection once weekly.</strong></p><p><strong>Dosages range from 5 mg to 15 mg, depending on patient response and treatment goals. It is often titrated up to avoid gastrointestinal</strong></p><p><strong>side effects. \ \AppleTypeServices\AppleTypeServicesF65539 Tirzepatide (GIP and GLP-1 Receptor agonist)</strong></p><p><strong>Side Effects \ \AppleTypeServices Common</strong></p><p><strong>side effects of tirzepatide include:</strong> Gastrointestinal: Nausea, vomiting, diarrhea, constipation. Metabolic: Hypoglycemia (especially when used with insulin or sulfonylureas), decreased appetite. Injection site reactions: Pain, swelling, or redness at the injection site. Others: Fatigue, dizziness, potential for pancreatitis (rare). \ \AppleTypeServices\AppleTypeServicesF65539 Tirzepatide (GIP and GLP-1 Receptor agonist)</p><p><strong>Interactions \ \AppleTypeServices Tirzepatide may interact with medications affecting blood sugar levels, such as insulin or sulfonylureas, increasing the risk of hypoglycemia. It may also interact with drugs that delay gastric emptying, such as certain anticholinergics. \ \</strong></p><p><strong>Composition \ Tirzepatide (GIP and GLP-1 receptor agonist) . . . 10mg Excipients . . . . . . . . . . . . . . . . . . . . . q.s \ \</strong></p></div>
+        <h1 class="product-title">DEUS TIRZEPATIDE</h1><div class="product-description"><p>DEUS TIRZEPATIDE (GIP and GLP-1 Receptor agonist)</p><p><strong>CAS number:</strong> 2023788-19-2</p><p><strong>Molecular Weight:</strong> 4813.53 g/mol</p><p><strong>Formula:</strong> C225H348N48O68</p><p><strong>Overview:</strong> Tirzepatide is a novel dual GIP (Glucose-dependent Insulinotropic Polypeptide) and GLP-1 (Glucagon-like Peptide-1) receptor agonist. It is a synthetic peptide designed to mimic the actions of both GIP and GLP-1, two incretin hormones that play key roles in regulating blood glucose and energy metabolism. Tirzepatide is used primarily in the management of type 2 diabetes and obesity due to its potent effects on improving glycemic control and promoting weight loss. It is marketed as a subcutaneous injectable medication.</p><p><strong>Mechanism of Action:</strong> Tirzepatide acts by binding to and activating both GIP and GLP-1 receptors. This dual agonism enhances insulin secretion in a glucose-dependent manner and reduces glucagon levels, helping to regulate blood sugar. The GIP component promotes insulin sensitivity, while the GLP-1 component slows gastric emptying, reduces appetite, and increases satiety. Together, these effects contribute to improved glycemic control, weight reduction, and better metabolic outcomes.<br><br><strong>GIP (Glucose-dependent Insulinotropic Polypeptide):</strong> Increases insulin secretion and improves fat metabolism.<br><strong>GLP-1 (Glucagon-like Peptide-1):</strong> Enhances insulin release, reduces glucagon secretion, and delays gastric emptying, leading to better blood sugar control and appetite suppression.</p><p><strong>Dosage:</strong> Tirzepatide is typically administered as a subcutaneous injection once weekly. Dosages range from 5 mg to 15 mg, depending on patient response and treatment goals. It is often titrated up to avoid gastrointestinal side effects.</p><p><strong>Side Effects:</strong> Common side effects of tirzepatide include:<br>• Gastrointestinal: Nausea, vomiting, diarrhea, constipation<br>• Metabolic: Hypoglycemia (especially when used with insulin or sulfonylureas), decreased appetite<br>• Injection site reactions: Pain, swelling, or redness at the injection site<br>• Others: Fatigue, dizziness, potential for pancreatitis (rare)</p><p><strong>Interactions:</strong> Tirzepatide may interact with medications affecting blood sugar levels, such as insulin or sulfonylureas, increasing the risk of hypoglycemia. It may also interact with drugs that delay gastric emptying, such as certain anticholinergics.</p><p><strong>Composition:</strong> Tirzepatide (GIP and GLP-1 receptor agonist) . . . 10mg<br>Excipients . . . q.s</p></div>
       </div>
       <style>
         .product-details {
@@ -5605,7 +5605,7 @@ export const productDetails: ProductDetail[] = [
     id: 'fatburn-deus-001',
     name: 'DEUS CLENOMED 40',
     description: 'Clenbuterol HCL 40mcg',
-    price: 50.99,
+    price: 11.00,
     image: '/products/deus fat burn/DEUS CLENOMED 40.png',
     category: 'FAT BURN',
     brand: 'deus',
@@ -5688,7 +5688,7 @@ export const productDetails: ProductDetail[] = [
     id: 'fatburn-deus-002',
     name: 'DEUS CYTOMED 25',
     description: 'Liothyronine Sodium T3',
-    price: 50.99,
+    price: 12.00,
     image: '/products/deus fat burn/DEUS CYTOMED 25.png',
     category: 'FAT BURN',
     brand: 'deus',
@@ -5771,7 +5771,7 @@ export const productDetails: ProductDetail[] = [
     id: 'fatburn-deus-003',
     name: 'DEUS THYROMED 50',
     description: 'Levothyroxine Sodium T4',
-    price: 50.99,
+    price: 9.00,
     image: '/products/deus fat burn/DEUS THYROMED 50.png',
     category: 'FAT BURN',
     brand: 'deus',
@@ -5854,7 +5854,7 @@ export const productDetails: ProductDetail[] = [
     id: 'pct-deus-001',
     name: 'DEUS ARIMIMED 1',
     description: 'Anastrozole 1mg',
-    price: 50.99,
+    price: 27.00,
     image: '/products/deus post cycle/DEUS ARIMIMED 1.png',
     category: 'POST CYCLE',
     brand: 'deus',
@@ -5937,7 +5937,7 @@ export const productDetails: ProductDetail[] = [
     id: 'pct-deus-002',
     name: 'DEUS AROMAMED 25',
     description: 'Exemestane 25mg',
-    price: 50.99,
+    price: 30.00,
     image: '/products/deus post cycle/DEUS AROMAMED 25.png',
     category: 'POST CYCLE',
     brand: 'deus',
@@ -6020,7 +6020,7 @@ export const productDetails: ProductDetail[] = [
     id: 'pct-deus-003',
     name: 'DEUS CABERMED 0.5',
     description: 'Cabergoline 0.5mg',
-    price: 50.99,
+    price: 60.00,
     image: '/products/deus post cycle/DEUS CABERMED 0.5.png',
     category: 'POST CYCLE',
     brand: 'deus',
@@ -6103,7 +6103,7 @@ export const productDetails: ProductDetail[] = [
     id: 'pct-deus-004',
     name: 'DEUS CLOMIMED 50',
     description: 'Clomiphene Citrate 50mg',
-    price: 50.99,
+    price: 21.00,
     image: '/products/deus post cycle/DEUS CLOMIMED 50.png',
     category: 'POST CYCLE',
     brand: 'deus',
@@ -6186,14 +6186,14 @@ export const productDetails: ProductDetail[] = [
     id: 'pct-deus-005',
     name: 'DEUS ENCLOMIMED 25',
     description: 'Enclomiphene Citrate 25mg',
-    price: 50.99,
+    price: 60.00,
     image: '/products/deus post cycle/DEUS ENCLOMIMED 25.png',
     category: 'POST CYCLE',
     brand: 'deus',
     filterType: 'Base',
     details: `
       <div class="product-details">
-        <h1 class="product-title">DEUS ENCLOMIMED 25</h1><div class="product-description"><p>; ; ; ; ; \* ;; ; ; ; DEUS ENCLOMIMED 25\ (Enclomiphene Citrate)\ \ '95'a0</p><p><strong>CAS number:</strong> 'a015690-57-0 \ '95</p><p><strong>Molecular Weight:</strong> 'a0405.97 g/mol \ '95</p><p><strong>Formula:</strong> 'a0C26H28ClNO\ \ \AppleTypeServices\AppleTypeServicesF65539</p><p><strong>Overview \ \AppleTypeServices ENCLOMIMED 25 (Enclomiphene Citrate) is a drug derived from clomiphene citrate and is used to treat men with low testosterone from secondary hypogonadotropic hypogonadism. It is produced as 25mg tablets which contain Enclomiphene 25mg and excipients.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 Enclomiphene</strong></p><p><strong>Mechanism of Action \ \AppleTypeServices Encomiphene is a non-steroidal estrogen receptor antagonist that promotes gonadotropin-dependent testosterone secretion by the testes. It inhibits the estrogen receptors in the pituitary gland, which disrupts the negative feedback normally given by estrogen. This would then cause an increase in gonadotropin secretion. This gonadotropin secretion would cause the testes to produce testosterone. \ \AppleTypeServices\AppleTypeServicesF65539 Enclomiphene</strong></p><p><strong>Dosage \ \AppleTypeServices 25mg daily taken orally. \ \AppleTypeServices\AppleTypeServicesF65539 Enclomiphene</strong></p><p><strong>Side Effects \ \AppleTypeServices Headache, nausea, diarrhea, dizziness, hot flushes.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 Enclomiphene</strong></p><p><strong>Interactions \ \AppleTypeServices Codeine, curcumin, cyclosporine. fluoroestradiol, bexarotene. \ \</strong></p><p><strong>Composition \ Enclomiphene citrate . . . . . . . . 25mg Excipients . . . . . . . . . . . . . . . . . . . . . q.s \</strong></p></div>
+        <h1 class="product-title">DEUS ENCLOMIMED 25</h1><div class="product-description"><p>DEUS ENCLOMIMED 25 (Enclomiphene Citrate)</p><p><strong>CAS number:</strong> 15690-57-0</p><p><strong>Molecular Weight:</strong> 405.97 g/mol</p><p><strong>Formula:</strong> C26H28ClNO</p><p><strong>Overview:</strong> ENCLOMIMED 25 (Enclomiphene Citrate) is a drug derived from clomiphene citrate and is used to treat men with low testosterone from secondary hypogonadotropic hypogonadism. It is produced as 25mg tablets which contain Enclomiphene 25mg and excipients.</p><p><strong>Mechanism of Action:</strong> Encomiphene is a non-steroidal estrogen receptor antagonist that promotes gonadotropin-dependent testosterone secretion by the testes. It inhibits the estrogen receptors in the pituitary gland, which disrupts the negative feedback normally given by estrogen. This would then cause an increase in gonadotropin secretion. This gonadotropin secretion would cause the testes to produce testosterone.</p><p><strong>Dosage:</strong> 25mg daily taken orally.</p><p><strong>Side Effects:</strong> Headache, nausea, diarrhea, dizziness, hot flushes.</p><p><strong>Interactions:</strong> Codeine, curcumin, cyclosporine, fluoroestradiol, bexarotene.</p><p><strong>Composition:</strong> Enclomiphene citrate . . . 25mg<br>Excipients . . . q.s</p></div>
       </div>
       <style>
         .product-details {
@@ -6251,14 +6251,14 @@ export const productDetails: ProductDetail[] = [
     id: 'pct-deus-006',
     name: 'DEUS EVIMED 60',
     description: 'Raloxifene 60mg',
-    price: 50.99,
+    price: 25.00,
     image: '/products/deus post cycle/DEUS EVIMED 60.png',
     category: 'POST CYCLE',
     brand: 'deus',
     filterType: 'Base',
     details: `
       <div class="product-details">
-        <h1 class="product-title">DEUS EVIMED 60</h1><div class="product-description"><p>; ; ; ; ; \* ;; ; ; ; DEUS EVIMED 60\ (Raloxifene HCL)\ \ '95'a0</p><p><strong>CAS number:</strong> 82640-04-8 \ '95</p><p><strong>Molecular Weight:</strong> 510.00 g/mol \ '95</p><p><strong>Formula:</strong> 'a0C28H28ClNO4S\ \ \AppleTypeServices\AppleTypeServicesF65539</p><p><strong>Overview \ \AppleTypeServices EVIMED 60 (Raloxifene HCL) is a drug used by women to prevent and treat bone loss (osteoporosis) after menopause. It slows down bone loss and helps to keep bones strong, making them less likely to break. EVIMED 60 may also lower the chance of getting a certain type of breast cancer after menopause. EVIMED 60 is manufactured as 60mg tablets containing Raloxifene HCL 60mg and excipients.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 Raloxifene</strong></p><p><strong>Mechanism of Action \ \AppleTypeServices Raloxifene HCL belongs to a class of drugs known as selective estrogen receptor modulators-SERMs.'a0 It exhibits estrogenic activity in some tissues like the bone and liver, while it shows antiestrogenic activity in the breasts and uterus. In the bone, it increases bone density and that is why it is useful in treating osteoporosis. In the breast, it opposes estrogen activity, and this action is useful in the treatment and prevention of some types of breast cancers.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 Raloxifene</strong></p><p><strong>Dosage \ \AppleTypeServices 60mg daily taken orally. \ \AppleTypeServices\AppleTypeServicesF65539 Raloxifene</strong></p><p><strong>Side Effects \ \AppleTypeServices Hot flashes, Leg cramps, blood clots, vaginal dryness.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 Raloxifene</strong></p><p><strong>Interactions \ \AppleTypeServices Estrogen, cholestyramine, tibolone, and colestipol.'a0 \ \</strong></p><p><strong>Composition \ Raloxifene HCL . . . . . . . . . . . . . 60mg Excipients . . . . . . . . . . . . . . . . . . . . . q.s \</strong></p></div>
+        <h1 class="product-title">DEUS EVIMED 60</h1><div class="product-description"><p>DEUS EVIMED 60 (Raloxifene HCL)</p><p><strong>CAS number:</strong> 82640-04-8</p><p><strong>Molecular Weight:</strong> 510.00 g/mol</p><p><strong>Formula:</strong> C28H28ClNO4S</p><p><strong>Overview:</strong> EVIMED 60 (Raloxifene HCL) is a drug used by women to prevent and treat bone loss (osteoporosis) after menopause. It slows down bone loss and helps to keep bones strong, making them less likely to break. EVIMED 60 may also lower the chance of getting a certain type of breast cancer after menopause. EVIMED 60 is manufactured as 60mg tablets containing Raloxifene HCL 60mg and excipients.</p><p><strong>Mechanism of Action:</strong> Raloxifene HCL belongs to a class of drugs known as selective estrogen receptor modulators-SERMs. It exhibits estrogenic activity in some tissues like the bone and liver, while it shows antiestrogenic activity in the breasts and uterus. In the bone, it increases bone density and that is why it is useful in treating osteoporosis. In the breast, it opposes estrogen activity, and this action is useful in the treatment and prevention of some types of breast cancers.</p><p><strong>Dosage:</strong> 60mg daily taken orally.</p><p><strong>Side Effects:</strong> Hot flashes, Leg cramps, blood clots, vaginal dryness.</p><p><strong>Interactions:</strong> Estrogen, cholestyramine, tibolone, and colestipol.</p><p><strong>Composition:</strong> Raloxifene HCL . . . 60mg<br>Excipients . . . q.s</p></div>
       </div>
       <style>
         .product-details {
@@ -6316,14 +6316,14 @@ export const productDetails: ProductDetail[] = [
     id: 'pct-deus-007',
     name: 'DEUS FEMAMED 2.5',
     description: 'Letrozole 2.5mg',
-    price: 50.99,
+    price: 35.00,
     image: '/products/deus post cycle/DEUS FEMAMED 2.5.png',
     category: 'POST CYCLE',
     brand: 'deus',
     filterType: 'Base',
     details: `
       <div class="product-details">
-        <h1 class="product-title">DEUS FEMAMED 2.5</h1><div class="product-description"><p>; ; ; ; ; \* ;; ; ; ; DEUS FEMAMED 2.5\ (Letrozole)\ \ '95'a0</p><p><strong>CAS number:</strong> 112809-51-5 \ '95</p><p><strong>Molecular Weight:</strong> 285.30 g/mol \ '95</p><p><strong>Formula:</strong> C17H11N5\ \ \AppleTypeServices\AppleTypeServicesF65539</p><p><strong>Overview \ \AppleTypeServices FEMAMED'a02.5 (Letrozole) is a highly potent drug used in breast cancer treatment for postmenopausal women and can also be given to breast cancer patients who have been previously treated with tamoxifen. It comes as a letrozole 2.5mg tablet comprising 25mg of letrozole and excipients.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 Letrozole</strong></p><p><strong>Mechanism of Action \ \AppleTypeServices Letrozole as a breast cancer drug,'a0 belongs to the class of non-steroidal (Type II) aromatase Inhibitors. Some breast cancers grow faster due to the presence of a hormone called estrogen. Aromatase is an enzyme that helps in the production of estrogen. Letrozole stops the activity of aromatase, which consequently prevents estrogen formation, leading to a slowing down or reversal of breast cancer growth. Letrozole has a half-life of 42 hours. \ \AppleTypeServices\AppleTypeServicesF65539 FEMAMED'a02.5 (Letrozole)</strong></p><p><strong>Dosage \ \AppleTypeServices 2.5mg orally, once daily. However, consult your doctor before taking this medication. \ \AppleTypeServices\AppleTypeServicesF65539 Letrozole</strong></p><p><strong>Side Effects'a0 \ \AppleTypeServices Some commonly reported</strong></p><p><strong>side effects of letrozole include excessive sweating, hot flashes, bone pain, cough, dyspnea, constipation, increased blood pressure, breast pain, nausea, and vomiting.'a0 \ Blurred vision and elevated liver enzymes are less frequently reported</strong></p><p><strong>side effects. \ \AppleTypeServices\AppleTypeServicesF65539 Letrozole</strong></p><p><strong>Interactions \ \AppleTypeServices Serious</strong></p><p><strong>interactions occur with estrogen and tamoxifen.'a0 \</strong></p><p><strong>Interactions can also occur with cholera vaccine, dengue vaccine, siponimod and some antiretroviral drugs. This list is not exhaustive, hence, ensure you share any medications you are using, including herbal products and supplements with your doctor before using letrozole. \ \</strong></p><p><strong>Composition \ Letrozole'a0. . . . . . . . . . . . . . . . . . . 2,5mg Excipients . . . . . . . . . . . . . . . . . . . . . q.s \</strong></p></div>
+        <h1 class="product-title">DEUS FEMAMED 2.5</h1><div class="product-description"><p>DEUS FEMAMED 2.5 (Letrozole)</p><p><strong>CAS number:</strong> 112809-51-5</p><p><strong>Molecular Weight:</strong> 285.30 g/mol</p><p><strong>Formula:</strong> C17H11N5</p><p><strong>Overview:</strong> FEMAMED 2.5 (Letrozole) is a highly potent drug used in breast cancer treatment for postmenopausal women and can also be given to breast cancer patients who have been previously treated with tamoxifen. It comes as a letrozole 2.5mg tablet comprising 2.5mg of letrozole and excipients.</p><p><strong>Mechanism of Action:</strong> Letrozole as a breast cancer drug, belongs to the class of non-steroidal (Type II) aromatase Inhibitors. Some breast cancers grow faster due to the presence of a hormone called estrogen. Aromatase is an enzyme that helps in the production of estrogen. Letrozole stops the activity of aromatase, which consequently prevents estrogen formation, leading to a slowing down or reversal of breast cancer growth. Letrozole has a half-life of 42 hours.</p><p><strong>Dosage:</strong> 2.5mg orally, once daily. However, consult your doctor before taking this medication.</p><p><strong>Side Effects:</strong> Some commonly reported side effects of letrozole include excessive sweating, hot flashes, bone pain, cough, dyspnea, constipation, increased blood pressure, breast pain, nausea, and vomiting. Blurred vision and elevated liver enzymes are less frequently reported side effects.</p><p><strong>Interactions:</strong> Serious interactions occur with estrogen and tamoxifen. Interactions can also occur with cholera vaccine, dengue vaccine, siponimod and some antiretroviral drugs. This list is not exhaustive, hence, ensure you share any medications you are using, including herbal products and supplements with your doctor before using letrozole.</p><p><strong>Composition:</strong> Letrozole . . . 2.5mg<br>Excipients . . . q.s</p></div>
       </div>
       <style>
         .product-details {
@@ -6381,14 +6381,14 @@ export const productDetails: ProductDetail[] = [
     id: 'pct-deus-008',
     name: 'DEUS NOLVAMED 20',
     description: 'Tamoxifen Citrate 20mg',
-    price: 50.99,
+    price: 23.00,
     image: '/products/deus post cycle/DEUS NOLVAMED 20.png',
     category: 'POST CYCLE',
     brand: 'deus',
     filterType: 'Base',
     details: `
       <div class="product-details">
-        <h1 class="product-title">DEUS NOLVAMED 20</h1><div class="product-description"><p>; ; ; ; ; \* ;; ; ; ; DEUS NOLVAMED 20\ (Tamoxifen Citrate)\ \ '95'a0</p><p><strong>CAS number:</strong> 54965-24-1 \ '95</p><p><strong>Molecular Weight:</strong> 563.63 g/mol \ '95</p><p><strong>Formula:</strong> C32H34NO8\ \ \AppleTypeServices\AppleTypeServicesF65539</p><p><strong>Overview \ \AppleTypeServices NOLVAMED 20 (Tamoxifen Citrate) is a Selective Estrogen Receptor Modulator (SERM) which is used for the treatment of metastatic breast cancer, adjuvant treatment of breast cancer an for the palliative treatment of premenopausal women with ER-positive disease. NOLVAMED 20 is manufactured as 20mg tablets which contain Tamoxifen citrate 20mg and excipients.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 Tamoxifen</strong></p><p><strong>Mechanism of Action \ \AppleTypeServices As a'a0Selective Estrogen Receptor Modulator (SERM), tamoxifen inhibits estrogen, preventing it from binding to its receptor. By doing this, it can cause a decrease in tumour growth and proliferation. It also causes cell death in cells with estrgen receptors.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 Tamoxifen</strong></p><p><strong>Dosage \ \AppleTypeServices 20mg daily taken oally. \ \AppleTypeServices\AppleTypeServicesF65539 Tamoxifen</strong></p><p><strong>Side Effects \ \AppleTypeServices Endometriacl CA, liver disease, cardiovacular and metabolic disorders, postmenopauseal bleeding, vision problems, striek and pulmonary embolism.'a0 \ \AppleTypeServices\AppleTypeServicesF65539 Tamoxifen</strong></p><p><strong>Interactions \ \AppleTypeServices Butalbital, cimetidne, secobarbital SSRI antidepressants, warfarin, hormonal contraceptives, antiseizure medications.'a0 \ \</strong></p><p><strong>Composition \ Tamoxifen citrate . . . . . . . . . . . . 20mg Excipients . . . . . . . . . . . . . . . . . . . . . q.s \</strong></p></div>
+        <h1 class="product-title">DEUS NOLVAMED 20</h1><div class="product-description"><p>DEUS NOLVAMED 20 (Tamoxifen Citrate)</p><p><strong>CAS number:</strong> 54965-24-1</p><p><strong>Molecular Weight:</strong> 563.63 g/mol</p><p><strong>Formula:</strong> C32H34NO8</p><p><strong>Overview:</strong> NOLVAMED 20 (Tamoxifen Citrate) is a Selective Estrogen Receptor Modulator (SERM) which is used for the treatment of metastatic breast cancer, adjuvant treatment of breast cancer and for the palliative treatment of premenopausal women with ER-positive disease. NOLVAMED 20 is manufactured as 20mg tablets which contain Tamoxifen citrate 20mg and excipients.</p><p><strong>Mechanism of Action:</strong> As a Selective Estrogen Receptor Modulator (SERM), tamoxifen inhibits estrogen, preventing it from binding to its receptor. By doing this, it can cause a decrease in tumour growth and proliferation. It also causes cell death in cells with estrogen receptors.</p><p><strong>Dosage:</strong> 20mg daily taken orally.</p><p><strong>Side Effects:</strong> Endometrial CA, liver disease, cardiovascular and metabolic disorders, postmenopausal bleeding, vision problems, stroke and pulmonary embolism.</p><p><strong>Interactions:</strong> Butalbital, cimetidine, secobarbital, SSRI antidepressants, warfarin, hormonal contraceptives, antiseizure medications.</p><p><strong>Composition:</strong> Tamoxifen citrate . . . 20mg<br>Excipients . . . q.s</p></div>
       </div>
       <style>
         .product-details {
@@ -6446,7 +6446,7 @@ export const productDetails: ProductDetail[] = [
     id: 'sexual-deus-001',
     name: 'DEUS CIAMED 5',
     description: 'Tadalafil 5mg',
-    price: 50.99,
+    price: 20.00,
     image: '/products/deus sexual wellness/DEUS CIAMED 5.png',
     category: 'SEXUAL WELLNESS',
     brand: 'deus',
@@ -6529,7 +6529,7 @@ export const productDetails: ProductDetail[] = [
     id: 'sexual-deus-002',
     name: 'DEUS PRILIMED 30',
     description: 'Dapoxetine HCL 30mg',
-    price: 50.99,
+    price: 15.00,
     image: '/products/deus sexual wellness/DEUS PRILIMED 30.png',
     category: 'SEXUAL WELLNESS',
     brand: 'deus',
@@ -6612,7 +6612,7 @@ export const productDetails: ProductDetail[] = [
     id: 'sexual-deus-003',
     name: 'DEUS VIAMED 20',
     description: 'Sildenafil Citrate 20mg',
-    price: 50.99,
+    price: 11.00,
     image: '/products/deus sexual wellness/DEUS VIAMED 20.png',
     category: 'SEXUAL WELLNESS',
     brand: 'deus',

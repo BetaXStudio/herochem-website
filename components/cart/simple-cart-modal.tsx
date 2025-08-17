@@ -25,18 +25,18 @@ export default function SimpleCartModal() {
           backgroundColor: 'rgba(45, 45, 52, 0.8)',
           border: 'none',
           borderRadius: '7px',
-          boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6), inset 0 -1px 0 rgba(255, 255, 255, 0.05), 0 2px 8px 0 rgba(0,0,0,0.25)',
+          boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6), inset 0 -1px 0 rgba(255, 255, 255, 0.05)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.boxShadow = 'inset 0 3px 6px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.7), inset 0 -1px 0 rgba(255, 255, 255, 0.08), 0 0 0 1px rgba(233, 17, 17, 0.3), 0 2px 8px 0 rgba(0,0,0,0.25)';
+          e.currentTarget.style.boxShadow = 'inset 0 3px 6px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.7), inset 0 -1px 0 rgba(255, 255, 255, 0.08), 0 0 0 1px rgba(233, 17, 17, 0.3)';
           e.currentTarget.style.backgroundColor = 'rgba(40, 40, 47, 0.9)';
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.boxShadow = 'inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6), inset 0 -1px 0 rgba(255, 255, 255, 0.05), 0 2px 8px 0 rgba(0,0,0,0.25)';
+          e.currentTarget.style.boxShadow = 'inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6), inset 0 -1px 0 rgba(255, 255, 255, 0.05)';
           e.currentTarget.style.backgroundColor = 'rgba(45, 45, 52, 0.8)';
         }}
       >
@@ -45,8 +45,10 @@ export default function SimpleCartModal() {
         />
         {/* Always render badge but control visibility with opacity only */}
         <div 
-          className="absolute -top-1.5 -right-1.5 bg-[#e91111] text-white text-xs font-bold rounded-full flex items-center justify-center transition-opacity duration-200"
+          className="absolute bg-[#e91111] text-white text-xs font-bold rounded-full flex items-center justify-center transition-opacity duration-200"
           style={{
+            top: '-4px',
+            right: '-6px',
             width: '14px',
             height: '14px',
             fontSize: '9px',
@@ -62,16 +64,16 @@ export default function SimpleCartModal() {
       {/* Cart Modal */}
       <div
         className={`bg-white shadow-xl transform transition-transform duration-300 ease-in-out w-[400px] max-w-[400px] min-w-[400px]
-                    max-[800px]:w-full max-[800px]:max-w-full max-[800px]:min-w-full ${
+                    max-[800px]:w-screen max-[800px]:max-w-screen max-[800px]:min-w-screen max-[800px]:left-0 max-[800px]:right-0 ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         style={{
           position: 'fixed',
-          top: '47px',
+          top: '41px', // Bündig mit der Navbar-Unterkante
           right: '0px',
-          height: 'calc(100vh - 150px)', // Increased bottom margin for mobile
+          height: 'calc(100vh - 41px)', // Entsprechend der Navbar-Höhe angepasst
           zIndex: 9998,
-          boxShadow: '-4px 0 24px rgba(27, 26, 26, 0.15), -2px 0 8px rgba(0, 0, 0, 0.1)'
+          boxShadow: 'inset 1px 0 0 rgba(255,255,255,0.1), inset 0 4px 12px rgba(0,0,0,0.4), inset 0 2px 6px rgba(0,0,0,0.25)',
         }}
       >
         {/* Cart Header */}

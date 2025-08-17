@@ -76,8 +76,10 @@ export function Navbar() {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 flex items-center justify-between py-1 px-2 lg:px-4"
+      className="fixed top-0 left-0 right-0 flex items-center justify-between px-2 lg:px-4 navbar-mobile-opaque"
       style={{ 
+        paddingTop: '4px',
+        paddingBottom: '5px',
         background: 'linear-gradient(135deg, rgba(64,64,74,0.95) 0%, rgba(45,45,52,0.95) 100%)',
         backdropFilter: 'blur(20px)',
         borderBottom: '1px solid rgba(255,255,255,0.1)',

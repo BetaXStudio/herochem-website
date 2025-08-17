@@ -1,14 +1,24 @@
 export default function Footer() {
   return (
     <footer 
-      className="text-white shadow-lg shadow-black/30 relative" 
+      className="text-white relative" 
       style={{ 
-        background: 'linear-gradient(135deg, rgba(64,64,74,0.95) 0%, rgba(45,45,52,0.95) 100%)',
+        background: '#2d2d34',
         backdropFilter: 'blur(20px)',
-        boxShadow: '0 -8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
         zIndex: 10 
       }}
     >
+      
+      {/* Desktop Shadow Overlay - mit heller Linie */}
+      <div 
+        className="absolute top-0 left-0 right-0 hidden md:block pointer-events-none"
+        style={{
+          height: '1px',
+          boxShadow: '0 -8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
+          zIndex: 50
+        }}
+      />
+      
       {/* Feature Boxes Section */}
       <div className="px-8 py-4">
         <div className="max-w-4xl mx-auto">
@@ -16,11 +26,10 @@ export default function Footer() {
             
             {/* Textbox 1: Official Partner */}
             <div 
-              className="flex flex-col items-center text-center p-2 rounded-lg transition-all duration-300 hover:scale-105 w-full max-w-[160px]"
+              className="flex flex-col items-center text-center p-2 rounded-lg transition-all duration-300 hover:scale-105 w-full max-w-[160px] [box-shadow:0_4px_16px_rgba(0,0,0,0.15)] md:[box-shadow:0_4px_16px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.1)]"
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
-                backdropFilter: 'blur(16px)',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1)'
+                backdropFilter: 'blur(16px)'
               }}
             >
               <div className="mb-1">
@@ -39,11 +48,10 @@ export default function Footer() {
 
             {/* Textbox 2: Lab Tested */}
             <div 
-              className="flex flex-col items-center text-center p-2 rounded-lg transition-all duration-300 hover:scale-105 w-full max-w-[160px]"
+              className="flex flex-col items-center text-center p-2 rounded-lg transition-all duration-300 hover:scale-105 w-full max-w-[160px] [box-shadow:0_4px_16px_rgba(0,0,0,0.15)] md:[box-shadow:0_4px_16px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.1)]"
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
-                backdropFilter: 'blur(16px)',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1)'
+                backdropFilter: 'blur(16px)'
               }}
             >
               <div className="mb-1">
@@ -62,11 +70,10 @@ export default function Footer() {
 
             {/* Textbox 3: Discreet Packaging */}
             <div 
-              className="flex flex-col items-center text-center p-2 rounded-lg transition-all duration-300 hover:scale-105 w-full max-w-[160px]"
+              className="flex flex-col items-center text-center p-2 rounded-lg transition-all duration-300 hover:scale-105 w-full max-w-[160px] [box-shadow:0_4px_16px_rgba(0,0,0,0.15)] md:[box-shadow:0_4px_16px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.1)]"
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
-                backdropFilter: 'blur(16px)',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1)'
+                backdropFilter: 'blur(16px)'
               }}
             >
               <div className="mb-1">
@@ -85,11 +92,10 @@ export default function Footer() {
 
             {/* Textbox 4: 24/7 Support */}
             <div 
-              className="flex flex-col items-center text-center p-2 rounded-lg transition-all duration-300 hover:scale-105 w-full max-w-[160px]"
+              className="flex flex-col items-center text-center p-2 rounded-lg transition-all duration-300 hover:scale-105 w-full max-w-[160px] [box-shadow:0_4px_16px_rgba(0,0,0,0.15)] md:[box-shadow:0_4px_16px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.1)]"
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
-                backdropFilter: 'blur(16px)',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1)'
+                backdropFilter: 'blur(16px)'
               }}
             >
               <div className="mb-1">

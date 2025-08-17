@@ -5,15 +5,30 @@ import Form from 'next/form';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+import { productDetails } from '../../../lib/product-details-database';
 import { getProductStats, searchProductsDatabase } from '../../../lib/search-products';
+import { SearchProductModal } from '../../search/search-product-modal';
+
 export default function Search() {
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams?.get('q') || '');
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const openModal = (product: any) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+  };
 
   // Handle search query changes using the new product database
   useEffect(() => {
@@ -75,14 +90,15 @@ export default function Search() {
   };
 
   const handleResultClick = (product: any) => {
+    // Get full product details and open modal
+    const fullProduct = productDetails.find(p => p.id === product.id);
+    if (fullProduct) {
+      openModal(fullProduct);
+    }
+    
     setQuery('');
     setIsDropdownOpen(false);
     setIsFocused(false);
-    
-    // Navigate to categories page with the specific category and trigger Details button
-    // The URL will include parameters to identify the specific product
-    const categoryUrl = `/categories?category=${encodeURIComponent(product.category)}&product=${encodeURIComponent(product.id)}&action=details`;
-    window.location.href = categoryUrl;
   };
 
   const clearSearch = () => {
@@ -94,7 +110,7 @@ export default function Search() {
 
   return (
     <div ref={searchRef} className="relative">
-      <Form action="/search" className="relative w-full" style={{ maxWidth: '500px', width: '100%' }}>
+      <Form action="/search" className="relative w-full md:w-[30vw] max-w-[500px] md:max-w-[600px]">
         <input
           ref={inputRef}
           key={searchParams?.get('q')}
@@ -115,7 +131,7 @@ export default function Search() {
             backgroundColor: 'rgba(45, 45, 52, 0.8)',
             border: 'none',
             boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6), inset 0 -1px 0 rgba(255, 255, 255, 0.05)',
-            minWidth: '380px',
+            minWidth: '280px', // Reduziert von 380px auf 280px für Mobile Menu
             width: '100%'
           }}
         />
@@ -198,6 +214,13 @@ export default function Search() {
           </div>
         </div>
       )}
+
+      {/* Search Product Modal */}
+      <SearchProductModal 
+        product={selectedProduct}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
     </div>
   );
 }

@@ -13,8 +13,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="de" className="dark hide-scrollbar">
       <head>
         {/* Theme Color für verschiedene Browser */}
-        <meta name="theme-color" content="#2c2c34" />
-        <meta name="msapplication-navbutton-color" content="#2c2c34" />
+        <meta name="theme-color" content="#2d2d34" />
+        <meta name="msapplication-navbutton-color" content="#2d2d34" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         
@@ -35,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Suspense fallback={<div>Loading...</div>}>
                 <Navbar />
               </Suspense>
-              <main className="min-h-screen bg-neutral-950 text-neutral-100 pt-[47px] hide-scrollbar">{children}</main>
+              <main className="min-h-screen bg-neutral-950 text-neutral-100 pt-[41px] hide-scrollbar">{children}</main>
               <Footer />
               <AuthModalWrapper />
               <CheckoutModalWrapper />

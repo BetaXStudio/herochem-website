@@ -190,6 +190,7 @@ const faqs = [
 
 export function FAQModal({ isOpen, onCloseAction }: { isOpen: boolean; onCloseAction: () => void }) {
   const [openIndex, setOpenIndex] = useState<string | number | null>(null);
+  const [contactDropdownOpen, setContactDropdownOpen] = useState(false);
   
   // Blockiere Body-Scroll wenn Modal offen ist
   useEffect(() => {
@@ -206,56 +207,54 @@ export function FAQModal({ isOpen, onCloseAction }: { isOpen: boolean; onCloseAc
   if (!isOpen) return null;
   return (
     <div 
-      className="fixed flex items-center justify-center max-[800px]:items-start max-[800px]:pt-[55px] max-[800px]:pb-[50px]"
-      style={{ 
-        top: '41px',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        zIndex: 50,
-        touchAction: 'none' 
-      }}
+      className="fixed inset-0 z-50 flex items-center justify-center max-[800px]:items-start max-[800px]:pt-[55px] max-[800px]:pb-[50px]"
+      style={{ touchAction: 'none' }}
     >
       <div 
         className="absolute inset-0 backdrop-blur-sm"
         style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)', animation: 'backdropFadeIn 0.3s ease-out' }}
         onClick={onCloseAction}
       />
-      <div 
-        className="relative bg-white rounded-lg shadow-xl w-full max-w-2xl mx-4 max-h-[80vh] flex flex-col max-[800px]:max-h-[calc(80vh-105px)]"
-        style={{ 
-          backgroundColor: 'white', 
-          border: '2px solid rgb(64,64,74)', 
-          boxShadow: '0 8px 32px rgba(0,0,0,0.3)', 
-          animation: 'modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-          touchAction: 'auto'
-        }}
-      >
+      
+      {/* Container für beide Modals */}
+      <div className="relative flex flex-col gap-4 w-full max-w-2xl mx-4">
+        
+        {/* FAQ Modal */}
         <div 
-          className="flex items-center justify-between p-6 border-b"
-          style={{ borderColor: 'rgb(64,64,74)', backgroundColor: 'rgb(64,64,74)', borderTopLeftRadius: '6px', borderTopRightRadius: '6px', margin: '-2px -2px 0 -2px' }}
-        >
-          <div>
-            <h2 className="text-xl font-semibold text-white" style={{ fontFamily: 'Calibri, Arial, sans-serif' }}>Frequently Asked Questions</h2>
-          </div>
-          <button 
-            onClick={onCloseAction}
-            className="p-2 hover:bg-gray-600 rounded-md transition-colors duration-200 text-white text-xl"
-            aria-label="Close modal"
-          >
-            ×
-          </button>
-        </div>
-        <div 
-          className="p-6 overflow-y-auto flex-1 max-[800px]:max-h-[calc(80vh-200px)]" 
+          className="bg-white rounded-lg shadow-xl max-h-[70vh] flex flex-col max-[800px]:max-h-[calc(70vh-105px)]"
           style={{ 
-            maxHeight: 'calc(80vh - 140px)',
-            WebkitOverflowScrolling: 'touch',
-            touchAction: 'pan-y',
-            overscrollBehavior: 'contain'
+            backgroundColor: 'white', 
+            border: '2px solid rgb(64,64,74)', 
+            boxShadow: '0 8px 32px rgba(0,0,0,0.3)', 
+            animation: 'modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+            touchAction: 'auto'
           }}
         >
-          <div className="space-y-2 max-[800px]:pb-[50px]">
+          <div 
+            className="flex items-center justify-between p-6 border-b"
+            style={{ borderColor: 'rgb(64,64,74)', backgroundColor: 'rgb(64,64,74)', borderTopLeftRadius: '6px', borderTopRightRadius: '6px', margin: '-2px -2px 0 -2px' }}
+          >
+            <div>
+              <h2 className="text-xl font-semibold text-white" style={{ fontFamily: 'Calibri, Arial, sans-serif' }}>Frequently Asked Questions</h2>
+            </div>
+            <button 
+              onClick={onCloseAction}
+              className="p-2 hover:bg-gray-600 rounded-md transition-colors duration-200 text-white text-xl"
+              aria-label="Close modal"
+            >
+              ×
+            </button>
+          </div>
+          <div 
+            className="p-6 overflow-y-auto flex-1 max-[800px]:max-h-[calc(70vh-200px)]" 
+            style={{ 
+              maxHeight: 'calc(70vh - 140px)',
+              WebkitOverflowScrolling: 'touch',
+              touchAction: 'pan-y',
+              overscrollBehavior: 'contain'
+            }}
+          >
+            <div className="space-y-2 max-[800px]:pb-[50px]">
             {/* Popular Questions heading above the first FAQ */}
             <div className="py-2 text-2xl font-bold text-red-500" style={{fontFamily: 'Calibri, Arial, sans-serif'}}>
               Popular Questions
@@ -364,107 +363,61 @@ export function FAQModal({ isOpen, onCloseAction }: { isOpen: boolean; onCloseAc
             ))}
           </div>
         </div>
-      </div>
-    </div>
-  );
-}
-
-export function ContactModal({ isOpen, onCloseAction }: { isOpen: boolean; onCloseAction: () => void }) {
-  useEffect(() => {
-    if (isOpen) {
-      const originalStyle = document.body.style.overflow;
-      document.body.style.overflow = 'hidden';
-      
-      return () => {
-        document.body.style.overflow = originalStyle;
-      };
-    }
-  }, [isOpen]);
-  
-  if (!isOpen) return null;
-  
-  return (
-    <div 
-      className="fixed flex items-center justify-center max-[800px]:items-start max-[800px]:pt-[55px] max-[800px]:pb-[50px]"
-      style={{ 
-        top: '41px',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        zIndex: 50,
-        touchAction: 'none' 
-      }}
-    >
-      <div 
-        className="absolute inset-0 backdrop-blur-sm"
-        style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)', animation: 'backdropFadeIn 0.3s ease-out' }}
-        onClick={onCloseAction}
-      />
-      <div 
-        className="relative bg-white rounded-lg shadow-xl w-full max-w-md mx-4"
-        style={{ 
-          backgroundColor: 'white', 
-          border: '2px solid rgb(64,64,74)', 
-          boxShadow: '0 8px 32px rgba(0,0,0,0.3)', 
-          animation: 'modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-          touchAction: 'auto'
-        }}
-      >
-        <div 
-          className="flex items-center justify-between p-6 border-b"
-          style={{ borderColor: 'rgb(64,64,74)', backgroundColor: 'rgb(64,64,74)', borderTopLeftRadius: '6px', borderTopRightRadius: '6px', margin: '-2px -2px 0 -2px' }}
-        >
-          <div>
-            <h2 className="text-xl font-semibold text-white" style={{ fontFamily: 'Calibri, Arial, sans-serif' }}>Contact & Support</h2>
-          </div>
-          <button 
-            onClick={onCloseAction}
-            className="p-2 hover:bg-gray-600 rounded-md transition-colors duration-200 text-white text-xl"
-            aria-label="Close modal"
-          >
-            ×
-          </button>
-        </div>
         
-        <div className="p-6">
-          <div className="space-y-4">
-            <div className="flex items-center gap-3 p-4 rounded-lg border border-gray-200 hover:border-[rgb(64,64,74)] transition-colors">
-              <div className="w-12 h-12 rounded-full bg-[rgb(64,64,74)] flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <div className="flex-1">
-                <h4 className="font-semibold text-gray-900 mb-1">General Support</h4>
-                <p className="text-sm text-gray-600 mb-2">For questions about orders, products and general support</p>
+        {/* Contact Box */}
+        <div 
+          className="bg-white rounded-lg shadow-xl"
+          style={{ 
+            backgroundColor: 'white', 
+            border: '2px solid rgb(64,64,74)', 
+            boxShadow: '0 8px 32px rgba(0,0,0,0.3)', 
+            animation: 'modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+            touchAction: 'auto'
+          }}
+        >
+          <div 
+            className="flex items-center justify-between p-4 border-b"
+            style={{ borderColor: 'rgb(64,64,74)', backgroundColor: 'rgb(64,64,74)', borderTopLeftRadius: '6px', borderTopRightRadius: '6px', margin: '-2px -2px 0 -2px' }}
+          >
+            <h3 className="text-lg font-semibold text-white" style={{ fontFamily: 'Calibri, Arial, sans-serif' }}>Contact</h3>
+            <button 
+              onClick={() => setContactDropdownOpen(!contactDropdownOpen)}
+              className="p-2 hover:bg-gray-600 rounded-md transition-colors duration-200 text-white"
+              aria-label="Toggle contact dropdown"
+            >
+              <span className="text-sm">{contactDropdownOpen ? '−' : '+'}</span>
+            </button>
+          </div>
+          
+          <div 
+            className={`overflow-hidden transition-all duration-300 ${contactDropdownOpen ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0'}`}
+          >
+            <div className="p-4 space-y-3">
+              <div className="flex flex-col space-y-1">
                 <a 
                   href="mailto:support@herochem.shop" 
-                  className="text-[rgb(64,64,74)] hover:underline font-medium"
+                  className="text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors duration-200"
                 >
                   support@herochem.shop
                 </a>
+                <span className="text-gray-600 text-xs">For general questions</span>
               </div>
-            </div>
-            
-            <div className="flex items-center gap-3 p-4 rounded-lg border border-gray-200 hover:border-[rgb(64,64,74)] transition-colors">
-              <div className="w-12 h-12 rounded-full bg-[rgb(64,64,74)] flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <div className="flex-1">
-                <h4 className="font-semibold text-gray-900 mb-1">Team & Partnership</h4>
-                <p className="text-sm text-gray-600 mb-2">For business inquiries and partnerships</p>
-                <a 
-                  href="mailto:team@herochem.shop" 
-                  className="text-[rgb(64,64,74)] hover:underline font-medium"
-                >
-                  team@herochem.shop
-                </a>
+              
+              <div className="border-t border-gray-200 pt-3">
+                <div className="flex flex-col space-y-1">
+                  <a 
+                    href="mailto:team@herochem.shop" 
+                    className="text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors duration-200"
+                  >
+                    team@herochem.shop
+                  </a>
+                  <span className="text-gray-600 text-xs">Questions about your Account or Order</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        
       </div>
     </div>
   );
@@ -472,7 +425,6 @@ export function ContactModal({ isOpen, onCloseAction }: { isOpen: boolean; onClo
 
 export default function CommunitySection({ onOpenCommunityModalAction }: { onOpenCommunityModalAction: () => void }) {
   const [faqOpen, setFaqOpen] = useState(false);
-  const [contactOpen, setContactOpen] = useState(false);
   return (
     <div className="py-20 bg-gradient-to-br from-gray-900 to-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -512,30 +464,21 @@ export default function CommunitySection({ onOpenCommunityModalAction }: { onOpe
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <div className="flex justify-center gap-4">
               <button 
                 onClick={onOpenCommunityModalAction}
-                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105"
               >
                 <ChatBubbleLeftRightIcon className="h-5 w-5 mr-2" />
                 Join Community
               </button>
-              <div className="flex flex-row gap-4">
-                <button
-                  onClick={() => setFaqOpen(true)}
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center px-8 py-4 border-2 border-gray-600 hover:border-red-600 text-gray-300 hover:text-white font-semibold rounded-lg transition-all duration-300 hover:bg-red-600/10"
-                >
-                  FAQ
-                </button>
-                <button
-                  onClick={() => setContactOpen(true)}
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center px-8 py-4 border-2 border-gray-600 hover:border-red-600 text-gray-300 hover:text-white font-semibold rounded-lg transition-all duration-300 hover:bg-red-600/10"
-                >
-                  Contact
-                </button>
-              </div>
+              <button
+                onClick={() => setFaqOpen(true)}
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-600 hover:border-red-600 text-gray-300 hover:text-white font-semibold rounded-lg transition-all duration-300 hover:bg-red-600/10"
+              >
+                FAQ & Contact
+              </button>
               <FAQModal isOpen={faqOpen} onCloseAction={() => setFaqOpen(false)} />
-              <ContactModal isOpen={contactOpen} onCloseAction={() => setContactOpen(false)} />
             </div>
           </div>
         </div>

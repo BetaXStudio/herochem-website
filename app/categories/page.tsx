@@ -3,6 +3,7 @@ import { useSearchParams } from 'next/navigation';
 import { memo, Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useSimpleCart } from '../../components/cart/simple-cart-context';
+import { SearchProductModal } from '../../components/search/search-product-modal';
 import { productDetails, type ProductDetail } from '../../lib/product-details-database';
 import {
     getAvailableFilters,
@@ -349,8 +350,8 @@ function CategoriesContent() {
   const [productsPerPage] = useState(12); // Fixed products per page
   const [showToast, setShowToast] = useState(false);
   const [toastFadeOut, setToastFadeOut] = useState(false);
-  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
-  const [selectedProductDetails, setSelectedProductDetails] = useState<ProductDetail | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<ProductDetail | null>(null);
   const searchParams = useSearchParams();
   const { addItem } = useSimpleCart();
 
@@ -475,62 +476,16 @@ function CategoriesContent() {
     // Find product details from database
     const productDetail = productDetails.find(detail => detail.name === product.name);
     if (productDetail) {
-      setSelectedProductDetails(productDetail);
-      setIsDetailsModalOpen(true);
+      setSelectedProduct(productDetail);
+      setIsModalOpen(true);
     }
   }, []);
 
-  const closeDetailsModal = useCallback(() => {
-    setIsDetailsModalOpen(false);
-    setSelectedProductDetails(null);
+  const closeModal = useCallback(() => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
   }, []);
 
-  // Handle body scroll lock when modal is open
-  useEffect(() => {
-    if (isDetailsModalOpen) {
-      // Store current scroll position
-      const scrollY = typeof window !== 'undefined' ? window.scrollY : 0;
-      
-      // Disable scrolling completely
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
-      document.documentElement.style.overflow = 'hidden';
-      
-      // Store scroll position for later restoration
-      document.body.dataset.scrollY = scrollY.toString();
-    } else {
-      // Re-enable scrolling and restore position
-      const scrollY = document.body.dataset.scrollY;
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      document.documentElement.style.overflow = '';
-      
-      // Remove dataset
-      delete document.body.dataset.scrollY;
-      
-      // Restore scroll position only on client side
-      if (scrollY && typeof window !== 'undefined') {
-        window.scrollTo(0, parseInt(scrollY || '0'));
-      }
-    }
-
-    // Cleanup function to reset scroll when component unmounts
-    return () => {
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      document.documentElement.style.overflow = '';
-      if (document.body.dataset.scrollY) {
-        delete document.body.dataset.scrollY;
-      }
-    };
-  }, [isDetailsModalOpen]);
-  
   // Handle URL parameter changes
   useEffect(() => {
     const categoryParam = searchParams.get('category');
@@ -1291,109 +1246,12 @@ function CategoriesContent() {
       {/* Toast mit CSS-Transition statt Animation für stabile Position */}
       <SlideUpToast showToast={showToast} toastFadeOut={toastFadeOut} />
 
-      {/* Details Modal */}
-      {isDetailsModalOpen && selectedProductDetails && (
-        <>
-          {createPortal(
-            <div 
-              className="fixed inset-0 z-50 flex items-center justify-center p-2 md:p-4"
-              style={{ 
-                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                backdropFilter: 'blur(10px)'
-              }}
-              onClick={closeDetailsModal}
-              onWheel={(e) => e.stopPropagation()}
-              onTouchMove={(e) => e.stopPropagation()}
-            >
-              <div 
-                className="relative w-full max-w-[95vw] md:max-w-4xl max-h-[70vh] md:max-h-[75vh] overflow-y-auto overflow-x-hidden rounded-2xl p-3 md:p-6 hide-scrollbar"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.06) 50%, rgba(0, 0, 0, 0.3) 100%)',
-                  backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.15)',
-                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-                  scrollbarWidth: 'none', /* Firefox */
-                  msOverflowStyle: 'none' /* Internet Explorer 10+ */
-                }}
-                onClick={(e) => e.stopPropagation()}
-                onWheel={(e) => {
-                  // Allow scrolling within modal but prevent bubbling
-                  e.stopPropagation();
-                  const element = e.currentTarget;
-                  const { scrollTop, scrollHeight, clientHeight } = element;
-                  
-                  // If trying to scroll beyond bounds, prevent the event
-                  if ((e.deltaY < 0 && scrollTop === 0) || 
-                      (e.deltaY > 0 && scrollTop + clientHeight >= scrollHeight)) {
-                    e.preventDefault();
-                  }
-                }}
-                onTouchMove={(e) => {
-                  // Allow touch scrolling within modal but prevent bubbling
-                  e.stopPropagation();
-                }}
-              >
-                {/* Close Button */}
-                <button
-                  onClick={closeDetailsModal}
-                  className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-white hover:bg-red-600 transition-colors duration-200"
-                  style={{
-                    background: 'rgba(233, 17, 17, 0.8)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)'
-                  }}
-                >
-                  ✕
-                </button>
-
-                {/* Modal Content */}
-                <div className="px-1 md:pr-12 md:px-0">
-                  {/* Product Image and Basic Info */}
-                  <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-4 md:mb-6">
-                    <div className="flex-shrink-0">
-                      <img 
-                        src={selectedProductDetails.image} 
-                        alt={selectedProductDetails.name}
-                        className="w-32 h-32 md:w-48 md:h-48 object-cover rounded-lg mx-auto md:mx-0"
-                        style={{
-                          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(0, 0, 0, 0.2) 100%)',
-                          border: '1px solid rgba(255, 255, 255, 0.1)'
-                        }}
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h2 className="text-xl md:text-2xl font-bold text-white mb-2">{selectedProductDetails.name}</h2>
-                      <p className="text-gray-300 mb-3 text-sm md:text-base">{selectedProductDetails.description}</p>
-                      <div className="flex items-center gap-4 mb-4">
-                        <span className="text-2xl md:text-3xl font-bold text-white">€{selectedProductDetails.price.toFixed(2)}</span>
-                        {selectedProductDetails.filterType && (
-                          <span className="bg-[#e91111] text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm font-semibold">
-                            {selectedProductDetails.filterType}
-                          </span>
-                        )}
-                      </div>
-                      <div className="flex gap-2 text-xs md:text-sm">
-                        <span className="bg-gray-700 text-white px-2 py-1 rounded capitalize">
-                          {selectedProductDetails.category.toLowerCase()}
-                        </span>
-                        <span className="bg-gray-700 text-white px-2 py-1 rounded capitalize">
-                          {selectedProductDetails.brand}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Product Details */}
-                  <div 
-                    className="prose prose-invert max-w-none"
-                    dangerouslySetInnerHTML={{ __html: selectedProductDetails.details }}
-                  />
-                </div>
-              </div>
-            </div>,
-            document.body
-          )}
-        </>
-      )}
+      {/* Search Product Modal - Same as used in search results */}
+      <SearchProductModal 
+        product={selectedProduct}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
     </>
   );
 }

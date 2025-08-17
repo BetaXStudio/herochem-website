@@ -263,11 +263,11 @@ export default function OrderHistory() {
                   <div className="p-4">
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
+                        <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3 mb-2">
                           <h4 className="text-white font-medium text-lg">
                             Order #{order.order_number}
                           </h4>
-                          <span className={`px-3 py-1 text-white text-sm rounded-full ${statusColors[order.status]}`}>
+                          <span className={`px-3 py-1 text-white text-sm rounded-full w-fit ${statusColors[order.status]}`}>
                             {statusLabels[order.status]}
                           </span>
                         </div>

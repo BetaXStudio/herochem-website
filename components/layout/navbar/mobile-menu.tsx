@@ -7,6 +7,7 @@ import { Fragment, Suspense, useEffect, useState } from 'react';
 
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import Search, { SearchSkeleton } from './search';
+import { FAQModal, ContactModal } from '../../home/community-section';
 
 // Temporary type definition
 type Menu = {
@@ -31,8 +32,26 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
+  const [faqOpen, setFaqOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const openMobileMenu = () => setIsOpen(true);
   const closeMobileMenu = () => setIsOpen(false);
+
+  // Force button styling when menu state changes
+  useEffect(() => {
+    const button = document.querySelector('[aria-label="Open mobile menu"]') as HTMLElement;
+    if (button) {
+      if (isOpen) {
+        // Aktiver Zustand: Verstärkter innen-Schatten (gedrückt-Effekt) mit rotem Rahmen
+        button.style.backgroundColor = 'transparent';
+        button.style.boxShadow = 'inset 0 3px 6px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(0, 0, 0, 0.8), inset 0 -1px 0 rgba(255, 255, 255, 0.05), 0 0 0 1px rgba(233, 17, 17, 0.8)';
+      } else {
+        // Inaktiver Zustand: Normales Styling
+        button.style.backgroundColor = 'transparent';
+        button.style.boxShadow = 'inset 0 1px 2px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1)';
+      }
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -51,28 +70,41 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
   return (
     <>
       <button
-        onClick={openMobileMenu}
         aria-label="Open mobile menu"
         className="flex h-11 w-11 items-center justify-center rounded-md text-white transition-colors md:hidden relative"
         style={{
-          backgroundColor: isOpen ? 'rgba(40, 40, 47, 0.9)' : 'rgba(45, 45, 52, 0.8)',
+          backgroundColor: 'transparent',
           border: 'none',
           boxShadow: isOpen 
-            ? 'inset 0 3px 6px rgba(0, 0, 0, 0.5), inset 0 5px 10px rgba(0, 0, 0, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.08), 0 0 0 1px rgba(233, 17, 17, 0.5), 0 4px 12px 0 rgba(0,0,0,0.35)' 
-            : 'inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 4px 8px rgba(0, 0, 0, 0.2), inset 0 -1px 0 rgba(255, 255, 255, 0.1)',
-          zIndex: 9999,
+            ? 'inset 0 3px 6px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(0, 0, 0, 0.8), inset 0 -1px 0 rgba(255, 255, 255, 0.05), 0 0 0 1px rgba(233, 17, 17, 0.8)' 
+            : 'inset 0 1px 2px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1)',
+          zIndex: 10000, // Erhöht von 9999 auf 10000
           transition: 'all 0.3s ease'
+        }}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (isOpen) {
+            closeMobileMenu();
+          } else {
+            openMobileMenu();
+          }
         }}
         onMouseEnter={(e) => {
           if (!isOpen) {
-            e.currentTarget.style.backgroundColor = 'rgba(233, 17, 17, 0.15)';
-            e.currentTarget.style.boxShadow = 'inset 0 3px 6px rgba(0, 0, 0, 0.5), inset 0 5px 10px rgba(0, 0, 0, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.08), 0 0 0 1px rgba(233, 17, 17, 0.3), 0 4px 12px 0 rgba(0,0,0,0.3)';
+            e.currentTarget.style.backgroundColor = 'rgba(233, 17, 17, 0.1)';
+            e.currentTarget.style.boxShadow = 'inset 0 2px 3px rgba(0, 0, 0, 0.6), inset 0 3px 5px rgba(0, 0, 0, 0.5), inset 0 -1px 0 rgba(255, 255, 255, 0.08), inset 0 0 6px rgba(233, 17, 17, 0.3), 0 0 0 1px rgba(233, 17, 17, 0.3)';
           }
+          // Im aktiven Zustand (isOpen = true) machen wir NICHTS beim MouseEnter
         }}
         onMouseLeave={(e) => {
           if (!isOpen) {
-            e.currentTarget.style.backgroundColor = 'rgba(45, 45, 52, 0.8)';
-            e.currentTarget.style.boxShadow = 'inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 4px 8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)';
+            e.currentTarget.style.backgroundColor = 'transparent';
+            e.currentTarget.style.boxShadow = 'inset 0 1px 2px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1)';
+          } else {
+            // Im aktiven Zustand: Verstärkter innen-Schatten (gedrückt-Effekt) mit rotem Rahmen
+            e.currentTarget.style.backgroundColor = 'transparent';
+            e.currentTarget.style.boxShadow = 'inset 0 3px 6px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(0, 0, 0, 0.8), inset 0 -1px 0 rgba(255, 255, 255, 0.05), 0 0 0 1px rgba(233, 17, 17, 0.8)';
           }
         }}
       >
@@ -92,7 +124,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
           <div 
             className="fixed bg-black/30" 
             style={{
-              top: '47px',
+              top: '41px',
               left: '0',
               right: '0', 
               bottom: '0',
@@ -105,7 +137,14 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
         
         {/* Menu Panel */}
         <Transition.Child
-          as={Fragment}
+          as="div"
+          className="fixed left-0 right-0 flex w-full flex-col pb-6 overflow-hidden"
+          style={{ 
+            top: '41px',
+            height: 'calc(100vh - 41px)',
+            background: 'linear-gradient(135deg, rgb(64,64,74) 0%, rgb(45,45,52) 100%)',
+            zIndex: 100
+          }}
           enter="transition-all ease-in-out duration-300"
           enterFrom="translate-x-[-100%]"
           enterTo="translate-x-0"
@@ -113,27 +152,14 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
           leaveFrom="translate-x-0"
           leaveTo="translate-x-[-100%]"
         >
-          <div 
-            className="fixed left-0 right-0 flex w-full flex-col pb-6 overflow-hidden"
-            style={{ 
-              top: '47px',
-              height: 'calc(100vh - 47px)',
-              background: 'linear-gradient(135deg, rgb(64,64,74) 0%, rgb(45,45,52) 100%)',
-              boxShadow: 'inset 1px 0 0 rgba(255,255,255,0.1), inset 0 4px 12px rgba(0,0,0,0.4), inset 0 2px 6px rgba(0,0,0,0.25)',
-              zIndex: 41
-            }}
-          >
-              {/* Top Shadow Overlay - bleibt über den scrollenden Buttons */}
-              <div 
-                className="absolute left-0 right-0 pointer-events-none"
-                style={{
-                  top: '0',
-                  height: '20px',
-                  background: 'linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)',
-                  zIndex: 50
-                }}
-              />
-              <div className="p-4 overflow-y-auto flex-1">
+                <div 
+                  className="p-4 overflow-y-auto flex-1 relative"
+                  style={{
+                    overscrollBehavior: 'contain',
+                    WebkitOverflowScrolling: 'touch',
+                    zIndex: 101
+                  }}
+                >
                 {/* Search Bar */}
                 <div className="mb-4 w-full" style={{ marginTop: '8px' }}>
                   <Suspense fallback={<SearchSkeleton />}>
@@ -143,7 +169,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
 
                 {/* Main Navigation (HOME, SHOP) */}
                 {menu.length ? (
-                  <div className="mb-6">
+                  <div className="mb-4">
                     <div 
                       className="h-[2px] mb-4"
                       style={{ 
@@ -167,14 +193,13 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                               }}
                               className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden block ${
                                 isActive
-                                  ? 'text-white shadow-lg'
-                                  : 'text-neutral-300 hover:text-white hover:shadow-lg'
+                                  ? 'text-white'
+                                  : 'text-neutral-300 hover:text-white'
                               }`}
                               style={{
                                 background: isActive
                                   ? 'linear-gradient(135deg, rgba(233, 17, 17, 0.9) 0%, rgba(233, 17, 17, 0.7) 50%, rgba(233, 17, 17, 0.5) 100%)'
                                   : 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                                backdropFilter: 'blur(10px)',
                                 border: isActive
                                   ? '1px solid rgba(233, 17, 17, 0.3)'
                                   : '1px solid rgba(255, 255, 255, 0.1)',
@@ -202,30 +227,15 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                   </div>
                 ) : null}
 
-                {/* Categories Header */}
-                <div className="mb-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <img 
-                      src="/categories.png" 
-                      alt="Categories Icon" 
-                      className="w-6 h-6 object-contain" 
-                      style={{ 
-                        filter: 'brightness(0) invert(1)'
-                      }}
-                    />
-                    <h2 className="text-lg font-bold text-white uppercase">Categories</h2>
-                  </div>
+                {/* Categories Navigation */}
+                <nav className="mb-6">
                   <div 
-                    className="h-[2px]"
+                    className="h-[2px] mb-4"
                     style={{ 
                       background: 'linear-gradient(90deg, #e91111 0%, rgba(233, 17, 17, 0.1) 100%)',
                       width: '100%'
                     }}
                   />
-                </div>
-
-                {/* Categories Navigation */}
-                <nav className="mb-6">
                   <ul className="space-y-2">
                     {categories.map((category) => {
                       const categoryParam = searchParams.get('category');
@@ -257,14 +267,13 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                             }}
                             className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden block ${
                               isActive
-                                ? 'text-white shadow-lg'
-                                : 'text-neutral-300 hover:text-white hover:shadow-lg'
+                                ? 'text-white'
+                                : 'text-neutral-300 hover:text-white'
                             }`}
                             style={{
                               background: isActive
                                 ? 'linear-gradient(135deg, rgba(233, 17, 17, 0.9) 0%, rgba(233, 17, 17, 0.7) 50%, rgba(233, 17, 17, 0.5) 100%)'
                                 : 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                              backdropFilter: 'blur(10px)',
                               border: isActive
                                 ? '1px solid rgba(233, 17, 17, 0.3)'
                                 : '1px solid rgba(255, 255, 255, 0.1)',
@@ -297,30 +306,86 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                   </ul>
                 </nav>
 
-                {/* Transparenter Überstand am Ende für bessere Scroll-Erreichbarkeit */}
+                {/* FAQ and Contact Section */}
+                <div className="mb-6">
+                  <div 
+                    className="h-[2px] mb-4"
+                    style={{ 
+                      background: 'linear-gradient(90deg, #e91111 0%, rgba(233, 17, 17, 0.1) 100%)',
+                      width: '100%'
+                    }}
+                  />
+                  <ul className="space-y-2">
+                    <li>
+                      <button
+                        onClick={() => {
+                          setFaqOpen(true);
+                          closeMobileMenu();
+                        }}
+                        className="w-full text-left px-4 py-3 rounded-lg text-sm font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-neutral-300 hover:text-white"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = 'linear-gradient(135deg, rgba(233, 17, 17, 0.3) 0%, rgba(233, 17, 17, 0.15) 50%, rgba(255, 255, 255, 0.05) 100%)';
+                          e.currentTarget.style.border = '1px solid rgba(233, 17, 17, 0.4)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)';
+                          e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.1)';
+                        }}
+                      >
+                        <span className="truncate">FAQ</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => {
+                          setContactOpen(true);
+                          closeMobileMenu();
+                        }}
+                        className="w-full text-left px-4 py-3 rounded-lg text-sm font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-neutral-300 hover:text-white"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = 'linear-gradient(135deg, rgba(233, 17, 17, 0.3) 0%, rgba(233, 17, 17, 0.15) 50%, rgba(255, 255, 255, 0.05) 100%)';
+                          e.currentTarget.style.border = '1px solid rgba(233, 17, 17, 0.4)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)';
+                          e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.1)';
+                        }}
+                      >
+                        <span className="truncate">CONTACT</span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Unsichtbares Spacer-Element für bessere Scrollbarkeit */}
                 <div style={{ height: '100px', width: '100%' }} />
 
               </div>
-            </div>
-          </Transition.Child>
-        
-        {/* Transparenter Layer über dem Mobile Menu Button zum Schließen */}
-        {isOpen && (
-          <div
-            className="fixed"
-            style={{
-              top: '8px', // Position des Mobile Menu Buttons
-              left: '8px', // Position des Mobile Menu Buttons  
-              width: '44px', // Größe des Mobile Menu Buttons
-              height: '44px', // Größe des Mobile Menu Buttons
-              zIndex: 9999, // Über allem anderen
-              cursor: 'pointer'
-            }}
-            onClick={closeMobileMenu}
-            aria-label="Close mobile menu"
-          />
-        )}
+              
+              {/* Shadow Overlay für Tiefeneffekt - von oben nach innen */}
+              <div 
+                className="absolute left-0 right-0 top-0 bottom-0 pointer-events-none"
+                style={{
+                  boxShadow: 'inset 0 8px 16px rgba(0, 0, 0, 0.4), inset 0 4px 8px rgba(0, 0, 0, 0.3)',
+                  zIndex: 102
+                }}
+              />
+        </Transition.Child>
         </Transition>
+
+        {/* Render Modals */}
+        <FAQModal isOpen={faqOpen} onCloseAction={() => setFaqOpen(false)} />
+        <ContactModal isOpen={contactOpen} onCloseAction={() => setContactOpen(false)} />
     </>
   );
 }

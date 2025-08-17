@@ -38,7 +38,7 @@ function AccountContent() {
           animationDelay: '0.3s',
           opacity: '0',
           width: '20px',
-          top: '17px'
+          top: '10px'
         }}
       >
         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,7 +58,7 @@ function AccountContent() {
         
         {/* Main Content */}
         <div 
-          className="flex-1 p-6 md:ml-0"
+          className="flex-1 p-4 md:p-6 md:ml-0 pl-4 pr-4 md:pl-6 md:pr-6"
           style={{
             animation: 'fadeInPage 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
             animationDelay: '0.2s',
@@ -81,7 +81,7 @@ function AccountContent() {
             </div>
             
             {/* Content Area */}
-            <div className="bg-neutral-900 rounded-lg p-6 min-h-[400px]">
+            <div className="bg-neutral-900 rounded-lg p-4 md:p-6 min-h-[400px]">
               {selectedSection === 'PROFILE SETTINGS' ? (
                 <ProfileSettings />
               ) : selectedSection === 'SECURITY SETTINGS' ? (
