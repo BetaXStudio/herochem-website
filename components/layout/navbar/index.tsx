@@ -10,6 +10,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { useModal } from "../../../contexts/modal-context";
+import { ProductDetailModalDesktop } from "../../categories/product-detail-modal-desktop";
 import MobileMenu from "./mobile-menu";
 import NavbarSearchModal from "./navbar-search-modal";
 import Search, { SearchSkeleton } from "./search";
@@ -23,6 +24,9 @@ export function Navbar() {
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
+  // Product Detail Modal state for Products dropdown
+  const [productDetailModalOpen, setProductDetailModalOpen] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
   const { openModal } = useAuthModal();
   const { user, signOut, isHydrated } = useAuth();
   const { totalItems: cartTotalItems, isHydrated: cartIsHydrated } = useSimpleCart();
@@ -311,10 +315,10 @@ export function Navbar() {
 
     const brands: Brand[] = ["deus", "astera"];
     
-    // Create a structure: { brand: { category: [{ name, description }] } }
-    const organized: Record<Brand, Record<CategoryLabel, Array<{name: string, description: string}>>> = {
-      deus: {} as Record<CategoryLabel, Array<{name: string, description: string}>>,
-      astera: {} as Record<CategoryLabel, Array<{name: string, description: string}>>,
+    // Create a structure: { brand: { category: [{ id, name, description }] } }
+    const organized: Record<Brand, Record<CategoryLabel, Array<{id: string, name: string, description: string}>>> = {
+      deus: {} as Record<CategoryLabel, Array<{id: string, name: string, description: string}>>,
+      astera: {} as Record<CategoryLabel, Array<{id: string, name: string, description: string}>>,
     };
 
     categories.forEach(cat => {
@@ -342,6 +346,7 @@ export function Navbar() {
       
       if (organized[product.brand]?.[product.category]) {
         organized[product.brand][product.category].push({
+          id: product.id,
           name: product.name,
           description: displayDesc
         });
@@ -353,7 +358,7 @@ export function Navbar() {
       (Object.keys(organized[brand]) as CategoryLabel[]).forEach(cat => {
         const items = organized[brand][cat];
         // Use Map to track unique products by name
-        const uniqueMap = new Map<string, {name: string, description: string}>();
+        const uniqueMap = new Map<string, {id: string, name: string, description: string}>();
         items.forEach(item => {
           if (!uniqueMap.has(item.name)) {
             uniqueMap.set(item.name, item);
@@ -1064,7 +1069,7 @@ export function Navbar() {
                             const asteraPeptides = organized.astera?.["PEPTIDES & HGH"] || [];
                             const asteraSarms = organized.astera?.["SARMS"] || [];
 
-                            const renderCategory = (items: Array<{name: string, description: string}>, brand: Brand, category: string) => {
+                            const renderCategory = (items: Array<{id: string, name: string, description: string}>, brand: Brand, category: string) => {
                               if (items.length === 0) return null;
                               return (
                                 <div key={`${brand}-${category}`} style={{ marginBottom: "12px" }}>
@@ -1109,8 +1114,13 @@ export function Navbar() {
                                             transition: "color 0.2s ease",
                                           }}
                                           title={product.description}
+                                          onClick={() => {
+                                            setSelectedProductId(product.id);
+                                            setProductDetailModalOpen(true);
+                                            setProductsDropdownOpen(false);
+                                          }}
                                           onMouseEnter={(e) => {
-                                            (e.currentTarget as HTMLElement).style.color = "#e91111";
+                                            (e.currentTarget as HTMLElement).style.color = brand === "deus" ? "#e91111" : "#d67f3f";
                                           }}
                                           onMouseLeave={(e) => {
                                             (e.currentTarget as HTMLElement).style.color = "#e0e0e0";
@@ -1826,6 +1836,18 @@ export function Navbar() {
         isOpen={searchModalOpen}
         onCloseAction={() => setSearchModalOpen(false)}
       />
+
+      {/* Product Detail Modal for Products Dropdown */}
+      {selectedProductId && (
+        <ProductDetailModalDesktop
+          isOpen={productDetailModalOpen}
+          productId={selectedProductId}
+          onCloseAction={() => {
+            setProductDetailModalOpen(false);
+            setSelectedProductId(null);
+          }}
+        />
+      )}
     </nav>
     </>
   );

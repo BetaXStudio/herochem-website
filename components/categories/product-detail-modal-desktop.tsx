@@ -266,10 +266,10 @@ export function ProductDetailModalDesktop({
                         <img
                           src={product.image}
                           alt={product.name}
-                          className="w-full h-full object-cover rounded transition-opacity duration-300 product-image"
+                          className="w-full h-full object-cover rounded transition-opacity duration-300"
                           style={{
                             transform: (product?.brand === "astera" || product.name.toLowerCase().includes("astera")) ? 
-                              "scale(0.7)" : "scale(2.0)",
+                              "scale(1.0)" : "scale(1.8)",
                             transition: "opacity 150ms ease-out",
                             objectFit: "contain"
                           }}
