@@ -30,7 +30,8 @@ export default function MobileScrollContainer({
     isWelcomeModalOpen,
     isAuthModalOpen,
     isCategoriesModalOpen,
-    setCategoriesModalOpen
+    setCategoriesModalOpen,
+    isProductDetailModalOpen
   } = useModal();
   
   // Check if ANY NAVBAR modal is open (NOT including page-specific modals like Categories)
@@ -43,7 +44,8 @@ export default function MobileScrollContainer({
     isAuthModalOpen ||
     isFAQModalOpen || 
     isContactModalOpen ||
-    isWelcomeModalOpen;
+    isWelcomeModalOpen ||
+    isProductDetailModalOpen;
 
   // Check if ANY modal is open (for scroll blocking purposes)
   const isAnyModalOpen = isAnyNavbarModalOpen || isCategoriesModalOpen;

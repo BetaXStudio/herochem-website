@@ -24,12 +24,31 @@ export function Navbar() {
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
-  // Product Detail Modal state for Products dropdown
-  const [productDetailModalOpen, setProductDetailModalOpen] = useState(false);
-  const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
   const { openModal } = useAuthModal();
   const { user, signOut, isHydrated } = useAuth();
   const { totalItems: cartTotalItems, isHydrated: cartIsHydrated } = useSimpleCart();
+  const { 
+    isProductsModalOpen, 
+    setProductsModalOpen,
+    isGMPModalOpen,
+    setGMPModalOpen,
+    isDeliveryModalOpen,
+    setDeliveryModalOpen,
+    isCommunityModalOpen,
+    setCommunityModalOpen,
+    isLabReportsModalOpen,
+    setLabReportsModalOpen,
+    isFAQModalOpen,
+    setFAQModalOpen,
+    isContactModalOpen,
+    setContactModalOpen,
+    isWelcomeModalOpen,
+    isAuthModalOpen,
+    isProductDetailModalOpen,
+    productDetailModalId,
+    openProductDetailModal,
+    closeProductDetailModal
+  } = useModal();
 
   // Disable body scroll when products dropdown is open
   useEffect(() => {
@@ -60,25 +79,20 @@ export function Navbar() {
     };
   }, [productsDropdownOpen]);
 
+  // Close modals and dropdowns on route change
+  useEffect(() => {
+    // Close product detail modal
+    closeProductDetailModal();
+    // Close all dropdowns
+    setDropdownOpen(false);
+    setProductsDropdownOpen(false);
+    setBundlesDropdownOpen(false);
+    setVerifyDropdownOpen(false);
+    setLanguageDropdownOpen(false);
+    setActiveDropdown(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
-  const { 
-    isProductsModalOpen, 
-    setProductsModalOpen,
-    isGMPModalOpen,
-    setGMPModalOpen,
-    isDeliveryModalOpen,
-    setDeliveryModalOpen,
-    isCommunityModalOpen,
-    setCommunityModalOpen,
-    isLabReportsModalOpen,
-    setLabReportsModalOpen,
-    isFAQModalOpen,
-    setFAQModalOpen,
-    isContactModalOpen,
-    setContactModalOpen,
-    isWelcomeModalOpen,
-    isAuthModalOpen
-  } = useModal();
   let closeTimeout: NodeJS.Timeout | null = null;
   let languageCloseTimeout: NodeJS.Timeout | null = null;
   let productsCloseTimeout: NodeJS.Timeout | null = null;
@@ -822,7 +836,7 @@ export function Navbar() {
                           </svg>
                         </span>
                         <ul
-                          className="flex flex-col items-center shadow-lg shadow-black/30 mt-0 pt-4 text-center"
+                          className="flex flex-col items-center mt-0 pt-4 text-center"
                           style={{
                             borderRadius: "0.75rem", // Updated to match cart modal consistency
                             backgroundColor: "rgb(45, 45, 52)",
@@ -936,7 +950,6 @@ export function Navbar() {
                         borderRadius: "0.75rem", // Updated to match cart modal consistency
                         backgroundColor: "rgb(45, 45, 52)",
                         border: "1px solid rgba(255, 255, 255, 0.1)",
-                        boxShadow: "0 4px 12px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.25)",
                       }}
                       onWheel={(e) => {
                         e.stopPropagation();
@@ -1111,12 +1124,11 @@ export function Navbar() {
                                             overflow: "hidden",
                                             textOverflow: "ellipsis",
                                             cursor: "pointer",
-                                            transition: "color 0.2s ease",
+                                            transition: "color 0.15s ease",
                                           }}
                                           title={product.description}
                                           onClick={() => {
-                                            setSelectedProductId(product.id);
-                                            setProductDetailModalOpen(true);
+                                            openProductDetailModal(product.id);
                                             setProductsDropdownOpen(false);
                                           }}
                                           onMouseEnter={(e) => {
@@ -1366,7 +1378,7 @@ export function Navbar() {
                           </svg>
                         </span>
                         <ul
-                          className="flex flex-col items-center shadow-lg shadow-black/30 mt-0 pt-4 text-center"
+                          className="flex flex-col items-center mt-0 pt-4 text-center"
                           style={{
                             borderRadius: "0.75rem", // Updated to match cart modal consistency
                             backgroundColor: "rgb(45, 45, 52)",
@@ -1538,7 +1550,7 @@ export function Navbar() {
                           </svg>
                         </span>
                         <ul
-                          className="flex flex-col items-center shadow-lg shadow-black/30 mt-0 pt-4 text-center"
+                          className="flex flex-col items-center mt-0 pt-4 text-center"
                           style={{
                             borderRadius: "0.75rem", // Updated to match cart modal consistency
                             backgroundColor: "rgb(45, 45, 52)",
@@ -1628,6 +1640,17 @@ export function Navbar() {
                       textDecoration: "none",
                       fontWeight: "600",
                     }}
+                    onClick={() => {
+                      // Close all modals and dropdowns when clicking About
+                      closeProductDetailModal();
+                      setDropdownOpen(false);
+                      setProductsDropdownOpen(false);
+                      setBundlesDropdownOpen(false);
+                      setVerifyDropdownOpen(false);
+                      setLanguageDropdownOpen(false);
+                      setActiveDropdown(null);
+                      setSearchModalOpen(false);
+                    }}
                   >
                     {item.title.toUpperCase()}
                   </Link>
@@ -1641,6 +1664,17 @@ export function Navbar() {
                       fontWeight: "600",
                       marginLeft: item.title === "Home" ? "-15px" : "0",
                     }}
+                    onClick={item.title === "Home" ? () => {
+                      // Close all modals and dropdowns when clicking Home
+                      closeProductDetailModal();
+                      setDropdownOpen(false);
+                      setProductsDropdownOpen(false);
+                      setBundlesDropdownOpen(false);
+                      setVerifyDropdownOpen(false);
+                      setLanguageDropdownOpen(false);
+                      setActiveDropdown(null);
+                      setSearchModalOpen(false);
+                    } : undefined}
                     onMouseEnter={(e) => {
                       const img = e.currentTarget.querySelector("img");
                       if (img && item.title === "Home") {
@@ -1838,14 +1872,11 @@ export function Navbar() {
       />
 
       {/* Product Detail Modal for Products Dropdown */}
-      {selectedProductId && (
+      {productDetailModalId && (
         <ProductDetailModalDesktop
-          isOpen={productDetailModalOpen}
-          productId={selectedProductId}
-          onCloseAction={() => {
-            setProductDetailModalOpen(false);
-            setSelectedProductId(null);
-          }}
+          isOpen={isProductDetailModalOpen}
+          productId={productDetailModalId}
+          onCloseAction={closeProductDetailModal}
         />
       )}
     </nav>

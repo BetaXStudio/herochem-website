@@ -4,6 +4,7 @@ import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useSimpleCart } from "../../components/cart/simple-cart-context";
+import { useModal } from "../../contexts/modal-context";
 import { getProductDetailById, type ProductDetail } from "../../lib/product-details-database";
 
 const SlideUpToast = ({
@@ -68,6 +69,30 @@ export function ProductDetailOverlay({
   const [quantity, setQuantity] = useState(1);
   const { addItem } = useSimpleCart();
   const titleRef = useRef<HTMLHeadingElement>(null);
+  
+  // Check if any navbar modal is open to blur this modal's content
+  const {
+    isProductsModalOpen,
+    isGMPModalOpen,
+    isDeliveryModalOpen,
+    isCommunityModalOpen,
+    isLabReportsModalOpen,
+    isFAQModalOpen,
+    isContactModalOpen,
+    isWelcomeModalOpen,
+    isAuthModalOpen,
+  } = useModal();
+  
+  const isAnyNavbarModalOpen = 
+    isProductsModalOpen || 
+    isGMPModalOpen || 
+    isDeliveryModalOpen || 
+    isCommunityModalOpen || 
+    isLabReportsModalOpen ||
+    isAuthModalOpen ||
+    isFAQModalOpen || 
+    isContactModalOpen ||
+    isWelcomeModalOpen;
 
   // Load product when opening
   useEffect(() => {
@@ -190,6 +215,9 @@ export function ProductDetailOverlay({
             background: "white",
             overflowY: "auto",
             zIndex: 9999,
+            filter: isAnyNavbarModalOpen ? "blur(4px)" : "none",
+            transition: "filter 0.3s ease-out",
+            pointerEvents: isAnyNavbarModalOpen ? "none" : "auto",
           }}
         >
           <div className="flex min-h-screen relative overflow-hidden hide-scrollbar" style={{ background: "white" }}>
