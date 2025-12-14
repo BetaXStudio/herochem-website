@@ -26,6 +26,11 @@ interface ModalContextType {
   setCategoriesModalOpen: (isOpen: boolean) => void;
   isSearchModalOpen: boolean;
   setSearchModalOpen: (isOpen: boolean) => void;
+  // Product Detail Modal (Desktop)
+  isProductDetailModalOpen: boolean;
+  productDetailModalId: string | null;
+  openProductDetailModal: (productId: string) => void;
+  closeProductDetailModal: () => void;
   resetAllModals: () => void;
 }
 
@@ -43,6 +48,9 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
   const [isAuthModalOpen, setIsAuthModalOpenState] = useState(false);
   const [isCategoriesModalOpen, setIsCategoriesModalOpenState] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpenState] = useState(false);
+  // Product Detail Modal (Desktop)
+  const [isProductDetailModalOpen, setIsProductDetailModalOpen] = useState(false);
+  const [productDetailModalId, setProductDetailModalId] = useState<string | null>(null);
 
   const setProductsModalOpen = (isOpen: boolean) => {
     setIsProductsModalOpenState(isOpen);
@@ -88,6 +96,16 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
     setIsSearchModalOpenState(isOpen);
   };
 
+  const openProductDetailModal = (productId: string) => {
+    setProductDetailModalId(productId);
+    setIsProductDetailModalOpen(true);
+  };
+
+  const closeProductDetailModal = () => {
+    setIsProductDetailModalOpen(false);
+    setProductDetailModalId(null);
+  };
+
   const resetAllModals = () => {
     setIsProductsModalOpenState(false);
     setIsGMPModalOpenState(false);
@@ -100,6 +118,8 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
     setIsAuthModalOpenState(false);
     setIsCategoriesModalOpenState(false);
     setIsSearchModalOpenState(false);
+    setIsProductDetailModalOpen(false);
+    setProductDetailModalId(null);
   };
 
   // Reset modals on pathname OR searchParams change
@@ -133,6 +153,10 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
       setCategoriesModalOpen,
       isSearchModalOpen,
       setSearchModalOpen,
+      isProductDetailModalOpen,
+      productDetailModalId,
+      openProductDetailModal,
+      closeProductDetailModal,
       resetAllModals
     }}>
       {children}

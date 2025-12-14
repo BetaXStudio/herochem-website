@@ -220,7 +220,7 @@ export default function FAQModalWrapper() {
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="border border-gray-200 rounded-lg overflow-hidden"
+                  className="border border-gray-200 rounded-xl overflow-hidden"
                 >
                   <button
                     onClick={() => toggleItem(index)}

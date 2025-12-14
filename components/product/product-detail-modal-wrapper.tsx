@@ -7,7 +7,7 @@ import { ProductDetailModalDesktop } from "../categories/product-detail-modal-de
 export default function ProductDetailModalWrapper() {
   const { 
     isProductDetailModalOpen, 
-    productDetailModalProductId, 
+    productDetailModalId, 
     closeProductDetailModal 
   } = useModal();
   
@@ -34,14 +34,14 @@ export default function ProductDetailModalWrapper() {
     return null;
   }
 
-  if (!productDetailModalProductId) {
+  if (!productDetailModalId) {
     return null;
   }
 
   return (
     <ProductDetailModalDesktop
       isOpen={isProductDetailModalOpen}
-      productId={productDetailModalProductId}
+      productId={productDetailModalId}
       onCloseAction={closeProductDetailModal}
     />
   );

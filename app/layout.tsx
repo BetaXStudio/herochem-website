@@ -2,6 +2,7 @@ import GlobalLoading from "components/layout/global-loading";
 import MobileScrollContainer from "components/layout/mobile-scroll-container";
 import { Navbar } from "components/layout/navbar";
 import NavbarCoverLayer from "components/layout/navbar-cover-layer";
+import { Suspense } from "react";
 import { AuthProvider } from "../components/auth/auth-context";
 import { AuthModalProvider } from "../components/auth/auth-modal-context";
 import AuthModalWrapper from "../components/auth/auth-modal-wrapper";
@@ -117,26 +118,28 @@ export default function RootLayout({
           <AuthModalProvider>
             <SimpleCartProvider>
               <WelcomeModalProvider>
-                <ModalProvider>
-                  <CategoriesStateProvider>
-                    <Navbar />
-                    <NavbarCoverLayer />
-                    <MobileScrollContainer>{children}</MobileScrollContainer>
+                <Suspense fallback={null}>
+                  <ModalProvider>
+                    <CategoriesStateProvider>
+                      <Navbar />
+                      <NavbarCoverLayer />
+                      <MobileScrollContainer>{children}</MobileScrollContainer>
 
-                    <AuthModalWrapper />
-                    <CheckoutModalWrapper />
-                    <WelcomeModalWrapper />
-                    <LabTestsModalWrapper />
-                    <GMPModalWrapper />
-                    <DeliveryModalWrapper />
-                    <FAQModalWrapper />
-                    <ContactModalWrapper />
-                    <CommunityModalWrapper />
-                    <ProductsModalWrapper />
-                    <ProductDetailModalWrapper />
-                    <GlobalLoading />
-                  </CategoriesStateProvider>
-                </ModalProvider>
+                      <AuthModalWrapper />
+                      <CheckoutModalWrapper />
+                      <WelcomeModalWrapper />
+                      <LabTestsModalWrapper />
+                      <GMPModalWrapper />
+                      <DeliveryModalWrapper />
+                      <FAQModalWrapper />
+                      <ContactModalWrapper />
+                      <CommunityModalWrapper />
+                      <ProductsModalWrapper />
+                      <ProductDetailModalWrapper />
+                      <GlobalLoading />
+                    </CategoriesStateProvider>
+                  </ModalProvider>
+                </Suspense>
               </WelcomeModalProvider>
             </SimpleCartProvider>
           </AuthModalProvider>

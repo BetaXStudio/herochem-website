@@ -1074,25 +1074,56 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
               <div className="relative mb-4">
                 {/* Back Arrow - nur bei spezifischen Kategorien anzeigen */}
                 {currentCategory !== "ALL PRODUCTS" && (
-                  <a
-                    href={searchParams.get("brand") ? `/categories?brand=${searchParams.get("brand")}` : "/categories"}
-                    className="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 text-gray-900 hover:text-red-600 cursor-pointer"
-                    aria-label="Back to All Products"
-                  >
-                    <svg
-                      className="w-6 h-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                  <>
+                    {/* Desktop Version - Soft Routing */}
+                    <button
+                      onClick={() => {
+                        setCurrentCategory("ALL PRODUCTS");
+                        const brandParam = searchParams.get("brand");
+                        if (brandParam) {
+                          window.history.pushState({}, "", `/categories?brand=${brandParam}`);
+                        } else {
+                          window.history.pushState({}, "", "/categories");
+                        }
+                      }}
+                      className="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 text-gray-900 hover:text-red-600 cursor-pointer hidden md:block"
+                      aria-label="Back to All Products"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 19l-7-7 7-7"
-                      />
-                    </svg>
-                  </a>
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 19l-7-7 7-7"
+                        />
+                      </svg>
+                    </button>
+                    {/* Mobile Version - Regular href routing */}
+                    <a
+                      href={searchParams.get("brand") ? `/categories?brand=${searchParams.get("brand")}` : "/categories"}
+                      className="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 text-gray-900 hover:text-red-600 cursor-pointer md:hidden"
+                      aria-label="Back to All Products"
+                    >
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 19l-7-7 7-7"
+                        />
+                      </svg>
+                    </a>
+                  </>
                 )}
                 <h1
                   className="text-gray-900 text-2xl font-bold text-center"

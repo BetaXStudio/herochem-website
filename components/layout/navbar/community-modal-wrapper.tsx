@@ -111,10 +111,7 @@ export default function CommunityModalWrapper() {
                   </p>
                   <button
                     onClick={handleTelegramJoin}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-xl font-medium transition-colors"
-                    style={{
-                      boxShadow: '0 4px 15px rgba(37, 99, 235, 0.3)'
-                    }}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 lg:py-3 px-4 rounded-xl font-medium lg:text-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                   >
                     Join Telegram
                   </button>

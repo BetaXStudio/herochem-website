@@ -1,10 +1,10 @@
 "use client";
 
 import {
-  BeakerIcon,
-  ChartBarIcon,
-  DocumentCheckIcon,
-  ShieldCheckIcon,
+    BeakerIcon,
+    ChartBarIcon,
+    DocumentCheckIcon,
+    ShieldCheckIcon,
 } from "@heroicons/react/24/outline";
 import { useModal } from "../../contexts/modal-context";
 
@@ -74,7 +74,7 @@ export default function LabTestsSection() {
         <div className="text-center">
           <button
             onClick={() => setLabReportsModalOpen(true)}
-            className="inline-flex items-center px-7 py-3 bg-[#e91111] hover:bg-[#c00d0d] text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105"
+            className="inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 bg-[#e91111] hover:bg-[#c00d0d] text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
           >
             <BeakerIcon className="h-4 w-4 mr-2" />
             View All Lab Reports
