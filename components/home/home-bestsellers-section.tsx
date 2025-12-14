@@ -4,16 +4,17 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { featuredProductLists, type FeaturedListType } from "../../lib/featured-products";
 import { productDetails } from "../../lib/product-details-database";
-import { SearchProductModal } from "../search/search-product-modal";
+import { ProductDetailOverlay } from "../categories/product-detail-overlay";
 
 interface HomeBestsellersSectionProps {
   className?: string;
 }
 
 export default function HomeBestsellersSection({ className = "" }: HomeBestsellersSectionProps) {
-  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
   
   // Auto-scroll states for desktop
   const bestSellersRef = useRef<HTMLDivElement>(null);
@@ -64,13 +65,13 @@ export default function HomeBestsellersSection({ className = "" }: HomeBestselle
 
   // Modal handlers
   const openModal = (product: any) => {
-    setSelectedProduct(product);
+    setSelectedProductId(product.id);
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setSelectedProduct(null);
+    setSelectedProductId(null);
   };
 
   // Auto-scroll effect for desktop
@@ -175,10 +176,14 @@ export default function HomeBestsellersSection({ className = "" }: HomeBestselle
               WebkitOverflowScrolling: "touch"
             }}
           >
-            {products.map((product) => (
+            {products.map((product) => {
+              const isHovered = hoveredProductId === product.id;
+              return (
               <div
                 key={product.id}
-                onClick={() => openModal(product)}
+                onMouseEnter={() => !isMobile && setHoveredProductId(product.id)}
+                onMouseLeave={() => !isMobile && setHoveredProductId(null)}
+                onClick={() => isMobile && setHoveredProductId(isHovered ? null : product.id)}
                 className={`
                   flex-shrink-0 bg-white rounded-lg flex flex-col cursor-pointer
                   ${isMobile ? "w-36" : "w-48"}
@@ -197,6 +202,40 @@ export default function HomeBestsellersSection({ className = "" }: HomeBestselle
                     }}
                     unoptimized
                   />
+                  
+                  {/* Blur Layer */}
+                  <div
+                    className="absolute inset-0 transition-opacity duration-200 rounded-xl"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.3)",
+                      backdropFilter: "blur(4px)",
+                      WebkitBackdropFilter: "blur(4px)",
+                      opacity: isHovered ? 1 : 0,
+                      pointerEvents: "none",
+                      zIndex: 10
+                    }}
+                  />
+                  
+                  {/* DETAILS Button Overlay */}
+                  <div
+                    className="absolute inset-0 flex items-center justify-center transition-opacity duration-200 rounded-xl"
+                    style={{
+                      opacity: isHovered ? 1 : 0,
+                      pointerEvents: isHovered ? "auto" : "none",
+                      zIndex: 20
+                    }}
+                  >
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openModal(product);
+                        setHoveredProductId(null);
+                      }}
+                      className={`bg-gray-900 text-white font-bold rounded-lg shadow-lg hover:bg-gray-800 transition-all duration-200 transform hover:scale-105 ${isMobile ? "px-4 py-1.5 text-xs" : "px-6 py-2 text-sm"}`}
+                    >
+                      DETAILS
+                    </button>
+                  </div>
                 </div>
 
                 {/* Product Info */}
@@ -231,13 +270,17 @@ export default function HomeBestsellersSection({ className = "" }: HomeBestselle
                   </div>
                 </div>
               </div>
-            ))}
+              );
+            })}
             
             {/* Duplicate products for seamless loop on desktop */}
-            {!isMobile && products.map((product) => (
+            {!isMobile && products.map((product) => {
+              const isHovered = hoveredProductId === `${product.id}-duplicate`;
+              return (
               <div
                 key={`${product.id}-duplicate`}
-                onClick={() => openModal(product)}
+                onMouseEnter={() => setHoveredProductId(`${product.id}-duplicate`)}
+                onMouseLeave={() => setHoveredProductId(null)}
                 className={`
                   flex-shrink-0 bg-white rounded-lg flex flex-col cursor-pointer
                   ${isMobile ? "w-36" : "w-48"}
@@ -256,11 +299,45 @@ export default function HomeBestsellersSection({ className = "" }: HomeBestselle
                     }}
                     unoptimized
                   />
+                  
+                  {/* Blur Layer */}
+                  <div
+                    className="absolute inset-0 transition-opacity duration-200 rounded-xl"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.3)",
+                      backdropFilter: "blur(4px)",
+                      WebkitBackdropFilter: "blur(4px)",
+                      opacity: isHovered ? 1 : 0,
+                      pointerEvents: "none",
+                      zIndex: 10
+                    }}
+                  />
+                  
+                  {/* DETAILS Button Overlay */}
+                  <div
+                    className="absolute inset-0 flex items-center justify-center transition-opacity duration-200 rounded-xl"
+                    style={{
+                      opacity: isHovered ? 1 : 0,
+                      pointerEvents: isHovered ? "auto" : "none",
+                      zIndex: 20
+                    }}
+                  >
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openModal(product);
+                        setHoveredProductId(null);
+                      }}
+                      className="px-6 py-2 text-sm bg-gray-900 text-white font-bold rounded-lg shadow-lg hover:bg-gray-800 transition-all duration-200 transform hover:scale-105"
+                    >
+                      DETAILS
+                    </button>
+                  </div>
                 </div>
 
                 {/* Product Info */}
                 <div className="px-2 pb-2">
-                  <h3 className="text-gray-900 font-bold mb-0.5 line-clamp-1 text-xs">
+                  <h3 className="text-gray-900 font-bold mb-0.5 line-clamp-1 text-sm">
                     {product.name}
                   </h3>
                   <div className="text-gray-600 mb-0.5 overflow-hidden text-[9px] leading-tight">
@@ -290,7 +367,8 @@ export default function HomeBestsellersSection({ className = "" }: HomeBestselle
                   </div>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
@@ -317,11 +395,11 @@ export default function HomeBestsellersSection({ className = "" }: HomeBestselle
         () => setIsPausedBestRated(false)
       )}
 
-      {/* Product Modal */}
-      <SearchProductModal
-        product={selectedProduct}
+      {/* Product Modal - Mobile Only */}
+      <ProductDetailOverlay
+        productId={selectedProductId || ""}
         isOpen={isModalOpen}
-        onClose={closeModal}
+        onCloseAction={closeModal}
       />
     </section>
   );

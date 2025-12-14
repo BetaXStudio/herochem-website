@@ -5,15 +5,16 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { featuredProductLists } from "../../lib/featured-products";
 import { productDetails } from "../../lib/product-details-database";
-import { SearchProductModal } from "../search/search-product-modal";
+import { ProductDetailOverlay } from "../categories/product-detail-overlay";
 
 export default function NewsSection() {
   const [currentBanner, setCurrentBanner] = useState(0);
   const [isClient, setIsClient] = useState(false);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
-  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
   const productsContainerRef = useRef<HTMLDivElement>(null);
   const productsScrollRef = useRef<HTMLDivElement>(null);
 
@@ -141,13 +142,13 @@ export default function NewsSection() {
 
   // Modal handlers
   const openModal = (product: any) => {
-    setSelectedProduct(product);
+    setSelectedProductId(product.id);
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setSelectedProduct(null);
+    setSelectedProductId(null);
   };
 
   // ...existing code...
@@ -300,10 +301,12 @@ export default function NewsSection() {
           suppressHydrationWarning
           style={{ scrollBehavior: 'auto', paddingTop: '20px' }}
         >
-          {getBestsellerProducts().map((product) => (
+          {getBestsellerProducts().map((product) => {
+            const isHovered = hoveredProductId === product.id;
+            return (
             <div
               key={product.id}
-              onClick={() => openModal(product)}
+              onClick={() => setHoveredProductId(isHovered ? null : product.id)}
               className="flex-shrink-0 rounded-lg flex flex-col cursor-pointer w-36 md:w-48"
               style={{ backgroundColor: 'rgb(249, 250, 251)' }}
             >
@@ -324,6 +327,40 @@ export default function NewsSection() {
                   }}
                   unoptimized
                 />
+                
+                {/* Blur Layer */}
+                <div
+                  className="absolute inset-0 transition-opacity duration-200 rounded-xl"
+                  style={{
+                    backgroundColor: "rgba(255, 255, 255, 0.3)",
+                    backdropFilter: "blur(4px)",
+                    WebkitBackdropFilter: "blur(4px)",
+                    opacity: isHovered ? 1 : 0,
+                    pointerEvents: "none",
+                    zIndex: 10
+                  }}
+                />
+                
+                {/* DETAILS Button Overlay */}
+                <div
+                  className="absolute inset-0 flex items-center justify-center transition-opacity duration-200 rounded-xl"
+                  style={{
+                    opacity: isHovered ? 1 : 0,
+                    pointerEvents: isHovered ? "auto" : "none",
+                    zIndex: 20
+                  }}
+                >
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openModal(product);
+                      setHoveredProductId(null);
+                    }}
+                    className="px-4 py-1.5 text-xs bg-gray-900 text-white font-bold rounded-lg shadow-lg hover:bg-gray-800 transition-all duration-200 transform hover:scale-105"
+                  >
+                    DETAILS
+                  </button>
+                </div>
               </div>
 
               {/* Product Info */}
@@ -357,7 +394,8 @@ export default function NewsSection() {
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
         {/* Left Fade Out Effect */}
         <div className="absolute left-0 top-0 h-full w-6 bg-gradient-to-r from-[rgb(249,250,251)] via-[rgb(249,250,251)]/50 to-transparent pointer-events-none z-10"></div>
@@ -415,13 +453,11 @@ export default function NewsSection() {
       `}</style>
 
       {/* Product Modal */}
-      {isModalOpen && selectedProduct && (
-        <SearchProductModal
-          product={selectedProduct}
-          isOpen={isModalOpen}
-          onClose={closeModal}
-        />
-      )}
+      <ProductDetailOverlay
+        productId={selectedProductId || ""}
+        isOpen={isModalOpen}
+        onCloseAction={closeModal}
+      />
     </div>
   );
 }
