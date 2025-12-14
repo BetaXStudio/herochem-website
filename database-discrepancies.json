@@ -1,0 +1,459 @@
+{
+  "timestamp": "2025-09-26T23:00:25.894Z",
+  "summary": {
+    "missing_in_details": 22,
+    "missing_in_main": 1,
+    "field_mismatches": 13,
+    "total_issues": 36
+  },
+  "discrepancies": {
+    "missing_in_details": [
+      {
+        "id": "inj-deus-001",
+        "product": {
+          "id": "inj-deus-001",
+          "name": "DEUS 3-TRENBOMED 150",
+          "description": "Trenbolone Enanthate 50mg, Trenbolone Acetate 50mg, Trenbolone Hexahydrobenzylcarbonate 50mg",
+          "price": 45,
+          "image": "/products/deus inject/DEUS 3-TRENBOMED 150.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Definition"
+        }
+      },
+      {
+        "id": "inj-deus-002",
+        "product": {
+          "id": "inj-deus-002",
+          "name": "DEUS EQUIMED 250",
+          "description": "Boldenone Undecylenate 250mg",
+          "price": 38,
+          "image": "/products/deus inject/DEUS EQUIMED 250.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Gain"
+        }
+      },
+      {
+        "id": "inj-deus-003",
+        "product": {
+          "id": "inj-deus-003",
+          "name": "DEUS DECAMED 250",
+          "description": "Nandrolone Decanoate 250mg",
+          "price": 38,
+          "image": "/products/deus inject/DEUS DECAMED 250.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Gain"
+        }
+      },
+      {
+        "id": "inj-deus-004",
+        "product": {
+          "id": "inj-deus-004",
+          "name": "DEUS DECAMED PP 100",
+          "description": "Nandrolone Phenylpropionate 100mg",
+          "price": 31,
+          "image": "/products/deus inject/DEUS DECAMED PP 100.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Gain"
+        }
+      },
+      {
+        "id": "inj-deus-005",
+        "product": {
+          "id": "inj-deus-005",
+          "name": "DEUS DHB-MED 100",
+          "description": "Dihydroboldenone Cypionate 100mg",
+          "price": 50,
+          "image": "/products/deus inject/DEUS DHB-MED 100.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Definition"
+        }
+      },
+      {
+        "id": "inj-deus-006",
+        "product": {
+          "id": "inj-deus-006",
+          "name": "DEUS DIANAMED 100",
+          "description": "Methandienone 100mg",
+          "price": 36,
+          "image": "/products/deus inject/DEUS DIANAMED 100.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Gain"
+        }
+      },
+      {
+        "id": "inj-deus-007",
+        "product": {
+          "id": "inj-deus-007",
+          "name": "DEUS TESTOMED C 250",
+          "description": "Testosterone Cypionate 250mg",
+          "price": 30,
+          "image": "/products/deus inject/DEUS TESTOMED C 250.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Base"
+        }
+      },
+      {
+        "id": "inj-deus-008",
+        "product": {
+          "id": "inj-deus-008",
+          "name": "DEUS TESTOMED E 250",
+          "description": "Testosterone Enanthate 250mg",
+          "price": 30,
+          "image": "/products/deus inject/DEUS TESTOMED E 250.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Base"
+        }
+      },
+      {
+        "id": "inj-deus-009",
+        "product": {
+          "id": "inj-deus-009",
+          "name": "DEUS MASTERMED E 200",
+          "description": "Drostanolone Enanthate 200mg",
+          "price": 50,
+          "image": "/products/deus inject/DEUS MASTERMED E 200.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Definition"
+        }
+      },
+      {
+        "id": "inj-deus-010",
+        "product": {
+          "id": "inj-deus-010",
+          "name": "DEUS MASTERMED P 100",
+          "description": "Drostanolone Propionate 100mg",
+          "price": 40,
+          "image": "/products/deus inject/DEUS MASTERMED P 100.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Definition"
+        }
+      },
+      {
+        "id": "inj-deus-011",
+        "product": {
+          "id": "inj-deus-011",
+          "name": "DEUS PARAMED 76.5",
+          "description": "Trenbolone Hexahydrobenzylcarbonate 76.5mg",
+          "price": 50,
+          "image": "/products/deus inject/DEUS PARAMED 76.5.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Definition"
+        }
+      },
+      {
+        "id": "inj-deus-012",
+        "product": {
+          "id": "inj-deus-012",
+          "name": "DEUS PRIMOMED 100",
+          "description": "Methenolone Enanthate 100mg",
+          "price": 59,
+          "image": "/products/deus inject/DEUS PRIMOMED 100.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Definition"
+        }
+      },
+      {
+        "id": "inj-deus-013",
+        "product": {
+          "id": "inj-deus-013",
+          "name": "DEUS SUSTAMED 250",
+          "description": "Testosterone Phenylpropionate 60mg, Testosterone Isocaproate 60mg, Testosterone Decanoate 100mg, Testosterone Propionate 30mg",
+          "price": 32,
+          "image": "/products/deus inject/DEUS SUSTAMED 250.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Gain"
+        }
+      },
+      {
+        "id": "inj-deus-014",
+        "product": {
+          "id": "inj-deus-014",
+          "name": "DEUS TESTOMED 100",
+          "description": "Testosterone Base 100mg",
+          "price": 28,
+          "image": "/products/deus inject/DEUS TESTOMED 100.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Gain"
+        }
+      },
+      {
+        "id": "inj-deus-015",
+        "product": {
+          "id": "inj-deus-015",
+          "name": "DEUS TESTOMED P 100",
+          "description": "Testosterone Propionate 100mg",
+          "price": 26,
+          "image": "/products/deus inject/DEUS TESTOMED P 100.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Gain"
+        }
+      },
+      {
+        "id": "inj-deus-016",
+        "product": {
+          "id": "inj-deus-016",
+          "name": "DEUS TESTOMED PP 100",
+          "description": "Testosterone Phenylpropionate 100mg",
+          "price": 26,
+          "image": "/products/deus inject/DEUS TESTOMED PP 100.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Gain"
+        }
+      },
+      {
+        "id": "inj-deus-017",
+        "product": {
+          "id": "inj-deus-017",
+          "name": "DEUS TESTOMED U 250",
+          "description": "Testosterone Undecanoate 250mg",
+          "price": 30,
+          "image": "/products/deus inject/DEUS TESTOMED U 250.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Gain"
+        }
+      },
+      {
+        "id": "inj-deus-018",
+        "product": {
+          "id": "inj-deus-018",
+          "name": "DEUS TRENBOMED A 100",
+          "description": "Trenbolone Acetate 100mg",
+          "price": 41,
+          "image": "/products/deus inject/DEUS TRENBOMED A 100.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Definition"
+        }
+      },
+      {
+        "id": "inj-deus-019",
+        "product": {
+          "id": "inj-deus-019",
+          "name": "DEUS TRENBOMED E 200",
+          "description": "Trenbolone Enanthate 200mg",
+          "price": 50,
+          "image": "/products/deus inject/DEUS TRENBOMED E 200.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Definition"
+        }
+      },
+      {
+        "id": "inj-deus-020",
+        "product": {
+          "id": "inj-deus-020",
+          "name": "DEUS TRESTOLONE A 100",
+          "description": "Trestolone Acetate 100mg",
+          "price": 100,
+          "image": "/products/deus inject/DEUS TRESTOLONE A 100.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Gain"
+        }
+      },
+      {
+        "id": "inj-deus-021",
+        "product": {
+          "id": "inj-deus-021",
+          "name": "DEUS TRESTOLONE E 100",
+          "description": "Trestolone Enanthate 100mg",
+          "price": 100,
+          "image": "/products/deus inject/DEUS TRESTOLONE E 100.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Gain"
+        }
+      },
+      {
+        "id": "inj-deus-022",
+        "product": {
+          "id": "inj-deus-022",
+          "name": "DEUS WINIMED 50",
+          "description": "Stanozolol 50mg",
+          "price": 33,
+          "image": "/products/deus inject/DEUS WINIMED 50.png",
+          "category": "INJECTION",
+          "brand": "deus",
+          "filterType": "Definition"
+        }
+      }
+    ],
+    "missing_in_main": [
+      {
+        "id": "amino-deus-001",
+        "product": {
+          "id": "amino-deus-001",
+          "name": "Deus BCAA Complex",
+          "description": "Verzweigtkettige Aminosäuren",
+          "price": 28.99,
+          "image": "/products/deus-bcaa.jpg",
+          "category": "AMINO ACIDS",
+          "brand": "deus",
+          "filterType": "Base"
+        }
+      }
+    ],
+    "field_mismatches": [
+      {
+        "id": "inj-astera-001",
+        "name": "ASTERA BACTERIOSTATIC WATER",
+        "mismatches": [
+          {
+            "field": "price",
+            "mainValue": 10,
+            "detailValue": 12
+          }
+        ]
+      },
+      {
+        "id": "inj-astera-002",
+        "name": "ASTERA BOLDENONE ACETATE 50",
+        "mismatches": [
+          {
+            "field": "price",
+            "mainValue": 35,
+            "detailValue": 40
+          }
+        ]
+      },
+      {
+        "id": "inj-astera-009",
+        "name": "ASTERA LONG ACTING MIX 500",
+        "mismatches": [
+          {
+            "field": "filterType",
+            "mainValue": "Definition",
+            "detailValue": "Gain"
+          }
+        ]
+      },
+      {
+        "id": "inj-astera-013",
+        "name": "ASTERA METHYLDROSTANOLONE 40",
+        "mismatches": [
+          {
+            "field": "filterType",
+            "mainValue": "Gain",
+            "detailValue": "Definition"
+          }
+        ]
+      },
+      {
+        "id": "inj-astera-017",
+        "name": "ASTERA SHORT ACTING MIX 275",
+        "mismatches": [
+          {
+            "field": "filterType",
+            "mainValue": "Definition",
+            "detailValue": "Gain"
+          }
+        ]
+      },
+      {
+        "id": "inj-astera-023",
+        "name": "ASTERA TESTOSTERONE ENANTHATE 300",
+        "mismatches": [
+          {
+            "field": "price",
+            "mainValue": 35,
+            "detailValue": 25
+          }
+        ]
+      },
+      {
+        "id": "inj-astera-024",
+        "name": "ASTERA TESTOSTERONE NO ESTER 100",
+        "mismatches": [
+          {
+            "field": "filterType",
+            "mainValue": "Base",
+            "detailValue": "Gain"
+          }
+        ]
+      },
+      {
+        "id": "inj-astera-029",
+        "name": "ASTERA TRENBOLONE BASE 50",
+        "mismatches": [
+          {
+            "field": "filterType",
+            "mainValue": "Base",
+            "detailValue": "Definition"
+          }
+        ]
+      },
+      {
+        "id": "inj-astera-030",
+        "name": "ASTERA TRENBOLONE ENANTHATE 200",
+        "mismatches": [
+          {
+            "field": "filterType",
+            "mainValue": "Gain",
+            "detailValue": "Definition"
+          }
+        ]
+      },
+      {
+        "id": "inj-astera-031",
+        "name": "ASTERA TRENBOLONE HEXAHYDROBENZYL CARBONATE 100",
+        "mismatches": [
+          {
+            "field": "filterType",
+            "mainValue": "Gain",
+            "detailValue": "Definition"
+          }
+        ]
+      },
+      {
+        "id": "inj-astera-032",
+        "name": "ASTERA TRENBOLONE MIX 150",
+        "mismatches": [
+          {
+            "field": "filterType",
+            "mainValue": "Gain",
+            "detailValue": "Definition"
+          }
+        ]
+      },
+      {
+        "id": "oral-astera-008",
+        "name": "ASTERA METHYLTESTOSTERONE 25",
+        "mismatches": [
+          {
+            "field": "description",
+            "mainValue": "Methyldrostanolone 25mg",
+            "detailValue": "Methyltestosterone 25mg"
+          }
+        ]
+      },
+      {
+        "id": "peptides-deus-023",
+        "name": "DEUS SELANK",
+        "mismatches": [
+          {
+            "field": "description",
+            "mainValue": "Seelank Anxiolytic Peptide 5mg",
+            "detailValue": "Seeland Anxiolytic Peptide 5mg"
+          }
+        ]
+      }
+    ]
+  }
+}

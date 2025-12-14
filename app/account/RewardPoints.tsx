@@ -1,13 +1,13 @@
-'use client';
-import { useEffect, useState } from 'react';
-import { useAuth } from '../../components/auth/auth-context';
-import { supabase } from '../../lib/supabase';
+"use client";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../components/auth/auth-context";
+import { supabase } from "../../lib/supabase";
 
 interface RewardTransaction {
   id: string;
   user_id: string;
   points: number;
-  transaction_type: 'earned' | 'redeemed' | 'expired' | 'bonus';
+  transaction_type: "earned" | "redeemed" | "expired" | "bonus";
   transaction_description: string | null;
   order_id: string | null;
   points_change: number;
@@ -44,33 +44,34 @@ export default function RewardPoints() {
 
       // Fetch reward balance
       const { data: balanceData, error: balanceError } = await supabase
-        .from('user_reward_balance')
-        .select('*')
-        .eq('user_id', user.id)
+        .from("user_reward_balance")
+        .select("*")
+        .eq("user_id", user.id)
         .single();
 
-      if (balanceError && balanceError.code !== 'PGRST116') {
-        console.error('Error fetching balance:', balanceError);
+      if (balanceError && balanceError.code !== "PGRST116") {
+        console.error("Error fetching balance:", balanceError);
       } else if (balanceData) {
         setBalance(balanceData);
       }
 
       // Fetch recent transactions
-      const { data: transactionsData, error: transactionsError } = await supabase
-        .from('user_reward_points')
-        .select('*')
-        .eq('user_id', user.id)
-        .order('created_at', { ascending: false })
-        .limit(10);
+      const { data: transactionsData, error: transactionsError } =
+        await supabase
+          .from("user_reward_points")
+          .select("*")
+          .eq("user_id", user.id)
+          .order("created_at", { ascending: false })
+          .limit(10);
 
       if (transactionsError) {
-        console.error('Error fetching transactions:', transactionsError);
+        console.error("Error fetching transactions:", transactionsError);
       } else {
         setTransactions(transactionsData || []);
       }
     } catch (error) {
-      console.error('Error fetching reward data:', error);
-      setError('Failed to load reward points data');
+      console.error("Error fetching reward data:", error);
+      setError("Failed to load reward points data");
     } finally {
       setLoading(false);
     }
@@ -78,39 +79,39 @@ export default function RewardPoints() {
 
   const getTransactionIcon = (type: string) => {
     switch (type) {
-      case 'earned':
-        return '🛒';
-      case 'redeemed':
-        return '🎁';
-      case 'bonus':
-        return '🎉';
-      case 'expired':
-        return '⏰';
+      case "earned":
+        return "🛒";
+      case "redeemed":
+        return "🎁";
+      case "bonus":
+        return "🎉";
+      case "expired":
+        return "⏰";
       default:
-        return '💎';
+        return "💎";
     }
   };
 
   const getTransactionColor = (type: string) => {
     switch (type) {
-      case 'earned':
-      case 'bonus':
-        return 'text-green-400';
-      case 'redeemed':
-      case 'expired':
-        return 'text-red-400';
+      case "earned":
+      case "bonus":
+        return "text-green-400";
+      case "redeemed":
+      case "expired":
+        return "text-red-400";
       default:
-        return 'text-neutral-300';
+        return "text-neutral-300";
     }
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     });
   };
 
@@ -137,19 +138,25 @@ export default function RewardPoints() {
         <div className="bg-neutral-800 rounded-lg p-6">
           <div className="text-center pt-4 pb-8">
             <div className="mb-4 flex justify-center">
-              <img 
-                src="/diamond.png" 
-                alt="Diamond Reward Points" 
+              <img
+                src="/diamond.png"
+                alt="Diamond Reward Points"
                 className="w-16 h-16 object-contain"
-                style={{ filter: 'brightness(0) invert(1)' }}
+                style={{ filter: "brightness(0) invert(1)" }}
               />
             </div>
-            <h4 className="text-xl font-semibold text-white mb-3">No Reward Points Yet</h4>
+            <h4 className="text-xl font-semibold text-white mb-3">
+              No Reward Points Yet
+            </h4>
             <p className="text-neutral-300 mb-6 max-w-md mx-auto">
-              You haven&apos;t collected any reward points yet. Points can be earned through orders and redeemed for discounts or special offers.
+              You haven&apos;t collected any reward points yet. Points can be
+              earned through orders and redeemed for discounts or special
+              offers.
             </p>
             <div className="bg-neutral-700 rounded-lg p-4 max-w-sm mx-auto">
-              <h5 className="text-sm font-medium text-white mb-2">How it works:</h5>
+              <h5 className="text-sm font-medium text-white mb-2">
+                How it works:
+              </h5>
               <ul className="text-sm text-neutral-300 space-y-1 text-left">
                 <li>• €1 order = 1 point</li>
                 <li>• 100 points = €5 discount</li>
@@ -162,8 +169,10 @@ export default function RewardPoints() {
         <>
           {/* Reward Points Balance */}
           <div className="bg-neutral-800 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-white mb-6 text-center">Your Reward Points</h3>
-            
+            <h3 className="text-lg font-semibold text-white mb-6 text-center">
+              Your Reward Points
+            </h3>
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Available Points */}
               <div className="bg-gradient-to-br from-[#e91111]/20 to-[#e91111]/5 border border-[#e91111]/30 rounded-lg p-4 text-center">
@@ -200,7 +209,9 @@ export default function RewardPoints() {
                   <div>
                     <h4 className="text-white font-medium">Redeem Points</h4>
                     <p className="text-sm text-neutral-300">
-                      You can get €{Math.floor((balance?.available_points || 0) / 100) * 5} discount
+                      You can get €
+                      {Math.floor((balance?.available_points || 0) / 100) * 5}{" "}
+                      discount
                     </p>
                   </div>
                   <button className="px-4 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium">
@@ -214,11 +225,16 @@ export default function RewardPoints() {
           {/* Recent Transactions */}
           {transactions.length > 0 && (
             <div className="bg-neutral-800 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-4">Recent Activity</h3>
-              
+              <h3 className="text-lg font-semibold text-white mb-4">
+                Recent Activity
+              </h3>
+
               <div className="space-y-3">
                 {transactions.map((transaction) => (
-                  <div key={transaction.id} className="bg-neutral-700 rounded-lg p-4">
+                  <div
+                    key={transaction.id}
+                    className="bg-neutral-700 rounded-lg p-4"
+                  >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="text-2xl">
@@ -226,19 +242,25 @@ export default function RewardPoints() {
                         </div>
                         <div>
                           <div className="text-white font-medium">
-                            {transaction.transaction_description || 
-                             `${transaction.transaction_type.charAt(0).toUpperCase() + transaction.transaction_type.slice(1)} Points`}
+                            {transaction.transaction_description ||
+                              `${transaction.transaction_type.charAt(0).toUpperCase() + transaction.transaction_type.slice(1)} Points`}
                           </div>
                           <div className="text-sm text-neutral-400">
                             {formatDate(transaction.created_at)}
                             {transaction.order_id && (
-                              <span> • Order #{transaction.order_id.slice(-8)}</span>
+                              <span>
+                                {" "}
+                                • Order #{transaction.order_id.slice(-8)}
+                              </span>
                             )}
                           </div>
                         </div>
                       </div>
-                      <div className={`text-lg font-bold ${getTransactionColor(transaction.transaction_type)}`}>
-                        {transaction.points_change > 0 ? '+' : ''}{transaction.points_change}
+                      <div
+                        className={`text-lg font-bold ${getTransactionColor(transaction.transaction_type)}`}
+                      >
+                        {transaction.points_change > 0 ? "+" : ""}
+                        {transaction.points_change}
                       </div>
                     </div>
                   </div>
@@ -257,8 +279,10 @@ export default function RewardPoints() {
 
           {/* How it Works */}
           <div className="bg-neutral-800 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-white mb-4">How Reward Points Work</h3>
-            
+            <h3 className="text-lg font-semibold text-white mb-4">
+              How Reward Points Work
+            </h3>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <h4 className="text-white font-medium mb-3">Earning Points</h4>
@@ -277,9 +301,11 @@ export default function RewardPoints() {
                   </li>
                 </ul>
               </div>
-              
+
               <div>
-                <h4 className="text-white font-medium mb-3">Redeeming Points</h4>
+                <h4 className="text-white font-medium mb-3">
+                  Redeeming Points
+                </h4>
                 <ul className="text-sm text-neutral-300 space-y-2">
                   <li className="flex items-center gap-2">
                     <span className="text-[#e91111]">•</span>

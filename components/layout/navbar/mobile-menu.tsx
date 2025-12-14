@@ -1,13 +1,12 @@
-'use client';
+"use client";
 
-import { Transition } from '@headlessui/react';
-import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
-import { Fragment, Suspense, useEffect, useState } from 'react';
+import { Transition } from "@headlessui/react";
+import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 
-import { Bars3Icon } from '@heroicons/react/24/outline';
-import Search, { SearchSkeleton } from './search';
-import { FAQModal, ContactModal } from '../../home/community-section';
+import { Bars3Icon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { useModal } from "../../../contexts/modal-context";
 
 // Temporary type definition
 type Menu = {
@@ -16,42 +15,178 @@ type Menu = {
 };
 
 // Categories mit Icons wie in der Sidebar
-const categories: { label: string; icon: string; path: string; param: string }[] = [
-  { label: 'ALL PRODUCTS', icon: '/products.png', path: '/categories', param: '' },
-  { label: 'INJECTION', icon: '/inject.png', path: '/categories', param: 'INJECTION' },
-  { label: 'ORAL', icon: '/oral.png', path: '/categories', param: 'ORAL' },
-  { label: 'POST CYCLE', icon: '/post.png', path: '/categories', param: 'POST CYCLE' },
-  { label: 'FAT BURN', icon: '/fatburn.png', path: '/categories', param: 'FAT BURN' },
-  { label: 'SEXUAL WELLNESS', icon: '/sexual.png', path: '/categories', param: 'SEXUAL WELLNESS' },
-  { label: 'PEPTIDES & HGH', icon: '/peptides.png', path: '/categories', param: 'PEPTIDES %26 HGH' },
-  { label: 'SARMS', icon: '/sarms.png', path: '/categories', param: 'SARMS' },
-  { label: 'AMINO ACIDS', icon: '/amino.png', path: '/categories', param: 'AMINO ACIDS' },
+const categories: {
+  label: string;
+  icon: string;
+  path: string;
+  param: string;
+}[] = [
+  {
+    label: "CATEGORIES",
+    icon: "/products.png",
+    path: "/categories",
+    param: "",
+  },
+  {
+    label: "INJECTION",
+    icon: "/inject.png",
+    path: "/categories",
+    param: "INJECTION",
+  },
+  {
+    label: "ORAL",
+    icon: "/oral.png",
+    path: "/categories",
+    param: "ORAL",
+  },
+  {
+    label: "POST CYCLE",
+    icon: "/post.png",
+    path: "/categories",
+    param: "POST CYCLE",
+  },
+  {
+    label: "FAT BURN",
+    icon: "/fatburn.png",
+    path: "/categories",
+    param: "FAT BURN",
+  },
+  {
+    label: "SEXUAL WELLNESS",
+    icon: "/sexual.png",
+    path: "/categories",
+    param: "SEXUAL WELLNESS",
+  },
+  {
+    label: "PEPTIDES & HGH",
+    icon: "/peptides.png",
+    path: "/categories",
+    param: "PEPTIDES %26 HGH",
+  },
+  { label: "SARMS", icon: "/sarms.png", path: "/categories", param: "SARMS" },
+  {
+    label: "AMINO ACIDS",
+    icon: "/amino.png",
+    path: "/categories",
+    param: "AMINO ACIDS",
+  },
 ];
 
 export default function MobileMenu({ menu }: { menu: Menu[] }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
-  const [faqOpen, setFaqOpen] = useState(false);
-  const [contactOpen, setContactOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [currentBrand, setCurrentBrand] = useState<"deus" | "astera" | null>(
+    null,
+  );
+  const [openCategoryDropdowns, setOpenCategoryDropdowns] = useState<string[]>([]);
+
+  // Get modal setters from context
+  const {
+    setFAQModalOpen,
+    setContactModalOpen,
+  } = useModal();
+
   const openMobileMenu = () => setIsOpen(true);
   const closeMobileMenu = () => setIsOpen(false);
 
-  // Force button styling when menu state changes
+  const toggleCategoryDropdown = (categoryLabel: string) => {
+    setOpenCategoryDropdowns(prev => {
+      // Wenn das Dropdown bereits geöffnet ist, schließe es
+      if (prev.includes(categoryLabel)) {
+        return prev.filter(label => label !== categoryLabel);
+      }
+      // Ansonsten schließe alle anderen und öffne nur das gewählte
+      return [categoryLabel];
+    });
+  };
+
+  // Hydration-safe mounted state
   useEffect(() => {
-    const button = document.querySelector('[aria-label="Open mobile menu"]') as HTMLElement;
-    if (button) {
-      if (isOpen) {
-        // Aktiver Zustand: Verstärkter innen-Schatten (gedrückt-Effekt) mit rotem Rahmen
-        button.style.backgroundColor = 'transparent';
-        button.style.boxShadow = 'inset 0 3px 6px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(0, 0, 0, 0.8), inset 0 -1px 0 rgba(255, 255, 255, 0.05), 0 0 0 1px rgba(233, 17, 17, 0.8)';
-      } else {
-        // Inaktiver Zustand: Normales Styling
-        button.style.backgroundColor = 'transparent';
-        button.style.boxShadow = 'inset 0 1px 2px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1)';
+    setMounted(true);
+  }, []);
+
+  // Silent mobile menu pre-render on mobile load (all pages except /about)
+  useEffect(() => {
+    if (mounted && pathname !== "/about") {
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        // Silently open menu for 1ms to trigger render, then close
+        setTimeout(() => {
+          setIsOpen(true);
+          setTimeout(() => {
+            setIsOpen(false);
+          }, 1);
+        }, 100);
       }
     }
-  }, [isOpen]);
+  }, [mounted, pathname]);
+
+  // Function to detect current brand state from URL or page context
+  const getCurrentBrand = useCallback((): "deus" | "astera" | null => {
+    if (!mounted) return null; // Prevent hydration issues
+
+    // Check URL parameters first - also check window.location for immediate access
+    const brandParam = searchParams.get("brand");
+    if (brandParam === "astera" || brandParam === "deus") {
+      return brandParam as "deus" | "astera";
+    }
+
+    // Also check window.location directly for immediate URL parameter access
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      const windowBrandParam = urlParams.get("brand");
+      if (windowBrandParam === "astera" || windowBrandParam === "deus") {
+        return windowBrandParam as "deus" | "astera";
+      }
+    }
+
+    // Check if we're on categories page and can detect brand from DOM/context
+    if (pathname === "/categories") {
+      // Try to detect brand from the page's active state
+      // Look for Astera brand indicators in the DOM
+      if (typeof window !== "undefined") {
+        const asteraBrandElements = document.querySelectorAll(
+          ".astera-brand-active",
+        );
+        if (asteraBrandElements.length > 0) {
+          return "astera";
+        }
+      }
+    }
+
+    return "deus"; // Default to deus
+  }, [searchParams, pathname, mounted]);
+
+  // Update current brand when mounted or params change
+  useEffect(() => {
+    if (mounted) {
+      setCurrentBrand(getCurrentBrand());
+    }
+  }, [mounted, getCurrentBrand]);
+
+  // Function to generate brand-aware URLs
+  const generateBrandAwareUrl = useCallback(
+    (basePath: string, categoryParam?: string) => {
+      if (!mounted) return basePath; // Return simple path if not mounted
+
+      const brand = currentBrand;
+
+      if (!categoryParam) {
+        // For "ALL PRODUCTS" - just use base path, optionally with brand
+        return brand === "astera" ? `${basePath}?brand=astera` : basePath;
+      }
+
+      // For specific categories
+      if (brand === "astera") {
+        return `${basePath}?category=${categoryParam}&brand=astera`;
+      } else {
+        return `${basePath}?category=${categoryParam}`;
+      }
+    },
+    [currentBrand, mounted],
+  );
 
   useEffect(() => {
     const handleResize = () => {
@@ -59,333 +194,580 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
         setIsOpen(false);
       }
     };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [isOpen]);
 
   useEffect(() => {
+    // Menu schließen bei pathname Änderung (echte Navigation)
     setIsOpen(false);
-  }, [pathname, searchParams]);
+  }, [pathname]);
+
+  useEffect(() => {
+    // Menu nur bei searchParams Änderung schließen, wenn wir nicht auf der Startseite, Categories Seite oder Search Seite sind
+    if (
+      pathname !== "/" &&
+      pathname !== "/categories" &&
+      !pathname.startsWith("/categories/search")
+    ) {
+      setIsOpen(false);
+    }
+  }, [searchParams, pathname]);
 
   return (
     <>
       <button
         aria-label="Open mobile menu"
-        className="flex h-11 w-11 items-center justify-center rounded-md text-white transition-colors md:hidden relative"
+        className="flex items-center justify-center text-white md:hidden relative group"
         style={{
-          backgroundColor: 'transparent',
-          border: 'none',
-          boxShadow: isOpen 
-            ? 'inset 0 3px 6px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(0, 0, 0, 0.8), inset 0 -1px 0 rgba(255, 255, 255, 0.05), 0 0 0 1px rgba(233, 17, 17, 0.8)' 
-            : 'inset 0 1px 2px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1)',
-          zIndex: 10000, // Erhöht von 9999 auf 10000
-          transition: 'all 0.3s ease'
+          width: "32px",
+          height: "32px",
+          backgroundColor: "transparent !important",
+          border: "none !important",
+          borderRadius: "7px",
+          boxShadow: "none !important",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexShrink: 0,
+          outline: "none !important",
+          WebkitAppearance: "none",
+          appearance: "none",
         }}
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
-          if (isOpen) {
-            closeMobileMenu();
-          } else {
-            openMobileMenu();
-          }
+          openMobileMenu();
         }}
         onMouseEnter={(e) => {
-          if (!isOpen) {
-            e.currentTarget.style.backgroundColor = 'rgba(233, 17, 17, 0.1)';
-            e.currentTarget.style.boxShadow = 'inset 0 2px 3px rgba(0, 0, 0, 0.6), inset 0 3px 5px rgba(0, 0, 0, 0.5), inset 0 -1px 0 rgba(255, 255, 255, 0.08), inset 0 0 6px rgba(233, 17, 17, 0.3), 0 0 0 1px rgba(233, 17, 17, 0.3)';
-          }
-          // Im aktiven Zustand (isOpen = true) machen wir NICHTS beim MouseEnter
+          e.currentTarget.style.boxShadow = "none !important";
+          e.currentTarget.style.backgroundColor = "transparent !important";
         }}
         onMouseLeave={(e) => {
-          if (!isOpen) {
-            e.currentTarget.style.backgroundColor = 'transparent';
-            e.currentTarget.style.boxShadow = 'inset 0 1px 2px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1)';
-          } else {
-            // Im aktiven Zustand: Verstärkter innen-Schatten (gedrückt-Effekt) mit rotem Rahmen
-            e.currentTarget.style.backgroundColor = 'transparent';
-            e.currentTarget.style.boxShadow = 'inset 0 3px 6px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(0, 0, 0, 0.8), inset 0 -1px 0 rgba(255, 255, 255, 0.05), 0 0 0 1px rgba(233, 17, 17, 0.8)';
-          }
+          e.currentTarget.style.boxShadow = "none !important";
+          e.currentTarget.style.backgroundColor = "transparent !important";
+        }}
+        onTouchStart={(e) => {
+          e.currentTarget.style.boxShadow = "none !important";
+          e.currentTarget.style.backgroundColor = "transparent !important";
+        }}
+        onTouchEnd={(e) => {
+          e.currentTarget.style.boxShadow = "none !important";
+          e.currentTarget.style.backgroundColor = "transparent !important";
         }}
       >
-        <Bars3Icon className="h-4" />
+        <Bars3Icon
+          className="text-white group-hover:text-[#eb1313] transition-colors duration-200"
+          style={{
+            width: "21.06px !important",
+            height: "21.06px !important",
+            minWidth: "21.06px",
+            minHeight: "21.06px",
+            maxWidth: "21.06px",
+            maxHeight: "21.06px",
+            flexShrink: 0,
+          }}
+        />
       </button>
-      <Transition show={isOpen}>
-        {/* Backdrop */}
-        <Transition.Child
-          as={Fragment}
-          enter="transition-all ease-in-out duration-300"
-          enterFrom="opacity-0 backdrop-blur-none"
-          enterTo="opacity-100 backdrop-blur-[.5px]"
-          leave="transition-all ease-in-out duration-200"
-          leaveFrom="opacity-100 backdrop-blur-[.5px]"
-          leaveTo="opacity-0 backdrop-blur-none"
+
+      {/* Invisible overlay button when menu is open - for closing */}
+      {isOpen && (
+        <button
+          aria-label="Close mobile menu"
+          className="absolute transition-all duration-200 md:hidden group"
+          style={{
+            width: "32px",
+            height: "32px",
+            backgroundColor: "transparent", // Completely transparent
+            border: "none",
+            borderRadius: "7px",
+            boxShadow: "none", // No shadow
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexShrink: 0,
+            zIndex: 10001, // Higher than menu panel
+            top: "3pt",
+            left: "6pt",
+            cursor: "pointer",
+          }}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            closeMobileMenu();
+          }}
         >
-          <div 
-            className="fixed bg-black/30" 
-            style={{
-              top: '41px',
-              left: '0',
-              right: '0', 
-              bottom: '0',
-              zIndex: 40
-            }}
-            aria-hidden="true"
-            onClick={closeMobileMenu}
-          />
-        </Transition.Child>
-        
+          {/* Invisible icon - no content rendered */}
+        </button>
+      )}
+      <Transition show={isOpen}>
+
         {/* Menu Panel */}
         <Transition.Child
           as="div"
           className="fixed left-0 right-0 flex w-full flex-col pb-6 overflow-hidden"
-          style={{ 
-            top: '41px',
-            height: 'calc(100vh - 41px)',
-            background: 'linear-gradient(135deg, rgb(64,64,74) 0%, rgb(45,45,52) 100%)',
-            zIndex: 100
+          style={{
+            top: "88px", // 41px navbar + 47px search modal
+            height: "calc(100vh - 88px)", // Adjust height accordingly
+            background: "rgb(45,45,52)",
+            zIndex: 10019, // Under navbar (10020) so shadow is visible
           }}
-          enter="transition-all ease-in-out duration-300"
+          enter="transition-all ease-in-out duration-200"
           enterFrom="translate-x-[-100%]"
           enterTo="translate-x-0"
-          leave="transition-all ease-in-out duration-200"
+          leave="transition-all ease-in-out duration-150"
           leaveFrom="translate-x-0"
           leaveTo="translate-x-[-100%]"
-        >
-                <div 
-                  className="p-4 overflow-y-auto flex-1 relative"
-                  style={{
-                    overscrollBehavior: 'contain',
-                    WebkitOverflowScrolling: 'touch',
-                    zIndex: 101
-                  }}
-                >
-                {/* Search Bar */}
-                <div className="mb-4 w-full" style={{ marginTop: '8px' }}>
-                  <Suspense fallback={<SearchSkeleton />}>
-                    <Search />
-                  </Suspense>
-                </div>
+        >  <div
+            className="p-4 overflow-y-auto flex-1 relative mobile-menu-content"
+            data-mobile-menu="true"
+            style={{
+              overscrollBehavior: "contain",
+              WebkitOverflowScrolling: "touch",
+              zIndex: 10000, // Erhöht von 101 auf 10000, um über allen anderen Elementen zu sein
+            }}
+          >
 
-                {/* Main Navigation (HOME, SHOP) */}
-                {menu.length ? (
-                  <div className="mb-4">
-                    <div 
-                      className="h-[2px] mb-4"
-                      style={{ 
-                        background: 'linear-gradient(90deg, #e91111 0%, rgba(233, 17, 17, 0.1) 100%)',
-                        width: '100%'
+
+            {/* Main Navigation (HOME, SHOP) */}
+            {menu.length ? (
+              <div className="mb-4">
+                <ul className="space-y-2">
+                  {/* HOME BUTTON */}
+                  <li>
+                    <Link
+                      href="/home"
+                      prefetch={true}
+                      onClick={(e) => {
+                        // Navigation erst erlauben, dann Menu schließen
+                        setTimeout(() => {
+                          closeMobileMenu();
+                        }, 100);
                       }}
-                    />
-                    <ul className="space-y-2">
-                      {menu.map((item: Menu) => {
-                        const isActive = pathname === item.path;
-                        return (
-                          <li key={item.title}>
-                            <Link 
-                              href={item.path} 
-                              prefetch={true} 
-                              onClick={(e) => {
-                                // Navigation erst erlauben, dann Menu schließen
-                                setTimeout(() => {
-                                  closeMobileMenu();
-                                }, 100);
-                              }}
-                              className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden block ${
-                                isActive
-                                  ? 'text-white'
-                                  : 'text-neutral-300 hover:text-white'
-                              }`}
-                              style={{
-                                background: isActive
-                                  ? 'linear-gradient(135deg, rgba(233, 17, 17, 0.9) 0%, rgba(233, 17, 17, 0.7) 50%, rgba(233, 17, 17, 0.5) 100%)'
-                                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                                border: isActive
-                                  ? '1px solid rgba(233, 17, 17, 0.3)'
-                                  : '1px solid rgba(255, 255, 255, 0.1)',
-                                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-                              }}
-                              onMouseEnter={(e) => {
-                                if (!isActive) {
-                                  e.currentTarget.style.background = 'linear-gradient(135deg, rgba(233, 17, 17, 0.3) 0%, rgba(233, 17, 17, 0.15) 50%, rgba(255, 255, 255, 0.05) 100%)';
-                                  e.currentTarget.style.border = '1px solid rgba(233, 17, 17, 0.4)';
-                                }
-                              }}
-                              onMouseLeave={(e) => {
-                                if (!isActive) {
-                                  e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)';
-                                  e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.1)';
-                                }
-                              }}
-                            >
-                              <span className="truncate">{item.title}</span>
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                ) : null}
-
-                {/* Categories Navigation */}
-                <nav className="mb-6">
-                  <div 
-                    className="h-[2px] mb-4"
-                    style={{ 
-                      background: 'linear-gradient(90deg, #e91111 0%, rgba(233, 17, 17, 0.1) 100%)',
-                      width: '100%'
-                    }}
-                  />
-                  <ul className="space-y-2">
-                    {categories.map((category) => {
-                      const categoryParam = searchParams.get('category');
-                      // Für PEPTIDES & HGH: URL-decodierte Version vergleichen
-                      const expectedParam = category.param === 'PEPTIDES %26 HGH' ? 'PEPTIDES & HGH' : category.param;
-                      const isActive = (expectedParam === '' && !categoryParam) || categoryParam === expectedParam;
-                      const href = category.param ? `${category.path}?category=${category.param}` : category.path;
-                      
-                      return (
-                        <li key={category.label}>
-                          <Link
-                            href={href}
-                            onClick={(e) => {
-                              // Spezialbehandlung für ALL PRODUCTS - Reload der Seite
-                              if (category.label === 'ALL PRODUCTS') {
-                                e.preventDefault();
-                                closeMobileMenu();
-                                // URL bereinigen und dann reloaden
-                                window.history.replaceState({}, '', '/categories');
-                                setTimeout(() => {
-                                  window.location.reload();
-                                }, 50);
-                                return;
-                              }
-                              // Navigation erst erlauben, dann Menu schließen
-                              setTimeout(() => {
-                                closeMobileMenu();
-                              }, 100);
-                            }}
-                            className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden block ${
-                              isActive
-                                ? 'text-white'
-                                : 'text-neutral-300 hover:text-white'
-                            }`}
-                            style={{
-                              background: isActive
-                                ? 'linear-gradient(135deg, rgba(233, 17, 17, 0.9) 0%, rgba(233, 17, 17, 0.7) 50%, rgba(233, 17, 17, 0.5) 100%)'
-                                : 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                              border: isActive
-                                ? '1px solid rgba(233, 17, 17, 0.3)'
-                                : '1px solid rgba(255, 255, 255, 0.1)',
-                              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-                            }}
-                            onMouseEnter={(e) => {
-                              if (!isActive) {
-                                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(233, 17, 17, 0.3) 0%, rgba(233, 17, 17, 0.15) 50%, rgba(255, 255, 255, 0.05) 100%)';
-                                e.currentTarget.style.border = '1px solid rgba(233, 17, 17, 0.4)';
-                              }
-                            }}
-                            onMouseLeave={(e) => {
-                              if (!isActive) {
-                                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)';
-                                e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.1)';
-                              }
-                            }}
-                          >
-                            <img 
-                              src={category.icon} 
-                              alt={`${category.label} Icon`} 
+                      className={`w-full text-left px-4 py-2.5 rounded-lg text-xs font-medium uppercase transition-all duration-300 group overflow-hidden flex items-center justify-between ${
+                        pathname === "/home"
+                          ? "text-white"
+                          : "text-neutral-300 hover:text-white"
+                      }`}
+                      style={{
+                        background: "transparent",
+                        border: "1px solid rgba(255, 255, 255, 0)",
+                        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                        position: "relative",
+                        zIndex: 10,
+                      }}
+                    >
+                      <div className="flex items-center gap-3">
+                        <img
+                          src="/home.png"
+                          alt="Home Icon"
+                          className="w-5 h-5 object-contain flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+                          style={{ filter: "brightness(0) invert(1)" }}
+                        />
+                        <span className="text-xs font-medium uppercase">Home</span>
+                      </div>
+                      <ChevronRightIcon className="w-3.5 h-3.5 text-white flex-shrink-0" />
+                    </Link>
+                  </li>
+                  
+                  {menu.filter((item: Menu) => item.title !== "Home").map((item: Menu) => {
+                    const isActive = pathname === item.path;
+                    
+                    return (
+                      <li key={item.title}>
+                        <Link
+                          href={item.path}
+                          prefetch={true}
+                          onClick={(e) => {
+                            // Navigation erst erlauben, dann Menu schließen
+                            setTimeout(() => {
+                              closeMobileMenu();
+                            }, 100);
+                          }}
+                          className={`w-full text-left px-4 py-2.5 rounded-lg text-xs font-medium uppercase transition-all duration-300 group overflow-hidden flex items-center justify-between ${
+                            isActive
+                              ? "text-white"
+                              : "text-neutral-300 hover:text-white"
+                          }`}
+                          style={{
+                            background: "transparent",
+                            border: "1px solid rgba(255, 255, 255, 0)",
+                            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                            position: "relative",
+                            zIndex: 10,
+                          }}
+                        >
+                          <div className="flex items-center gap-3">
+                            <img
+                              src="/shop.png"
+                              alt={`${item.title} Icon`}
                               className="w-5 h-5 object-contain flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
-                              style={{ filter: 'brightness(0) invert(1)' }}
+                              style={{ filter: "brightness(0) invert(1)" }}
                             />
-                            <span className="truncate">{category.label}</span>
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </nav>
+                            <span className="text-xs font-medium uppercase">{item.title}</span>
+                          </div>
+                          <ChevronRightIcon className="w-3.5 h-3.5 text-white flex-shrink-0" />
+                        </Link>
+                      </li>
+                    );
+                  })}
 
-                {/* FAQ and Contact Section */}
-                <div className="mb-6">
-                  <div 
-                    className="h-[2px] mb-4"
-                    style={{ 
-                      background: 'linear-gradient(90deg, #e91111 0%, rgba(233, 17, 17, 0.1) 100%)',
-                      width: '100%'
-                    }}
-                  />
-                  <ul className="space-y-2">
-                    <li>
-                      <button
-                        onClick={() => {
-                          setFaqOpen(true);
-                          closeMobileMenu();
-                        }}
-                        className="w-full text-left px-4 py-3 rounded-lg text-sm font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-neutral-300 hover:text-white"
-                        style={{
-                          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                          border: '1px solid rgba(255, 255, 255, 0.1)',
-                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = 'linear-gradient(135deg, rgba(233, 17, 17, 0.3) 0%, rgba(233, 17, 17, 0.15) 50%, rgba(255, 255, 255, 0.05) 100%)';
-                          e.currentTarget.style.border = '1px solid rgba(233, 17, 17, 0.4)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)';
-                          e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.1)';
-                        }}
-                      >
-                        <span className="truncate">FAQ</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        onClick={() => {
-                          setContactOpen(true);
-                          closeMobileMenu();
-                        }}
-                        className="w-full text-left px-4 py-3 rounded-lg text-sm font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-neutral-300 hover:text-white"
-                        style={{
-                          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                          border: '1px solid rgba(255, 255, 255, 0.1)',
-                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = 'linear-gradient(135deg, rgba(233, 17, 17, 0.3) 0%, rgba(233, 17, 17, 0.15) 50%, rgba(255, 255, 255, 0.05) 100%)';
-                          e.currentTarget.style.border = '1px solid rgba(233, 17, 17, 0.4)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)';
-                          e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.1)';
-                        }}
-                      >
-                        <span className="truncate">CONTACT</span>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Unsichtbares Spacer-Element für bessere Scrollbarkeit */}
-                <div style={{ height: '100px', width: '100%' }} />
-
+                </ul>
               </div>
-              
-              {/* Shadow Overlay für Tiefeneffekt - von oben nach innen */}
-              <div 
-                className="absolute left-0 right-0 top-0 bottom-0 pointer-events-none"
+            ) : null}
+
+            {/* Categories Navigation */}
+            <nav className="mb-4">
+              <div
+                className="h-[1px] mb-4"
                 style={{
-                  boxShadow: 'inset 0 8px 16px rgba(0, 0, 0, 0.4), inset 0 4px 8px rgba(0, 0, 0, 0.3)',
-                  zIndex: 102
+                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  width: "100%",
                 }}
               />
-        </Transition.Child>
-        </Transition>
+              <ul className="space-y-2">
+                {categories.map((category) => {
+                  const categoryParam = searchParams.get("category");
+                  // Für PEPTIDES & HGH: URL-decodierte Version vergleichen
+                  const expectedParam =
+                    category.param === "PEPTIDES %26 HGH"
+                      ? "PEPTIDES & HGH"
+                      : category.param;
+                  const isActive =
+                    (expectedParam === "" && !categoryParam) ||
+                    categoryParam === expectedParam;
 
-        {/* Render Modals */}
-        <FAQModal isOpen={faqOpen} onCloseAction={() => setFaqOpen(false)} />
-        <ContactModal isOpen={contactOpen} onCloseAction={() => setContactOpen(false)} />
+                  // Prüfe ob es sich um eine Category mit Dropdown handelt (alle außer CATEGORIES)
+                  const hasDropdown = category.label !== "CATEGORIES";
+                  const isDropdownOpen = openCategoryDropdowns.includes(category.label);
+
+                  if (hasDropdown) {
+                    // Category Button mit Dropdown
+                    return (
+                      <li key={category.label} className="rounded-lg overflow-hidden">
+                        <button
+                          onClick={() => toggleCategoryDropdown(category.label)}
+                          className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium uppercase transition-all duration-300 flex items-center justify-between group overflow-hidden focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none active:ring-0 active:outline-none ${
+                            isActive ? "text-white" : "text-neutral-300 hover:text-white"
+                          }`}
+                          style={{
+                            background: "transparent",
+                            border: "1px solid rgba(255, 255, 255, 0)",
+                            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                            position: "relative",
+                            zIndex: 10,
+                            outline: "none !important",
+                            boxShadow: "none !important",
+                            WebkitAppearance: "none",
+                            appearance: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            if (!isActive) {
+                              e.currentTarget.style.border =
+                                "2px solid rgba(255, 255, 255, 0)";
+                            }
+                          }}
+                          onMouseLeave={(e) => {
+                            if (!isActive) {
+                              e.currentTarget.style.border =
+                                "1px solid rgba(255, 255, 255, 0)";
+                            }
+                          }}
+                          onMouseDown={(e) => {
+                            e.currentTarget.style.outline = "none !important";
+                            e.currentTarget.style.boxShadow = "none !important";
+                            e.currentTarget.style.border = "1px solid rgba(255, 255, 255, 0)";
+                          }}
+                          onMouseUp={(e) => {
+                            e.currentTarget.style.outline = "none !important";
+                            e.currentTarget.style.boxShadow = "none !important";
+                            if (!isActive) {
+                              e.currentTarget.style.border = "1px solid rgba(255, 255, 255, 0)";
+                            }
+                          }}
+                          onTouchStart={(e) => {
+                            e.currentTarget.style.outline = "none !important";
+                            e.currentTarget.style.boxShadow = "none !important";
+                            e.currentTarget.style.border = "1px solid rgba(255, 255, 255, 0)";
+                          }}
+                          onTouchEnd={(e) => {
+                            e.currentTarget.style.outline = "none !important";
+                            e.currentTarget.style.boxShadow = "none !important";
+                          }}
+                        >
+                          <div className="flex items-center gap-3">
+                            <img
+                              src={category.icon}
+                              alt={`${category.label} Icon`}
+                              className="w-5 h-5 object-contain flex-shrink-0"
+                              style={{ filter: "brightness(0) invert(1)" }}
+                            />
+                            <span className="text-xs font-medium uppercase">{category.label}</span>
+                          </div>
+                          <span className="text-white">
+                            {isDropdownOpen ? '−' : '+'}
+                          </span>
+                        </button>
+                        {isDropdownOpen && (
+                          <div className="px-4 py-1 border-t border-white/10" style={{ backgroundColor: "rgb(45, 45, 52)", marginTop: "-6px", position: "relative", zIndex: 20 }}>
+                            <div className="space-y-2">
+                              <button
+                                onClick={() => {
+                                  // DEUS MEDICAL Navigation
+                                  closeMobileMenu();
+                                  const href = `/categories?category=${encodeURIComponent(category.param)}`;
+                                  setTimeout(() => {
+                                    window.location.href = href;
+                                  }, 100);
+                                }}
+                                className="w-full text-left py-2 text-xs font-medium uppercase rounded transition-colors focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none"
+                                style={{ 
+                                  backgroundColor: "transparent",
+                                  border: "none",
+                                  color: "#ff4444",
+                                  outline: "none",
+                                  boxShadow: "none",
+                                  paddingLeft: "32px"
+                                }}
+                              >
+                                DEUS MEDICAL
+                              </button>
+                              <button
+                                onClick={() => {
+                                  // ASTERA LABS Navigation
+                                  closeMobileMenu();
+                                  const href = `/categories?category=${encodeURIComponent(category.param)}&brand=astera`;
+                                  setTimeout(() => {
+                                    window.location.href = href;
+                                  }, 100);
+                                }}
+                                className="w-full text-left py-2 text-xs font-medium uppercase rounded transition-colors focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none"
+                                style={{ 
+                                  backgroundColor: "transparent",
+                                  border: "none",
+                                  color: "#ff8c42",
+                                  outline: "none",
+                                  boxShadow: "none",
+                                  paddingLeft: "32px"
+                                }}
+                              >
+                                ASTERA LABS
+                              </button>
+                            </div>
+                          </div>
+                        )}
+                      </li>
+                    );
+                  } else {
+                    // CATEGORIES Button ohne Dropdown (wie vorher)
+                    const href = generateBrandAwareUrl(
+                      category.path,
+                      category.param || undefined,
+                    );
+
+                    return (
+                      <li key={category.label}>
+                        <Link
+                          href={href}
+                          onClick={(e) => {
+                            // Spezialbehandlung für ALL PRODUCTS - Reload der Seite
+                            if (category.label === "CATEGORIES") {
+                              e.preventDefault();
+                              closeMobileMenu();
+                              const brandAwareUrl = generateBrandAwareUrl("/categories");
+                              window.history.replaceState({}, "", brandAwareUrl);
+                              setTimeout(() => {
+                                window.location.reload();
+                              }, 50);
+                              return;
+                            }
+
+                            setTimeout(() => {
+                              closeMobileMenu();
+                            }, 100);
+                          }}
+                          className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium uppercase transition-all duration-300 flex items-center justify-between group overflow-hidden block ${
+                            isActive ? "text-white" : "text-neutral-300 hover:text-white"
+                          }`}
+                          style={{
+                            background: "transparent",
+                            border: "1px solid rgba(255, 255, 255, 0)",
+                            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                            position: "relative",
+                            zIndex: 10,
+                          }}
+                        >
+                          <div className="flex items-center gap-3">
+                            <img
+                              src={category.icon}
+                              alt={`${category.label} Icon`}
+                              className="w-5 h-5 object-contain flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+                              style={{ filter: "brightness(0) invert(1)" }}
+                            />
+                            <span className="truncate text-xs">{category.label}</span>
+                          </div>
+                          <ChevronRightIcon className="w-3.5 h-3.5 text-white flex-shrink-0" />
+                        </Link>
+                      </li>
+                    );
+                  }
+                })}
+              </ul>
+            </nav>
+
+            {/* FAQ and Contact Section */}
+            <div className="mb-6">
+              <div
+                className="h-[1px] mb-4"
+                style={{
+                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  width: "100%",
+                }}
+              />
+              <ul className="space-y-2">
+                <li>
+                  <button
+                    onClick={() => {
+                      window.open(
+                        "https://deusmedical.com/verify/verify-product/",
+                        "_blank",
+                      );
+                      closeMobileMenu();
+                    }}
+                    className="w-full text-left px-4 py-3 rounded-lg text-xs font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-neutral-300 hover:text-white"
+                    style={{
+                      background: "transparent",
+                      border: "1px solid rgba(255, 255, 255, 0)",
+                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                      position: "relative",
+                      zIndex: 10,
+                    }}
+                  >
+                    <span className="truncate text-xs">VERIFY DEUS</span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      window.open("https://asteracheck.com", "_blank");
+                      closeMobileMenu();
+                    }}
+                    className="w-full text-left px-4 py-3 rounded-lg text-xs font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-neutral-300 hover:text-white"
+                    style={{
+                      background: "transparent",
+                      border: "1px solid rgba(255, 255, 255, 0)",
+                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                      position: "relative",
+                      zIndex: 10,
+                    }}
+                  >
+                    <span className="truncate text-xs">VERIFY ASTERA</span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setFAQModalOpen(true);
+                      closeMobileMenu();
+                    }}
+                    className="w-full text-left px-4 py-3 rounded-lg text-xs font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-neutral-300 hover:text-white"
+                    style={{
+                      background: "transparent",
+                      border: "1px solid rgba(255, 255, 255, 0)",
+                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                      position: "relative",
+                      zIndex: 10,
+                    }}
+                  >
+                    <span className="truncate text-xs">FAQ</span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setContactModalOpen(true);
+                      closeMobileMenu();
+                    }}
+                    className="w-full text-left px-4 py-3 rounded-lg text-xs font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-neutral-300 hover:text-white"
+                    style={{
+                      background: "transparent",
+                      border: "1px solid rgba(255, 255, 255, 0)",
+                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                      position: "relative",
+                      zIndex: 10,
+                    }}
+                  >
+                    <span className="truncate text-xs">CONTACT</span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      window.location.href = "/about";
+                    }}
+                    className="w-full text-left px-4 py-3 rounded-lg text-xs font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-neutral-300 hover:text-white"
+                    style={{
+                      background: "transparent",
+                      border: "1px solid rgba(255, 255, 255, 0)",
+                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                      position: "relative",
+                      zIndex: 10,
+                    }}
+                  >
+                    <span className="truncate text-xs">ABOUT</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Unsichtbares Spacer-Element für bessere Scrollbarkeit */}
+            <div style={{ height: "100px", width: "100%" }} />
+          </div>
+
+          {/* Shadow Overlay für Tiefeneffekt - Gradient mit Navbar-ähnlichen Schatten */}
+          {/* TEMPORARILY DISABLED - keeping code for restoration if needed:
+          <div
+            className="absolute left-0 right-0 top-0 bottom-0 pointer-events-none"
+            style={{
+              background: "linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.3) 0.3%, rgba(0, 0, 0, 0.15) 0.7%, transparent 1%, transparent 99%, rgba(0, 0, 0, 0.15) 99.3%, rgba(0, 0, 0, 0.3) 99.7%, rgba(0, 0, 0, 0.4) 100%)",
+              zIndex: 10001,
+            }}
+          />
+          */}
+
+          {/* Inner shadow overlay - copying navbar shadow with inverted/inset values */}
+          {/* TEMPORARILY DISABLED - keeping code for restoration if needed:
+          <div
+            className="absolute left-0 right-0 top-0 bottom-0 pointer-events-none"
+            style={{
+              boxShadow:
+                "inset 0 4px 12px rgba(0,0,0,0.4), inset 0 2px 6px rgba(0,0,0,0.25), inset 0 -4px 12px rgba(0,0,0,0.4), inset 0 -2px 6px rgba(0,0,0,0.25)",
+              zIndex: 10001,
+            }}
+          />
+          */}
+        </Transition.Child>
+
+        {/* Invisible shadow layer above menu - displays navbar shadow */}
+        <Transition.Child
+          as="div"
+          className="fixed left-0 right-0 pointer-events-none"
+          style={{
+            top: "0px",
+            height: "41px",
+            background: "transparent",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.25)",
+            clipPath: "inset(0 0 -20px 0)",
+            zIndex: 10020,
+          }}
+          enter="transition-all ease-in-out duration-200"
+          enterFrom="translate-x-[-100%]"
+          enterTo="translate-x-0"
+          leave="transition-all ease-in-out duration-150"
+          leaveFrom="translate-x-0"
+          leaveTo="translate-x-[-100%]"
+        />
+      </Transition>
     </>
   );
 }

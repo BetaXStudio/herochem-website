@@ -1,41 +1,41 @@
-'use client';
-import { useState } from 'react';
-import { useAuth } from '../../components/auth/auth-context';
-import { supabase } from '../../lib/supabase';
+"use client";
+import { useState } from "react";
+import { useAuth } from "../../components/auth/auth-context";
+import { supabase } from "../../lib/supabase";
 
 export default function SecuritySettings() {
   const { user } = useAuth();
 
   // Password change states
   const [isChangingPassword, setIsChangingPassword] = useState(false);
-  const [currentPassword, setCurrentPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordSaving, setPasswordSaving] = useState(false);
   const [passwordError, setPasswordError] = useState<string | null>(null);
   const [passwordSuccess, setPasswordSuccess] = useState<string | null>(null);
 
   // Email change states
   const [isChangingEmail, setIsChangingEmail] = useState(false);
-  const [newEmail, setNewEmail] = useState('');
-  const [emailPassword, setEmailPassword] = useState('');
+  const [newEmail, setNewEmail] = useState("");
+  const [emailPassword, setEmailPassword] = useState("");
   const [emailSaving, setEmailSaving] = useState(false);
   const [emailError, setEmailError] = useState<string | null>(null);
   const [emailSuccess, setEmailSuccess] = useState<string | null>(null);
 
   const handleChangePassword = async () => {
     if (!currentPassword || !newPassword || !confirmPassword) {
-      setPasswordError('All password fields are required');
+      setPasswordError("All password fields are required");
       return;
     }
 
     if (newPassword.length < 6) {
-      setPasswordError('New password must be at least 6 characters long');
+      setPasswordError("New password must be at least 6 characters long");
       return;
     }
 
     if (newPassword !== confirmPassword) {
-      setPasswordError('New password and confirmation do not match');
+      setPasswordError("New password and confirmation do not match");
       return;
     }
 
@@ -45,18 +45,18 @@ export default function SecuritySettings() {
 
       // First verify current password by trying to sign in
       const { error: signInError } = await supabase.auth.signInWithPassword({
-        email: user?.email || '',
+        email: user?.email || "",
         password: currentPassword,
       });
 
       if (signInError) {
-        setPasswordError('Current password is incorrect');
+        setPasswordError("Current password is incorrect");
         return;
       }
 
       // Update password
       const { error: updateError } = await supabase.auth.updateUser({
-        password: newPassword
+        password: newPassword,
       });
 
       if (updateError) {
@@ -64,14 +64,14 @@ export default function SecuritySettings() {
       }
 
       setIsChangingPassword(false);
-      setCurrentPassword('');
-      setNewPassword('');
-      setConfirmPassword('');
-      setPasswordSuccess('Password updated successfully!');
+      setCurrentPassword("");
+      setNewPassword("");
+      setConfirmPassword("");
+      setPasswordSuccess("Password updated successfully!");
       setTimeout(() => setPasswordSuccess(null), 3000);
     } catch (error: any) {
-      console.error('Error updating password:', error);
-      setPasswordError('Failed to update password');
+      console.error("Error updating password:", error);
+      setPasswordError("Failed to update password");
     } finally {
       setPasswordSaving(false);
     }
@@ -79,25 +79,25 @@ export default function SecuritySettings() {
 
   const handleCancelPasswordChange = () => {
     setIsChangingPassword(false);
-    setCurrentPassword('');
-    setNewPassword('');
-    setConfirmPassword('');
+    setCurrentPassword("");
+    setNewPassword("");
+    setConfirmPassword("");
     setPasswordError(null);
   };
 
   const handleChangeEmail = async () => {
     if (!newEmail || !emailPassword) {
-      setEmailError('Email and password are required');
+      setEmailError("Email and password are required");
       return;
     }
 
-    if (!newEmail.includes('@')) {
-      setEmailError('Please enter a valid email address');
+    if (!newEmail.includes("@")) {
+      setEmailError("Please enter a valid email address");
       return;
     }
 
     if (newEmail === user?.email) {
-      setEmailError('New email must be different from current email');
+      setEmailError("New email must be different from current email");
       return;
     }
 
@@ -107,18 +107,18 @@ export default function SecuritySettings() {
 
       // First verify current password
       const { error: signInError } = await supabase.auth.signInWithPassword({
-        email: user?.email || '',
+        email: user?.email || "",
         password: emailPassword,
       });
 
       if (signInError) {
-        setEmailError('Password is incorrect');
+        setEmailError("Password is incorrect");
         return;
       }
 
       // Update email
       const { error: updateError } = await supabase.auth.updateUser({
-        email: newEmail
+        email: newEmail,
       });
 
       if (updateError) {
@@ -126,13 +126,15 @@ export default function SecuritySettings() {
       }
 
       setIsChangingEmail(false);
-      setNewEmail('');
-      setEmailPassword('');
-      setEmailSuccess('Email update initiated! Please check your new email for confirmation.');
+      setNewEmail("");
+      setEmailPassword("");
+      setEmailSuccess(
+        "Email update initiated! Please check your new email for confirmation.",
+      );
       setTimeout(() => setEmailSuccess(null), 5000);
     } catch (error: any) {
-      console.error('Error updating email:', error);
-      setEmailError('Failed to update email');
+      console.error("Error updating email:", error);
+      setEmailError("Failed to update email");
     } finally {
       setEmailSaving(false);
     }
@@ -140,8 +142,8 @@ export default function SecuritySettings() {
 
   const handleCancelEmailChange = () => {
     setIsChangingEmail(false);
-    setNewEmail('');
-    setEmailPassword('');
+    setNewEmail("");
+    setEmailPassword("");
     setEmailError(null);
   };
 
@@ -177,11 +179,15 @@ export default function SecuritySettings() {
 
       {/* Password Change Section */}
       <div className="bg-neutral-800 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-white mb-4">Change Password</h3>
-        
+        <h3 className="text-lg font-semibold text-white mb-4">
+          Change Password
+        </h3>
+
         {!isChangingPassword ? (
           <div className="space-y-4">
-            <p className="text-neutral-300">Update your account password for enhanced security.</p>
+            <p className="text-neutral-300">
+              Update your account password for enhanced security.
+            </p>
             <button
               onClick={() => setIsChangingPassword(true)}
               className="px-6 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium"
@@ -192,7 +198,10 @@ export default function SecuritySettings() {
         ) : (
           <div className="space-y-4">
             <div>
-              <label htmlFor="current-password" className="block text-sm font-medium text-neutral-300 mb-2">
+              <label
+                htmlFor="current-password"
+                className="block text-sm font-medium text-neutral-300 mb-2"
+              >
                 Current Password
               </label>
               <input
@@ -206,7 +215,10 @@ export default function SecuritySettings() {
               />
             </div>
             <div>
-              <label htmlFor="new-password" className="block text-sm font-medium text-neutral-300 mb-2">
+              <label
+                htmlFor="new-password"
+                className="block text-sm font-medium text-neutral-300 mb-2"
+              >
                 New Password
               </label>
               <input
@@ -220,7 +232,10 @@ export default function SecuritySettings() {
               />
             </div>
             <div>
-              <label htmlFor="confirm-password" className="block text-sm font-medium text-neutral-300 mb-2">
+              <label
+                htmlFor="confirm-password"
+                className="block text-sm font-medium text-neutral-300 mb-2"
+              >
                 Confirm New Password
               </label>
               <input
@@ -239,7 +254,7 @@ export default function SecuritySettings() {
                 disabled={passwordSaving}
                 className="px-6 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {passwordSaving ? 'Updating...' : 'Update Password'}
+                {passwordSaving ? "Updating..." : "Update Password"}
               </button>
               <button
                 onClick={handleCancelPasswordChange}
@@ -255,8 +270,10 @@ export default function SecuritySettings() {
 
       {/* Email Change Section */}
       <div className="bg-neutral-800 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-white mb-4">Change Email Address</h3>
-        
+        <h3 className="text-lg font-semibold text-white mb-4">
+          Change Email Address
+        </h3>
+
         {!isChangingEmail ? (
           <div className="space-y-4">
             <div>
@@ -265,7 +282,10 @@ export default function SecuritySettings() {
               </label>
               <p className="text-white">{user?.email}</p>
             </div>
-            <p className="text-neutral-300">Update your email address. You&apos;ll need to verify the new email.</p>
+            <p className="text-neutral-300">
+              Update your email address. You&apos;ll need to verify the new
+              email.
+            </p>
             <button
               onClick={() => setIsChangingEmail(true)}
               className="px-6 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium"
@@ -282,7 +302,10 @@ export default function SecuritySettings() {
               <p className="text-neutral-400">{user?.email}</p>
             </div>
             <div>
-              <label htmlFor="new-email" className="block text-sm font-medium text-neutral-300 mb-2">
+              <label
+                htmlFor="new-email"
+                className="block text-sm font-medium text-neutral-300 mb-2"
+              >
                 New Email Address
               </label>
               <input
@@ -296,7 +319,10 @@ export default function SecuritySettings() {
               />
             </div>
             <div>
-              <label htmlFor="email-password" className="block text-sm font-medium text-neutral-300 mb-2">
+              <label
+                htmlFor="email-password"
+                className="block text-sm font-medium text-neutral-300 mb-2"
+              >
                 Confirm with Password
               </label>
               <input
@@ -315,7 +341,7 @@ export default function SecuritySettings() {
                 disabled={emailSaving}
                 className="px-6 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {emailSaving ? 'Updating...' : 'Update Email'}
+                {emailSaving ? "Updating..." : "Update Email"}
               </button>
               <button
                 onClick={handleCancelEmailChange}

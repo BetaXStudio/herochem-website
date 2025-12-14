@@ -1,0 +1,779 @@
+# ASTERA PRODUKTE LISTE
+# Erstellt basierend auf PNG-Dateien in public/products/astera Ordnern
+# Format für products-database.ts
+
+// INJECTION - ASTERA
+{
+    id: 'inj-astera-001',
+    name: 'ASTERA BACTERIOSTATIC WATER',
+    description: 'Bacteriostatic Water 10 ml',
+    price: 10.00,
+    image: '/products/astera inject/ASTERA BACTERIOSTATIC WATER.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: '10.00'
+},
+{
+    id: 'inj-astera-002',
+    name: 'ASTERA BOLDENONE ACETATE 50',
+    description: 'Boldenone Acetate 50mg',
+    price: 35.00,
+    image: '/products/astera inject/ASTERA BOLDENONE ACETATE 50.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-003',
+    name: 'ASTERA BOLDENONE CYPIONATE 200',
+    description: 'Boldenone cypionate 200 mg',
+    price: 40.00,
+    image: '/products/astera inject/ASTERA BOLDENONE CYPIONATE 200.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-004',
+    name: 'ASTERA BOLDENONE UNDECYLENATE 300',
+    description: 'Boldenone Undecylenate 300 mg',
+    price: 43.00,
+    image: '/products/astera inject/ASTERA BOLDENONE UNDECYLENATE 300.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-005',
+    name: 'ASTERA DIHYDROBOLDENONE 100',
+    description: 'Dihydroboldenone (DHB) 100mg',
+    price: 50.00,
+    image: '/products/astera inject/ASTERA DIHYDROBOLDENONE 100.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-006',
+    name: 'ASTERA DROSTANOLONE ENANTHATE 200',
+    description: 'Drostanolone Enanthate 200mg',
+    price: 50.00,
+    image: '/products/astera inject/ASTERA DROSTANOLONE ENANTHATE 200.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Definition'
+},
+{
+    id: 'inj-astera-007',
+    name: 'ASTERA DROSTANOLONE PROPIONATE 100',
+    description: 'Drostanolone Propionate 100mg',
+    price: 40.00,
+    image: '/products/astera inject/ASTERA DROSTANOLONE PROPIONATE 100.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Definition'
+},
+{
+    id: 'inj-astera-008',
+    name: 'ASTERA LGD-4033 60',
+    description: 'Ligandrol 60mg',
+    price: 50.00,
+    image: '/products/astera inject/ASTERA LGD-4033 60.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-009',
+    name: 'ASTERA LONG ACTING MIX 500',
+    description: 'Drostanolone Enanthate 200mg, Testosterone Enanthate 200mg, Trenbolone Enanthate 100mg',
+    price: 90.00,
+    image: '/products/astera inject/ASTERA LONG ACTING MIX 500.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Definition'
+},
+{
+    id: 'inj-astera-010',
+    name: 'ASTERA METHANDIENONE 100',
+    description: 'Methandienone 100mg',
+    price: 36.00,
+    image: '/products/astera inject/ASTERA METHANDIENONE 100.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-011',
+    name: 'ASTERA METHENOLONE ENANTHATE 100',
+    description: 'Methenolone Enanthate 100mg',
+    price: 59.00,
+    image: '/products/astera inject/ASTERA METHENOLONE ENANTHATE 100.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-012',
+    name: 'ASTERA METHENOLONE ENANTHATE 200',
+    description: 'Methenolone Enanthate 200mg',
+    price: 110.00,
+    image: '/products/astera inject/ASTERA METHENOLONE ENANTHATE 200.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-013',
+    name: 'ASTERA METHYLDROSTANOLONE 40',
+    description: 'Methyldrostanolone (Superdrol) 40mg',
+    price: 40.00,
+    image: '/products/astera inject/ASTERA METHYLDROSTANOLONE 40.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-014',
+    name: 'ASTERA NANDROLONE DECANOATE 300',
+    description: 'Nandrolone Decanoate 300mg',
+    price: 45.00,
+    image: '/products/astera inject/ASTERA NANDROLONE DECANOATE 300.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-015',
+    name: 'ASTERA NANDROLONE PHENYLPROPIONATE 100',
+    description: 'Nandrolone phenylpropionate (NPP) 100mg',
+    price: 30.00,
+    image: '/products/astera inject/ASTERA NANDROLONE PHENYLPROPIONATE 100.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-016',
+    name: 'ASTERA OXYMETHOLONE 50',
+    description: 'Oxymetholone 50mg',
+    price: 25.00,
+    image: '/products/astera inject/ASTERA OXYMETHOLONE 50.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-017',
+    name: 'ASTERA SHORT ACTING MIX 275',
+    description: 'Drostanolone propionate 75mg, Testosterone propionate 125mg, Trenbolone acetate 75mg',
+    price: 80.00,
+    image: '/products/astera inject/ASTERA SHORT ACTING MIX 275.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Definition'
+},
+{
+    id: 'inj-astera-018',
+    name: 'ASTERA STANOZOLOL 50',
+    description: 'Stanozolol 50mg',
+    price: 32.00,
+    image: '/products/astera inject/ASTERA STANOZOLOL 50.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Definition'
+},
+{
+    id: 'inj-astera-019',
+    name: 'ASTERA STENBOLONE 100',
+    description: 'Stenbolone Acetate 100mg',
+    price: 50.00,
+    image: '/products/astera inject/ASTERA STENBOLONE 100.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-020',
+    name: 'ASTERA SUSTANON 300',
+    description: 'Testosterone Decanoate 120mg, Testosterone Isocaproate 72mg, Testosterone Phenylpropionate 72mg, Testosterone Propionate 36mg',
+    price: 38.00,
+    image: '/products/astera inject/ASTERA SUSTANON 300.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-021',
+    name: 'ASTERA SUSTANON 500',
+    description: 'Testosterone Decanoate 200mg, Testosterone Isocaproate 120mg, Testosterone Phenylpropionate 120mg, Testosterone Propionate 60mg',
+    price: 60.00,
+    image: '/products/astera inject/ASTERA SUSTANON 500.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-022',
+    name: 'ASTERA TESTOSTERONE CYPIONATE 200',
+    description: 'Testosterone Cypionate 200mg',
+    price: 24.00,
+    image: '/products/astera inject/ASTERA TESTOSTERONE CYPIONATE 200.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-023',
+    name: 'ASTERA TESTOSTERONE ENANTHATE 300',
+    description: 'Testosterone Enanthate 300mg',
+    price: 35.00,
+    image: '/products/astera inject/ASTERA TESTOSTERONE ENANTHATE 300.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-024',
+    name: 'ASTERA TESTOSTERONE NO ESTER 100',
+    description: 'Testosterone no ester 100mg',
+    price: 28.00,
+    image: '/products/astera inject/ASTERA TESTOSTERONE NO ESTER 100.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'inj-astera-025',
+    name: 'ASTERA TESTOSTERONE PHENYLPROPIONATE 100',
+    description: 'Testosterone Phenylpropionate 100mg',
+    price: 26.00,
+    image: '/products/astera inject/ASTERA TESTOSTERONE PHENYLPROPIONATE 100.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-026',
+    name: 'ASTERA TESTOSTERONE PROPIONATE 100',
+    description: 'Testosterone Propionate 100mg',
+    price: 26.00,
+    image: '/products/astera inject/ASTERA TESTOSTERONE PROPIONATE 100.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-027',
+    name: 'ASTERA TESTOSTERONE UNDECANOATE 250',
+    description: 'Testosterone Undecanoate 250mg',
+    price: 30.00,
+    image: '/products/astera inject/ASTERA TESTOSTERONE UNDECANOATE 250.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-028',
+    name: 'ASTERA TRENBOLONE ACETATE 100',
+    description: 'Trenbolone Acetate 100mg',
+    price: 41.00,
+    image: '/products/astera inject/ASTERA TRENBOLONE ACETATE 100.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Definition'
+},
+{
+    id: 'inj-astera-029',
+    name: 'ASTERA TRENBOLONE BASE 50',
+    description: 'Trenbolone Base 50mg',
+    price: 35.00,
+    image: '/products/astera inject/ASTERA TRENBOLONE BASE 50.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'inj-astera-030',
+    name: 'ASTERA TRENBOLONE ENANTHATE 200',
+    description: 'Trenbolone Enanthate 200mg',
+    price: 50.00,
+    image: '/products/astera inject/ASTERA TRENBOLONE ENANTHATE 200.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-031',
+    name: 'ASTERA TRENBOLONE HEXAHYDROBENZYL CARBONATE 100',
+    description: 'Trenbolone Hexahydrobenzylcarbonate 100mg',
+    price: 60.00,
+    image: '/products/astera inject/ASTERA TRENBOLONE HEXAHYDROBENZYL CARBONATE 100.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-032',
+    name: 'ASTERA TRENBOLONE MIX 150',
+    description: 'Trenbolone Acetate 50mg, Trenbolone Enanthate 50mg, Trenbolone Hexahydrobenzylcarbonate 50mg',
+    price: 45.00,
+    image: '/products/astera inject/ASTERA TRENBOLONE MIX 150.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-033',
+    name: 'ASTERA TRESTOLONE ACETATE 50',
+    description: 'Trestolone Acetate 50mg',
+    price: 55.00,
+    image: '/products/astera inject/ASTERA TRESTOLONE ACETATE 50.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'inj-astera-034',
+    name: 'ASTERA TRESTOLONE ENANTHATE 50',
+    description: 'Trestolone Enanthate 50mg',
+    price: 55.00,
+    image: '/products/astera inject/ASTERA TRESTOLONE ENANTHATE 50.png',
+    category: 'INJECTION',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+
+// ORAL - ASTERA
+{
+    id: 'oral-astera-001',
+    name: 'ASTERA CHLORODEHYDROMETHYL TESTOSTERONE 20',
+    description: 'Chlorodehydromethyltestosterone 20mg',
+    price: 65.00,
+    image: '/products/astera oral/ASTERA CHLORODEHYDROMETHYL TESTOSTERONE 20.png',
+    category: 'ORAL',
+    brand: 'astera',
+    filterType: 'Definition'
+},
+{
+    id: 'oral-astera-003',
+    name: 'ASTERA FLUOXYMESTERONE 5',
+    description: 'Fluoxymesterone (Halotestin) 5mg',
+    price: 45.00,
+    image: '/products/astera oral/ASTERA FLUOXYMESTERONE 5.png',
+    category: 'ORAL',
+    brand: 'astera',
+    filterType: 'Definition'
+},
+{
+    id: 'oral-astera-004',
+    name: 'ASTERA MESTEROLONE 50',
+    description: 'Mesterolone 50mg',
+    price: 60.00,
+    image: '/products/astera oral/ASTERA MESTEROLONE 50.png',
+    category: 'ORAL',
+    brand: 'astera',
+    filterType: 'Definition'
+},
+{
+    id: 'oral-astera-005',
+    name: 'ASTERA METHANDIENONE 20',
+    description: 'Methadienone 20mg',
+    price: 40.00,
+    image: '/products/astera oral/ASTERA METHANDIENONE 20.png',
+    category: 'ORAL',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'oral-astera-006',
+    name: 'ASTERA METHYL-1-TESTOSTERONE 10',
+    description: 'Methyl-1-testosterone 10mg',
+    price: 30.00,
+    image: '/products/astera oral/ASTERA METHYL-1-TESTOSTERONE 10.png',
+    category: 'ORAL',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'oral-astera-007',
+    name: 'ASTERA METHYLDROSTANOLONE 10',
+    description: 'Methyldrostanolone (Superdrol) 10mg',
+    price: 41.00,
+    image: '/products/astera oral/ASTERA METHYLDROSTANOLONE 10.png',
+    category: 'ORAL',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'oral-astera-008',
+    name: 'ASTERA METHYLTESTOSTERONE 25',
+    description: 'Methyldrostanolone 25mg',
+    price: 35.00,
+    image: '/products/astera oral/ASTERA METHYLTESTOSTERONE 25.png',
+    category: 'ORAL',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'oral-astera-009',
+    name: 'ASTERA METHYLTRENBOLONE 1',
+    description: 'Methyltrenbolone 1mg',
+    price: 45.00,
+    image: '/products/astera oral/ASTERA METHYLTRENBOLONE 1.png',
+    category: 'ORAL',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'oral-astera-010',
+    name: 'ASTERA MIBOLERONE 0.5',
+    description: 'Mibolerone 0.5mg',
+    price: 60.00,
+    image: '/products/astera oral/ASTERA MIBOLERONE 0.5.png',
+    category: 'ORAL',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'oral-astera-011',
+    name: 'ASTERA OXANDROLONE 20',
+    description: 'Oxandrolone 20mg',
+    price: 90.00,
+    image: '/products/astera oral/ASTERA OXANDROLONE 20.png',
+    category: 'ORAL',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'oral-astera-012',
+    name: 'ASTERA OXYMETHOLONE 25',
+    description: 'Oxymetholone 25mg',
+    price: 30.00,
+    image: '/products/astera oral/ASTERA OXYMETHOLONE 25.png',
+    category: 'ORAL',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'oral-astera-013',
+    name: 'ASTERA STANOZOLOL 20',
+    description: 'Stanozolol 20mg',
+    price: 44.00,
+    image: '/products/astera oral/ASTERA STANOZOLOL 20.png',
+    category: 'ORAL',
+    brand: 'astera',
+    filterType: 'Definition'
+},
+
+// SARMS - ASTERA
+{
+    id: 'sarms-astera-001',
+    name: 'ASTERA GW501516 10',
+    description: 'GW501516 Cardarine 10mg',
+    price: 35.00,
+    image: '/products/astera sarms/ASTERA GW501516 10.png',
+    category: 'SARMS',
+    brand: 'astera',
+    filterType: 'Definition'
+},
+{
+    id: 'sarms-astera-002',
+    name: 'ASTERA LGD4033 10',
+    description: 'LGD4033 Ligandrol 10mg',
+    price: 35.00,
+    image: '/products/astera sarms/ASTERA LGD4033 10.png',
+    category: 'SARMS',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'sarms-astera-003',
+    name: 'ASTERA MK2866 10',
+    description: 'MK-2866 Ostarine 10mg',
+    price: 30.00,
+    image: '/products/astera sarms/ASTERA MK2866 10.png',
+    category: 'SARMS',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'sarms-astera-004',
+    name: 'ASTERA MK677 10',
+    description: 'MK-677 Ibutamoren 10mg',
+    price: 35.00,
+    image: '/products/astera sarms/ASTERA MK677 10.png',
+    category: 'SARMS',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'sarms-astera-005',
+    name: 'ASTERA RAD140 10',
+    description: 'RAD140 Testolone 10mg',
+    price: 45.00,
+    image: '/products/astera sarms/ASTERA RAD140 10.png',
+    category: 'SARMS',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'sarms-astera-006',
+    name: 'ASTERA S23 10',
+    description: 'S23 10mg',
+    price: 30.00,
+    image: '/products/astera sarms/ASTERA S23 10.png',
+    category: 'SARMS',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'sarms-astera-007',
+    name: 'ASTERA S4 25',
+    description: 'S4 Andarine 25mg',
+    price: 35.00,
+    image: '/products/astera sarms/ASTERA S4 25.png',
+    category: 'SARMS',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'sarms-astera-008',
+    name: 'ASTERA SR9009 10',
+    description: 'SR9009 Stenabolic 10mg',
+    price: 35.00,
+    image: '/products/astera sarms/ASTERA SR9009 10.png',
+    category: 'SARMS',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'sarms-astera-009',
+    name: 'ASTERA YK11 5',
+    description: 'YK11 5mg',
+    price: 40.00,
+    image: '/products/astera sarms/ASTERA YK11 5.png',
+    category: 'SARMS',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+
+// PEPTIDES & HGH - ASTERA
+{
+    id: 'peptides-astera-001',
+    name: 'ASTERA HCG 5000',
+    description: 'Human Chorionic Gonadotropin (HCG), 5000 IU',
+    price: 40.00,
+    image: '/products/astera peptides & hgh/ASTERA HCG 5000.png',
+    category: 'PEPTIDES & HGH',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'peptides-astera-002',
+    name: 'ASTERA HGH 16',
+    description: 'Human Growth Hormone (HGH), 16 IU',
+    price: 250.00,
+    image: '/products/astera peptides & hgh/ASTERA HGH 16.png',
+    category: 'PEPTIDES & HGH',
+    brand: 'astera',
+    filterType: 'Gain'
+},
+{
+    id: 'peptides-astera-003',
+    name: 'ASTERA HGH FRAGMENT 176-191 10',
+    description: 'HGH Fragment 176-191, 10 mg',
+    price: 70.00,
+    image: '/products/astera peptides & hgh/ASTERA HGH FRAGMENT 176-191 10.png',
+    category: 'PEPTIDES & HGH',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'peptides-astera-004',
+    name: 'ASTERA MELANOTAN 2 10',
+    description: 'Melanotan II Peptide Hormone, 10 mg',
+    price: 30.00,
+    image: '/products/astera peptides & hgh/ASTERA MELANOTAN 2 10.png',
+    category: 'PEPTIDES & HGH',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'peptides-astera-005',
+    name: 'ASTERA TB500 & BPC157 10',
+    description: 'TB500, BPC157 10 mg',
+    price: 100.00,
+    image: '/products/astera peptides & hgh/ASTERA TB500 & BPC157 10.png',
+    category: 'PEPTIDES & HGH',
+    brand: 'astera',
+    filterType: 'Base'
+},
+
+// FAT BURN - ASTERA
+{
+    id: 'fatburn-astera-001',
+    name: 'ASTERA LEVOTHYROXINE SODIUM 50',
+    description: 'Levothyroxine Sodium 50mg',
+    price: 9.00,
+    image: '/products/astera fat burn/ASTERA LEVOTHYROXINE SODIUM 50.png',
+    category: 'FAT BURN',
+    brand: 'astera',
+    filterType: 'Definition'
+},
+{
+    id: 'fatburn-astera-002',
+    name: 'ASTERA LIOTHYRONINE SODIUM 25',
+    description: 'Liothyronine Sodium 25mg',
+    price: 12.00,
+    image: '/products/astera fat burn/ASTERA LIOTHYRONINE SODIUM 25.png',
+    category: 'FAT BURN',
+    brand: 'astera',
+    filterType: 'Definition'
+},
+{
+    id: 'fatburn-astera-003',
+    name: 'ASTERA CLENBUTEROL HCL 40',
+    description: 'Clenbuterol HCL 40mg',
+    price: 22.00,
+    image: '/products/astera fat burn/ASTERA CLENBUTEROL HCL 40.png',
+    category: 'FAT BURN',
+    brand: 'astera',
+    filterType: 'Definition'
+},
+
+// POST CYCLE - ASTERA
+{
+    id: 'pct-astera-001',
+    name: 'ASTERA ANASTROZOLE 1',
+    description: 'Anastrozole 1mg/tab',
+    price: 27.00,
+    image: '/products/astera post cycle/ASTERA ANASTROZOLE 1.png',
+    category: 'POST CYCLE',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'pct-astera-002',
+    name: 'ASTERA CABERGOLINE 0.25',
+    description: 'Cabergoline 0.25mg',
+    price: 80.00,
+    image: '/products/astera post cycle/ASTERA CABERGOLINE 0.25.png',
+    category: 'POST CYCLE',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'pct-astera-003',
+    name: 'ASTERA CLOMIPHENE CITRATE 50',
+    description: 'Clomiphene Citrate 50mg',
+    price: 25.00,
+    image: '/products/astera post cycle/ASTERA CLOMIPHENE CITRATE 50.png',
+    category: 'POST CYCLE',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'pct-astera-004',
+    name: 'ASTERA EXEMESTANE 25',
+    description: 'Exemestane 25mg',
+    price: 55.00,
+    image: '/products/astera post cycle/ASTERA EXEMESTANE 25.png',
+    category: 'POST CYCLE',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'pct-astera-005',
+    name: 'ASTERA LETROZOLE 1',
+    description: 'Letrozole 1mg',
+    price: 13.00,
+    image: '/products/astera post cycle/ASTERA LETROZOLE 1.png',
+    category: 'POST CYCLE',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'pct-astera-006',
+    name: 'ASTERA TAMOXIFEN 20',
+    description: 'Tamoxifen 20mg',
+    price: 22.00,
+    image: '/products/astera post cycle/ASTERA TAMOXIFEN 20.png',
+    category: 'POST CYCLE',
+    brand: 'astera',
+    filterType: 'Base'
+},
+
+// SEXUAL WELLNESS - ASTERA
+{
+    id: 'sexual-astera-001',
+    name: 'ASTERA DAPOXETINE 60',
+    description: 'Dapoxetine HCL 60mg',
+    price: 3.00,
+    image: '/products/astera sexual wellness/ASTERA DAPOXETINE 60.png',
+    category: 'SEXUAL WELLNESS',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'sexual-astera-002',
+    name: 'ASTERA SEX HARD & STRONG MIX 50:20:30',
+    description: 'Sildenafil Citrate 50mg, Tadalafil 20mg, Dapoxetine HCL 30mg',
+    price: 90.00,
+    image: '/products/astera sexual wellness/ASTERA SEX HARD & STRONG MIX 50:20:30.png',
+    category: 'SEXUAL WELLNESS',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'sexual-astera-003',
+    name: 'ASTERA SEX HARD MIX 50:20',
+    description: 'Sildenafil Citrate 50mg, Tadalafil 20mg',
+    price: 70.00,
+    image: '/products/astera sexual wellness/ASTERA SEX HARD MIX 50:20.png',
+    category: 'SEXUAL WELLNESS',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'sexual-astera-004',
+    name: 'ASTERA SILDENAFIL CITRATE 100 XL',
+    description: 'Sildenafil Citrate 100mg',
+    price: 70.00,
+    image: '/products/astera sexual wellness/ASTERA SILDENAFIL CITRATE 100 XL.png',
+    category: 'SEXUAL WELLNESS',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'sexual-astera-005',
+    name: 'ASTERA SILDENAFIL CITRATE 100',
+    description: 'Sildenafil Citrate 100mg',
+    price: 40.00,
+    image: '/products/astera sexual wellness/ASTERA SILDENAFIL CITRATE 100.png',
+    category: 'SEXUAL WELLNESS',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'sexual-astera-006',
+    name: 'ASTERA TADALAFIL 20 XL',
+    description: 'Tadalafil 20mg',
+    price: 72.00,
+    image: '/products/astera sexual wellness/ASTERA TADALAFIL 20 XL.png',
+    category: 'SEXUAL WELLNESS',
+    brand: 'astera',
+    filterType: 'Base'
+},
+{
+    id: 'sexual-astera-007',
+    name: 'ASTERA TADALAFIL 20',
+    description: 'Tadalafil 20mg',
+    price: 40.00,
+    image: '/products/astera sexual wellness/ASTERA TADALAFIL 20.png',
+    category: 'SEXUAL WELLNESS',
+    brand: 'astera',
+    filterType: 'Base'
+},
+
+// HINWEISE

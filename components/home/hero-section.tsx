@@ -1,8 +1,10 @@
 'use client';
 
-import { BeakerIcon, ChevronRightIcon, ShieldCheckIcon, TruckIcon } from '@heroicons/react/24/outline';
+import { BeakerIcon, BookOpenIcon, ChevronRightIcon, ShieldCheckIcon, TruckIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useModal } from '../../contexts/modal-context';
 
 const heroFeatures = [
 	{
@@ -24,6 +26,13 @@ const heroFeatures = [
 
 const heroSlides = [
 	{
+		title: 'Enhance Yourself',
+		subtitle: 'Become the Best Version of Yourself',
+		description: 'Place your first order and start the journey to a better experience of life',
+		bgImage: '/hero-bg-1.jpg',
+		cta: 'Go to Shop',
+	},
+	{
 		title: 'Future of Healthcare',
 		subtitle: 'Improve Your Quality of Life',
 		description: 'Premium pharmaceutical products for performance and well-being',
@@ -38,9 +47,23 @@ const heroSlides = [
 		cta: 'View Lab Reports',
 	},
 	{
+		title: 'GMP Quality Standards',
+		subtitle: 'Excellence in Every Product',
+		description: 'Manufactured under strict quality control and regulatory compliance',
+		bgImage: '/hero-bg-4.jpg',
+		cta: 'Learn More',
+	},
+	{
+		title: 'Global Delivery Network',
+		subtitle: 'Worldwide Shipping Solutions',
+		description: 'Fast and secure delivery to customers around the globe',
+		bgImage: '/hero-bg-5.jpg',
+		cta: 'Learn More',
+	},
+	{
 		title: 'Join the Community',
 		subtitle: 'Become Part of Our Mission',
-		description: 'Join thousands of satisfied customers worldwide',
+		description: 'Join our social media channels to interact with other customers',
 		bgImage: '/hero-bg-3.jpg',
 		cta: 'Join Community',
 	},
@@ -110,115 +133,97 @@ const featuredProducts = [
 	},
 ];
 
-interface ProductsModalProps {
-	isOpen: boolean;
-	onClose: () => void;
-	category?: string;
-}
+export default function HeroSection() {
+	const [currentSlide, setCurrentSlide] = useState(0);
+	const [isTransitioning, setIsTransitioning] = useState(false);
+	const [isClient, setIsClient] = useState(false);
+	const [isMobile, setIsMobile] = useState(false);
+	const [showBubbles, setShowBubbles] = useState(false);
+	const {
+    setProductsModalOpen, 
+    setGMPModalOpen, 
+    setDeliveryModalOpen,
+    setCommunityModalOpen,
+    setLabReportsModalOpen
+  } = useModal();
 
-function ProductsModal({ isOpen, onClose, category }: ProductsModalProps) {
-	if (!isOpen) return null;
+  // Touch/Swipe state
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
-	return (
-		<div className="fixed inset-0 z-50 flex items-center justify-center max-[800px]:items-start max-[800px]:pt-[55px] max-[800px]:pb-[50px]">
-			{/* Backdrop with blur - darker background */}
-			<div
-				className="absolute inset-0 backdrop-blur-sm"
-				style={{
-					backgroundColor: 'rgba(0, 0, 0, 0.4)',
-					animation: 'backdropFadeIn 0.3s ease-out',
-				}}
-				onClick={onClose}
-			/>
+  // Ensure we're on the client side
+  useEffect(() => {
+    setIsClient(true);
+    setShowBubbles(true);
+    
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-			{/* Modal with animation */}
-			<div
-				className="relative bg-white shadow-xl w-full max-w-6xl mx-4 max-h-[90vh] max-[800px]:max-h-[calc(90vh-105px)]"
-				style={{
-					backgroundColor: 'white',
-					border: '2px solid rgb(64,64,74)',
-					boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
-					animation: 'modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-					borderRadius: '6px'
-				}}
-			>
-				<div
-					className="sticky top-0 flex items-center justify-between border-b"
-					style={{
-						borderColor: 'rgb(64,64,74)',
-						backgroundColor: 'rgb(64,64,74)',
-						borderTopLeftRadius: '6px',
-						borderTopRightRadius: '6px',
-						margin: '-2px -2px 0 -2px',
-						padding: '24px 26px'
-					}}
-				>
-					<div>
-						<h2
-							className="text-xl font-semibold text-white"
-							style={{ fontFamily: 'Calibri, Arial, sans-serif' }}
-						>
-							Premium Products
-						</h2>
-					</div>
-					<button
-						onClick={onClose}
-						className="p-2 hover:bg-gray-600 rounded-md transition-colors duration-200 text-white text-xl"
-						aria-label="Close modal"
-					>
-						×
-					</button>
-				</div>
-
-				<div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)] max-[800px]:max-h-[calc(90vh-225px)]">
-					<div className="prose prose-gray max-w-none">
-						<div className="space-y-4 text-gray-700 leading-relaxed">
-							<p>
-								HeroChem is a one-stop online shop that provides you with high quality Deus Medical and Astera Steroids, SARMS, PEPTIDES, HGH and much more.
-							</p>
-
-							<p>
-								Deus Medical is a pharmaceutical company located in India, and is
-								one of the fastest growing companies that offer a wide range of
-								world-class quality products. Deus Medical manufacturing is
-								certified by WHO-GMP, fully compliant with EUGMP and UKMHRA.
-							</p>
-
-							<p>
-								We verify every batch of every product. and all our products have
-								test reports made by Janoshik Analytics - you can find independent
-								third party laboratory test reports on each product down below. Also, all Deus Medical products have a unique product code,
-								and with this code you can verify your product on the official Deus Medical Webpage.
-							</p>
-
-							<p>
-								We ship Deus Medical and Astera products worldwide and all orders are shipped
-								from EU warehouses using discreet packaging.
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
-}
-
-export default function HeroSection({ onOpenCommunityModal, onOpenLabReportsModal }: { onOpenCommunityModal: () => void, onOpenLabReportsModal: () => void }) {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [isProductsModalOpen, setIsProductsModalOpen] = useState(false);
-
+  // ...existing code...
   useEffect(() => {
 	const interval = setInterval(() => {
-	  setIsAnimating(true);
+	  setIsTransitioning(true);
 	  setTimeout(() => {
 		setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-		setIsAnimating(false);
-	  }, 300);
-	}, 6000);
+		setIsTransitioning(false);
+	  }, 150);
+	}, 15000);
 
 	return () => clearInterval(interval);
   }, []);
+
+  // Function to handle slide change with animation
+  const changeSlide = (newSlide: number) => {
+	if (newSlide !== currentSlide) {
+	  setIsTransitioning(true);
+	  setTimeout(() => {
+		setCurrentSlide(newSlide);
+		setIsTransitioning(false);
+	  }, 150);
+	}
+  };
+
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null); // otherwise the swipe is fired even with usual touch events
+    if (e.targetTouches[0]) {
+      setTouchStart(e.targetTouches[0].clientX);
+    }
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (e.targetTouches[0]) {
+      setTouchEnd(e.targetTouches[0].clientX);
+    }
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      // Swipe left: go to next slide
+      changeSlide((currentSlide + 1) % heroSlides.length);
+    }
+    
+    if (isRightSwipe) {
+      // Swipe right: go to previous slide
+      changeSlide((currentSlide - 1 + heroSlides.length) % heroSlides.length);
+    }
+  };
 
   const currentSlideData = heroSlides[currentSlide];
 
@@ -226,13 +231,23 @@ export default function HeroSection({ onOpenCommunityModal, onOpenLabReportsModa
   const handleCtaClick = (ctaText: string) => {
 	switch (ctaText) {
 	  case 'Learn More':
-		setIsProductsModalOpen(true);
+		// Check which slide is currently active to determine which modal to open
+		if (currentSlideData?.title === 'Future of Healthcare') {
+		  setProductsModalOpen(true);
+		} else if (currentSlideData?.title === 'GMP Quality Standards') {
+		  setGMPModalOpen(true);
+		} else if (currentSlideData?.title === 'Global Delivery Network') {
+		  setDeliveryModalOpen(true);
+		} else {
+		  // Default behavior for other "Learn More" buttons
+		  setProductsModalOpen(true);
+		}
 		break;
 	  case 'View Lab Reports':
-		onOpenLabReportsModal();
+		setLabReportsModalOpen(true);
 		break;
 	  case 'Join Community':
-		onOpenCommunityModal();
+		setCommunityModalOpen(true);
 		break;
 	  default:
 		window.location.href = '/categories';
@@ -252,153 +267,549 @@ export default function HeroSection({ onOpenCommunityModal, onOpenLabReportsModa
 	}
   };
 
+  // Memoize bubble positions to prevent re-rendering on view changes
+  const bubblePositions = useMemo(() => {
+	const positions = [];
+	const COLUMNS = 5;
+	const ROWS = 11;
+	const TOTAL_DURATION = 20; // Gesamtzeit für einen kompletten Durchlauf
+	
+	for (let i = 0; i < COLUMNS * ROWS; i++) {
+	  const col = i % COLUMNS;
+	  const row = Math.floor(i / COLUMNS);
+	  
+	  // Use seeded pseudo-random based on index for consistent positioning
+	  const seed = (i * 12345) % 10000;
+	  const pseudoRandom1 = ((seed * 7919) % 10000) / 10000;
+	  const pseudoRandom2 = ((seed * 2789) % 10000) / 10000;
+	  const pseudoRandom3 = ((seed * 5843) % 10000) / 10000;
+	  const pseudoRandom4 = ((seed * 3257) % 10000) / 10000;
+	  const pseudoRandom5 = ((seed * 9871) % 10000) / 10000; // Für Visibility - anderer Multiplikator
+	  const pseudoRandom6 = ((seed * 4127) % 10000) / 10000; // Für Icon-Auswahl - mehr Variation
+	  
+	  // Grid-based positioning with randomness
+	  const baseLeft = (col / COLUMNS) * 100 + (100 / COLUMNS) / 2;
+	  const baseTop = 50;
+	  
+	  const randomLeft = baseLeft + (pseudoRandom1 - 0.5) * 15;
+	  const randomTop = baseTop + (pseudoRandom2 - 0.5) * 15;
+	  
+	  // Verzögerung basierend auf Reihe - jede Reihe startet gestaffelt später
+	  // Oben: kleine Verzögerung (startet sofort), unten: große Verzögerung (später)
+	  const rowDelay = (row / ROWS) * TOTAL_DURATION;
+	  const randomDelay = rowDelay + pseudoRandom3 * 0.5;
+	  
+	  const randomDuration = TOTAL_DURATION;
+	  const randomTx = (pseudoRandom4 - 0.5) * 40;
+	  
+	  // Zufällig etwa die Hälfte der Icons unsichtbar machen
+	  const isHidden = pseudoRandom5 > 0.3;
+	  
+	  positions.push({
+		left: randomLeft,
+		top: randomTop,
+		delay: randomDelay,
+		duration: randomDuration,
+		tx: randomTx,
+		isHidden: isHidden,
+	  });
+	}
+	return positions;
+  }, []);
+
   return (
-	<div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden">
+	<div 
+	  className="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden"
+	  onTouchStart={onTouchStart}
+	  onTouchMove={onTouchMove}
+	  onTouchEnd={onTouchEnd}
+	>
 	  {/* Background Pattern */}
 	  <div className="absolute inset-0 opacity-10">
-		<div className="absolute inset-0 bg-[url('/pattern-hero.png')] bg-repeat opacity-20"></div>
+		<div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black opacity-20"></div>
 	  </div>
 
-	  {/* Animated Background Particles */}
-	  <div className="absolute inset-0">
-		{[...Array(20)].map((_, i) => (
-		  <div
-			key={i}
-			className="absolute w-2 h-2 bg-red-500/20 rounded-full animate-pulse"
-			style={{
-			  left: `${(i * 5.26) % 100}%`,
-			  top: `${(i * 7.89) % 100}%`,
-			  animationDelay: `${(i * 0.15) % 3}s`,
-			  animationDuration: `${3 + (i * 0.2) % 4}s`,
-			}}
-		  />
-		))}
+	  {/* Animated Category Icon Bubbles - Floating upward */}
+	  <style>{`
+		@keyframes float-up {
+		  0% {
+			transform: translateY(0) translateX(0);
+			opacity: 0;
+		  }
+		  5% {
+			opacity: 0.3;
+		  }
+		  50% {
+			opacity: 0.3;
+		  }
+		  55% {
+			opacity: 0;
+		  }
+		  100% {
+			transform: translateY(-1000px) translateX(var(--tx, 0px));
+			opacity: 0;
+		  }
+		}
+		.bubble-icon {
+		  animation: float-up var(--duration, 8s) ease-in infinite;
+		  animation-delay: var(--delay, 0s);
+		  will-change: transform, opacity;
+		  backface-visibility: hidden;
+		}
+	  `}</style>
+	  <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ left: '10px' }} suppressHydrationWarning>
+		{showBubbles && bubblePositions.map((pos, i) => {
+		  // Versteckte Icons nicht rendern
+		  if (pos.isHidden) return null;
+		  
+		  const icons = ['/inject.png', '/oral.png', '/post.png', '/fatburn.png', '/sexual.png', '/peptides.png', '/sarms.png', '/amino.png'];
+		  // Berechne einen zufälligen Icon-Index basierend auf dem Seed für mehr Variation
+		  const seed = (i * 12345) % 10000;
+		  const pseudoRandom6 = ((seed * 4127) % 10000) / 10000;
+		  const iconIndex = Math.floor(pseudoRandom6 * icons.length);
+		  const randomIcon = icons[iconIndex];
+		  
+		  return (
+			<div
+			  key={i}
+			  className="bubble-icon absolute w-8 h-8"
+			  style={{
+				left: `${pos.left}%`,
+				top: `${pos.top}%`,
+				'--delay': `${pos.delay}s`,
+				'--duration': `${pos.duration}s`,
+				'--tx': `${pos.tx}px`,
+				opacity: 0,
+			  } as React.CSSProperties}
+			  suppressHydrationWarning
+			>
+			  <img
+				src={randomIcon}
+				alt="category-icon"
+				className="w-full h-full object-contain"
+				style={{
+				  filter: 'brightness(0) invert(1)',
+				  opacity: '0.7'
+				}}
+			  />
+			</div>
+		  );
+		})}
 	  </div>
 
-	  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
-		<div className="grid lg:grid-cols-2 gap-12 items-center min-h-[70vh]">
-		  {/* Left Content */}
-		  <div
-			className={`space-y-8 transition-all duration-500 ${
-			  isAnimating
-				? 'opacity-0 translate-x-[-20px]'
-				: 'opacity-100 translate-x-0'
-			}`}
-		  >
+	  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-14 lg:pt-[95px] pb-16">
+		{/* HEROCHEM Logo Text - Mobile Only */}
+		<div className="block lg:hidden text-center mb-1.5 sm:mb-3">
+		  <h1 className="text-5xl sm:text-6xl font-bold leading-tight">
+			<span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+			  HERO
+			</span>
+			<span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
+			  CHEM
+			</span>
+		  </h1>
+		</div>
+
+		{/* Desktop Layout - Logo and Dynamic Elements at same height */}
+		<div className="hidden lg:block">
+		  <div className="flex justify-between items-start -mb-2 mt-8">
+			{/* HEROCHEM Logo Text - Desktop Only (Left) */}
+			<div>
+			  <h1 className="text-6xl xl:text-7xl font-bold leading-tight">
+				<span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+				  HERO
+				</span>
+				<span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
+				  CHEM
+				</span>
+			  </h1>
+			</div>
+
+			{/* Dynamic Elements - Desktop Only (Right) - Quadratic Layout */}
+			<div className="flex space-x-5">
+			  {heroFeatures.map((feature, index) => (
+				<div
+				  key={index}
+				  className="bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 rounded-xl p-5 hover:bg-gray-800/80 transition-colors duration-300 w-31 h-30 flex flex-col items-center justify-center animate-float"
+				  style={{
+					animationDelay: `${index * 0.2}s`,
+					animationDuration: '3s',
+					boxShadow: '0 4px 15px rgba(255, 255, 255, 0.05)'
+				  }}
+				>
+				  <div className="flex flex-col items-center space-y-1">
+					<div className="w-8 h-8 bg-[#e91111] rounded-xl flex items-center justify-center">
+					  <feature.icon className="h-4 w-4 text-white" />
+					</div>
+					<h3 className="text-xs font-semibold text-white text-center leading-tight">
+					  {feature.title.split(' ').slice(0, 2).join(' ')}
+					</h3>
+				  </div>
+				</div>
+			  ))}
+			</div>
+		  </div>
+
+		  {/* News Section - Desktop Only - Below floating elements */}
+		  <div className="mt-8 flex justify-end">
+			<div className="w-[26rem] py-5 bg-gray-800/50 backdrop-blur-sm border border-gray-700/30 rounded-xl" style={{ boxShadow: '0 4px 15px rgba(255, 255, 255, 0.05)' }}>
+			  <div className="px-8">
+				
+				{/* Scrolling Text Banner */}
+				<div className="mb-5 overflow-hidden relative">
+				  <div 
+					className="flex whitespace-nowrap animate-scroll"
+					style={{
+					  animation: 'scroll-left 15.4s linear infinite'
+					}}
+				  >
+					<span className="text-red-500 font-bold text-base mr-4">CRYPTO DISCOUNT</span>
+					<span className="text-gray-300 font-bold text-base mr-4">•</span>
+					<span className="text-gray-300 font-bold text-base mr-4">5% OFF EVERY ORDER</span>
+					<span className="text-gray-300 font-bold text-base mr-4">•</span>
+					<span className="text-red-500 font-bold text-base mr-4">CRYPTO DISCOUNT</span>
+					<span className="text-gray-300 font-bold text-base mr-4">•</span>
+					<span className="text-gray-300 font-bold text-base mr-4">5% OFF EVERY ORDER</span>
+					<span className="text-gray-300 font-bold text-base mr-4">•</span>
+				  </div>
+				  
+				  {/* Fade out effects */}
+				  <div className="absolute top-0 left-0 w-8 h-full bg-gradient-to-r from-gray-800/40 to-transparent pointer-events-none"></div>
+				  <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-gray-800/40 to-transparent pointer-events-none"></div>
+				</div>
+
+				{/* Banner Images - Compact for Desktop */}
+				<div className="space-y-4">
+				  {/* Deus Banner */}
+				  <div className="relative w-full h-26 rounded-xl">
+					<Image
+					  src="/deus_banner.jpg"
+					  alt="Deus Medical Banner"
+					  fill
+					  className="object-cover rounded-xl z-10"
+					  sizes="416px"
+					/>
+					{/* Overlay Content */}
+					<div className="absolute top-3 left-3 z-20">
+					  <h3 className="text-base font-bold">
+						<span className="text-black">DEUS</span>
+						<span className="text-red-600">MEDICAL</span>
+					  </h3>
+					</div>
+					<div className="absolute bottom-3 left-3 z-20">
+					  <button className="bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 text-xs font-medium rounded lg:rounded-full transition-colors">
+						SHOP NOW
+					  </button>
+					</div>
+				  </div>
+				  
+				  {/* Astera Banner */}
+				  <div className="relative w-full h-26 rounded-xl">
+					<Image
+					  src="/astera_banner.jpg"
+					  alt="Astera Labs Banner"
+					  fill
+					  className="object-cover rounded-xl z-10"
+					  sizes="416px"
+					/>
+					{/* Overlay Content */}
+					<div className="absolute top-3 left-3 z-20">
+					  <h3 className="text-base font-bold text-black">
+						ASTERA LABS
+					  </h3>
+					</div>
+					<div className="absolute bottom-3 left-3 z-20">
+					  <button className="bg-[#d67f3f] hover:bg-[#c6723a] text-white px-3 py-1.5 text-xs font-medium rounded lg:rounded-full transition-colors">
+						SHOP NOW
+					  </button>
+					</div>
+				  </div>
+				</div>
+				
+			  </div>
+			</div>
+		  </div>
+
+		  {/* HeroGuide Section - Desktop Only - Below News Section */}
+		  {!isMobile && (
+		  <div className="mt-6 flex justify-end">
+			<div className="w-[26rem] py-5 bg-gray-800/50 backdrop-blur-sm border border-gray-700/30 rounded-xl" style={{ boxShadow: '0 4px 15px rgba(255, 255, 255, 0.05)' }}>
+			  <div className="px-8 text-center">
+				
+				{/* HeroGuide Title */}
+				<div className="mb-4">
+				  <h3 className="text-2xl font-bold leading-tight">
+					<span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+					  HERO
+					</span>
+					<span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
+					  GUIDE
+					</span>
+				  </h3>
+				  <p className="text-gray-400 text-sm mt-2 leading-relaxed">
+					Plan and track your complete cycle journey with our intelligent guidance system
+				  </p>
+				</div>
+
+				{/* Dynamic HeroGuide Button */}
+				<div className="relative">
+				  <button 
+					className="group relative w-full py-4 pl-4 pr-6 bg-transparent hover:from-red-600/20 hover:to-red-700/20 rounded-xl transition-colors duration-300 flex items-center space-x-3"
+				  >
+				{/* Icon */}
+				<div className="w-8 h-8 bg-[#e91111] rounded-xl flex items-center justify-center flex-shrink-0 pointer-events-none">
+				  <BookOpenIcon className="w-4 h-4 text-white pointer-events-none" />
+				</div>					{/* Text - Center flex container */}
+					<div className="flex-1 text-left pointer-events-none">
+					  <div className="text-white font-semibold text-base group-hover:text-red-100 transition-colors duration-300 pointer-events-none">
+						Start Your Cycle Planning
+					  </div>
+					  <div className="text-gray-400 text-xs group-hover:text-red-200/80 transition-colors duration-300 pointer-events-none">
+						Advanced Cycle Tracker
+					  </div>
+					</div>
+					
+					{/* Arrow */}
+					<div className="flex-shrink-0 pointer-events-none">
+					  <ChevronRightIcon className="h-5 w-5 text-gray-400 group-hover:text-red-400 transition-colors duration-300 pointer-events-none" />
+					</div>
+				  </button>
+				</div>
+				
+			  </div>
+			</div>
+		  </div>
+		  )}
+		</div>
+
+		<div className="grid lg:grid-cols-1 grid-cols-1 lg:gap-0 gap-12 items-center min-h-0 lg:min-h-0 sm:min-h-[70vh] lg:-mt-120">
+		  {/* Navigation Container - Desktop Only */}
+		  <div className="hidden lg:flex items-start justify-start relative">
+			{/* Content Container */}
+			<div className="space-y-6 text-left rounded-xl relative w-[600px]">
+			{/* Left Arrow */}
+			{isClient && (
+			  <button
+				onClick={() => changeSlide((currentSlide - 1 + heroSlides.length) % heroSlides.length)}
+				className="absolute z-20 p-2 rounded-full transition-all duration-300 group"
+				aria-label="Previous slide"
+				style={{ left: '-4rem', top: '50%', transform: 'translateY(-50%)' }}
+			  >
+				<ChevronRightIcon className="h-8 w-8 text-white/40 group-hover:text-white group-hover:scale-110 rotate-180 transition-all duration-300" />
+			  </button>
+			)}
+
+			{/* Right Arrow */}
+			{isClient && (
+			  <button
+				onClick={() => changeSlide((currentSlide + 1) % heroSlides.length)}
+				className="absolute z-20 p-2 rounded-full transition-all duration-300 group"
+				aria-label="Next slide"
+				style={{ right: '-1rem', top: '50%', transform: 'translateY(-50%)' }}
+			  >
+				<ChevronRightIcon className="h-8 w-8 text-white/40 group-hover:text-white group-hover:scale-110 transition-all duration-300" />
+			  </button>
+			)}
 			{/* Hero Badge */}
-			<div className="inline-flex items-center space-x-2 bg-red-600/10 border border-red-600/20 rounded-full px-4 py-2 text-red-400 text-sm font-medium">
-			  <ShieldCheckIcon className="h-4 w-4" />
-			  <span>Certified Pharmaceutical Quality</span>
+			<div 
+			  className={`inline-flex items-center space-x-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-3 lg:px-4 py-1.5 lg:py-2 text-gray-300 text-[10px] lg:text-xs font-medium mt-8 transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-2' : 'opacity-100 transform translate-y-0'}`}
+			  style={{
+				boxShadow: '0 4px 15px rgba(255, 255, 255, 0.05)'
+			  }}
+			>
+			  <ShieldCheckIcon className="h-2.5 w-2.5 lg:h-3 lg:w-3 text-green-400" />
+			  <span>Certified Pharmaceutical Products</span>
 			</div>
 
 			{/* Main Title */}
-			<div className="space-y-4">
-			  <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
+			<div className={`space-y-4 lg:space-y-5 transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
+			  <h1 className="text-3xl lg:text-6xl font-bold text-white leading-tight">
 				<span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
 				  {currentSlideData?.title === 'Labor Tested'
 					? 'Labor'
+					: currentSlideData?.title === 'Enhance Yourself'
+					? 'Enhance'
 					: currentSlideData?.title.split(' ').slice(0, 2).join(' ')}
 				</span>
 				<br />
 				<span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
 				  {currentSlideData?.title === 'Labor Tested'
 					? 'Tested'
+					: currentSlideData?.title === 'Enhance Yourself'
+					? 'Yourself'
 					: currentSlideData?.title.split(' ').slice(2).join(' ')}
 				</span>
 			  </h1>
 
-			  <h2 className="text-xl lg:text-2xl text-gray-300 font-medium">
+			  <h2 className="text-base lg:text-xl text-gray-300 font-medium">
 				{currentSlideData?.subtitle}
 			  </h2>
 
-			  <p className="text-lg text-gray-400 max-w-lg leading-relaxed">
+			  <p className="text-sm lg:text-base text-gray-400 max-w-lg lg:max-w-2xl mx-auto lg:mx-0 leading-relaxed">
 				{currentSlideData?.description}
 			  </p>
 			</div>
 
 			{/* CTA Buttons */}
-			<div className="flex flex-col sm:flex-row gap-4">
+			<div className={`flex flex-col sm:flex-row gap-3 lg:gap-4 justify-start transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
+			  {/* Desktop: Anti-scaling wrapper, Mobile: Normal button */}
+			  <div className="hidden sm:block"
+				style={{ 
+				  transform: 'none !important', 
+				  scale: 'none !important',
+				  transition: 'background-color 0.3s ease, border-color 0.3s ease !important' 
+				}}
+			  >
+				<button
+				  onClick={() => handleCtaClick(currentSlideData?.cta || '')}
+				  className="inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
+				  style={{
+					boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)'
+				  }}
+				  onMouseEnter={(e) => { 
+					e.currentTarget.style.transform = 'none !important'; 
+					e.currentTarget.style.scale = '1 !important'; 
+					e.currentTarget.parentElement!.style.transform = 'none !important';
+				  }}
+				  onMouseLeave={(e) => { 
+					e.currentTarget.style.transform = 'none !important'; 
+					e.currentTarget.style.scale = '1 !important';
+					e.currentTarget.parentElement!.style.transform = 'none !important';
+				  }}
+				>
+				  <span>{currentSlideData?.cta}</span>
+				  <ChevronRightIcon className="ml-2 h-3.5 w-3.5 lg:h-4 lg:w-4" />
+				</button>
+			  </div>
+
+			  {/* Mobile: Original simple button */}
 			  <button
 				onClick={() => handleCtaClick(currentSlideData?.cta || '')}
-				className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+				className="sm:hidden inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
+				style={{
+				  boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)'
+				}}
 			  >
 				<span>{currentSlideData?.cta}</span>
-				<ChevronRightIcon className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+				<ChevronRightIcon className="ml-2 h-3.5 w-3.5 lg:h-4 lg:w-4" />
 			  </button>
 
 			  <Link
-				href="/categories?category=ALL%20PRODUCTS"
-				className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-600 hover:border-red-600 text-gray-300 hover:text-white font-semibold rounded-lg transition-all duration-300 hover:bg-red-600/10"
+				href="/categories"
+				className="inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
+				style={{
+				  boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)'
+				}}
 			  >
 				Discover Products
 			  </Link>
 			</div>
 
 			{/* Slide Indicators */}
-			<div className="flex space-x-2">
+			<div className={`flex space-x-2 lg:space-x-3 justify-center lg:justify-start transition-all duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
 			  {heroSlides.map((_, index) => (
 				<button
 				  key={index}
-				  onClick={() => setCurrentSlide(index)}
-				  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-					index === currentSlide ? 'bg-red-600' : 'bg-gray-600 hover:bg-gray-500'
+				  onClick={() => changeSlide(index)}
+				  className={`w-2 h-2 lg:w-2.5 lg:h-2.5 rounded-full transition-colors duration-300 ${
+					index === currentSlide ? 'bg-red-600' : 'bg-gray-600'
+				  }`}
+				/>
+			  ))}
+			</div>
+			</div>
+		  </div>		  {/* Mobile Content */}
+		  <div className="lg:hidden">
+			<div className="space-y-3 text-center lg:text-left">
+			{/* Hero Badge */}
+			<div 
+			  className={`inline-flex items-center space-x-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-3 lg:px-4 py-1.5 lg:py-2 text-gray-300 text-[10px] lg:text-xs font-medium mt-8 transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-2' : 'opacity-100 transform translate-y-0'}`}
+			  style={{
+				boxShadow: '0 4px 15px rgba(255, 255, 255, 0.05)'
+			  }}
+			>
+			  <ShieldCheckIcon className="h-2.5 w-2.5 lg:h-3 lg:w-3 text-green-400" />
+			  <span>Certified Pharmaceutical Products</span>
+			</div>
+
+			{/* Main Title */}
+			<div className={`space-y-4 lg:space-y-5 transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
+			  <h1 className="text-3xl lg:text-6xl font-bold text-white leading-tight">
+				<span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+				  {currentSlideData?.title === 'Labor Tested'
+					? 'Labor'
+					: currentSlideData?.title === 'Enhance Yourself'
+					? 'Enhance'
+					: currentSlideData?.title.split(' ').slice(0, 2).join(' ')}
+				</span>
+				<br />
+				<span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
+				  {currentSlideData?.title === 'Labor Tested'
+					? 'Tested'
+					: currentSlideData?.title === 'Enhance Yourself'
+					? 'Yourself'
+					: currentSlideData?.title.split(' ').slice(2).join(' ')}
+				</span>
+			  </h1>
+
+			  <h2 className="text-base lg:text-xl text-gray-300 font-medium">
+				{currentSlideData?.subtitle}
+			  </h2>
+
+			  <p className="text-sm lg:text-base text-gray-400 max-w-lg lg:max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+				{currentSlideData?.title === 'Global Delivery Network' ? (
+				  <>Fast and secure delivery to customers around<br />the globe</>
+				) : (
+				  currentSlideData?.description
+				)}
+			  </p>
+			</div>
+
+			{/* CTA Buttons */}
+			<div className={`flex flex-col sm:flex-row gap-3 lg:gap-4 transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
+			  {/* Mobile: Original simple button */}
+			  <button
+				onClick={() => handleCtaClick(currentSlideData?.cta || '')}
+				className="inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
+				style={{
+				  boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)'
+				}}
+			  >
+				<span>{currentSlideData?.cta}</span>
+				<ChevronRightIcon className="ml-2 h-3.5 w-3.5 lg:h-4 lg:w-4" />
+			  </button>
+
+			  <Link
+				href="/categories"
+				className="inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
+				style={{
+				  boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)'
+				}}
+			  >
+				Discover Products
+			  </Link>
+			</div>
+
+			{/* Slide Indicators */}
+			<div className={`flex space-x-2 lg:space-x-3 justify-center lg:justify-start transition-all duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+			  {heroSlides.map((_, index) => (
+				<button
+				  key={index}
+				  onClick={() => changeSlide(index)}
+				  className={`w-2 h-2 lg:w-2.5 lg:h-2.5 rounded-full transition-colors duration-300 ${
+					index === currentSlide ? 'bg-red-600' : 'bg-gray-600'
 				  }`}
 				/>
 			  ))}
 			</div>
 		  </div>
-
-		  {/* Right Content - Visual Elements */}
-		  <div className="relative">
-			{/* Main Visual */}
-			<div className="relative">
-			  {/* Floating Cards */}
-			  <div className="space-y-6">
-				{heroFeatures.map((feature, index) => (
-				  <div
-					key={index}
-					className="bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 hover:bg-gray-800/80 transition-all duration-300 hover:scale-105 hover:shadow-xl"
-					style={{
-					  animation: `float ${3 + index * 0.5}s ease-in-out infinite`,
-					  animationDelay: `${index * 0.2}s`,
-					}}
-				  >
-					<div className="flex items-center space-x-4">
-					  <div className="flex-shrink-0">
-						<div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-lg flex items-center justify-center">
-						  <feature.icon className="h-6 w-6 text-white" />
-						</div>
-					  </div>
-					  <div>
-						<h3 className="text-lg font-semibold text-white">
-						  {feature.title}
-						</h3>
-						<p className="text-gray-400 text-sm">
-						  {feature.description}
-						</p>
-					  </div>
-					</div>
-				  </div>
-				))}
-			  </div>
-
-			  {/* Decorative Elements */}
-			  <div
-				className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-r from-red-500/20 to-red-600/20 rounded-full blur-xl animate-pulse"
-				style={{}}
-			  ></div>
-			  <div
-				className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-r from-blue-500/10 to-purple-600/10 rounded-full blur-xl animate-pulse"
-				style={{ animationDelay: '1s' }}
-			  ></div>
-			</div>
 		  </div>
 		</div>
 	  </div>
 
 	  {/* Bottom Wave */}
-	  <div className="absolute left-0 right-0" style={{ bottom: '-20px' }}>
-		<svg viewBox="0 0 1200 120" className="w-full h-12 lg:h-20">
+	  <div className="absolute left-0 right-0" style={{ bottom: isMobile ? 'calc(20px + 220px)' : '-20px' }}>
+		<svg viewBox="0 0 1200 120" className="w-full h-16 lg:h-20">
 		  <path
 			d="M0,60 C400,0 800,120 1200,60 L1200,120 L0,120 Z"
 			fill="rgb(249, 250, 251)"
@@ -408,21 +819,15 @@ export default function HeroSection({ onOpenCommunityModal, onOpenLabReportsModa
 
 	  <style jsx>{`
 		@keyframes float {
-		  0%,
-		  100% {
-			transform: translateY(0px);
-		  }
-		  50% {
-			transform: translateY(-10px);
-		  }
+		  0%, 100% { transform: translateY(0px); }
+		  50% { transform: translateY(-8px); }
+		}
+		
+		.animate-float {
+		  animation: float 3s ease-in-out infinite;
 		}
 	  `}</style>
 
-	  {/* Products Modal */}
-	  <ProductsModal
-		isOpen={isProductsModalOpen}
-		onClose={() => setIsProductsModalOpen(false)}
-	  />
 	  {/* Community Modal is now rendered in HomePage */}
 	</div>
   );

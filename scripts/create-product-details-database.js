@@ -1,21 +1,21 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 // Funktion zum Lesen und Konvertieren von RTF zu HTML
 function convertRtfToHtml(rtfContent, productName) {
   // RTF-Content bereinigen (entfernt RTF-Markup)
   let cleanContent = rtfContent
-    .replace(/\\rtf1.*?\\deff0/g, '') // RTF Header entfernen
-    .replace(/\\[a-z]+\d*\s?/g, '') // RTF Befehle entfernen
-    .replace(/[{}]/g, '') // Geschweifte Klammern entfernen
-    .replace(/\\\\/g, '') // Backslashes entfernen
-    .replace(/\\'/g, '') // Escaped quotes entfernen
-    .replace(/\s+/g, ' ') // Mehrfache Leerzeichen reduzieren
+    .replace(/\\rtf1.*?\\deff0/g, "") // RTF Header entfernen
+    .replace(/\\[a-z]+\d*\s?/g, "") // RTF Befehle entfernen
+    .replace(/[{}]/g, "") // Geschweifte Klammern entfernen
+    .replace(/\\\\/g, "") // Backslashes entfernen
+    .replace(/\\'/g, "") // Escaped quotes entfernen
+    .replace(/\s+/g, " ") // Mehrfache Leerzeichen reduzieren
     .trim();
 
   // HTML-Format erstellen
-  const lines = cleanContent.split('\n').filter(line => line.trim());
-  
+  const lines = cleanContent.split("\n").filter((line) => line.trim());
+
   let htmlContent = `
     <div class="product-details">
       <h1 class="product-title">${productName}</h1>
@@ -34,7 +34,7 @@ function convertRtfToHtml(rtfContent, productName) {
         htmlContent += `<p>${lines[i].trim()}</p>`;
       }
     }
-    htmlContent += '</div>';
+    htmlContent += "</div>";
   }
 
   htmlContent += `
@@ -85,30 +85,32 @@ function convertRtfToHtml(rtfContent, productName) {
 // Hauptfunktion
 async function createProductDetailsDatabase() {
   try {
-    console.log('📚 Erstelle product-details-database.ts...');
-    
+    console.log("📚 Erstelle product-details-database.ts...");
+
     // Produktdatenbank einlesen
-    const dbPath = path.join(__dirname, '../lib/products-database.ts');
-    const dbContent = fs.readFileSync(dbPath, 'utf8');
-    
+    const dbPath = path.join(__dirname, "../lib/products-database.ts");
+    const dbContent = fs.readFileSync(dbPath, "utf8");
+
     // RTF-Verzeichnis
-    const rtfDir = path.join(__dirname, '../lib/rtf_temp');
-    
+    const rtfDir = path.join(__dirname, "../lib/rtf_temp");
+
     // Prüfen ob RTF-Verzeichnis existiert
     if (!fs.existsSync(rtfDir)) {
-      console.error('❌ RTF-Verzeichnis nicht gefunden:', rtfDir);
+      console.error("❌ RTF-Verzeichnis nicht gefunden:", rtfDir);
       return;
     }
 
     // RTF-Dateien lesen
-    const rtfFiles = fs.readdirSync(rtfDir).filter(f => f.endsWith('.rtf'));
+    const rtfFiles = fs.readdirSync(rtfDir).filter((f) => f.endsWith(".rtf"));
     console.log(`📁 ${rtfFiles.length} RTF-Dateien gefunden`);
 
     // Produktnamen extrahieren
     const productMatches = dbContent.match(/name: '([^']+)'/g);
     const products = productMatches
-      .map(match => match.replace(/name: '/, '').replace(/'$/, ''))
-      .filter(name => name.startsWith('DEUS') && !name.includes('Coming Soon'));
+      .map((match) => match.replace(/name: '/, "").replace(/'$/, ""))
+      .filter(
+        (name) => name.startsWith("DEUS") && !name.includes("Coming Soon"),
+      );
 
     console.log(`🔍 ${products.length} DEUS-Produkte gefunden`);
 
@@ -118,30 +120,37 @@ async function createProductDetailsDatabase() {
 
     for (const productName of products) {
       // Entsprechende RTF-Datei finden
-      const rtfFileName = rtfFiles.find(file => {
-        const nameWithoutExt = file.replace('.rtf', '').trim();
+      const rtfFileName = rtfFiles.find((file) => {
+        const nameWithoutExt = file.replace(".rtf", "").trim();
         return nameWithoutExt === productName;
       });
 
       if (rtfFileName) {
         try {
           const rtfPath = path.join(rtfDir, rtfFileName);
-          const rtfContent = fs.readFileSync(rtfPath, 'utf8');
+          const rtfContent = fs.readFileSync(rtfPath, "utf8");
           const htmlDetails = convertRtfToHtml(rtfContent, productName);
-          
+
           productDetails[productName] = htmlDetails;
           processedCount++;
-          
+
           if (processedCount % 10 === 0) {
-            console.log(`✅ ${processedCount}/${products.length} Produkte verarbeitet`);
+            console.log(
+              `✅ ${processedCount}/${products.length} Produkte verarbeitet`,
+            );
           }
         } catch (error) {
-          console.warn(`⚠️  Fehler beim Lesen von ${rtfFileName}:`, error.message);
-          productDetails[productName] = `<div class="product-details"><h1>${productName}</h1><p>Details werden geladen...</p></div>`;
+          console.warn(
+            `⚠️  Fehler beim Lesen von ${rtfFileName}:`,
+            error.message,
+          );
+          productDetails[productName] =
+            `<div class="product-details"><h1>${productName}</h1><p>Details werden geladen...</p></div>`;
         }
       } else {
         console.warn(`⚠️  Keine RTF-Datei für "${productName}" gefunden`);
-        productDetails[productName] = `<div class="product-details"><h1>${productName}</h1><p>Details werden geladen...</p></div>`;
+        productDetails[productName] =
+          `<div class="product-details"><h1>${productName}</h1><p>Details werden geladen...</p></div>`;
       }
     }
 
@@ -165,16 +174,29 @@ export const productDetails: ProductDetail[] = [
 `;
 
     // Originale Produktdatenbank parsen und Details hinzufügen
-    const productRegex = /{\s*id:\s*'([^']+)',\s*name:\s*'([^']+)',\s*description:\s*'([^']*)',\s*price:\s*([\d.]+),\s*image:\s*'([^']*)',\s*category:\s*'([^']*)',\s*brand:\s*'([^']*)',\s*filterType:\s*'([^']*)'\s*}/g;
+    const productRegex =
+      /{\s*id:\s*'([^']+)',\s*name:\s*'([^']+)',\s*description:\s*'([^']*)',\s*price:\s*([\d.]+),\s*image:\s*'([^']*)',\s*category:\s*'([^']*)',\s*brand:\s*'([^']*)',\s*filterType:\s*'([^']*)'\s*}/g;
 
     let match;
     while ((match = productRegex.exec(dbContent)) !== null) {
-      const [, id, name, description, price, image, category, brand, filterType] = match;
-      
+      const [
+        ,
+        id,
+        name,
+        description,
+        price,
+        image,
+        category,
+        brand,
+        filterType,
+      ] = match;
+
       // Nur DEUS-Produkte (keine Platzhalter)
-      if (brand === 'deus' && !name.includes('Coming Soon')) {
-        const details = productDetails[name] || `<div class="product-details"><h1>${name}</h1><p>Details werden geladen...</p></div>`;
-        
+      if (brand === "deus" && !name.includes("Coming Soon")) {
+        const details =
+          productDetails[name] ||
+          `<div class="product-details"><h1>${name}</h1><p>Details werden geladen...</p></div>`;
+
         newDbContent += `  {
     id: '${id}',
     name: '${name}',
@@ -184,7 +206,7 @@ export const productDetails: ProductDetail[] = [
     category: '${category}',
     brand: '${brand}',
     filterType: '${filterType}',
-    details: \`${details.replace(/`/g, '\\`')}\`
+    details: \`${details.replace(/`/g, "\\`")}\`
   },
 `;
       }
@@ -204,15 +226,17 @@ export const getProductDetailsByName = (productName: string): ProductDetail | un
 `;
 
     // Datei schreiben
-    const outputPath = path.join(__dirname, '../lib/product-details-database.ts');
-    fs.writeFileSync(outputPath, newDbContent, 'utf8');
+    const outputPath = path.join(
+      __dirname,
+      "../lib/product-details-database.ts",
+    );
+    fs.writeFileSync(outputPath, newDbContent, "utf8");
 
     console.log(`✅ product-details-database.ts erfolgreich erstellt!`);
     console.log(`📊 ${processedCount} Produkte mit Details verarbeitet`);
     console.log(`💾 Datei gespeichert: ${outputPath}`);
-
   } catch (error) {
-    console.error('❌ Fehler beim Erstellen der Datenbank:', error);
+    console.error("❌ Fehler beim Erstellen der Datenbank:", error);
   }
 }
 

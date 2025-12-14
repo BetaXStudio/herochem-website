@@ -1,7 +1,7 @@
-'use client';
-import { useEffect, useState } from 'react';
-import { useAuth } from '../../components/auth/auth-context';
-import { supabase } from '../../lib/supabase';
+"use client";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../components/auth/auth-context";
+import { supabase } from "../../lib/supabase";
 
 interface UserProfile {
   id: string;
@@ -16,7 +16,7 @@ export default function ProfileSettings() {
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
-  const [newUsername, setNewUsername] = useState('');
+  const [newUsername, setNewUsername] = useState("");
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -27,19 +27,19 @@ export default function ProfileSettings() {
 
       try {
         const { data, error } = await supabase
-          .from('user_profiles')
-          .select('*')
-          .eq('id', user.id)
+          .from("user_profiles")
+          .select("*")
+          .eq("id", user.id)
           .single();
 
-        if (error && error.code !== 'PGRST116') {
-          console.error('Error fetching profile:', error);
+        if (error && error.code !== "PGRST116") {
+          console.error("Error fetching profile:", error);
         } else if (data) {
           setProfile(data);
-          setNewUsername(data.username || '');
+          setNewUsername(data.username || "");
         }
       } catch (error) {
-        console.error('Error fetching profile:', error);
+        console.error("Error fetching profile:", error);
       } finally {
         setLoading(false);
       }
@@ -50,22 +50,22 @@ export default function ProfileSettings() {
 
   const handleUsernameSubmit = async () => {
     if (!newUsername.trim()) {
-      setError('Username is required');
+      setError("Username is required");
       return;
     }
 
     if (newUsername.length < 3) {
-      setError('Username must be at least 3 characters long');
+      setError("Username must be at least 3 characters long");
       return;
     }
 
     if (newUsername.length > 30) {
-      setError('Username must be less than 30 characters');
+      setError("Username must be less than 30 characters");
       return;
     }
 
     if (!/^[a-zA-Z0-9_]+$/.test(newUsername)) {
-      setError('Username can only contain letters, numbers, and underscores');
+      setError("Username can only contain letters, numbers, and underscores");
       return;
     }
 
@@ -74,19 +74,19 @@ export default function ProfileSettings() {
       setError(null);
 
       const { data, error } = await supabase
-        .from('user_profiles')
+        .from("user_profiles")
         .upsert({
           id: user?.id,
           username: newUsername,
           email: user?.email,
-          updated_at: new Date().toISOString()
+          updated_at: new Date().toISOString(),
         })
         .select()
         .single();
 
       if (error) {
-        if (error.code === '23505') {
-          setError('Username already exists. Please choose a different one.');
+        if (error.code === "23505") {
+          setError("Username already exists. Please choose a different one.");
         } else {
           throw error;
         }
@@ -95,11 +95,11 @@ export default function ProfileSettings() {
 
       setProfile(data);
       setIsEditing(false);
-      setSuccess('Username updated successfully!');
+      setSuccess("Username updated successfully!");
       setTimeout(() => setSuccess(null), 3000);
     } catch (error: any) {
-      console.error('Error updating username:', error);
-      setError('Failed to update username');
+      console.error("Error updating username:", error);
+      setError("Failed to update username");
     } finally {
       setSaving(false);
     }
@@ -107,7 +107,7 @@ export default function ProfileSettings() {
 
   const handleCancelEdit = () => {
     setIsEditing(false);
-    setNewUsername(profile?.username || '');
+    setNewUsername(profile?.username || "");
     setError(null);
   };
 
@@ -138,12 +138,16 @@ export default function ProfileSettings() {
 
       {/* Username Section */}
       <div className="bg-neutral-800 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-white mb-4">Username Settings</h3>
-        
+        <h3 className="text-lg font-semibold text-white mb-4">
+          Username Settings
+        </h3>
+
         {!profile?.username && !isEditing ? (
           /* No username set */
           <div className="space-y-4">
-            <p className="text-neutral-300">You haven&apos;t set a username yet.</p>
+            <p className="text-neutral-300">
+              You haven&apos;t set a username yet.
+            </p>
             <button
               onClick={() => setIsEditing(true)}
               className="px-6 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium"
@@ -155,7 +159,10 @@ export default function ProfileSettings() {
           /* Editing username */
           <div className="space-y-4">
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-neutral-300 mb-2">
+              <label
+                htmlFor="username"
+                className="block text-sm font-medium text-neutral-300 mb-2"
+              >
                 Username
               </label>
               <input
@@ -175,7 +182,7 @@ export default function ProfileSettings() {
                 disabled={saving}
                 className="px-6 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {saving ? 'Saving...' : 'Save Username'}
+                {saving ? "Saving..." : "Save Username"}
               </button>
               <button
                 onClick={handleCancelEdit}
@@ -194,7 +201,9 @@ export default function ProfileSettings() {
                 Current Username
               </label>
               <div className="flex items-center justify-between">
-                <span className="text-white font-medium">{profile?.username}</span>
+                <span className="text-white font-medium">
+                  {profile?.username}
+                </span>
                 <button
                   onClick={() => setIsEditing(true)}
                   className="px-4 py-2 bg-neutral-600 text-white rounded-md hover:bg-neutral-500 transition-colors duration-200 font-medium"
@@ -209,7 +218,9 @@ export default function ProfileSettings() {
 
       {/* Account Information */}
       <div className="bg-neutral-800 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-white mb-4">Account Information</h3>
+        <h3 className="text-lg font-semibold text-white mb-4">
+          Account Information
+        </h3>
         <div className="space-y-3">
           <div>
             <label className="block text-sm font-medium text-neutral-300 mb-1">
@@ -222,7 +233,7 @@ export default function ProfileSettings() {
               User ID
             </label>
             <p className="text-white font-mono text-sm">
-              {user?.id || 'Unknown'}
+              {user?.id || "Unknown"}
             </p>
           </div>
         </div>

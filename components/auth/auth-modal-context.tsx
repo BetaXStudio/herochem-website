@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from "react";
 
 interface AuthModalContextType {
   isOpen: boolean;
@@ -8,7 +8,9 @@ interface AuthModalContextType {
   closeModal: () => void;
 }
 
-const AuthModalContext = createContext<AuthModalContextType | undefined>(undefined);
+const AuthModalContext = createContext<AuthModalContextType | undefined>(
+  undefined,
+);
 
 export function AuthModalProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +28,7 @@ export function AuthModalProvider({ children }: { children: React.ReactNode }) {
 export function useAuthModal() {
   const context = useContext(AuthModalContext);
   if (context === undefined) {
-    throw new Error('useAuthModal must be used within an AuthModalProvider');
+    throw new Error("useAuthModal must be used within an AuthModalProvider");
   }
   return context;
 }

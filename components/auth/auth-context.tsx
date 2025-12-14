@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { Session, User } from '@supabase/supabase-js';
-import { createContext, useContext, useEffect, useState } from 'react';
-import { supabase } from '../../lib/supabase';
+import { Session, User } from "@supabase/supabase-js";
+import { createContext, useContext, useEffect, useState } from "react";
+import { supabase } from "../../lib/supabase";
 
 interface AuthContextType {
   user: User | null;
@@ -61,64 +61,86 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signOut = async () => {
     try {
-      console.log('Starting logout process...');
-      
+      console.log("Starting logout process...");
+
       // Lokale Session sofort löschen
       setUser(null);
-      
+
       // Supabase Session löschen
-      const { error } = await supabase.auth.signOut({ 
-        scope: 'global' // Logout in allen Tabs/Browser-Instanzen
+      const { error } = await supabase.auth.signOut({
+        scope: "global", // Logout in allen Tabs/Browser-Instanzen
       });
-      
+
       if (error) {
-        console.error('Supabase signOut error:', error);
+        console.error("Supabase signOut error:", error);
       }
-      
+
       // Komplett alle Browser-Daten löschen
-      if (typeof window !== 'undefined') {
+      if (typeof window !== "undefined") {
         // LocalStorage komplett löschen
         localStorage.clear();
         sessionStorage.clear();
-        
+
         // Spezifisch Supabase Keys löschen
-        Object.keys(localStorage).forEach(key => {
-          if (key.includes('supabase') || key.includes('auth')) {
+        Object.keys(localStorage).forEach((key) => {
+          if (key.includes("supabase") || key.includes("auth")) {
             localStorage.removeItem(key);
           }
         });
-        
-        Object.keys(sessionStorage).forEach(key => {
-          if (key.includes('supabase') || key.includes('auth')) {
+
+        Object.keys(sessionStorage).forEach((key) => {
+          if (key.includes("supabase") || key.includes("auth")) {
             sessionStorage.removeItem(key);
           }
         });
-        
+
         // Alle Cookies löschen
-        document.cookie.split(";").forEach(function(c) { 
-          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
-          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/;domain=" + window.location.hostname);
-          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/;domain=." + window.location.hostname);
+        document.cookie.split(";").forEach(function (c) {
+          document.cookie = c
+            .replace(/^ +/, "")
+            .replace(
+              /=.*/,
+              "=;expires=" + new Date().toUTCString() + ";path=/",
+            );
+          document.cookie = c
+            .replace(/^ +/, "")
+            .replace(
+              /=.*/,
+              "=;expires=" +
+                new Date().toUTCString() +
+                ";path=/;domain=" +
+                window.location.hostname,
+            );
+          document.cookie = c
+            .replace(/^ +/, "")
+            .replace(
+              /=.*/,
+              "=;expires=" +
+                new Date().toUTCString() +
+                ";path=/;domain=." +
+                window.location.hostname,
+            );
         });
-        
+
         // IndexedDB löschen (falls Supabase das verwendet)
-        if ('indexedDB' in window) {
+        if ("indexedDB" in window) {
           try {
-            indexedDB.deleteDatabase('supabase-auth-token');
+            indexedDB.deleteDatabase("supabase-auth-token");
           } catch (e) {
-            console.log('IndexedDB cleanup failed:', e);
+            console.log("IndexedDB cleanup failed:", e);
           }
         }
       }
-      
-      console.log('User signed out successfully');
+
+      console.log("User signed out successfully");
     } catch (error) {
-      console.error('Error signing out:', error);
+      console.error("Error signing out:", error);
       // Auch bei Fehlern lokale Session löschen
       setUser(null);
       throw error;
     }
-  };  const value = {
+  };
+  const value = {
     user,
     session,
     loading,
@@ -134,7 +156,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 export function useAuth() {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 }

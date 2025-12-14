@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @plugin "@tailwindcss/container-queries";
 @plugin "@tailwindcss/typography";
@@ -9,6 +9,13 @@ html {
   padding: 0;
   overflow-x: hidden; /* Verhindert horizontale Scrollbars */
   background-color: #2d2d34 !important; /* Für Browser UI */
+  /* Enable momentum scrolling for iOS */
+  -webkit-overflow-scrolling: touch;
+  /* Disable zoom on iOS */
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 body {
@@ -16,10 +23,175 @@ body {
   padding: 0;
   overflow-x: hidden; /* Verhindert horizontale Scrollbars */
   background-color: #2d2d34 !important; /* Für Browser UI */
+  /* Enable momentum scrolling for iOS */
+  -webkit-overflow-scrolling: touch;
+  /* Disable zoom on iOS */
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
 }
 
 @layer base {
-   /* Maximum cart modal suppression AND position lock */
+  /* iOS Momentum Scrolling for all scrollable elements */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Ensure smooth scrolling behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* iOS Safe Navbar Animation */
+  .ios-fix-visible {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+
+  /* Maximum cart moda/* ASTERA brand specific image scaling */
+  .astera-brand-active .product-image {
+    transform: scale(1.2) !important;
+    transition: transform 0.3s ease !important;
+  }
+
+  /* ASTERA brand color theming */
+  .astera-brand-active .astera-brand-border {
+    border-color: rgb(214, 127, 63) !important;
+  }
+
+  .astera-brand-active .astera-brand-line {
+    background: linear-gradient(
+      90deg,
+      rgba(214, 127, 63, 0.1) 0%,
+      rgb(214, 127, 63) 50%,
+      rgba(214, 127, 63, 0.1) 100%
+    ) !important;
+  }
+
+  .astera-brand-active .astera-brand-text {
+    color: rgb(214, 127, 63) !important;
+  }
+
+  .astera-brand-active .astera-brand-bg {
+    background: #d67f3f !important;
+  }
+
+  /* Navbar "chem" color change for Astera brand */
+  .astera-brand-active {
+    --astera-color: #d67f3f;
+  }
+
+  /* Default brand background (DEUS) */
+  .astera-brand-bg {
+    background: #e91111;
+  }
+
+  /* Astera brand border color */
+  .astera-brand-border {
+    border-color: rgb(214, 127, 63) !important;
+  }
+
+  .astera-brand-active .product-card .product-divider {
+    background-color: rgb(214, 127, 63) !important;
+  }
+
+  /* Custom border width for loading spinner */
+  .border-3 {
+    border-width: 3px;
+  }
+
+  /* Hydration-safe brand-aware elements */
+  .brand-aware-divider {
+    background: #2d2d34;
+    width: 100%;
+    height: 1px;
+    transition: background 0.2s ease;
+  }
+
+  html.astera-brand-active .brand-aware-divider {
+    background: #2d2d34 !important;
+  }
+
+  .brand-aware-button {
+    border: 1px solid #2d2d34;
+    transition: border-color 0.2s ease;
+  }
+
+  html.astera-brand-active .brand-aware-button {
+    border-color: #2d2d34 !important;
+  }
+
+  .brand-aware-dropdown {
+    border: 1px solid #e91111;
+    transition: border-color 0.2s ease;
+  }
+
+  html.astera-brand-active .brand-aware-dropdown {
+    border-color: #d67f3f !important;
+  }
+
+  .brand-aware-gradient-red {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 0, 0, 0.3) 0%,
+      rgba(255, 0, 0, 0.4) 100%
+    );
+    transition: background 0.2s ease;
+  }
+
+  html.astera-brand-active .brand-aware-gradient-red {
+    background: linear-gradient(
+      135deg,
+      rgba(214, 127, 63, 0.3) 0%,
+      rgba(214, 127, 63, 0.4) 100%
+    ) !important;
+  }
+
+  .brand-aware-gradient-red-hover:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 0, 0, 0.2) 0%,
+      rgba(255, 0, 0, 0.3) 100%
+    );
+    transition: background 0.2s ease;
+  }
+
+  html.astera-brand-active .brand-aware-gradient-red-hover:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(214, 127, 63, 0.2) 0%,
+      rgba(214, 127, 63, 0.3) 100%
+    ) !important;
+  }
+
+  .brand-aware-pagination-text {
+    color: #e91111;
+    transition: color 0.2s ease;
+  }
+
+  html.astera-brand-active .brand-aware-pagination-text {
+    color: #d67f3f !important;
+  }
+
+  .brand-aware-filter-button-active {
+    background-color: transparent !important;
+    transition: background-color 0.2s ease;
+  }
+
+  html.astera-brand-active .brand-aware-filter-button-active {
+    background-color: transparent !important;
+  }
+
+  .brand-aware-filter-button-hover:hover {
+    color: #e91111 !important;
+    transition: color 0.15s ease;
+  }
+
+  html.astera-brand-active .brand-aware-filter-button-hover:hover {
+    color: #d67f3f !important;
+  }
+
+  /* Cart modal suppression and position lock */
   [class*="bg-white shadow-xl transform"][style*="position: fixed"] {
     z-index: 7500 !important;
     top: 41px !important;
@@ -29,7 +201,8 @@ body {
     position: fixed !important;
     max-width: 400px !important;
     min-width: 400px !important;
-  }er,
+  }
+  er,
   ::before,
   ::backdrop,
   ::file-selector-button {
@@ -39,16 +212,18 @@ body {
 
 /* Custom animations for homepage */
 @keyframes float {
-  0%, 100% { 
-    transform: translateY(0px); 
+  0%,
+  100% {
+    transform: translateY(0px);
   }
-  50% { 
-    transform: translateY(-10px); 
+  50% {
+    transform: translateY(-10px);
   }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.4;
     transform: scale(1);
   }
@@ -83,6 +258,14 @@ body {
   animation: gradient-shift 3s ease infinite;
 }
 
+.animate-category-transition-out {
+  animation: categoryTransitionOut 0.15s ease-out forwards;
+}
+
+.animate-category-transition-in {
+  animation: categoryTransitionIn 0.3s ease-in forwards;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
@@ -95,7 +278,7 @@ html {
 }
 
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
-  img[loading='lazy'] {
+  img[loading="lazy"] {
     clip-path: inset(0.6px);
   }
 }
@@ -149,6 +332,28 @@ button {
 }
 
 @keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes categoryTransitionOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes categoryTransitionIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -274,6 +479,68 @@ nav button[aria-label="Open mobile menu"] {
 nav button[aria-label="Open mobile menu"] svg {
   width: 26px !important;
   height: 26px !important;
+  margin-top: 1px !important;
+}
+
+/* Mobile search button - ensure it stays above logo layer */
+nav button[aria-label="Open search"] {
+  z-index: 10030 !important;
+  position: relative !important;
+}
+
+/* Mobile search button icon */
+nav button[aria-label="Open search"] svg {
+  z-index: 10031 !important;
+  position: relative !important;
+}
+
+/* Navbar search modal - search icon margin handled in component */
+
+/* Search dropdown hover effects - use CSS variables for brand colors - only on desktop */
+@media (min-width: 769px) {
+  .search-product-item:hover .product-name {
+    color: var(--brand-color) !important;
+  }
+
+  .search-product-item:hover .product-price {
+    color: var(--brand-color) !important;
+  }
+}
+
+/* Navbar search modal delayed opacity animation */
+.navbar-search-modal-enter {
+  animation: delayed-fade-in 0.3s ease-in-out forwards;
+}
+
+@keyframes delayed-fade-in {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Navbar search modal - set height to 49px (override inline 45px) */
+.fixed.left-0.right-0.z-50.flex.flex-col[style*="height: 45px"] {
+  height: 49px !important;
+}
+
+/* Categories search modal - ensure full height (override other inline heights) */
+.fixed.left-0.right-0.z-50.flex.flex-col[style*="height: calc(100vh - 41px)"] {
+  height: calc(100vh - 41px) !important;
+  background: #2d2d34 !important;
+}
+
+/* Categories page - increase top padding for category grid on mobile only */
+@media (max-width: 768px) {
+  .grid[class*="grid-cols-2"][class*="md:grid-cols-2"][class*="lg:grid-cols-4"],
+  .grid[class*="grid-cols-2"][class*="md:grid-cols-2"][class*="lg:grid-cols-3"] {
+    padding-top: 24px !important;
+  }
 }
 
 /* Force consistent icon sizes in account sidebar */
@@ -308,8 +575,8 @@ nav button[aria-label="Open mobile menu"] svg {
 }
 
 .hide-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* Global scrollbar hiding */
@@ -318,8 +585,8 @@ html::-webkit-scrollbar {
 }
 
 html {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 body::-webkit-scrollbar {
@@ -327,8 +594,8 @@ body::-webkit-scrollbar {
 }
 
 body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* Verstecke alle Scrollbars global */
@@ -337,8 +604,8 @@ body {
 }
 
 * {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* Cart Modal - Force consistent positioning across all screen sizes */
@@ -349,7 +616,7 @@ body {
   width: 400px !important;
   max-width: 400px !important;
   min-width: 400px !important;
-  height: calc(100vh - 113px) !important;
+  height: calc(100vh - 160px) !important;
   z-index: 9998 !important;
 }
 
@@ -379,7 +646,7 @@ body {
     min-width: 400px !important;
     top: 41px !important;
     right: 0px !important;
-    height: calc(100vh - 113px) !important;
+    height: calc(100vh - 160px) !important;
   }
 }
 
@@ -390,35 +657,37 @@ body {
     min-width: 400px !important;
     top: 41px !important;
     right: 0px !important;
-    height: calc(100vh - 113px) !important;
+    height: calc(100vh - 160px) !important;
   }
 }
 
 /* Mobile navbar - remove transparency, border and top highlight */
 @media (max-width: 768px) {
   .navbar-mobile-opaque {
-    background: rgb(45,45,52) !important;
+    background: rgb(45, 45, 52) !important;
     backdrop-filter: none !important;
     border-bottom: none !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.25) !important;
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.4),
+      0 2px 6px rgba(0, 0, 0, 0.25) !important;
   }
-  
+
   nav {
     z-index: 10010 !important;
   }
-  
-  /* Ensure navbar stays above cart modal on mobile */
-  nav[style*="zIndex"] {
+
+  /* Ensure navbar stays above cart modal on mobile - more specific selector */
+  nav.navbar-mobile-opaque {
     z-index: 10010 !important;
   }
-  
+
   /* Lower cart modal z-index on mobile AND maintain position */
   [class*="bg-white shadow-xl transform"][style*="position: fixed"] {
     z-index: 9000 !important;
     top: 41px !important;
     right: 0px !important;
     width: 400px !important;
-    height: calc(100vh - 113px) !important;
+    height: calc(100vh - 160px) !important;
     position: fixed !important;
   }
 }
@@ -428,18 +697,19 @@ body {
   nav {
     z-index: 10015 !important;
   }
-  
-  nav[style*="zIndex"] {
+
+  /* Ensure navbar stays above cart modal on mobile - more specific selector */
+  nav.navbar-mobile-opaque {
     z-index: 10015 !important;
   }
-  
+
   /* Force cart modal below navbar AND maintain position */
   [class*="bg-white shadow-xl transform"][style*="position: fixed"] {
     z-index: 8500 !important;
     top: 41px !important;
     right: 0px !important;
     width: 400px !important;
-    height: calc(100vh - 113px) !important;
+    height: calc(100vh - 160px) !important;
     position: fixed !important;
   }
 }
@@ -449,23 +719,24 @@ body {
   nav {
     z-index: 10020 !important;
   }
-  
-  nav[style*="zIndex"] {
+
+  /* Ensure navbar stays above cart modal on mobile - more specific selector */
+  nav.navbar-mobile-opaque {
     z-index: 10020 !important;
   }
-  
+
   /* Force navbar to stay on top */
   nav[class*="fixed"] {
     z-index: 10020 !important;
   }
-  
+
   /* Aggressively lower cart modal AND lock position */
   [class*="bg-white shadow-xl transform"][style*="position: fixed"] {
     z-index: 8000 !important;
     top: 41px !important;
     right: 0px !important;
     width: 400px !important;
-    height: calc(100vh - 113px) !important;
+    height: calc(100vh - 160px) !important;
     position: fixed !important;
     max-width: 400px !important;
     min-width: 400px !important;
@@ -477,20 +748,123 @@ body {
   nav {
     z-index: 10025 !important;
   }
-  
-  nav[style*="zIndex"] {
+
+  /* Ensure navbar stays above cart modal on mobile - more specific selector */
+  nav.navbar-mobile-opaque {
     z-index: 10025 !important;
   }
-  
+
   /* Maximum cart modal suppression AND position lock */
   [class*="bg-white shadow-xl transform"][style*="position: fixed"] {
     z-index: 7500 !important;
     top: 41px !important;
     right: 0px !important;
     width: 400px !important;
-    height: calc(100vh - 113px) !important;
+    height: calc(100vh - 160px) !important;
     position: fixed !important;
     max-width: 400px !important;
     min-width: 400px !important;
   }
+}
+
+/* Prevent iOS Safari zoom on input focus */
+input,
+textarea,
+select {
+  font-size: 16px !important;
+}
+
+/* iOS Safari specific input fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  input[type="text"],
+  input[type="search"],
+  textarea {
+    /* Prevent keyboard from affecting navbar */
+    -webkit-user-select: text;
+    user-select: text;
+    touch-action: manipulation;
+  }
+}
+
+/* General modal max-height restrictions for better spacing */
+.max-h-\[90vh\] {
+  max-height: 75vh !important;
+}
+
+.max-h-\[80vh\] {
+  max-height: 65vh !important;
+}
+
+.max-h-\[calc\(90vh-120px\)\] {
+  max-height: calc(75vh - 120px) !important;
+}
+
+.max-h-\[calc\(80vh-120px\)\] {
+  max-height: calc(65vh - 120px) !important;
+}
+
+/* Community modal specific height restriction for more compact layout */
+.max-h-\[90vh\].flex.flex-col {
+  max-height: 70vh !important;
+  overflow: hidden !important;
+}
+
+.max-h-\[calc\(90vh-105px\)\] {
+  max-height: calc(70vh - 70px) !important;
+  overflow: hidden !important;
+}
+
+/* Disable scrolling in community modal content area */
+.max-h-\[90vh\].flex.flex-col .overflow-y-auto {
+  overflow: hidden !important;
+}
+
+/* iOS Safari navbar fix - minimal targeted solution */
+.ios-navbar-fixed {
+  z-index: 10025 !important;
+  contain: layout !important;
+}
+
+/* Product image scaling now handled via inline styles in product-card.tsx */
+
+/* ASTERA brand image scaling */
+.astera-brand-active .product-image {
+  transform: scale(1.2) !important;
+  transition: transform 0.3s ease !important;
+}
+
+.astera-brand-active .product-image:hover {
+  transform: scale(1.2) !important;
+}
+
+/* Line clamp utilities for text truncation */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Scrollbar hide utility for mobile swipe */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import AuthModal from './auth-modal';
-import { useAuthModal } from './auth-modal-context';
+import AuthModal from "./auth-modal";
+import { useAuthModal } from "./auth-modal-context";
 
 export default function AuthModalWrapper() {
   const { isOpen, closeModal } = useAuthModal();

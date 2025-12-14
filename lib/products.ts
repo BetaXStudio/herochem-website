@@ -1,17 +1,17 @@
 // Export product types and data for use across the app
 
-export type CategoryLabel = 
-  | 'INJECTION'
-  | 'ORAL'
-  | 'PEPTIDES & HGH'
-  | 'SARMS'
-  | 'POST CYCLE THERAPY'
-  | 'FAT BURN'
-  | 'AMINO ACIDS'
-  | 'SEXUAL HEALTH'
-  | 'ALL PRODUCTS';
+export type CategoryLabel =
+  | "INJECTION"
+  | "ORAL"
+  | "PEPTIDES & HGH"
+  | "SARMS"
+  | "POST CYCLE THERAPY"
+  | "FAT BURN"
+  | "AMINO ACIDS"
+  | "SEXUAL HEALTH"
+  | "ALL PRODUCTS";
 
-export type Brand = 'deus' | 'astera';
+export type Brand = "deus" | "astera";
 
 export type Product = {
   id: string;
@@ -32,14 +32,20 @@ export const getAllProducts = (): Product[] => {
   return [];
 };
 
-export const searchProducts = (query: string, products: Product[]): Product[] => {
+export const searchProducts = (
+  query: string,
+  products: Product[],
+): Product[] => {
   if (!query.trim()) return [];
-  
+
   const lowercaseQuery = query.toLowerCase();
-  
-  return products.filter(product => 
-    product.name.toLowerCase().includes(lowercaseQuery) ||
-    product.description.toLowerCase().includes(lowercaseQuery) ||
-    product.category.toLowerCase().includes(lowercaseQuery)
-  ).slice(0, 6); // Limit to 6 results for dropdown
+
+  return products
+    .filter(
+      (product) =>
+        product.name.toLowerCase().includes(lowercaseQuery) ||
+        product.description.toLowerCase().includes(lowercaseQuery) ||
+        product.category.toLowerCase().includes(lowercaseQuery),
+    )
+    .slice(0, 6); // Limit to 6 results for dropdown
 };

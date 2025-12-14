@@ -1,47 +1,59 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 // RTF zu HTML Konverter - vereinfacht
 function rtfToHtml(rtfContent, productName) {
   // RTF-Markup entfernen und bereinigen
   let text = rtfContent
     // RTF-Header und Befehle entfernen
-    .replace(/\{\\rtf1[^}]*\}/g, '')
-    .replace(/\{\\fonttbl[^}]*\}/g, '')
-    .replace(/\{\\colortbl[^}]*\}/g, '')
-    .replace(/\{\\[^}]*\}/g, '')
-    .replace(/\\[a-zA-Z]+\d*\s*/g, ' ')
-    .replace(/\\[^a-zA-Z\s]/g, '')
+    .replace(/\{\\rtf1[^}]*\}/g, "")
+    .replace(/\{\\fonttbl[^}]*\}/g, "")
+    .replace(/\{\\colortbl[^}]*\}/g, "")
+    .replace(/\{\\[^}]*\}/g, "")
+    .replace(/\\[a-zA-Z]+\d*\s*/g, " ")
+    .replace(/\\[^a-zA-Z\s]/g, "")
     // Geschweifte Klammern und Steuerzeichen entfernen
-    .replace(/[{}]/g, '')
-    .replace(/\\\\/g, '')
+    .replace(/[{}]/g, "")
+    .replace(/\\\\/g, "")
     // Mehrfache Leerzeichen reduzieren
-    .replace(/\s+/g, ' ')
+    .replace(/\s+/g, " ")
     .trim();
 
   // Text in Zeilen aufteilen
-  const lines = text.split(/\\par|\n|\\/).filter(line => line.trim());
-  
+  const lines = text.split(/\\par|\n|\\/).filter((line) => line.trim());
+
   // HTML generieren
   let html = `
     <div class="product-details">
       <h1 class="product-title">${productName}</h1>`;
 
   let sections = [];
-  let currentSection = '';
-  
+  let currentSection = "";
+
   for (let line of lines) {
     line = line.trim();
     if (line) {
       // Chemische Formel oder CAS-Nummer als erste Zeile
-      if (line.includes('CAS number') || line.includes('Molecular Weight') || line.includes('Formula')) {
+      if (
+        line.includes("CAS number") ||
+        line.includes("Molecular Weight") ||
+        line.includes("Formula")
+      ) {
         if (!html.includes('<h2 class="chemical-description">')) {
           html += `<h2 class="chemical-description">Chemische Eigenschaften</h2>`;
         }
         sections.push(`<p><strong>${line}</strong></p>`);
       }
       // Überschriften erkennen
-      else if (line.length < 50 && (line.includes('Overview') || line.includes('Dosage') || line.includes('Side Effects') || line.includes('Mechanism') || line.includes('Interactions') || line.includes('Composition'))) {
+      else if (
+        line.length < 50 &&
+        (line.includes("Overview") ||
+          line.includes("Dosage") ||
+          line.includes("Side Effects") ||
+          line.includes("Mechanism") ||
+          line.includes("Interactions") ||
+          line.includes("Composition"))
+      ) {
         if (currentSection) {
           sections.push(currentSection);
         }
@@ -52,14 +64,14 @@ function rtfToHtml(rtfContent, productName) {
         if (currentSection) {
           currentSection += ` ${line}</p>`;
           sections.push(currentSection);
-          currentSection = '';
+          currentSection = "";
         } else {
           sections.push(`<p>${line}</p>`);
         }
       }
     }
   }
-  
+
   if (currentSection) {
     sections.push(currentSection);
   }
@@ -67,8 +79,8 @@ function rtfToHtml(rtfContent, productName) {
   // Sections zu HTML hinzufügen
   if (sections.length > 0) {
     html += '<div class="product-description">';
-    html += sections.join('');
-    html += '</div>';
+    html += sections.join("");
+    html += "</div>";
   }
 
   html += `
@@ -130,41 +142,52 @@ function rtfToHtml(rtfContent, productName) {
 
 // Hauptfunktion
 function generateProductDetailsDatabase() {
-  console.log('🚀 Starte Generierung der product-details-database.ts...');
+  console.log("🚀 Starte Generierung der product-details-database.ts...");
 
-  const dbPath = path.join(__dirname, '../lib/products-database.ts');
-  const rtfDir = path.join(__dirname, '../lib/rtf_temp');
-  const outputPath = path.join(__dirname, '../lib/product-details-database.ts');
+  const dbPath = path.join(__dirname, "../lib/products-database.ts");
+  const rtfDir = path.join(__dirname, "../lib/rtf_temp");
+  const outputPath = path.join(__dirname, "../lib/product-details-database.ts");
 
   // Prüfe ob Dateien existieren
   if (!fs.existsSync(dbPath)) {
-    console.error('❌ products-database.ts nicht gefunden');
+    console.error("❌ products-database.ts nicht gefunden");
     return;
   }
 
   if (!fs.existsSync(rtfDir)) {
-    console.error('❌ rtf_temp Verzeichnis nicht gefunden');
+    console.error("❌ rtf_temp Verzeichnis nicht gefunden");
     return;
   }
 
   // Produktdatenbank lesen
-  const dbContent = fs.readFileSync(dbPath, 'utf8');
-  
+  const dbContent = fs.readFileSync(dbPath, "utf8");
+
   // RTF-Dateien laden
-  const rtfFiles = fs.readdirSync(rtfDir).filter(f => f.endsWith('.rtf'));
+  const rtfFiles = fs.readdirSync(rtfDir).filter((f) => f.endsWith(".rtf"));
   console.log(`📁 ${rtfFiles.length} RTF-Dateien gefunden`);
 
   // Produkte aus Datenbank extrahieren
-  const productRegex = /{\s*id:\s*'([^']+)',\s*name:\s*'([^']+)',\s*description:\s*'([^']*)',\s*price:\s*([\d.]+),\s*image:\s*'([^']*)',\s*category:\s*'([^']*)',\s*brand:\s*'([^']*)',\s*filterType:\s*'([^']*)'\s*}/g;
+  const productRegex =
+    /{\s*id:\s*'([^']+)',\s*name:\s*'([^']+)',\s*description:\s*'([^']*)',\s*price:\s*([\d.]+),\s*image:\s*'([^']*)',\s*category:\s*'([^']*)',\s*brand:\s*'([^']*)',\s*filterType:\s*'([^']*)'\s*}/g;
 
   const products = [];
   let match;
   while ((match = productRegex.exec(dbContent)) !== null) {
-    const [, id, name, description, price, image, category, brand, filterType] = match;
-    
+    const [, id, name, description, price, image, category, brand, filterType] =
+      match;
+
     // Nur DEUS-Produkte (keine Platzhalter)
-    if (brand === 'deus' && !name.includes('Coming Soon')) {
-      products.push({ id, name, description, price, image, category, brand, filterType });
+    if (brand === "deus" && !name.includes("Coming Soon")) {
+      products.push({
+        id,
+        name,
+        description,
+        price,
+        image,
+        category,
+        brand,
+        filterType,
+      });
     }
   }
 
@@ -193,8 +216,8 @@ export const productDetails: ProductDetail[] = [
 
   for (const product of products) {
     // RTF-Datei suchen
-    const rtfFile = rtfFiles.find(file => {
-      const nameWithoutExt = file.replace('.rtf', '').trim();
+    const rtfFile = rtfFiles.find((file) => {
+      const nameWithoutExt = file.replace(".rtf", "").trim();
       return nameWithoutExt === product.name;
     });
 
@@ -203,7 +226,7 @@ export const productDetails: ProductDetail[] = [
     if (rtfFile) {
       try {
         const rtfPath = path.join(rtfDir, rtfFile);
-        const rtfContent = fs.readFileSync(rtfPath, 'utf8');
+        const rtfContent = fs.readFileSync(rtfPath, "utf8");
         details = rtfToHtml(rtfContent, product.name);
         processedCount++;
         console.log(`✅ ${product.name} - RTF verarbeitet`);
@@ -224,7 +247,7 @@ export const productDetails: ProductDetail[] = [
     category: '${product.category}',
     brand: '${product.brand}',
     filterType: '${product.filterType}',
-    details: \`${details.replace(/`/g, '\\`')}\`
+    details: \`${details.replace(/`/g, "\\`")}\`
   },
 `;
   }
@@ -248,10 +271,12 @@ export const getAllProductDetails = (): ProductDetail[] => {
 `;
 
   // Datei schreiben
-  fs.writeFileSync(outputPath, output, 'utf8');
+  fs.writeFileSync(outputPath, output, "utf8");
 
   console.log(`✅ product-details-database.ts erfolgreich erstellt!`);
-  console.log(`📊 ${processedCount}/${products.length} Produkte mit RTF-Details verarbeitet`);
+  console.log(
+    `📊 ${processedCount}/${products.length} Produkte mit RTF-Details verarbeitet`,
+  );
   console.log(`💾 Datei gespeichert: ${outputPath}`);
 }
 

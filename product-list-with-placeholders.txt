@@ -1,0 +1,967 @@
+# NEUE ASTERA PRODUKTE - BEREIT ZUM EINFÜGEN
+# Basierend auf aktualisierter astera-products-list.txt
+# Format: ID - PRODUKTNAME ()
+
+=======================================================
+// INJECTION - ASTERA (34 Produkte)
+=======================================================
+
+inj-astera-001
+product-title: ASTERA BACTERIOSTATIC WATER
+chemical-description: Bacteriostatic Water
+CAS Number: 100-51-6
+Molecular Weight: 108.14 g/mol
+Formula: C7H8O
+Overview: Sterile water for injection with 0.9% benzyl alcohol that acts as an bacteriostatic preservative. A bacteriostatic preservative is added to bacteriostatic water for injection to prevent the growth of microorganisms.
+Mechanism of Action: Bacteriostatic water contains benzyl alcohol as a preservative, which disrupts bacterial cell membranes and inhibits bacterial growth. It provides a sterile medium for reconstituting and diluting injectable medications while preventing contamination.
+Dosage: Use it for reconstitution of lyophilized drugs or as a diluent or solvent for various parenteral preparations.
+Side Effects: Side effects are rare but may include injection site irritation, allergic reactions to benzyl alcohol, or contamination if not used under sterile conditions. Generally considered very safe when used properly.
+Composition: Bacteriostatic Water (Sterilized water for injections)
+
+inj-astera-002
+product-title: ASTERA BOLDENONE ACETATE 50
+chemical-description: Boldenone Acetate
+CAS Number: 2363-59-9
+Molecular Weight: 286.41 g/mol
+Formula: C19H26O2
+Overview: Boldenone is a steroid derived from testosterone in which the 1,2 double bond has been added, the result is a steroid with an anabolic rating equal to that of testosterone and an androgenic rating that is 50% lower. Another great feature of Boldenone is the fact that it increases appetite and red blood cell count.
+Mechanism of Action: Boldenone is an anabolic-androgenic steroid that binds to androgen receptors in muscle tissue, promoting protein synthesis and nitrogen retention. It increases red blood cell production through enhanced erythropoietin synthesis, improving oxygen delivery to muscles and enhancing athletic performance.
+Dosage: Common doses are usually 400 to 600mg per week, but doses as high as 800mg or 1000mg per week are normal depending on the user's experience. Being the short ester version we recommend injecting ED or EOD.
+Side Effects: Common side effects include increased appetite, acne, oily skin, hair loss in predisposed individuals, increased red blood cell count, mild suppression of natural testosterone production, potential cardiovascular strain, and possible virilization in women. May cause injection site irritation.
+Composition: Boldenone Acetate 100mg/ml
+
+inj-astera-003
+product-title: ASTERA BOLDENONE CYPIONATE 200
+chemical-description: Boldenone Cypionate
+CAS Number: 106505-90-2
+Molecular Weight: 398.58 g/mol
+Formula: C26H38O3
+Overview: Boldenone is a steroid derived from testosterone in which the 1,2 double bond has been added, the result is a steroid with an anabolic rating equal to that of testosterone and an androgenic rating that is 50% lower. Another great feature of Boldenone is the fact that it increases appetite and red blood cell count.
+Mechanism of Action: Boldenone is an anabolic-androgenic steroid that binds to androgen receptors in muscle tissue, promoting protein synthesis and nitrogen retention. It increases red blood cell production through enhanced erythropoietin synthesis, improving oxygen delivery to muscles and enhancing athletic performance.
+Dosage: Common doses are usually 400 to 600mg per week, but doses as high as 800mg or 1000mg per week are normal depending on the user's experience. Since it has a medium ester we recommend injecting it EOD or E3D.
+Side Effects: Common side effects include increased appetite, acne, oily skin, hair loss in predisposed individuals, increased red blood cell count, mild suppression of natural testosterone production, potential cardiovascular strain, and possible virilization in women. May cause injection site irritation.
+Composition: Boldenone Cypionate 300mg/ml
+
+inj-astera-004
+product-title: ASTERA BOLDENONE UNDECYLENATE 300
+chemical-description: Boldenone Undecylenate
+CAS Number: 13103-34-9
+Molecular Weight: 452.67 g/mol
+Formula: C30H44O3
+Overview: Boldenone is a steroid derived from testosterone in which the 1,2 double bond has been added, the result is a steroid with an anabolic rating equal to that of testosterone and an androgenic rating that is 50% lower. Another great feature of Boldenone is the fact that it increases appetite and red blood cell count.
+Mechanism of Action: Boldenone is an anabolic-androgenic steroid that binds to androgen receptors in muscle tissue, promoting protein synthesis and nitrogen retention. It increases red blood cell production through enhanced erythropoietin synthesis, improving oxygen delivery to muscles and enhancing athletic performance.
+Dosage: Common doses are usually 400 to 600mg per week, but doses as high as 800mg or 1000mg per week are normal depending on the user's experience. Since it has a long ester we recommend injecting it EOD or E3D.
+Side Effects: Common side effects include increased appetite, acne, oily skin, hair loss in predisposed individuals, increased red blood cell count, mild suppression of natural testosterone production, potential cardiovascular strain, and possible virilization in women. May cause injection site irritation.
+Composition: Boldenone Undecylenate 300mg/ml
+
+inj-astera-005
+product-title: ASTERA DIHYDROBOLDENONE 100
+chemical-description: Dihydroboldenone
+CAS Number: 65-06-5
+Molecular Weight: 288.43 g/mol
+Formula: C19H28O2
+Overview: Dihydroboldenone also known as 1-Test Cyp is the 5a-reduced metabolite of boldenone (Equipoise). It cannot aromatize to estrogen, making it a very "dry" compound. Like all DHT derivatives, it does not convert to estrogen or progesterone, which makes it an ideal compound for cutting cycles and for those who are sensitive to estrogen-related side effects.
+Mechanism of Action: Dihydroboldenone (1-testosterone) is a potent anabolic steroid that binds to androgen receptors with high affinity, promoting lean muscle mass gain and strength increases. It exhibits strong anabolic effects with reduced androgenic side effects compared to testosterone.
+Dosage: Typically DHB is run from 300-800mg per week depending on the user's experience. Being a long ester we recommend injecting it EOD or E3D.
+Side Effects: Side effects may include hair loss in predisposed individuals, acne, increased aggression, suppression of natural testosterone production, potential liver stress, cardiovascular strain, and possible virilization in women. Generally considered to have fewer estrogenic side effects.
+Composition: Dihydroboldenone 100mg/ml
+
+inj-astera-006
+product-title: ASTERA DROSTANOLONE ENANTHATE 200
+chemical-description: Drostanolone Enanthate
+CAS Number: 521-12-0
+Molecular Weight: 304.47 g/mol
+Formula: C20H32O2
+Overview: Drostanolone also known as Masteron is one of the most classic and cosmetic steroids in existence. Structurally, Drostanolone is DHT with an added methyl group at the carbon 2 position, which greatly increases the anabolic power of the hormone. This steroid is most commonly used during cutting cycles when lean mass retention and fat loss are desired, and when cosmetic conditioning is the primary concern.
+Mechanism of Action: Drostanolone is a DHT-derived anabolic steroid that binds to androgen receptors, promoting muscle hardness and density while reducing subcutaneous water retention. It acts as an anti-estrogenic compound, helping to create a dry, defined physique.
+Dosage: Normal doses range from 200 to 600mg per week. Being a long ester we recommend injecting it EOD or E3D.
+Side Effects: Common side effects include hair loss in predisposed individuals, acne, increased aggression, suppression of natural testosterone production, potential cardiovascular strain, joint discomfort due to drying effects, and virilization in women. May cause injection site irritation.
+Composition: Drostanolone Enanthate 200mg/ml
+
+inj-astera-007
+product-title: ASTERA DROSTANOLONE PROPIONATE 100
+chemical-description: Drostanolone Propionate
+CAS Number: 521-12-0
+Molecular Weight: 304.47 g/mol
+Formula: C20H32O2
+Overview: Drostanolone also known as Masteron is one of the most classic and cosmetic steroids in existence. Structurally, Drostanolone is DHT with an added methyl group at the carbon 2 position, which greatly increases the anabolic power of the hormone. This steroid is most commonly used during cutting cycles when lean mass retention and fat loss are desired, and when cosmetic conditioning is the primary concern.
+Mechanism of Action: Drostanolone is a DHT-derived anabolic steroid that binds to androgen receptors, promoting muscle hardness and density while reducing subcutaneous water retention. It acts as an anti-estrogenic compound, helping to create a dry, defined physique.
+Dosage: Normal doses range from 200 to 600mg per week. Being a short ester we recommend injecting it ED or EOD.
+Side Effects: Common side effects include hair loss in predisposed individuals, acne, increased aggression, suppression of natural testosterone production, potential cardiovascular strain, joint discomfort due to drying effects, and virilization in women. May cause injection site irritation.
+Composition: Drostanolone Propionate 100mg/ml
+
+inj-astera-008
+product-title: ASTERA LGD-4033 60
+chemical-description: Ligandrol
+CAS Number: 1165910-22-4
+Molecular Weight: 338.25 g/mol
+Formula: C14H12F6N2O
+Overview: Ligandrol is a SARM that provides muscle growth similar to steroids, but without the side effects typically associated with anabolic steroids, making it a popular alternative. It is also useful for osteoporosis, muscle wasting, and improving overall physical function in older adults. It increases lean body mass and strength. And as the most anabolic of all SARMs, it offers unique benefits.
+Mechanism of Action: Ligandrol (LGD-4033) is a selective androgen receptor modulator (SARM) that selectively binds to androgen receptors in muscle and bone tissue. It promotes anabolic effects like muscle growth and bone strengthening while minimizing androgenic side effects in other tissues.
+Dosage: The most used doses are usually from 5mg to 10mg per day. And cycles usually last from 8 to 12 weeks. Being an oil-based SARM we can inject it or we can take it orally.
+Side Effects: Potential side effects include mild suppression of natural testosterone production, fatigue, headaches, nausea, and potential liver stress with prolonged use. Generally considered to have fewer side effects than traditional anabolic steroids.
+Composition: Ligandrol 10mg/ml
+
+inj-astera-009
+product-title: ASTERA LONG ACTING MIX 500
+chemical-description: Drostanolone Enanthate, Testosterone Enanthate, Trenbolone Enanthate
+CAS Number: 521-12-0
+Molecular Weight: 304.47 g/mol
+Formula: C20H32O2
+Overview: This product is a complete cutting cycle in a vial, it contains testosterone, masteron and trenbolone.
+Mechanism of Action: Drostanolone is a DHT-derived anabolic steroid that binds to androgen receptors, promoting muscle hardness and density while reducing subcutaneous water retention. It acts as an anti-estrogenic compound, helping to create a dry, defined physique.
+Dosage: Dosages will depend on the user and goals, 2ml a week would be enough for most users. Since it is a combination of long esters, we recommend injecting EOD or E3D.
+Side Effects: Common side effects include hair loss in predisposed individuals, acne, increased aggression, suppression of natural testosterone production, potential cardiovascular strain, joint discomfort due to drying effects, and virilization in women. May cause injection site irritation.
+Composition: Drostanolone Enanthate 200mg/ml, Testosterone Enanthate 200mg/ml, Trenbolone Enanthate 100mg/ml
+
+inj-astera-010
+product-title: ASTERA METHANDIENONE 100
+chemical-description: Methandienone
+CAS Number: 72-63-9
+Molecular Weight: 300.44 g/mol
+Formula: C20H28O2
+Overview: Methandienone also known as Dianabol is an oral steroid that's very popular for bulking cycles. Gains in terms of weight and strength occur very quickly, mostly thanks to its ability to dramatically increase nitrogen retention and protein synthesis, plus increase glycogen storage. Being an injectable version, its absorption will be greater, and as it lacks ester, its absorption will be almost as fast as the oral version.
+Mechanism of Action: Methandienone (Dianabol) is an anabolic steroid that binds to androgen receptors and enhances protein synthesis, glycogenolysis, and nitrogen retention. It rapidly increases muscle mass and strength through enhanced cellular uptake of amino acids and improved recovery.
+Dosage: The most common doses range from 25 to 50mg per day. Although it is injectable, we would use the same protocol that is used with the oral version. We recommend using it for a maximum of 4-6 weeks.
+Side Effects: Side effects include significant water retention, gynecomastia, acne, oily skin, hair loss, liver stress, high blood pressure, cholesterol imbalances, suppression of natural testosterone production, mood swings, and potential virilization in women.
+Composition: Methandienone 50mg/ml
+
+inj-astera-011
+product-title: ASTERA METHENOLONE ENANTHATE 100
+chemical-description: Methenolone Enanthate
+CAS Number: 153-00-4
+Molecular Weight: 302.45 g/mol
+Formula: C20H30O2
+Overview: Methenolone Enanthate is one of the most famous and widely used steroids on the market, in part due to its lack of side effects. It is a useful steroid both in volume and during a cutting phase, since as it lacks side effects it can be added to any cycle to improve its potency.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: The doses that can be used without risk or with mild side effects are very high, and it is usually used from 400mg weekly to what your pocket can allow. Cycles are usually long, typically 14 to 20 weeks. I recommend injecting EOD or E3D.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Methenolone Enanthate 100mg/ml
+
+inj-astera-012
+product-title: ASTERA METHENOLONE ENANTHATE 200
+chemical-description: Methenolone Enanthate
+CAS Number: 153-00-4
+Molecular Weight: 302.45 g/mol
+Formula: C20H30O2
+Overview: Methenolone Enanthate is one of the most famous and widely used steroids on the market, in part due to its lack of side effects. It is a useful steroid both in volume and during a cutting phase, since as it lacks side effects it can be added to any cycle to improve its potency.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: The doses that can be used without risk or with mild side effects are very high, and it is usually used from 400mg weekly to what your pocket can allow. Cycles are usually long, typically 14 to 20 weeks. I recommend injecting EOD or E3D.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Methenolone Enanthate 200mg/ml
+
+inj-astera-013
+product-title: ASTERA METHYLDROSTANOLONE 40 40mg/ml
+chemical-description: Methyldrostanolone
+CAS Number: 521-12-0
+Molecular Weight: 304.47 g/mol
+Formula: C20H32O2
+Overview: Methyldrosnanolone also known as Superdrol is the most powerful oral steroid in existence. It is a methylated modification of drostanolone, but it does not look like it, it has a high anabolic and androgenic power, and can be used in volume, cut or in strength stages and just like Anadrol saturates glycogen deposits. It is a very hepatotoxic steroid, but its injectable version makes it more tolerable.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: A dose of 10mg is already very effective, but doses of up to 40-50mg per day are often used. We recommend using it for a maximum of 4 weeks and injecting it once a day, ED. It should be used in conjunction with a liver protector such as TUDCA.
+Side Effects: Side effects include liver toxicity, acne, hair loss, increased aggression, suppression of natural testosterone production, cardiovascular strain, joint discomfort, and virilization in women. Regular liver function monitoring is essential.
+Composition: Methyldrostanolone (Superdrol)
+
+inj-astera-014
+product-title: ASTERA NANDROLONE DECANOATE 300
+chemical-description: Nandrolone Decanoate
+CAS Number: 521-12-0
+Molecular Weight: 304.47 g/mol
+Formula: C20H32O2
+Overview: Nandrolone is a widely used steroid belonging to the 19 nors family. 19-Nors are generally characterized by their anabolism and progestogenic activity. They are very anabolic, but they also exhibit significant amounts of satellite interaction with other receptors in the body. The most notable being their interaction with the Progesterone receptor. 19-Nor derived progestins are agonists of the Progesterone receptor, which means that they can bind to the Progesterone receptor and activate it. Nandrolone causes a reduction in the ability to perceive pain (which increase is confused with a healing effect) and can also be reduced to DHN, DHN can displace DHT from its receptors causing several side effects, among which mood swings stand out and absence of erections, this can be remedied using Masteron, Proviron or some other steroid that reacts directly with the androgen receptor through DHT.
+Mechanism of Action: Nandrolone is an anabolic steroid that binds to androgen receptors, promoting protein synthesis and collagen synthesis. It enhances nitrogen retention, increases bone density, and stimulates red blood cell production while having lower androgenic effects than testosterone.
+Dosage: Normal doses are usually 200 to 400 mg per week for beginners and intermediate athletes, with the possibility of using 800 per week for specific or competitive purposes. Since it has a long ester it is recommended to inject it EOD or E3D.
+Side Effects: Common side effects include water retention, potential gynecomastia, acne, hair loss, suppression of natural testosterone production, potential cardiovascular strain, mood changes, and virilization in women. May cause "deca dick" (erectile dysfunction).
+Composition: Nandrolone Decanoate 300mg/ml
+
+inj-astera-015
+product-title: ASTERA NANDROLONE PHENYLPROPIONATE 100 100mg/ml
+chemical-description: Nandrolone phenylpropionate
+CAS Number: 521-12-0
+Molecular Weight: 304.47 g/mol
+Formula: C20H32O2
+Overview: Nandrolone is a widely used steroid belonging to the 19 nors family. 19-Nors are generally characterized by their anabolism and progestogenic activity. They are very anabolic, but they also exhibit significant amounts of satellite interaction with other receptors in the body. The most notable being their interaction with the Progesterone receptor. 19-Nor derived progestins are agonists of the Progesterone receptor, which means that they can bind to the Progesterone receptor and activate it. Nandrolone causes a reduction in the ability to perceive pain (which increase is confused with a healing effect) and can also be reduced to DHN, DHN can displace DHT from its receptors causing several side effects, among which mood swings stand out and absence of erections, this can be remedied using Masteron, Proviron or some other steroid that reacts directly with the androgen receptor through DHT.
+Mechanism of Action: Nandrolone is an anabolic steroid that binds to androgen receptors, promoting protein synthesis and collagen synthesis. It enhances nitrogen retention, increases bone density, and stimulates red blood cell production while having lower androgenic effects than testosterone.
+Dosage: Normal doses are usually 200 to 400 mg per week for beginners and intermediate athletes, with the possibility of using 800 per week for specific or competitive purposes. Since it has a short ester it is recommended to inject it ED or EOD.
+Side Effects: Common side effects include water retention, potential gynecomastia, acne, hair loss, suppression of natural testosterone production, potential cardiovascular strain, mood changes, and virilization in women. May cause injection site irritation.
+Composition: Nandrolone phenylpropionate (NPP)
+
+inj-astera-016
+product-title: ASTERA OXYMETHOLONE 50
+chemical-description: Oxymetholone
+CAS Number: 434-07-1
+Molecular Weight: 332.48 g/mol
+Formula: C21H32O3
+Overview: Oxymetholone is one of the most widely used oral steroids on the market. It is normally used in bulking cycles due to the rapid gain in muscle mass it provides (in part thanks to the increase in glycogen stores), also due to this reason it provides a substantial increase in strength, due to this it is commonly used in powerlifting and strongman competitions. Its hepatotoxicity is not as high as rumored, relatively high doses are considered safe in sick children and people with cancer and osteoporosis according to various clinical trials. Being an injectable version, its absorption will be greater, and as it lacks ester, its absorption will be almost as fast as the oral version.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: The most common doses are 50 to 100mg per day. Although it is injectable, we would use the same protocol that is used with the oral version. Cycles usually last between 4-6 weeks.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Oxymetholone 50mg/ml
+
+inj-astera-017
+product-title: ASTERA SHORT ACTING MIX 275
+chemical-description: Drostanolone propionate, Testosterone propionate, Trenbolone acetate
+CAS Number: 521-12-0
+Molecular Weight: 304.47 g/mol
+Formula: C20H32O2
+Overview: This product is a complete cutting cycle in a vial, it contains testosterone, masteron and trenbolone.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Dosages will depend on the user and goals, 2ml a week would be enough for most users. Since it is a combination of short esters, we recommend injecting ED or EOD.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Drostanolone propionate 75mg, Testosterone propionate 125mg, Trenbolone acetate 75mg
+
+inj-astera-018
+product-title: ASTERA STANOZOLOL 50
+chemical-description: Stanozolol
+CAS Number: 10418-03-8
+Molecular Weight: 328.49 g/mol
+Formula: C21H32N2O
+Overview: Stanozolol more commonly known as Winstrol is the most used oral steroid in cutting phases. Its androgenic potential is very high, making it the perfect steroid when it comes to retaining muscle mass while losing fat. It is also very useful when it comes to improving strength and can be useful in explosive sports.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Doses range from 30 to 100mg, with 40-50mg being a standard dose and 100mg being a pre-competition dose. We do not recommend using it for more than 4-6 weeks at a time. Being the injectable version we recommend injecting it once ED.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Stanozolol 50mg/ml
+
+inj-astera-019
+product-title: ASTERA STENBOLONE 100
+chemical-description: Stenbolone Acetate
+CAS Number: 521-12-0
+Molecular Weight: 304.47 g/mol
+Formula: C20H32O2
+Overview: Is a synthetic, injected anabolic–androgenic steroid and derivative of dihydrotestosterone. It is a steroid that is quite similar to masteron and was very popular in past decades.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Doses range from 300mg to 800mg per week. Because it has a short ester we recommend injecting it ED or EOD.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Stenbolone Acetate 100mg/ml
+
+inj-astera-020
+product-title: ASTERA SUSTANON 300
+chemical-description: Testosterone Decanoate, Testosterone Isocaproate, Testosterone Phenylpropionate, Testosterone Propionate
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: It is a combination of different esters of testosterone. Although its concentration is quite high, the combination of different esters makes its degree of tolerance very high. Although it has several long esters that keep blood levels stable for long periods of time, because it also has several short esters, it is recommended to use an injection protocol based on the half-life of the product.
+Mechanism of Action: Testosterone is the primary male hormone that binds to androgen receptors throughout the body, promoting protein synthesis, muscle growth, bone density, and secondary sexual characteristics. It regulates libido, mood, energy levels, and overall masculine development.
+Dosage: Being a product based on testosterone, it can have different uses, it can be used as a TRT, it can be used as a single cycle or it can serve as the basis for a cycle with different substances. The dose to use can vary depending on the purpose, doses from 100mg to 1000mg weekly is something that is quite common.
+Side Effects: Common side effects include acne, oily skin, hair loss in predisposed individuals, water retention, gynecomastia, mood swings, aggression, suppression of natural testosterone production, potential cardiovascular strain, and virilization in women.
+Composition: Testosterone Decanoate 120mg/ml, Testosterone Isocaproate 72mg/ml, Testosterone Phenylpropionate 72mg/ml, Testosterone Propionate 36mg/ml
+
+inj-astera-021
+product-title: ASTERA SUSTANON 500
+chemical-description: Testosterone Decanoate, Testosterone Isocaproate, Testosterone Phenylpropionate, Testosterone Propionate
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: It is a combination of different esters of testosterone. Although its concentration is quite high, the combination of different esters makes its degree of tolerance very high. Although it has several long esters that keep blood levels stable for long periods of time, because it also has several short esters, it is recommended to use an injection protocol based on the half-life of the product.
+Mechanism of Action: Testosterone is the primary male hormone that binds to androgen receptors throughout the body, promoting protein synthesis, muscle growth, bone density, and secondary sexual characteristics. It regulates libido, mood, energy levels, and overall masculine development.
+Dosage: Being a product based on testosterone, it can have different uses, it can be used as a TRT, it can be used as a single cycle or it can serve as the basis for a cycle with different substances. The dose to use can vary depending on the purpose, doses from 100mg to 1000mg weekly is something that is quite common.
+Side Effects: Common side effects include acne, oily skin, hair loss in predisposed individuals, water retention, gynecomastia, mood swings, aggression, suppression of natural testosterone production, potential cardiovascular strain, and virilization in women.
+Composition: Testosterone Decanoate 200mg/ml, Testosterone Isocaproate 120mg/ml, Testosterone Phenylpropionate 120mg/ml, Testosterone Propionate 60mg/ml
+
+inj-astera-022
+product-title: ASTERA TESTOSTERONE CYPIONATE 200
+chemical-description: Testosterone Enanthate
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Testosterone is the most used and most versatile steroid on the market. All cycles need a base of Testosterone in combination with other steroids or they can even consist only of Testosterone, it can also be used in small doses as TRT.
+Mechanism of Action: Testosterone is the primary male hormone that binds to androgen receptors throughout the body, promoting protein synthesis, muscle growth, bone density, and secondary sexual characteristics. It regulates libido, mood, energy levels, and overall masculine development.
+Dosage: Its use will depend on the context in which it is used, doses in a cycle can vary from 250mg for beginners to 1 gram or more in professional bodybuilders, We recommend using the maximum possible dose that can be used (obviously depending on the objective) in the absence of side effects. For a TRT We recommend using a dose based on your bloodwork. Being a long ester We recommend injecting EOD or E3D.
+Side Effects: Common side effects include acne, oily skin, hair loss in predisposed individuals, water retention, gynecomastia, mood swings, aggression, suppression of natural testosterone production, potential cardiovascular strain, and virilization in women.
+Composition: Testosterone Enanthate 200mg/ml
+
+inj-astera-023
+product-title: ASTERA TESTOSTERONE ENANTHATE 300
+chemical-description: Testosterone Enanthate
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Testosterone is the most used and most versatile steroid on the market. All cycles need a base of Testosterone in combination with other steroids or they can even consist only of Testosterone, it can also be used in small doses as TRT.
+Mechanism of Action: Testosterone is the primary male hormone that binds to androgen receptors throughout the body, promoting protein synthesis, muscle growth, bone density, and secondary sexual characteristics. It regulates libido, mood, energy levels, and overall masculine development.
+Dosage: Its use will depend on the context in which it is used, doses in a cycle can vary from 250mg for beginners to 1 gram or more in professional bodybuilders, We recommend using the maximum possible dose that can be used (obviously depending on the objective) in the absence of side effects. For a TRT We recommend using a dose based on your bloodwork. Being a long ester I recommend injecting EOD or E3D.
+Side Effects: Common side effects include acne, oily skin, hair loss in predisposed individuals, water retention, gynecomastia, mood swings, aggression, suppression of natural testosterone production, potential cardiovascular strain, and virilization in women.
+Composition: Testosterone Enanthate 300mg/ml
+
+inj-astera-024
+product-title: ASTERA TESTOSTERONE NO ESTER 100
+chemical-description: Testosterone no ester
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Testosterone is the most used and most versatile steroid on the market. All cycles need a base of Testosterone in combination with other steroids or they can even consist only of Testosterone, it can also be used in small doses as TRT.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Since it has no ester, its absorption speed will be very fast and its half-life very short. It can be used as a pre-workout, before a powerlifting meeting or injected frequently every day as doping to avoid detection in the bloodwork.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Testosterone no ester 100mg/ml
+
+inj-astera-025
+product-title: ASTERA TESTOSTERONE PHENYLPROPIONATE 100
+chemical-description: Testosterone Phenylpropionate
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Testosterone is the most used and most versatile steroid on the market. All cycles need a base of Testosterone in combination with other steroids or they can even consist only of Testosterone, it can also be used in small doses as TRT.
+Mechanism of Action: Testosterone is the primary male hormone that binds to androgen receptors throughout the body, promoting protein synthesis, muscle growth, bone density, and secondary sexual characteristics. It regulates libido, mood, energy levels, and overall masculine development.
+Dosage: Its use will depend on the context in which it is used, doses in a cycle can vary from 250mg for beginners to 1 gram or more in professional bodybuilders, We recommend using the maximum possible dose that can be used (obviously depending on the objective) in the absence of side effects. For a TRT We recommend using a dose based on your bloodwork. Being a semi short ester We recommend injecting ED or EOD.
+Side Effects: Common side effects include acne, oily skin, hair loss in predisposed individuals, water retention, gynecomastia, mood swings, aggression, suppression of natural testosterone production, potential cardiovascular strain, and virilization in women.
+Composition: Testosterone Phenylpropionate 100mg/ml
+
+inj-astera-026
+product-title: ASTERA TESTOSTERONE PROPIONATE 100
+chemical-description: Testosterone Propionate
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Testosterone is the most used and most versatile steroid on the market. All cycles need a base of Testosterone in combination with other steroids or they can even consist only of Testosterone, it can also be used in small doses as TRT.
+Mechanism of Action: Testosterone is the primary male hormone that binds to androgen receptors throughout the body, promoting protein synthesis, muscle growth, bone density, and secondary sexual characteristics. It regulates libido, mood, energy levels, and overall masculine development.
+Dosage: Its use will depend on the context in which it is used, doses in a cycle can vary from 250mg for beginners to 1 gram or more in professional bodybuilders, we personally recommend using the maximum possible dose that can be used (obviously depending on the objective) in the absence of side effects. For a TRT we recommend using a dose based on your bloodwork. Being a short ester we recommend injecting ED or EOD.
+Side Effects: Common side effects include acne, oily skin, hair loss in predisposed individuals, water retention, gynecomastia, mood swings, aggression, suppression of natural testosterone production, potential cardiovascular strain, and virilization in women. May cause injection site irritation.
+Composition: Testosterone Propionate 100mg/ml
+
+inj-astera-027
+product-title: ASTERA TESTOSTERONE UNDECANOATE 250
+chemical-description: Testosterone Undecanoate
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Testosterone is the most used and most versatile steroid on the market. All cycles need a base of Testosterone in combination with other steroids or they can even consist only of Testosterone, it can also be used in small doses as TRT.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Its use will depend on the context in which it is used, doses in a cycle can vary from 250mg for beginners to 1 gram or more in professional bodybuilders, we personally recommend using the maximum possible dose that can be used (obviously depending on the objective) in the absence of side effects. For a TRT we recommend using a dose based on your bloodwork. Being a really long ester we recommend injecting or E3D or once a week if needed, since it's half life is so long we usually recommend this specific ester for TRT or before traveling abroad.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Testosterone Undecanoate 250mg/ml
+
+inj-astera-028
+product-title: ASTERA TRENBOLONE ACETATE 100
+chemical-description: Trenbolone Acerate
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Trenbolone is a steroid derived from 19-Nortestosterone and is one of the most powerful and effective steroids currently in existence. Due to its high affinity to androgen receptors, it is a versatile steroid, useful for gaining muscle mass, losing fat and increasing strength. It is very useful during a cutting cycle to maintain as much lean mass as possible while losing as much fat as possible. Although its side effects are exaggerated and are very similar to those of other steroids and dose dependent, it must be taken into account that it causes sleep disturbances (depending on the dose and time of use) and mood changes (depending on the person).
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Being a very versatile steroid, doses of 75mg per week can be very useful during a cutting phase without causing side effects or reducing the chances of them. Doses of 200-400mg per week are considered "normal" depending on how advanced the athlete is, We recommend starting at 75mg per week and gradually increasing the dose until you notice any side effects and that would be your maximum dose. Since its a short ester it should be injected ED or EOD.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Trenbolone Acerate 100mg/ml
+
+inj-astera-029
+product-title: ASTERA TRENBOLONE BASE 50
+chemical-description: Trenbolone Base
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Trenbolone is a steroid derived from 19-Nortestosterone and is one of the most powerful and effective steroids currently in existence. Due to its high affinity to androgen receptors, it is a versatile steroid, useful for gaining muscle mass, losing fat and increasing strength. It is very useful during a cutting cycle to maintain as much lean mass as possible while losing as much fat as possible. Although its side effects are exaggerated and are very similar to those of other steroids and dose dependent, it must be taken into account that it causes sleep disturbances (depending on the dose and time of use) and mood changes (depending on the person).
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Since it lacks ester its onset time is almost instantaneous, it can be used as a pre-workout to give extra strength/aggression or during a powerlifting meeting. A single dose of 50-75mg pre training would be recommended.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Trenbolone Base 50mg/ml
+
+inj-astera-030
+product-title: ASTERA TRENBOLONE ENANTHATE 200
+chemical-description: Trenbolone Enanthate
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Trenbolone is a steroid derived from 19-Nortestosterone and is one of the most powerful and effective steroids currently in existence. Due to its high affinity to androgen receptors, it is a versatile steroid, useful for gaining muscle mass, losing fat and increasing strength. It is very useful during a cutting cycle to maintain as much lean mass as possible while losing as much fat as possible. Although its side effects are exaggerated and are very similar to those of other steroids and dose dependent, it must be taken into account that it causes sleep disturbances (depending on the dose and time of use) and mood changes (depending on the person).
+Mechanism of Action: Trenbolone is a potent anabolic steroid that binds to androgen receptors with extremely high affinity, promoting dramatic increases in muscle mass and strength. It enhances protein synthesis, inhibits muscle breakdown, and increases IGF-1 production while burning fat.
+Dosage: Being a very versatile steroid, doses of 75mg per week can be very useful during a cutting phase without causing side effects or reducing the chances of them. Doses of 200-400mg per week are considered "normal" depending on how advanced the athlete is, I recommend starting at 75mg per week and gradually increasing the dose until you notice any side effects and that would be your maximum dose. Since its a long ester it can be injected EOD or twice a week.
+Side Effects: Side effects include night sweats, insomnia, increased aggression ("tren rage"), cardiovascular strain, suppression of natural testosterone production, potential kidney stress, hair loss, acne, and severe virilization in women. May cause "tren cough" and anxiety.
+Composition: Trenbolone Enanthate 200mg/ml
+
+inj-astera-031
+product-title: ASTERA TRENBOLONE HEXAHYDROBENZYL CARBONATE 100
+chemical-description: Trenbolone Hexahydrobenzylcarbonate
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Trenbolone is a steroid derived from 19-Nortestosterone and is one of the most powerful and effective steroids currently in existence. Due to its high affinity to androgen receptors, it is a versatile steroid, useful for gaining muscle mass, losing fat and increasing strength. It is very useful during a cutting cycle to maintain as much lean mass as possible while losing as much fat as possible. Although its side effects are exaggerated and are very similar to those of other steroids and dose dependent, it must be taken into account that it causes sleep disturbances (depending on the dose and time of use) and mood changes (depending on the person).
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Being a very versatile steroid, doses of 75mg per week can be very useful during a cutting phase without causing side effects or reducing the chances of them. Doses of 200-400mg per week are considered "normal" depending on how advanced the athlete is, We recommend starting at 75mg per week and gradually increasing the dose until you notice any side effects and that would be your maximum dose. Since its a long ester it can be injected EOD or twice a week.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Trenbolone Hexahydrobenzylcarbonate 100mg/ml
+
+inj-astera-032
+product-title: ASTERA TRENBOLONE MIX 150
+chemical-description: Trenbolone Acetate, Trenbolone Enanthate, Trenbolone Hexahydrobenzylcarbonate
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Trenbolone is a steroid derived from 19-Nortestosterone and is one of the most powerful and effective steroids currently in existence. Due to its high affinity to androgen receptors, it is a versatile steroid, useful for gaining muscle mass, losing fat and increasing strength. It is very useful during a cutting cycle to maintain as much lean mass as possible while losing as much fat as possible. Although its side effects are exaggerated and are very similar to those of other steroids and dose dependent, it must be taken into account that it causes sleep disturbances (depending on the dose and time of use) and mood changes (depending on the person).
+Mechanism of Action: Trenbolone is a potent anabolic steroid that binds to androgen receptors with extremely high affinity, promoting dramatic increases in muscle mass and strength. It enhances protein synthesis, inhibits muscle breakdown, and increases IGF-1 production while burning fat.
+Dosage: Being a very versatile steroid, doses of 75mg per week can be very useful during a cutting phase without causing side effects or reducing the chances of them. Doses of 200-400mg per week are considered "normal" depending on how advanced the athlete is, We recommend starting at 75mg per week and gradually increasing the dose until you notice any side effects and that would be your maximum dose. Since it has a combination of three esters we recommended to use the same injection frequency that we would use with the shorter ester, so ED or EOD.
+Side Effects: Side effects include night sweats, insomnia, increased aggression ("tren rage"), cardiovascular strain, suppression of natural testosterone production, potential kidney stress, hair loss, acne, and severe virilization in women. May cause "tren cough" and anxiety.
+Composition: Trenbolone Acetate 50mg, Trenbolone Enanthate 50mg, Trenbolone Hexahydrobenzylcarbonate 50mg
+
+inj-astera-033
+product-title: ASTERA TRESTOLONE ACETATE 50
+chemical-description: Trestolone Acetate
+CAS Number: 434-22-0
+Molecular Weight: 274.40 g/mol
+Formula: C18H26O2
+Overview: The most potent steroid known as Trestolone Acetate, which is the methylated version of Nandrolone and has a potency far higher than Trenbolone, is widely regarded as a combination of the two. It is a highly aromatizable substance, so if it is utilized, care should be made to manage estradiol using alternative methods or lower dosages than would be typical for regular substances. It isn't turned into DHT. It is the chemical that has the highest milligram-to-milligram inhibition constant, and one of its uses is as a male contraceptive.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: The dosage depends on the user. By way of contact, doses of 5–10 mg per day (35–70 mg per week) are very common. More experienced users typically use 10–25 mg per day (70–175 mg per week) or even 25–50 mg per day (150–350 mg per week). We advise increasing the dose weekly until you find the dose that best meets your needs. Typically, cycles last 8 to 12 weeks.
+Side Effects: Side effects include significant water retention, gynecomastia, acne, hair loss, severe suppression of natural testosterone production, potential cardiovascular strain, mood swings, increased aggression, and virilization in women.
+Composition: Trestolone Acetate 50mg/ml
+
+inj-astera-034
+product-title: ASTERA TRESTOLONE ENANTHATE 50
+chemical-description: Trestolone Enanthate
+CAS Number: 434-22-0
+Molecular Weight: 274.40 g/mol
+Formula: C18H26O2
+Overview: TRESTOLONE ENANTHATE (MENT) is a potent anabolic steroid derived from the hormone nandrolone. It is popularly considered a mix between Trenbolone and Nandrolone, offering a powerful combination of strength and size gains. With a higher potency than Trenbolone, Trestolone Enanthate is one of the most powerful steroids available. This compound aromatizes heavily, meaning it converts to estrogen in the body. Users should be aware of this and take appropriate measures to control estradiol levels, utilizing different strategies than those typically used with less potent compounds or opting for smaller doses. Trestolone Enanthate does not convert to DHT, which reduces the risk of hair loss and other DHT-related side effects. Interestingly, it has a high inhibition constant, and one of the uses of this substance is as a male contraceptive.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: The dose of Trestolone Enanthate varies depending on the user's experience and goals. Common doses range from 5-10mg per day (35-70mg per week) for beginners, while more advanced users may use 10-25mg per day (70-175mg per week) or even 25-50mg per day (175-350mg per week). It is recommended to increase the dose gradually, on a weekly basis, until the desired effects are achieved. Cycles typically last 8-12 weeks, with users carefully monitoring their response to the compound and adjusting dosage as needed to optimize results while minimizing potential side effects. After the cycle is complete, a post-cycle therapy (PCT) is recommended to help restore natural testosterone production and maintain the gains achieved during the cycle.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Trestolone Enanthate 50mg/ml
+
+=======================================================
+// ORAL - ASTERA (12 Produkte)
+=======================================================
+
+oral-astera-001
+product-title: ASTERA CHLORODEHYDROMETHYL TESTOSTERONE 20 20mg/tab
+chemical-description: Chlorodehydromethyltestosterone
+CAS Number: 72-63-9
+Molecular Weight: 300.44 g/mol
+Formula: C20H28O2
+Overview: Turinabol is a 17-alpha-alkylated compound that is a derivative of Dianabol. It features a 4-chloro attachment that inhibits the aromatization of the compound. It also has an advantageous effect in terms of it's ability to reduce the binding of sex hormone-binding globulin to other anabolic steroids. Even at relatively low doses, it is quite effective at this function and could improve the action of any anabolics that a user may be running with the compound.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Doses range from 40-60mg, although some users have used doses as high as 100mg. It is not very hepatotoxic, so it can be used in 8-week cycles. It is advisable to divide the dose into two daily doses.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Chlorodehydromethyltestosterone: 20mg
+
+oral-astera-002
+product-title: ASTERA FLUOXYMESTERONE 5 5mg/tab
+chemical-description: Fluoxymesterone
+CAS Number: [TO BE ADDED]
+Molecular Weight: [TO BE ADDED]
+Formula: [TO BE ADDED]
+Overview: Fluoxymesterone is a very potent oral steroid that exhibits extremely strong androgenic properties. For bodybuilders and strength athletes fluoxymesterone offers several distinct advantages over other drugs. However, these come with some serious potential side effects.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: The dose and duration of the cycle will depend on the objectives of the user, the doses vary from 20-50mg daily and it is not recommended to use it for more than 4-6 weeks in a row. In bodybuilding it is used to burn more fat and give a more androgenic appearance for competitions, in contact or strength sports it is used to increase strength and aggressiveness.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Fluoxymesterone: 5mg
+
+oral-astera-003
+product-title: ASTERA MESTEROLONE 50
+chemical-description: Mesterolone
+CAS Number: 434-22-0
+Molecular Weight: 274.40 g/mol
+Formula: C18H26O2
+Overview: Mesterolone is an androgen and anabolic steroid used in the treatment of androgen deficiency and to support male fertility, It has also been used to treat delayed puberty in boys. Because it lacks estrogenic effects, mesterolone may be indicated for treating cases of androgen deficiency in which gynecomastia is also present.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Its most common use is for androgenic support, being useful to increase libido, burn more fat, or avoid side effects of other substances such as Nandrolone. The doses vary depending on what is required, being 50-100mg the most common, I recommend dividing the dose into two daily doses. Proviron is usually free of serious side effects.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Mesterolone: 50
+
+oral-astera-004
+product-title: ASTERA METHANDIENONE 20
+chemical-description: Metadienone
+CAS Number: 72-63-9
+Molecular Weight: 300.44 g/mol
+Formula: C20H28O2
+Overview: Metadienone, commonly known as Dianabol, is one of the most widely used oral steroids in the golden age of bodybuilding. Due to its anabolic and estrogenic potency it is often used in bulking cycles or in strength competitions.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Its half-life is 4.5 to 6 hours, therefore it is recommended to divide the doses throughout the day. Cycles usually last 4 to 6 weeks. We would recommend splitting the dose three times per day. The doses that are usually used vary from 20mg per day to 100mg per day.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Metadienone: 20
+
+oral-astera-005
+product-title: ASTERA METHYL-1-TESTOSTERONE 10
+chemical-description: Methyl-1-testosterone
+CAS Number: 846-48-0
+Molecular Weight: 286.41 g/mol
+Formula: C19H26O2
+Overview: It is a synthetic and orally active anabolic–androgenic steroid which was never marketed for medical use. It is the 17α-methyl derivative of 1-testosterone (Δ1-DHT; dihydroboldenone).
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Being a steroid that has never had therapeutic use, the recommendations for use are based on the experiences of users who have used it, the doses vary from 10-30mg daily, it has normally been taken a couple of hours before training, it is not recommended to exceed 4 weeks of use.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Methyl-1-testosterone: 10mg
+
+oral-astera-006
+product-title: ASTERA METHYLDROSTANOLONE 10
+chemical-description: Methyldrostanolone
+CAS Number: 521-12-0
+Molecular Weight: 304.47 g/mol
+Formula: C20H32O2
+Overview: Methyldrosnanolone also known as Superdrol is the most powerful oral steroid in existence. It is a methylated modification of drostanolone, but it does not look like it, it has a high anabolic and androgenic power, and can be used in volume, cut or in strength stages and just like Anadrol saturates glycogen deposits. It is a very hepatotoxic steroid.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: A dose of 10mg is already very effective, but doses of up to 20-30mg per day are often used. We recommend using it for a maximum of 4 weeks. We recommend splitting the doce twice per day. It should be used in conjunction with a liver protector such as TUDCA.
+Side Effects: Side effects include liver toxicity, acne, hair loss, increased aggression, suppression of natural testosterone production, cardiovascular strain, joint discomfort, and virilization in women. Regular liver function monitoring is essential.
+Composition: Methyldrostanolone: 10mg
+
+oral-astera-007
+product-title: ASTERA METHYLTESTOSTERONE 25
+chemical-description: 17a-Methyltestosterone
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Is an androgen and anabolic steroid medication which is used in the treatment of low testosterone levels in men, delayed puberty in boys, at low doses as a component of menopausal hormone therapy for menopausal symptoms like hot flashes, osteoporosis, and low sexual desire in women, and to treat breast cancer in women.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Anecdotal evidence tells us to use between 25-50mg, preferably for short periods of time, paying attention to estrogen levels and preferably using it pre-workout.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: 17a-Methyltestosterone: 25mg
+
+oral-astera-008
+product-title: ASTERA METHYLTRENBOLONE 1
+chemical-description: Methyltrenbolone
+CAS Number: 434-22-0
+Molecular Weight: 274.40 g/mol
+Formula: C18H26O2
+Overview: Metribolone is a synthetic and orally active anabolic–androgenic steroid (AAS) and a 17α-alkylated nandrolone (19-nortestosterone) derivative. It is one of the most powerful and toxic steroids that exist, the changes in strength and aesthetics that are seen with its use are impressive.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Daily doses vary between 500-1000mcg divided into 2 doses, although most users use it a few hours before training. It is not recommended to use it for more than 2 weeks in a row, it is mandatory to use a liver protector such as TUDCA, to avoid psychological side effects it would be advisable to use SAME since it is very useful at the hepatic level and at the emotional one too.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Methyltrenbolone: 1mg
+
+oral-astera-009
+product-title: ASTERA MIBOLERONE 0.5
+chemical-description: Mibolerone
+CAS Number: 434-22-0
+Molecular Weight: 274.40 g/mol
+Formula: C18H26O2
+Overview: Mibolerone is a 7,17-dimethylated derivative of nandrolone, It is a very powerful oral steroid, but its uses are very specific, mostly for powerlifting competitions, strongman ones or contact sports for increasing strength and aggressiveness.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: It is advisable to take between 0.5 to 1mg 30 minutes before a strength sporting event, the athlete should take into account that blood pressure can rise to dangerous levels with its use.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Mibolerone: 0.5mg
+
+oral-astera-010
+product-title: ASTERA OXANDROLONE 20
+chemical-description: Oxandrolone
+CAS Number: [TO BE ADDED]
+Molecular Weight: [TO BE ADDED]
+Formula: [TO BE ADDED]
+Overview: It is the most used oral steroid due to its risk/benefit ratio, it provides good gains in lean mass and strength as well as a powerful effect on fat loss. It is very versatile, it can be used both in a cutting cycle and in a bulking cycle, although it is generally used during a cutting cycle due to its powerful fat burning effect. It is a very safe steroid, although it is metabolized in the liver, its liver toxicity is almost zero.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: The doses will depend on the user, and doses from 20 to 100 mg per day are considered normal. A standard dose will be 30-50 mg per day, divided into 3 doses with the main meals of the day.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Oxandrolone: 20mg
+
+oral-astera-011
+product-title: ASTERA OXYMETHOLONE 25
+chemical-description: Oxymetholone
+CAS Number: 434-07-1
+Molecular Weight: 332.48 g/mol
+Formula: C21H32O3
+Overview: Oxymetholone is one of the most widely used oral steroids on the market. It is normally used in bulking cycles due to the rapid gain in muscle mass it provides (in part thanks to the increase in glycogen stores), also due to this reason it provides a substantial increase in strength, due to this it is commonly used in powerlifting and strongman competitions. Its hepatotoxicity is not as high as rumored, relatively high doses are considered safe in sick children and people with cancer and osteoporosis according to various clinical trials. Being the oral version, its absorption will be greater, and as it lacks ester, its absorption will be almost as fast as the oral version.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: The most common doses are 50 to 100mg per day. Although it is injectable, we recommend to use the same protocol that is used with the oral version. We would recommend splitting the dosage twice a day. Cycles usually last between 4-6 weeks.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Oxymetholone: 25mg
+
+oral-astera-012
+product-title: ASTERA STANOZOLOL 20
+chemical-description: Stanozolol
+CAS Number: 1165910-22-4
+Molecular Weight: 338.25 g/mol
+Formula: C14H12F6N2O
+Overview: Stanozolol more commonly known as Winstrol is the most used oral steroid in cutting phases. Its androgenic potential is very high, making it the perfect steroid when it comes to retaining muscle mass while losing fat. It is also very useful when it comes to improving strength and can be useful in explosive sports.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Doses range from 30 to 100mg, with 40-50mg being a standard dose and 100mg being a pre-competition dose. We do not recommend using it for more than 4-6 weeks at a time. We would recommend splitting the dosage twice a day. Being the oral version We recommend using it once ED.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Stanozolol: 20 mg
+
+=======================================================
+// SARMS - ASTERA (9 Produkte)
+=======================================================
+
+sarms-astera-001
+product-title: ASTERA GW501516 10
+chemical-description: GW501516 Cardarine per tablet
+CAS Number: 1165910-22-4
+Molecular Weight: 338.25 g/mol
+Formula: C14H12F6N2O
+Overview: Cardarine, also known as GW501516, is a PPAR-delta activator rather than a SARM. It has become quite popular in bodybuilding since it may support fat burning, recovery, and enhanced endurance. By activating PPAR-delta, Cardarine stimulates energy metabolism genes, increasing fatty acid oxidation and potentially boosting endurance levels.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Cardarine (GW501516) is commonly used in bodybuilding and endurance sports for its potential to aid in fat loss, recovery, and endurance enhancement. Recommended dosages start at 10 mg per day for beginners, while more experienced users may opt for up to 20 mg daily.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: GW501516 Cardarine: 10mg
+
+sarms-astera-002
+product-title: ASTERA LGD4033 10
+chemical-description: LGD4033 Ligandrol per tablet
+CAS Number: 1165910-22-4
+Molecular Weight: 338.25 g/mol
+Formula: C14H12F6N2O
+Overview: Ligandrol, also known as LGD4033, is a Selective Androgen Receptor Modulator (SARM) known for its potential to promote rapid muscle gain. Recognized as a top choice for bulking among both male and female bodybuilders, Ligandrol supports increased anabolic activity, enhanced strength, and substantial muscle growth.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: A beginner dose would be around 10 mg/day, intermediate being 20mg per day and for advanced users it would range from 30-40mg per day. It can be taken once per day, preferably in the morning with food.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: LGD4033 Ligandrol: 10mg
+
+sarms-astera-003
+product-title: ASTERA MK2866 10
+chemical-description: MK-2866 Ostarine per tablet
+CAS Number: 1165910-22-4
+Molecular Weight: 338.25 g/mol
+Formula: C14H12F6N2O
+Overview: Ostarine, also known as MK-2866, is a powerful and selective androgen receptor modulator (SARM) designed to improve strength, endurance, and lean muscle mass. It is especially beneficial during fat loss or cutting phases, as it preserves muscle mass, prevents muscle loss, supports connective tissue repair, stimulates lean muscle growth and enhances bone density.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: For Ostarine MK-2866, the recommended daily dosage ranges from 10 mg to 50 mg. Beginners are recommended to start at a conservative 10 mg daily, intermediate users may consider increasing to 25 mg per day, while advanced users can take up to 50 mg daily. Higher doses like 100mg can increase muscle dryness, fat loss and overall muscle gains but may also elevate the risk of side effects.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: MK-2866 Ostarine: 10mg
+
+sarms-astera-004
+product-title: ASTERA MK677 10
+chemical-description: MK-677 Ibutamoren per tablet
+CAS Number: 1165910-22-4
+Molecular Weight: 338.25 g/mol
+Formula: C14H12F6N2O
+Overview: Ibutamoren, also known as MK-677, is a compound that stimulates growth hormone release, resulting in elevated levels of both growth hormone and IGF-1 in the body. Its effects are aimed at improving bone and muscle mass, increasing bone mineral density, enhancing sleep quality, boosting memory function, and strengthening the immune system. For experienced users, a dosage of 20-30 mg per day is typically well-tolerated, balancing desired effects with minimized side effect risks. This dosage is popular among bodybuilders looking to optimize muscle growth. For new users, a lower starting dose of 10mg daily is advised, with gradual increases as needed to suit individual tolerance.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: The recommended dosage for MK-677 Ibutamoren is generally between 10 and 30 mg, taken once daily. Most users find that 20-30 mg per day achieves optimal effects. It is recommended to take 10mg before breakfast and 10mg before going to bed.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: MK-677 Ibutamoren: 10mg
+
+sarms-astera-005
+product-title: ASTERA RAD140 10
+chemical-description: RAD140 Testolone per tablet
+CAS Number: 1165910-22-4
+Molecular Weight: 338.25 g/mol
+Formula: C14H12F6N2O
+Overview: Testolone, also referred to as RAD140, is a Selective Androgen Receptor Modulator (SARM) recognized for its strong potential to promote muscle growth. Known as one of the most effective SARMs for mass gain, it is highly valued for enhancing muscle size and strength. RAD140 specifically targets muscle development, supporting both muscle growth and brain function. Beyond bulking, RAD140 is also suitable for cutting cycles, as it helps develop lean muscle tissue while supporting fat loss, making it a versatile option for different fitness goals, also it's great for strength performance.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: For best results, RAD140 is typically used in cycles of up to 8 weeks. A daily intake of 10-30 mg is often recommended for strength enhancement, with effective doses ranging from 10 mg to 100 mg. It is advised not to exceed an 8-week cycle.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: RAD140 Testolone: 10mg
+
+sarms-astera-006
+product-title: ASTERA S23 10
+chemical-description: S23 per tablet
+CAS Number: 1165910-22-4
+Molecular Weight: 338.25 g/mol
+Formula: C14H12F6N2O
+Overview: S23 is a Selective Androgen Receptor Modulator (SARM) taken orally, known for its ability to enhance lean muscle mass and increase bone density. Unlike traditional steroids, S23 is tissue-selective, meaning it specifically targets certain tissues. It helps reduce water retention, promoting a more defined, chiseled appearance with increased muscle hardness and a grainy texture. It is probably the most powerful SARM available in the market.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: For optimal results, a daily dosage of 10-30 mg is recommended for men, divided into two doses due to S23's 12-hour half-life. Since it's really powerful it is recommended to not exceed 6 weeks of daily intake and to take a liver support product like TUDCA with it.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: S23: 10mg
+
+sarms-astera-007
+product-title: ASTERA S4 25
+chemical-description: S4 Andarine per tablet
+CAS Number: 1165910-22-4
+Molecular Weight: 338.25 g/mol
+Formula: C14H12F6N2O
+Overview: Andarine, commonly referred to as S4, is one of the most potent Selective Androgen Receptor Modulators (SARMs) available, known for its ability to enhance training and improve the overall physique. It is currently as not as popular among bodybuilders and athletes as it used to be in the past. The key benefits of S4 include promoting muscle growth, increasing strength, enhancing bone mineral density, reducing body fat, accelerating muscle recovery, and delivering fast gains.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: For new users, a starting dose of 25 mg per day is commonly recommended for the first two weeks, after which the dosage may be gradually increased. However, it is advised not to exceed a daily dose of 50 mg because it can cause eye vision problems such as nictalopia. Dose should be divided into at least two dosages.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: S4 Andarine: 25mg
+
+sarms-astera-008
+product-title: ASTERA SR9009 10
+chemical-description: SR9009 Stenabolic per tablet
+CAS Number: 1165910-22-4
+Molecular Weight: 338.25 g/mol
+Formula: C14H12F6N2O
+Overview: Stenabolic, also known as SR9009, is a unique compound known for its ability to influence multiple bodily functions, including fat storage, glucose metabolism, and circadian rhythm regulation. It is appreciated within the bodybuilding community for its potential to boost exercise capacity, improve endurance, and aid in fat loss.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: The recommended dosage range for Stenabolic is between 10 mg and 40 mg per day, often divided into two or three doses throughout the day due to its short half-life of approximately 4 to 6 hours.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: SR9009 Stenabolic: 10mg
+
+sarms-astera-009
+product-title: ASTERA YK11 5
+chemical-description: YK11 per tablet
+CAS Number: 1165910-22-4
+Molecular Weight: 338.25 g/mol
+Formula: C14H12F6N2O
+Overview: YK11 is technically considered a Selective Androgen Receptor Modulator (SARM) known for its potent Myostatin inhibition capabilities. By blocking Myostatin, YK11 allows users to push beyond our natural genetic limitations, enabling significant muscle growth. It has been designed to promote muscle growth and strength gain.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Even a low dose of 5 mg per day for a cycle of 4-8 weeks can produce noticeable muscle gains. However, for optimal results, many users prefer a daily dosage of 10-20mg. It is recommended to use at the end of the cycle when the muscle growth rate has reached a plateau.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: YK11: 5mg
+
+=======================================================
+// PEPTIDES & HGH - ASTERA (5 Produkte)
+=======================================================
+
+peptides-astera-001
+product-title: ASTERA HCG 5000
+chemical-description: Human Chorionic Gonadotropin, per vial
+CAS Number: 1165910-22-4
+Molecular Weight: 338.25 g/mol
+Formula: C14H12F6N2O
+Overview: Human Chorionic Gonadotropin (HCG) is a highly effective injectable hormone that mimics the function of luteinizing hormone (LH) in the body. It is commonly used to support fertility in women, restore natural testosterone levels in men with low testosterone, and prevent testicular shrinkage during anabolic steroid cycles. HCG promotes ovulation, boosts testosterone production, maintains testicular function, and enhances sperm quality, making it a valuable tool for reproductive health and hormonal balance both in men and women.
+Mechanism of Action: HCG mimics luteinizing hormone (LH) and binds to LH receptors in the testes, stimulating Leydig cells to produce testosterone. It helps maintain testicular function and natural hormone production during or after anabolic steroid cycles.
+Dosage: The recommended dosage of HCG depends on its purpose: • For Fertility (Women): HCG is used to trigger ovulation in women undergoing fertility treatment. The typical protocol involves a single intramuscular injection of 5,000–10,000 IU, administered approximately 36 hours before planned intrauterine insemination (IUI) or egg retrieval for in vitro fertilization (IVF). • For Fertility Support (Men): A typical dose ranges from 500–1000 IU, administered via intramuscular or subcutaneous injection, two to three times weekly.
+Side Effects: Side effects may include injection site reactions, headaches, mood swings, gynecomastia, acne, water retention, and potential ovarian hyperstimulation syndrome in women. May cause testicular desensitization with prolonged use.
+Composition: Human Chorionic Gonadotropin (HCG): 5000 IU
+
+peptides-astera-002
+product-title: ASTERA HGH 16
+chemical-description: Human Growth Hormone, per vial
+CAS Number: 1165910-22-4
+Molecular Weight: 338.25 g/mol
+Formula: C14H12F6N2O
+Overview: Human Growth Hormone (HGH) is a naturally occurring hormone produced by the pituitary gland, essential for growth, development, and tissue regeneration. Synthetic HGH, identical to the natural hormone, is used to treat growth disorders in children and hormone deficiencies in adults. It is also sought after for its potential benefits in muscle growth, fat loss, and anti-aging. HGH supports muscle development, promotes fat breakdown, enhances bone density, and aids in the repair of connective tissues, making it a versatile hormone for health and performance optimization.
+Mechanism of Action: Human Growth Hormone binds to growth hormone receptors throughout the body, stimulating IGF-1 production in the liver and tissues. It promotes protein synthesis, lipolysis, bone growth, and cellular regeneration while enhancing recovery and anti-aging effects.
+Dosage: • For General Use: Typical dosages range from 1–4 IU per day. Lower doses (1-2IUs) are often used for anti-aging or wellness, while higher doses (3-10IUs) may be prescribed for therapeutic or performance-enhancing purposes, for example 3IUs would be used for fat burning purposes, and 4-8IUs for mass gaining purposes. • Administration: HGH is administered via subcutaneous injection into the fatty tissue of the abdomen, thighs, or buttocks. • Timing: Injections are typically given in the morning or before bedtime to align with the body's natural secretion patterns, optimizing its effects, if the dosage is above 2IU it should be divided equally between morning and bedtime, also it should be injected on an empty stomach.
+Side Effects: Side effects include joint pain, muscle pain, swelling, carpal tunnel syndrome, insulin resistance, potential diabetes, increased risk of certain cancers, and acromegaly with excessive doses. Injection site reactions may occur.
+Composition: Human Growth Hormone (HGH): 16 IU
+
+peptides-astera-003
+product-title: ASTERA HGH FRAGMENT 176-191 10
+chemical-description: HGH Fragment 176-191, per vial
+CAS Number: 1165910-22-4
+Molecular Weight: 338.25 g/mol
+Formula: C14H12F6N2O
+Overview: HGH Fragment 176-191 is a synthetic peptide derived from the amino acid sequence of human growth hormone (HGH). Unlike traditional HGH, this fragment specifically targets fat loss and metabolic enhancement without impacting growth or insulin sensitivity. By stimulating fat breakdown (lipolysis) and reducing fat storage (lipogenesis), it helps decrease body fat while preserving lean muscle mass, making it an effective tool for improving body composition and metabolic health.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: • Dosage: A typical daily dosage ranges from 250 mcg to 500 mcg, divided into multiple injections for optimal effectiveness, for example it can be taken in the morning and before a workout. • Administration: Administer HGH Fragment 176-191 via subcutaneous injection into the fatty tissue of the abdomen or thighs. • Timing: For best results, injections are recommended before meals and prior to workouts to enhance fat-burning effects and maximize benefits.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: HGH Fragment 176-191: 10mg
+
+peptides-astera-004
+product-title: ASTERA MELANOTAN 2 10
+chemical-description: Melanotan II Peptide Hormone, per vial
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Melanotan II is a synthetic analog of the peptide hormone alpha-melanocyte-stimulating hormone (α-MSH), which is primarily responsible for promoting skin tanning by stimulating melanin production. This peptide not only enhances skin pigmentation but also exhibits other notable benefits. It has aphrodisiac properties that positively influence libido and sexual function. Additionally, Melanotan II is known to have a mild fat-mobilizing effect, making it a versatile option for those seeking improvements in body aesthetics and composition.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: For optimal results, Melanotan II should be administered according to the following protocol: • Initial Phase: Begin with a daily dose of 300 mcg for 1 to 2 weeks. This lower starting dosage helps the body adapt to the peptide while minimizing potential side effects such as nausea. • Maintenance Phase: After the initial period, transition to a maintenance dosage of 500 mcg twice weekly to keep the desired effects. Melanotan II injections are administered subcutaneously into the fatty tissue, typically in the abdominal region. Starting with lower dosages is particularly important to improve tolerance and reduce the likelihood of nausea.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Melanotan II Peptide Hormone: 10mg
+
+peptides-astera-005
+product-title: ASTERA TB500 & BPC157 10
+chemical-description: TB500 and BPC157, per vial
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: TB500 and BPC157 are synthetic peptides widely recognized for their powerful regenerative properties and their ability to support injury recovery and tissue repair. TB500, derived from Thymosin Beta-4, promotes cell migration, proliferation, and differentiation, which are essential processes for efficient wound healing and tissue regeneration. BPC157, on the other hand, stimulates the formation of new blood vessels (angiogenesis) and boosts collagen production, contributing to the healing of muscles, tendons, ligaments, and other tissues. When used together, these peptides work synergistically to enhance recovery from injuries, reduce inflammation, and improve overall tissue health.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: • Dosage: The recommended dosage depends on the type and severity of the injury. A typical protocol involves administering 2 mg to 10 mg per week of each peptide, split into several smaller doses to ensure sustained effects. • Administration: TB500 and BPC157 can be injected either subcutaneously into the fatty tissue or intramuscularly near the site of the injury, some users have reported that IM have a better effect but there isn't any scientific research backing those claims. • Treatment Duration: The length of treatment varies based on the individual's response and the nature of the injury. For most cases, treatment can last a few weeks (4-6 weeks) to several months.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: TB500 (Thymosin Beta-4) and BPC157 (Body Protection Compound-157): 10mg
+
+=======================================================
+// FAT BURN - ASTERA (3 Produkte)
+=======================================================
+
+fatburn-astera-001
+product-title: ASTERA LEVOTHYROXINE SODIUM 50
+chemical-description: Levothyroxine Sodium
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Thyroxine, also called tetraiodothyronine (usually abbreviated T4), is the main type of thyroid hormone secreted by the follicular cells of the thyroid gland. It is used to increase the basal metabolic rate, promoting weight and fat loss.
+Mechanism of Action: Levothyroxine (T4) is converted to the active hormone T3 in peripheral tissues. It increases metabolic rate by enhancing oxygen consumption, protein synthesis, and carbohydrate metabolism, leading to increased energy expenditure and fat loss.
+Dosage: Its use dose will depend on the use that you want to give it. If what we want is simply to use it in order to avoid a certain adaptation at the level of the basal metabolic rate, limit yourself to using T4 at a daily dose of between 12.5 to 50mcg daily. If we want to use it to significantly increase the basal metabolic rate, the dose to be used will be 250mcg daily. The dose is taken once a day on an empty stomach.
+Side Effects: Side effects include heart palpitations, increased heart rate, anxiety, insomnia, excessive sweating, weight loss, diarrhea, headaches, and potential cardiovascular strain. May cause thyroid suppression with prolonged use.
+Composition: Levothyroxine Sodium (T4): 50mcg
+
+fatburn-astera-002
+product-title: ASTERA LIOTHYRONINE SODIUM 25
+chemical-description: Liothyronine Sodium
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Triiodothyronine, also known as T3, is a thyroid hormone. It affects almost every physiological process in the body, including growth and development, metabolism, body temperature, and heart rate. It is used to increase the basal metabolic rate, promoting weight and fat loss.
+Mechanism of Action: Liothyronine (T3) is the active thyroid hormone that binds to thyroid hormone receptors in cell nuclei, increasing metabolic rate, protein synthesis, and thermogenesis. It dramatically enhances fat burning and energy expenditure.
+Dosage: If we want to use it to significantly increase the basal metabolic rate, the dose to be used will be 62.5mcg daily, lower doses may work but according to clinical trials this should be the best dose for those looking to make a change. The dose is taken once a day on an empty stomach.
+Side Effects: Side effects include rapid heart rate, heart palpitations, anxiety, insomnia, excessive sweating, tremors, headaches, diarrhea, and potential cardiovascular complications. More potent than T4 with higher risk profile.
+Composition: Liothyronine Sodium (T3): 25mcg
+
+fatburn-astera-003
+product-title: ASTERA CLENBUTEROL HCL 40
+chemical-description: Clenbuterol HCL
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Clenbuterol is a sympathomimetic amine used by sufferers of breathing disorders as a decongestant and bronchodilator. In terms of the use of clenbuterol for strength athletes and bodybuilders, its function as a beta-2 agonist can help to increase lipolysis. This is accomplished via an increase in basal metabolic rate, as well as increased heat production in the mitochondria which serves to increase body temperature and therefore increasing thermogenesis. Additionally, it has been shown that clenbuterol is able to directly stimulate fat cells and accelerate the breakdown of triglycerides, thus forming free fatty acids.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: Although it has a very long half-life, it is recommendable to divide the dose into three doses spaced throughout the day. The initial dose is usually 20mcgs, it is advisable to increase the dose little by little each time it stops exerting its effect (it is advisable to look for a template of a clenbuterol pyramid cycle). To avoid unwanted side effects such as tachycardia or cardiac remodeling, it is advisable to combine it with low doses of Nebivolol.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Clenbuterol HCL: 40mcg
+
+=======================================================
+// POST CYCLE - ASTERA (6 Produkte)
+=======================================================
+
+pct-astera-001
+product-title: ASTERA ANASTROZOLE 1
+chemical-description: Anastrozole
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Anastrozole is an aromatase inhibitor. Aromatase inhibitors prevent the conversion of androgens into estrogen in fat, muscle, breast, and brain. The medical use of Anastrozole is primarily to inhibit the progression and growth of breast cancer in women by blocking the aromatase enzyme. It has also been used by some doctors to try and treat low testosterone production in men, as well as being used in conjunction with testosterone replacement therapy. For bodybuilders and strength athletes, Anastrozole is used to minimize the aromatization of anabolic steroids, and to a lesser extent for it's ability to raise testosterone levels in users. By reducing the amount of estrogen in a steroid user's body he will be able to avoid estrogen related side effects such as water retention, gynocomastia, etc.
+Mechanism of Action: Anastrozole is an aromatase inhibitor that blocks the conversion of testosterone to estrogen by inhibiting the aromatase enzyme. It reduces circulating estrogen levels, preventing estrogen-related side effects during anabolic steroid use.
+Dosage: The dosage varies greatly depending on the user and the aromatizing compounds being used, some users will find that 0.5mgs used E3.5D is enough to not have any estrogenic side effects.
+Side Effects: Side effects include joint pain, bone density loss, fatigue, hot flashes, mood changes, and potential cardiovascular effects. May cause over-suppression of estrogen leading to negative effects on lipids and mood.
+Composition: Anastrozole: 1mg
+
+pct-astera-002
+product-title: ASTERA CABERGOLINE 0.25
+chemical-description: Cabergoline
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Cabergoline is a dopaminergic medication used in the treatment of high prolactin levels, prolactinomas, Parkinson's disease, and for other indications. It is taken by mouth. Cabergoline is an ergot derivative and a potent dopamine D2 receptor agonist.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: We recommend taking the lowest possible dose, 0.25mg weekly is enough, and in some cases 0.5mg may be the right dose.
+Side Effects: Side effects may include nausea, dizziness, fatigue, constipation, and potential heart valve issues with long-term use. May cause impulse control disorders in rare cases.
+Composition: Cabergoline: 0.25mg
+
+pct-astera-003
+product-title: ASTERA CLOMIPHENE CITRATE 50
+chemical-description: Clomiphene citrate
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Originally developed as a female fertility aid, clomiphene citrate has been popular among steroid users for quite some time now as a post-cycle therapy compound used to help recover natural testosterone production. The compound works by partially or completely blocking the effects of estrogen in the body. This is due to the fact that it is a synthetic estrogen with both agonist and antagonist properties.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: It is advisable to take 25 to 50mg daily for 3 weeks, the dose will have to be adapted according to the desired effect and side effects.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Clomiphene Citrate: 50mg
+
+pct-astera-004
+product-title: ASTERA EXEMESTANE 25
+chemical-description: Exemestane
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: Exemestane is a steroidal suicide aromatase inhibitor/irreversible aromatase inactivator, lowering production of estrogen in the body by blocking the aromatase enzyme.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: The initial dose should be 12.5mg taken once or twice a week, and adjust the dose based on the desired effects.
+Side Effects: Side effects include joint pain, hot flashes, fatigue, bone density loss, mood changes, and potential liver stress. May cause over-suppression of estrogen with negative effects on health markers.
+Composition: Exemestane: 25mg
+
+pct-astera-005
+product-title: ASTERA LETROZOLE 1
+chemical-description: Letrozole
+CAS Number: 58-22-0
+Molecular Weight: 288.42 g/mol
+Formula: C19H28O2
+Overview: It is the most powerful of the so-called "suicidal aromatase inhibitors", it is usually used pre-competition or to reverse gynecomastia.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: The dose varies greatly depending on the user and should only be adjusted based on the bloodwork of that person, it is advisable to use 0.5mg as the first dose and adjust it based on the effects obtained.
+Side Effects: Side effects include severe joint pain, bone density loss, fatigue, hot flashes, mood changes, and potential cardiovascular effects. Most potent AI with highest risk of over-suppression.
+Composition: Letrozole: 1mg
+
+pct-astera-006
+product-title: ASTERA TAMOXIFEN 20
+chemical-description: Tamoxifen citrate
+CAS Number: 171596-29-5
+Molecular Weight: 389.40 g/mol
+Formula: C22H19N3O4
+Overview: Tamoxifen citrate is a selective estrogen receptor modulator. Selective estrogen receptor modulators can act as estrogen receptor agonists or antagonists. This activity of tamoxifen citrate is tissue selective, effecting those estrogen receptors located in the liver, breast, and bone. When the tamoxifen molecule binds to this receptor, the estrogen is blocked and can't have any effect. For bodybuilders Tamoxifen citrate can help in two ways. Firstly due to the binding affinity of the compound it is able to help in the prevention of gynecomastia. Tamoxifen will compete with estrogen for the estrogen receptors in certain tissues, including the breast, and if it can bind to the receptor estrogen will not have an opportunity to interact with receptor and therefore gynocomastia should not be able to develop. The second, and possibly more beneficial, aspect of tamoxifen citrate for steroid users is its ability to increase the production of luteinizing hormone and follicle stimulating hormone, and therefore increasing testosterone. This ability is why it is often used by steroid users during their post-cycle therapy.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: The dose to treat both gynecomastia and to be used in PCT varies between 20-40mg per day, the dose has to be adjusted until the desired effect is achieved.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Tamoxifen Citrate: 20mg
+
+=======================================================
+// SEXUAL WELLNESS - ASTERA (7 Produkte)
+=======================================================
+
+sexual-astera-001
+product-title: ASTERA DAPOXETINE 60
+chemical-description: Dapoxetine HCL
+CAS Number: 171596-29-5
+Molecular Weight: 389.40 g/mol
+Formula: C22H19N3O4
+Overview: Dapoxetine is a medication used to treat premature ejaculation. It is a short-acting selective serotonin reuptake inhibitor.
+Mechanism of Action: This compound works through specific biochemical pathways to exert its effects on target tissues and cellular processes.
+Dosage: The daily dose varies between 30 and 60mg, it is advisable to adapt the dose depending on the side effects and the desired effect. It is advisable to take it one hour before the start of sexual activity, it is recommended not to exceed a daily dose of 60mg and to use it only once a day and not every day.
+Side Effects: Potential side effects may include but are not limited to: injection site reactions, changes in mood, potential hormonal imbalances, and individual sensitivity reactions. Consult with a healthcare professional before use and monitor for any adverse reactions.
+Composition: Dapoxetine HCL: 60mg
+
+sexual-astera-002
+product-title: ASTERA SEX HARD & STRONG MIX 50:20:30
+chemical-description: Sildenafil Citrate, Tadalafil, Dapoxetine HCL per tab
+CAS Number: 171596-29-5
+Molecular Weight: 389.40 g/mol
+Formula: C22H19N3O4
+Overview: This is a comprehensive sexual enhancement formula combining three active ingredients: Sildenafil Citrate (for erectile function), Tadalafil (for extended duration), and Dapoxetine HCL (for premature ejaculation control). This combination provides both erectile dysfunction treatment and premature ejaculation control in one tablet.
+Mechanism of Action: Sildenafil inhibits phosphodiesterase type 5 (PDE5), preventing the breakdown of cGMP in penile blood vessels. This leads to smooth muscle relaxation, increased blood flow to the penis, and improved erectile function.
+Dosage: Take one tablet 1-2 hours before sexual activity. The combination provides comprehensive sexual enhancement with both immediate and extended effects. Do not exceed one tablet per day.
+Side Effects: Side effects include headaches, flushing, nasal congestion, indigestion, and potential vision changes. May cause dangerous drops in blood pressure when combined with nitrates. Seek medical attention for erections lasting over 4 hours.
+Composition: Sildenafil Citrate: 50mg, Tadalafil: 20mg, Dapoxetine HCL: 30mg
+
+sexual-astera-003
+product-title: ASTERA SEX HARD MIX 50:20
+chemical-description: Sildenafil Citrate, Tadalafil per tab
+CAS Number: 171596-29-5
+Molecular Weight: 389.40 g/mol
+Formula: C22H19N3O4
+Overview: This is a dual-action erectile enhancement formula combining Sildenafil Citrate and Tadalafil. This combination provides both immediate and long-lasting effects for erectile dysfunction treatment, combining the quick onset of Sildenafil with the extended duration of Tadalafil.
+Mechanism of Action: Sildenafil inhibits phosphodiesterase type 5 (PDE5), preventing the breakdown of cGMP in penile blood vessels. This leads to smooth muscle relaxation, increased blood flow to the penis, and improved erectile function.
+Dosage: Take one tablet 1-2 hours before sexual activity. This combination provides enhanced erectile function with both immediate onset and extended duration. Do not exceed one tablet per day.
+Side Effects: Side effects include headaches, flushing, nasal congestion, indigestion, and potential vision changes. May cause dangerous drops in blood pressure when combined with nitrates. Seek medical attention for erections lasting over 4 hours.
+Composition: Sildenafil Citrate: 50mg, Tadalafil: 20mg
+
+sexual-astera-004
+product-title: ASTERA SILDENAFIL CITRATE 100 XL
+chemical-description: Sildenafil Citrate
+CAS Number: 171596-29-5
+Molecular Weight: 389.40 g/mol
+Formula: C22H19N3O4
+Overview: It is the most popular medication for the treatment of erectile dysfunction, besides it can be useful to improve blood pressure and better vascularization.
+Mechanism of Action: Sildenafil inhibits phosphodiesterase type 5 (PDE5), preventing the breakdown of cGMP in penile blood vessels. This leads to smooth muscle relaxation, increased blood flow to the penis, and improved erectile function.
+Dosage: It is recommended to take between 50 to 100mg one hour before sexual activity, the same protocol can also be applied to improve vascularity during training. Dose should be changed until you reach the desired effect.
+Side Effects: Side effects include headaches, flushing, nasal congestion, indigestion, and potential vision changes. May cause dangerous drops in blood pressure when combined with nitrates. Seek medical attention for erections lasting over 4 hours.
+Composition: Sildenafil Citrate: 100mg
+
+sexual-astera-005
+product-title: ASTERA SILDENAFIL CITRATE 100
+chemical-description: Sildenafil Citrate
+CAS Number: 171596-29-5
+Molecular Weight: 389.40 g/mol
+Formula: C22H19N3O4
+Overview: It is the most popular medication for the treatment of erectile dysfunction, besides it can be useful to improve blood pressure and better vascularization.
+Mechanism of Action: Sildenafil inhibits phosphodiesterase type 5 (PDE5), preventing the breakdown of cGMP in penile blood vessels. This leads to smooth muscle relaxation, increased blood flow to the penis, and improved erectile function.
+Dosage: It is recommended to take between 50 to 100mg one hour before sexual activity, the same protocol can also be applied to improve vascularity during training. Dose should be changed until you reach the desired effect.
+Side Effects: Side effects include headaches, flushing, nasal congestion, indigestion, and potential vision changes. May cause dangerous drops in blood pressure when combined with nitrates. Seek medical attention for erections lasting over 4 hours.
+Composition: Sildenafil Citrate: 100mg
+
+sexual-astera-006
+product-title: ASTERA TADALAFIL 20 XL
+chemical-description: Tadalafil
+CAS Number: 171596-29-5
+Molecular Weight: 389.40 g/mol
+Formula: C22H19N3O4
+Overview: It is one of the most used medications for the treatment of erectile dysfunction along with viagra, unlike this, the duration of its effect is very long, so it is not necessary to take it frequently.
+Mechanism of Action: Tadalafil is a long-acting PDE5 inhibitor that blocks the breakdown of cGMP in penile and pulmonary blood vessels. It enhances erectile function and can improve symptoms of benign prostatic hyperplasia by relaxing smooth muscle.
+Dosage: It is advisable to take it two hours before the sexual activity so that it exerts its effect. It is only necessary to take it once a day and the doses can vary from 5 to 20mg a day, it is advisable to modify the dose until the desired effect is achieved.
+Side Effects: Side effects include headaches, indigestion, back pain, muscle aches, flushing, and nasal congestion. May cause dangerous interactions with nitrates and alpha-blockers. Long duration requires careful timing.
+Composition: Tadalafil: 20mg
+
+sexual-astera-007
+product-title: ASTERA TADALAFIL 20
+chemical-description: Tadalafil
+CAS Number: 171596-29-5
+Molecular Weight: 389.40 g/mol
+Formula: C22H19N3O4
+Overview: It is one of the most used medications for the treatment of erectile dysfunction along with viagra, unlike this, the duration of its effect is very long, so it is not necessary to take it frequently.
+Mechanism of Action: Tadalafil is a long-acting PDE5 inhibitor that blocks the breakdown of cGMP in penile and pulmonary blood vessels. It enhances erectile function and can improve symptoms of benign prostatic hyperplasia by relaxing smooth muscle.
+Dosage: It is advisable to take it two hours before the sexual activity so that it exerts its effect. It is only necessary to take it once a day and the doses can vary from 5 to 20mg a day, it is advisable to modify the dose until the desired effect is achieved.
+Side Effects: Side effects include headaches, indigestion, back pain, muscle aches, flushing, and nasal congestion. May cause dangerous interactions with nitrates and alpha-blockers. Long duration requires careful timing.
+Composition: Tadalafil: 20mg
+
+=======================================================
+ZUSAMMENFASSUNG:
+=======================================================
+INJECTION - ASTERA: 34 Produkte
+ORAL - ASTERA: 12 Produkte (ohne CLENBUTEROL, da in FAT BURN verschoben)
+SARMS - ASTERA: 9 Produkte
+PEPTIDES & HGH - ASTERA: 5 Produkte
+FAT BURN - ASTERA: 3 Produkte (inkl. CLENBUTEROL als oral-astera-002)
+POST CYCLE - ASTERA: 6 Produkte
+SEXUAL WELLNESS - ASTERA: 7 Produkte
+
+GESAMT NEUE ASTERA PRODUKTE: 76 Produkte
+
+ÄNDERUNGEN:
+- ASTERA CLENBUTEROL HCL 40 wurde von ORAL zu FAT BURN verschoben (behält aber oral-astera-002 ID)
+- ASTERA METHYL-1-TESTOSTERONE hat jetzt "10" im Namen
+- oral-astera-002 fehlt in ORAL Section, da CLENBUTEROL nach FAT BURN verschoben
+- FAT BURN hat nun 3 statt 2 Produkte
+
+HINWEIS: 
+- Liste basiert auf der aktualisierten astera-products-list.txt
+- Leere Klammern () sind Platzhalter für zusätzliche Details
+- Diese Liste ersetzt die Template-Platzhalter in der products-database.ts

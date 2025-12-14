@@ -1,13 +1,13 @@
-import { baseUrl } from 'lib/utils';
+const baseUrl = "https://herochem.com";
 
 export default function robots() {
   return {
     rules: [
       {
-        userAgent: '*'
-      }
+        userAgent: "*",
+      },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl
+    host: baseUrl,
   };
 }
