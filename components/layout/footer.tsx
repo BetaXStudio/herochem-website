@@ -1,4 +1,22 @@
+"use client";
+
+import Link from "next/link";
+import { useModal } from "../../contexts/modal-context";
+
+// Helper function to reset scroll position on mobile before navigation
+const resetMobileScroll = () => {
+  // Target the MobileScrollContainer
+  const scrollContainer = document.querySelector('[data-mobile-scroll-container]') as HTMLElement;
+  if (scrollContainer) {
+    scrollContainer.scrollTop = 0;
+  }
+  // Also try window scroll
+  window.scrollTo(0, 0);
+};
+
 export default function Footer() {
+  const { setFAQModalOpen, setContactModalOpen } = useModal();
+
   return (
     <>
       <style>{`
@@ -195,27 +213,34 @@ export default function Footer() {
               </h4>
               <ul className="space-y-2">
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors">
+                  <Link 
+                    href="/about" 
+                    className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer"
+                    onClick={resetMobileScroll}
+                  >
                     About Us
-                  </button>
+                  </Link>
                 </li>
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors">
+                  <button 
+                    className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer"
+                    onClick={() => setFAQModalOpen(true)}
+                  >
                     FAQ
                   </button>
                 </li>
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors">
+                  <button onClick={() => setContactModalOpen(true)} className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
                     Contact
                   </button>
                 </li>
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors">
+                  <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
                     Verify Product
                   </button>
                 </li>
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors">
+                  <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
                     Hero Guide
                   </button>
                 </li>
@@ -227,27 +252,27 @@ export default function Footer() {
               <h4 className="font-semibold text-white mb-3 text-sm">Account</h4>
               <ul className="space-y-2">
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors">
+                  <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
                     My Account
                   </button>
                 </li>
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors">
+                  <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
                     Profile Settings
                   </button>
                 </li>
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors">
+                  <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
                     Order History
                   </button>
                 </li>
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors">
+                  <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
                     Address Book
                   </button>
                 </li>
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors">
+                  <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
                     Reward Points
                   </button>
                 </li>
@@ -261,17 +286,17 @@ export default function Footer() {
               </h4>
               <ul className="space-y-2">
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors">
+                  <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
                     Reship Policy
                   </button>
                 </li>
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors">
+                  <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
                     Privacy & Security
                   </button>
                 </li>
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors">
+                  <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
                     Terms & Conditions
                   </button>
                 </li>

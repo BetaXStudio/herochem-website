@@ -829,13 +829,13 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
 
     // Debounced scroll to top of container when changing page
     scrollTimeoutRef.current = setTimeout(() => {
-      // Check for iOS scroll container first, then main container
-      const iosScrollContainer = document.querySelector(
-        ".fixed.inset-0.pt-\\[41px\\].overflow-y-auto",
+      // Check for mobile scroll container first (via data attribute), then main container
+      const mobileScrollContainer = document.querySelector(
+        "[data-mobile-scroll-container]",
       ) as HTMLElement;
-      if (iosScrollContainer) {
-        // iOS: scroll the iOS container
-        iosScrollContainer.scrollTo({ top: 0, behavior: "smooth" });
+      if (mobileScrollContainer) {
+        // Mobile: scroll the mobile container
+        mobileScrollContainer.scrollTo({ top: 0, behavior: "smooth" });
       } else if (mainRef.current) {
         // Non-iOS: scroll the main container
         mainRef.current.scrollTo({ top: 0, behavior: "smooth" });
@@ -1182,7 +1182,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                         onClick={() =>
                           updateCategoryWithNavigation("INJECTION")
                         }
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer", border: "1px solid #e5e7eb" }}
                       >
                         <div className="flex items-center justify-center mb-2 md:mb-3">
                           <img
@@ -1211,7 +1211,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                       <div
                         className="rounded-xl p-3 md:p-4 bg-white flex flex-col h-full md:shadow-none transition-all duration-300"
                         onClick={() => updateCategoryWithNavigation("ORAL")}
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer", border: "1px solid #e5e7eb" }}
                       >
                         <div className="flex items-center justify-center mb-2 md:mb-3">
                           <img
@@ -1239,7 +1239,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                         onClick={() =>
                           updateCategoryWithNavigation("POST CYCLE")
                         }
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer", border: "1px solid #e5e7eb" }}
                       >
                         <div className="flex items-center justify-center mb-2 md:mb-3">
                           <img
@@ -1268,7 +1268,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                       <div
                         className="rounded-xl p-3 md:p-4 bg-white flex flex-col h-full md:shadow-none transition-all duration-300"
                         onClick={() => updateCategoryWithNavigation("FAT BURN")}
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer", border: "1px solid #e5e7eb" }}
                       >
                         <div className="flex items-center justify-center mb-2 md:mb-3">
                           <img
@@ -1299,7 +1299,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                         onClick={() =>
                           updateCategoryWithNavigation("SEXUAL WELLNESS")
                         }
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer", border: "1px solid #e5e7eb" }}
                       >
                         <div className="flex items-center justify-center mb-2 md:mb-3">
                           <img
@@ -1331,7 +1331,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                         onClick={() =>
                           updateCategoryWithNavigation("PEPTIDES & HGH")
                         }
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer", border: "1px solid #e5e7eb" }}
                       >
                         <div className="flex items-center justify-center mb-2 md:mb-3">
                           <img
@@ -1361,7 +1361,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                       <div
                         className="rounded-xl p-3 md:p-4 bg-white flex flex-col h-full md:shadow-none transition-all duration-300"
                         onClick={() => updateCategoryWithNavigation("SARMS")}
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer", border: "1px solid #e5e7eb" }}
                       >
                         <div className="flex items-center justify-center mb-2 md:mb-3">
                           <img
@@ -1392,7 +1392,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                         onClick={() =>
                           updateCategoryWithNavigation("AMINO ACIDS")
                         }
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer", border: "1px solid #e5e7eb" }}
                       >
                         <div className="flex items-center justify-center mb-2 md:mb-4">
                           <img
@@ -1511,8 +1511,6 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                                   color: "#2d2d34",
                                   background: "rgba(255, 255, 255, 0.9)",
                                   backdropFilter: "blur(16px)",
-                                  boxShadow:
-                                    "0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.5)",
                                   border: "1px solid #2d2d34",
                                   ...STATIC_STYLES.button,
                                 }}
@@ -1610,8 +1608,6 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                               style={{
                                 background: "rgba(255, 255, 255, 0.9)",
                                 backdropFilter: "blur(16px)",
-                                boxShadow:
-                                  "0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.5)",
                                 border: "1px solid #2d2d34",
                                 ...STATIC_STYLES.button,
                               }}

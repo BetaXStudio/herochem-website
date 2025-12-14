@@ -474,9 +474,8 @@ export function Navbar() {
             </button>
           </div>
         <div className="flex w-full md:w-1/4 gap-0 md:gap-0 lg:gap-0">
-          <Link
+          <a
             href="/"
-            prefetch={true}
             className="mr-2 flex items-center md:w-auto lg:-mr-[18px] -ml-[20pt] md:ml-0"
           >
             <div className="opacity-0 md:opacity-100 pointer-events-none md:pointer-events-auto">
@@ -491,7 +490,7 @@ export function Navbar() {
                 chem
               </span>
             </div>
-          </Link>
+          </a>
 
           {/* Language Selector - Mobile Only */}
           <div
@@ -512,7 +511,7 @@ export function Navbar() {
               />
             </button>
             <div
-              className="absolute top-full left-1/2 transition-all duration-150"
+              className="absolute top-full left-1/2"
               style={{
                 minWidth: "120px",
                 marginTop: "70px",
@@ -523,6 +522,9 @@ export function Navbar() {
                 opacity: languageDropdownOpen ? 1 : 0,
                 pointerEvents: languageDropdownOpen ? "auto" : "none",
                 willChange: "transform, opacity",
+                transition: languageDropdownOpen 
+                  ? "opacity 0.3s ease, transform 0.3s ease"
+                  : "opacity 0.1s ease, transform 0.3s ease 0.1s",
               }}
             >
               <ul
@@ -532,7 +534,7 @@ export function Navbar() {
                   borderRadius: "0.5rem",
                   overflow: "hidden",
                   padding: "4px 0",
-                  boxShadow: "0 4px 12px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.25)",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.1)",
                 }}
               >
                 {languages.map((lang) => (
@@ -625,7 +627,7 @@ export function Navbar() {
               ) : (
                 <button
                   onClick={isHydrated ? openModal : undefined}
-                  className="text-white uppercase hover:text-[#e91111] px-2 py-1 md:px-4 md:py-2 rounded md:rounded-lg flex items-center gap-1 md:gap-2 text-sm whitespace-nowrap group -mr-2 md:-mr-3"
+                  className="text-white uppercase hover:text-[#e91111] px-2 py-1 md:px-4 md:py-2 rounded md:rounded-lg flex items-center gap-1 md:gap-2 text-sm whitespace-nowrap group -mr-2 md:-mr-3 cursor-pointer"
                   style={{ 
                     textDecoration: "none",
                   }}

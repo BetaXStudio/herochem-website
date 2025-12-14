@@ -187,10 +187,10 @@ const ProductCardComponent = ({
         onMouseLeave={!isMobile ? handleMouseLeave : undefined}
       >
         <div
-          className={`product-card-inner w-full rounded-xl mb-1 flex items-center justify-center relative p-2 md:p-0 bg-white md:bg-white border border-white md:border-gray-200 h-[85px] md:h-[110px]`}
+          className={`product-card-inner w-full rounded-xl mb-1 flex items-center justify-center relative p-2 md:p-0 bg-white md:bg-white h-[85px] md:h-[110px]`}
           style={{
             transition: "border-color 0.2s ease",
-            borderColor: "transparent",
+            border: "1px solid #e5e7eb",
             zIndex: 1,
             clipPath: "inset(0)",
           }}
@@ -305,15 +305,16 @@ const ProductCardComponent = ({
         </div>
         
         {/* Price and Add to Cart Row */}
-        <div className="flex items-center justify-between px-2 md:px-3 pb-2 gap-3">
+        <div className="flex items-center justify-between px-2 md:px-3 pb-2 gap-1">
           <p
             className="text-gray-900 font-bold text-[22px] md:text-[28px] leading-[26px] md:leading-[32px]"
+            style={{ marginRight: "5px" }}
           >
             €{product.price.toFixed(2)}
           </p>
           
           {/* Button Container */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1" style={{ marginRight: "-5px" }}>
             {/* Add to Cart Button - always visible */}
             <button
               onClick={(e) => {
@@ -325,23 +326,21 @@ const ProductCardComponent = ({
               style={{
                 backgroundColor: getBrandColors(product.brand).primary,
                 color: "white",
-                transition: "none",
+                transition: "background-color 0.15s ease",
                 cursor: "pointer",
               }}
               onMouseEnter={(e) => {
-                const target = e.target as HTMLButtonElement;
-                target.style.backgroundColor = product.brand === "astera" ? "#c06d2f" : "#c00d0d";
+                e.currentTarget.style.backgroundColor = product.brand === "astera" ? "#c06d2f" : "#c00d0d";
               }}
               onMouseLeave={(e) => {
-                const target = e.target as HTMLButtonElement;
-                target.style.backgroundColor = getBrandColors(product.brand).primary;
+                e.currentTarget.style.backgroundColor = getBrandColors(product.brand).primary;
               }}
             >
-              <ShoppingCartIcon className="w-2 h-2 md:w-3 md:h-3" />
-              ADD
+              <ShoppingCartIcon className="w-2 h-2 md:w-3 md:h-3 ml-[3px]" />
+              <span className="mr-1">ADD</span>
             </button>
             
-            {/* Heart Button - always visible on mobile, appears on hover on desktop */}
+            {/* Heart Button - always visible on mobile and desktop */}
             <button
               onClick={(e) => {
                 e.preventDefault();
@@ -349,21 +348,18 @@ const ProductCardComponent = ({
                 // TODO: Click handler will be implemented later
                 console.log("Heart clicked for product:", product.id);
               }}
-              className={`font-medium rounded-lg flex items-center justify-center text-[8px] md:text-[10px] p-[3px] md:p-[3.5px] min-w-[24px] md:min-w-[30px] h-[24px] md:h-[30px] md:transition-opacity md:transition-transform ${
-                isHovered ? "md:opacity-100 md:scale-100" : "md:opacity-0 md:scale-95"
-              }`}
+              className="font-medium rounded-lg flex items-center justify-center text-[8px] md:text-[10px] p-[3px] md:p-[3.5px] min-w-[24px] md:min-w-[30px] h-[24px] md:h-[30px]"
               style={{
                 backgroundColor: getBrandColors(product.brand).primary,
                 color: "white",
                 cursor: "pointer",
+                transition: "background-color 0.15s ease",
               }}
               onMouseEnter={(e) => {
-                const target = e.target as HTMLButtonElement;
-                target.style.backgroundColor = product.brand === "astera" ? "#c06d2f" : "#c00d0d";
+                e.currentTarget.style.backgroundColor = product.brand === "astera" ? "#c06d2f" : "#c00d0d";
               }}
               onMouseLeave={(e) => {
-                const target = e.target as HTMLButtonElement;
-                target.style.backgroundColor = getBrandColors(product.brand).primary;
+                e.currentTarget.style.backgroundColor = getBrandColors(product.brand).primary;
               }}
             >
               <HeartIcon className="w-3 h-3 md:w-3.5 md:h-3.5" />

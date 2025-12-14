@@ -65,6 +65,7 @@ export function ProductDetailOverlay({
   const [showToast, setShowToast] = useState(false);
   const [toastFadeOut, setToastFadeOut] = useState(false);
   const [titleFontSize, setTitleFontSize] = useState("2xl");
+  const [quantity, setQuantity] = useState(1);
   const { addItem } = useSimpleCart();
   const titleRef = useRef<HTMLHeadingElement>(null);
 
@@ -90,6 +91,7 @@ export function ProductDetailOverlay({
   useEffect(() => {
     if (!isOpen) {
       setProduct(null);
+      setQuantity(1);
     }
   }, [isOpen]);
 
@@ -119,12 +121,15 @@ export function ProductDetailOverlay({
   const handleAddToCart = () => {
     if (!product) return;
 
-    addItem({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      image: product.image,
-    });
+    // Add items based on quantity
+    for (let i = 0; i < quantity; i++) {
+      addItem({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+      });
+    }
 
     setShowToast(true);
     setToastFadeOut(false);
@@ -137,6 +142,9 @@ export function ProductDetailOverlay({
       setShowToast(false);
       setToastFadeOut(false);
     }, 2500);
+    
+    // Reset quantity after adding
+    setQuantity(1);
   };
 
   const handleClose = () => {
@@ -190,7 +198,7 @@ export function ProductDetailOverlay({
                 className="flex-1 px-4 sm:px-6 lg:px-8 pb-16 hide-scrollbar relative"
                 style={{
                   fontFamily: "Inter, Arial, sans-serif",
-                  paddingTop: "65px",
+                  paddingTop: "112px",
                 }}
               >
                 <style>{`@media (min-width: 768px) { main { padding-top: 119px !important; } }`}</style>
@@ -248,16 +256,19 @@ export function ProductDetailOverlay({
                   </div>
                 </div>
 
-                {/* Product Image */}
-                <div className="flex-shrink-0 flex justify-center mb-6">
+                {/* Trennlinie unter der Überschrift */}
+                <div 
+                  className="h-[1px] mb-4 rounded-full" 
+                  style={{ backgroundColor: getBrandColors().primary, marginTop: "0px" }}
+                />
+
+                {/* Product Image with Brand Label */}
+                <div className="flex items-start justify-between mb-4">
                   <div
-                    className="w-32 h-24 md:w-48 md:h-36 rounded-lg flex items-center justify-center p-1"
+                    className="w-32 h-24 rounded-lg flex items-center justify-center p-1 flex-shrink-0"
                     style={{
                       background: "rgba(255, 255, 255, 0.8)",
-                      border: `1px solid ${
-                        product?.brand === "astera" ? "#d67f3f" : "#e91111"
-                      }`,
-                      boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                      border: "1px solid #e5e7eb",
                     }}
                   >
                     <img
@@ -269,99 +280,129 @@ export function ProductDetailOverlay({
                         transform:
                           product?.brand === "astera" ||
                           product?.name.toLowerCase().includes("astera")
-                            ? "scale(1.0)"
+                            ? "scale(0.7)"
                             : "scale(1.8)",
                       }}
                     />
                   </div>
+                  
+                  {/* Brand Label */}
+                  <img
+                    src={product?.brand === "astera" ? "/astera_labs.png" : "/deus_medical.png"}
+                    alt={product?.brand === "astera" ? "Astera Labs" : "Deus Medical"}
+                    className="h-8 object-contain flex-shrink-0"
+                  />
                 </div>
 
-                {/* Product Info */}
-                <div className="mb-6">
-                  <p
-                    className="mb-3 text-base md:text-lg text-center"
-                    style={{
-                      color: "#6b7280",
-                      hyphens: "auto",
-                      wordBreak: "break-word",
-                      overflowWrap: "break-word",
-                      lineHeight: "1.4",
-                    }}
-                  >
-                    {product.description}
-                  </p>
-                  <div className="flex items-center justify-center mb-4">
-                    <span
-                      className="text-3xl md:text-4xl font-bold"
-                      style={{
-                        color: "#1f2937",
-                      }}
-                    >
+                {/* Price and Add to Cart Section */}
+                <div className="flex items-center justify-between gap-3 py-3 px-3 bg-gray-50 rounded-lg mb-4">
+                  {/* Price */}
+                  <div className="flex items-center">
+                    <span className="text-2xl font-bold text-gray-900">
                       €{product.price.toFixed(2)}
                     </span>
                   </div>
-                  <div className="flex gap-2 text-sm mb-4 justify-center flex-wrap">
-                    <span
-                      className="text-white px-2 py-1 rounded capitalize"
-                      style={{
-                        backgroundColor: getBrandColors().primary,
-                        fontSize: "12px",
-                      }}
-                    >
-                      {product.category.toLowerCase()}
-                    </span>
-                    <span
-                      className="text-white px-2 py-1 rounded capitalize"
-                      style={{
-                        backgroundColor: getBrandColors().primary,
-                        fontSize: "12px",
-                      }}
-                    >
-                      {product.brand}
-                    </span>
-                  </div>
 
-                  {/* Add to Cart Button */}
-                  <div className="flex justify-center">
+                  {/* Quantity and Add to Cart */}
+                  <div className="flex items-center gap-2">
+                    {/* Quantity Selector */}
+                    <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden">
+                      <button
+                        onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                        className="flex items-center justify-center text-gray-600 hover:bg-gray-200 hover:text-gray-900 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                        style={{ width: '26px', height: '26px', fontSize: '13px', lineHeight: '1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                        disabled={quantity <= 1}
+                      >
+                        −
+                      </button>
+                      <span className="px-2 border-x border-gray-300 min-w-[32px] text-center font-medium text-gray-900" style={{ fontSize: '13px', height: '26px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        {quantity}
+                      </span>
+                      <button
+                        onClick={() => setQuantity(Math.min(99, quantity + 1))}
+                        className="flex items-center justify-center text-gray-600 hover:bg-gray-200 hover:text-gray-900 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                        style={{ width: '26px', height: '26px', fontSize: '13px' }}
+                        disabled={quantity >= 99}
+                      >
+                        +
+                      </button>
+                    </div>
+
+                    {/* Add to Cart Button */}
                     <button
                       onClick={handleAddToCart}
-                      className="w-full font-bold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-3 bg-white bg-opacity-90 text-gray-900"
+                      className="font-medium py-1.5 px-3 rounded-lg flex items-center gap-1.5"
                       style={{
-                        minHeight: "50px",
-                        fontSize: "16px",
-                        minWidth: "200px",
-                        border: `2px solid ${getBrandColors().primary}`,
+                        backgroundColor: getBrandColors().primary,
+                        color: "white",
+                        fontSize: "11px",
+                        minWidth: "100px",
                       }}
                       onMouseEnter={(e) => {
                         const target = e.target as HTMLButtonElement;
-                        target.style.backgroundColor = getBrandColors().primary;
-                        target.style.color = "white";
-                        const icon = target.querySelector("svg");
-                        if (icon) {
-                          icon.style.color = "white";
-                        }
+                        target.style.backgroundColor = product?.brand === "astera" ? "#c06d2f" : "#c00d0d";
                       }}
                       onMouseLeave={(e) => {
-                        const target = e.target as HTMLButtonElement;
-                        target.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
-                        target.style.color = "rgb(17, 24, 39)";
-                        const icon = target.querySelector("svg");
-                        if (icon) {
-                          icon.style.color = "rgb(17, 24, 39)";
-                        }
-                      }}
-                      onMouseDown={(e) => {
-                        const target = e.target as HTMLButtonElement;
-                        target.style.backgroundColor = getBrandColors().accent;
-                      }}
-                      onMouseUp={(e) => {
                         const target = e.target as HTMLButtonElement;
                         target.style.backgroundColor = getBrandColors().primary;
                       }}
                     >
-                      <ShoppingCartIcon className="w-5 h-5 transition-colors duration-200 text-gray-900" />
-                      Add to Cart - €{product.price.toFixed(2)}
+                      <ShoppingCartIcon className="w-3.5 h-3.5" />
+                      ADD TO CART
                     </button>
+                  </div>
+                </div>
+
+                {/* Chemical Description */}
+                <div className="mb-4 bg-white rounded-lg p-3" style={{ border: "1px solid #e5e7eb" }}>
+                  <h3 className="text-base font-semibold text-gray-900 mb-2">Chemical Description</h3>
+                  <div 
+                    className="text-sm text-gray-700 leading-relaxed mb-2"
+                    dangerouslySetInnerHTML={{
+                      __html: (() => {
+                        const match = product.details.match(/<h2[^>]*class="[^"]*chemical-description[^"]*"[^>]*>([\s\S]*?)<\/h2>/i);
+                        return match ? match[1] || product.description : product.description;
+                      })()
+                    }}
+                  />
+                  
+                  {/* Dosage */}
+                  <div 
+                    className="pt-2 border-t border-gray-200 text-sm text-gray-700 leading-relaxed"
+                    dangerouslySetInnerHTML={{
+                      __html: (() => {
+                        const match = product.details.match(/<p><strong>Dosage:<\/strong>\s*([\s\S]*?)<\/p>/i);
+                        return match ? `<strong>Dosage:</strong> ${match[1]}` : "";
+                      })()
+                    }}
+                  />
+                </div>
+
+                {/* Trust Icons */}
+                <div className="mb-4 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <div className="flex-shrink-0">
+                      <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <span className="text-xs text-gray-700">Third-party tested for identity, purity and concentration</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="flex-shrink-0">
+                      <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <span className="text-xs text-gray-700">Each product has a unique code to check authenticity</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="flex-shrink-0">
+                      <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <span className="text-xs text-gray-700">Certified by WHO-GMP, compliant with EUGMP and UKMHRA</span>
                   </div>
                 </div>
 

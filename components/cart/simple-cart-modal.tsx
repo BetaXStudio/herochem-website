@@ -107,7 +107,7 @@ export default function SimpleCartModal() {
             left: "0",
             right: "0",
             bottom: "0",
-            zIndex: 10018, // Unter der Cart aber über anderen Elementen
+            zIndex: 10025, // Über der Navbar search bar
           }}
           aria-hidden="true"
         />
@@ -117,9 +117,9 @@ export default function SimpleCartModal() {
       <div
         style={{
           position: "fixed",
-          top: isMobile ? "88px" : "52px", // Mobile: 88px (41px navbar + 47px search modal), Desktop: 52px
+          top: isMobile ? "88px" : "52px", // Mobile: 88px, Desktop: 52px
           height: isMobile ? "calc(100vh - 88px)" : "calc(100vh - 52px)", // Responsive height
-          zIndex: 10019,
+          zIndex: 10025, // Über der Navbar search bar (10020)
           transition: "transform 120ms ease-out", // Faster transition
           // Responsive width and positioning
           width: isMobile ? "100vw" : "400px",

@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { featuredProductLists, type FeaturedListType } from "../../lib/featured-products";
 import { productDetails } from "../../lib/product-details-database";
-import { SearchProductModal } from "../search/search-product-modal";
+import { ProductDetailModalDesktop } from "./product-detail-modal-desktop";
+import { ProductDetailOverlay } from "./product-detail-overlay";
 
 interface FeaturedProductsSectionProps {
   className?: string;
@@ -14,6 +15,7 @@ export default function FeaturedProductsSection({ className = "" }: FeaturedProd
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
   
   // Auto-scroll states for desktop
   const bestSellersRef = useRef<HTMLDivElement>(null);
@@ -72,6 +74,38 @@ export default function FeaturedProductsSection({ className = "" }: FeaturedProd
     setIsModalOpen(false);
     setSelectedProduct(null);
   };
+
+  // Center the 2nd card on mobile (initial scroll offset)
+  useEffect(() => {
+    if (!isMobile) return;
+    
+    const centerSecondCard = (container: HTMLDivElement | null) => {
+      if (!container) return;
+      
+      // Card width (w-36 = 144px) + gap (gap-4 = 16px) + padding (px-4 = 16px)
+      const cardWidth = 144;
+      const gap = 16;
+      const padding = 16;
+      const containerWidth = container.clientWidth;
+      
+      // Calculate scroll position to center the 2nd card
+      // Position of 2nd card start: padding + cardWidth + gap
+      // Center offset: (containerWidth - cardWidth) / 2
+      const secondCardStart = padding + cardWidth + gap;
+      const centerOffset = (containerWidth - cardWidth) / 2;
+      const scrollPosition = secondCardStart - centerOffset;
+      
+      container.scrollLeft = Math.max(0, scrollPosition);
+    };
+    
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      centerSecondCard(bestSellersRef.current);
+      centerSecondCard(bestRatedRef.current);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [isMobile]);
 
   // Auto-scroll effect for desktop
   useEffect(() => {
@@ -158,17 +192,24 @@ export default function FeaturedProductsSection({ className = "" }: FeaturedProd
               WebkitOverflowScrolling: "touch"
             }}
           >
-            {products.map((product) => (
+            {products.map((product) => {
+              const isHovered = hoveredProductId === product.id;
+              return (
               <div
                 key={product.id}
-                onClick={() => openModal(product)}
                 className={`
-                  flex-shrink-0 bg-white rounded-lg flex flex-col cursor-pointer
+                  flex-shrink-0 bg-white rounded-lg flex flex-col
                   ${isMobile ? "w-36" : "w-48"}
                 `}
+                onMouseEnter={() => !isMobile && setHoveredProductId(product.id)}
+                onMouseLeave={() => !isMobile && setHoveredProductId(null)}
+                onClick={() => isMobile && setHoveredProductId(isHovered ? null : product.id)}
               >
                 {/* Product Image Container */}
-                <div className={`w-full rounded-xl mb-1 flex items-center justify-center relative bg-white border border-gray-200 overflow-hidden ${isMobile ? "p-1.5" : "p-2"}`}>
+                <div 
+                  className={`w-full rounded-xl mb-1 flex items-center justify-center relative bg-white border border-gray-200 overflow-hidden ${isMobile ? "p-1.5 h-[80px]" : "p-2 h-[120px]"}`}
+                  style={{ clipPath: "inset(0)" }}
+                >
                   <Image
                     src={product.image}
                     alt={product.name}
@@ -180,6 +221,50 @@ export default function FeaturedProductsSection({ className = "" }: FeaturedProd
                     }}
                     unoptimized
                   />
+                  
+                  {/* Blur Layer on Hover */}
+                  <div
+                    className={`absolute inset-0 rounded-xl pointer-events-none transition-opacity duration-150 ${
+                      isHovered ? "opacity-100" : "opacity-0"
+                    }`}
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.5)",
+                      backdropFilter: "blur(4px)",
+                      WebkitBackdropFilter: "blur(4px)",
+                      zIndex: 10,
+                      overflow: "hidden",
+                    }}
+                  />
+                  
+                  {/* DETAILS Button Overlay */}
+                  <div
+                    className={`absolute inset-0 flex items-center justify-center ${
+                      isHovered ? "opacity-100 visible" : "opacity-0 invisible"
+                    }`}
+                    style={{
+                      transition: "opacity 150ms ease-out, visibility 150ms ease-out",
+                      zIndex: 20,
+                      pointerEvents: isHovered ? "auto" : "none",
+                      isolation: "isolate",
+                    }}
+                  >
+                    <button
+                      className={`text-white font-bold rounded-lg ${isMobile ? "px-2 py-1.5 text-[9px] min-w-[56px]" : "px-3 py-2 text-[10px] min-w-[70px]"}`}
+                      style={{
+                        backgroundColor: "#2d2d34",
+                        cursor: "pointer",
+                        pointerEvents: "auto",
+                        transform: "translateZ(0)",
+                        backfaceVisibility: "hidden",
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openModal(product);
+                      }}
+                    >
+                      DETAILS
+                    </button>
+                  </div>
                 </div>
 
                 {/* Product Info */}
@@ -214,20 +299,25 @@ export default function FeaturedProductsSection({ className = "" }: FeaturedProd
                   </div>
                 </div>
               </div>
-            ))}
+            );
+            })}
             
             {/* Duplicate products for seamless loop on desktop */}
-            {!isMobile && products.map((product) => (
+            {!isMobile && products.map((product) => {
+              const duplicateId = `${product.id}-duplicate`;
+              const isHovered = hoveredProductId === duplicateId;
+              return (
               <div
-                key={`${product.id}-duplicate`}
-                onClick={() => openModal(product)}
-                className={`
-                  flex-shrink-0 bg-white rounded-lg flex flex-col cursor-pointer
-                  ${isMobile ? "w-36" : "w-48"}
-                `}
+                key={duplicateId}
+                className="flex-shrink-0 bg-white rounded-lg flex flex-col w-48"
+                onMouseEnter={() => setHoveredProductId(duplicateId)}
+                onMouseLeave={() => setHoveredProductId(null)}
               >
                 {/* Product Image Container */}
-                <div className="w-full rounded-xl mb-1 flex items-center justify-center relative p-2 bg-white border border-gray-200 overflow-hidden">
+                <div 
+                  className="w-full rounded-xl mb-1 flex items-center justify-center relative p-2 h-[120px] bg-white border border-gray-200 overflow-hidden"
+                  style={{ clipPath: "inset(0)" }}
+                >
                   <Image
                     src={product.image}
                     alt={product.name}
@@ -239,11 +329,55 @@ export default function FeaturedProductsSection({ className = "" }: FeaturedProd
                     }}
                     unoptimized
                   />
+                  
+                  {/* Blur Layer on Hover */}
+                  <div
+                    className={`absolute inset-0 rounded-xl pointer-events-none transition-opacity duration-150 ${
+                      isHovered ? "opacity-100" : "opacity-0"
+                    }`}
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.5)",
+                      backdropFilter: "blur(4px)",
+                      WebkitBackdropFilter: "blur(4px)",
+                      zIndex: 10,
+                      overflow: "hidden",
+                    }}
+                  />
+                  
+                  {/* DETAILS Button Overlay */}
+                  <div
+                    className={`absolute inset-0 flex items-center justify-center ${
+                      isHovered ? "opacity-100 visible" : "opacity-0 invisible"
+                    }`}
+                    style={{
+                      transition: "opacity 150ms ease-out, visibility 150ms ease-out",
+                      zIndex: 20,
+                      pointerEvents: isHovered ? "auto" : "none",
+                      isolation: "isolate",
+                    }}
+                  >
+                    <button
+                      className="px-3 py-2 text-white font-bold rounded-lg text-[10px] min-w-[70px]"
+                      style={{
+                        backgroundColor: "#2d2d34",
+                        cursor: "pointer",
+                        pointerEvents: "auto",
+                        transform: "translateZ(0)",
+                        backfaceVisibility: "hidden",
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openModal(product);
+                      }}
+                    >
+                      DETAILS
+                    </button>
+                  </div>
                 </div>
 
                 {/* Product Info */}
                 <div className="px-2 pb-2">
-                  <h3 className="text-gray-900 font-bold mb-0.5 line-clamp-1 text-xs">
+                  <h3 className="text-gray-900 font-bold mb-0.5 line-clamp-1 text-sm">
                     {product.name}
                   </h3>
                   <div className="text-gray-600 mb-0.5 overflow-hidden text-[9px] leading-tight">
@@ -273,7 +407,8 @@ export default function FeaturedProductsSection({ className = "" }: FeaturedProd
                   </div>
                 </div>
               </div>
-            ))}
+            );
+            })}
           </div>
         </div>
       </div>
@@ -300,12 +435,20 @@ export default function FeaturedProductsSection({ className = "" }: FeaturedProd
         () => setIsPausedBestRated(false)
       )}
 
-      {/* Product Modal */}
-      <SearchProductModal
-        product={selectedProduct}
-        isOpen={isModalOpen}
-        onClose={closeModal}
-      />
+      {/* Product Modal - Mobile: ProductDetailOverlay, Desktop: ProductDetailModalDesktop */}
+      {isMobile ? (
+        <ProductDetailOverlay
+          productId={selectedProduct?.id || ""}
+          isOpen={isModalOpen}
+          onCloseAction={closeModal}
+        />
+      ) : (
+        <ProductDetailModalDesktop
+          productId={selectedProduct?.id || ""}
+          isOpen={isModalOpen}
+          onCloseAction={closeModal}
+        />
+      )}
     </section>
   );
 }

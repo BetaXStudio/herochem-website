@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { useModal } from "../../contexts/modal-context";
 import CategoriesModal from "../categories/categories-modal";
 import Footer from "./footer";
@@ -14,6 +15,8 @@ export default function MobileScrollContainer({
 }: MobileScrollContainerProps) {
   const [isMounted, setIsMounted] = useState(false); // CRITICAL: Track if mounted to prevent hydration mismatch
   const [isMobile, setIsMobile] = useState(false); // Start with false for SSR consistency
+  const pathname = usePathname(); // Track route changes
+  const containerRef = useRef<HTMLDivElement>(null); // Ref for scroll container
   
   // Get all modal states from context
   const {
@@ -82,6 +85,14 @@ export default function MobileScrollContainer({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Scroll to top on route change for mobile
+  useEffect(() => {
+    if (isMounted && isMobile && containerRef.current) {
+      // Reset scroll position to 0 on route change
+      containerRef.current.scrollTop = 0;
+    }
+  }, [pathname, isMounted, isMobile]);
+
   // Keep DOM structure consistent: always render the same way
   // Apply mobile styles through a combination of base class + inline styles
   const containerStyle: React.CSSProperties = {
@@ -106,14 +117,15 @@ export default function MobileScrollContainer({
     containerStyle.zIndex = 1;
   }
 
-  // Only add paddingTop override if on mobile after mount
-  const mainStyle: React.CSSProperties = (isMounted && isMobile) ? { paddingTop: "0" } : {};
+  // Only add paddingTop override if on mobile after mount - use !important to override Tailwind class
+  const mainClassName = (isMounted && isMobile) 
+    ? "min-h-screen bg-neutral-950 text-neutral-100 hide-scrollbar"  // Remove pt-[41px] on mobile
+    : "min-h-screen bg-neutral-950 text-neutral-100 hide-scrollbar pt-[41px]";
 
   return (
-    <div className="hide-scrollbar" style={containerStyle}>
+    <div ref={containerRef} className="hide-scrollbar" style={containerStyle} data-mobile-scroll-container>
       <main 
-        className="min-h-screen bg-neutral-950 text-neutral-100 hide-scrollbar pt-[41px]"
-        style={mainStyle}
+        className={mainClassName}
         data-scroll-container
       >
         {children}

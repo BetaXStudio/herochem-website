@@ -497,9 +497,12 @@ export default function HeroSection() {
 					  </h3>
 					</div>
 					<div className="absolute bottom-3 left-3 z-20">
-					  <button className="bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 text-xs font-medium rounded lg:rounded-full transition-colors">
+					  <Link 
+					    href="/categories?brand=deus"
+					    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 text-xs font-medium rounded-xl transition-colors cursor-pointer"
+					  >
 						SHOP NOW
-					  </button>
+					  </Link>
 					</div>
 				  </div>
 				  
@@ -519,9 +522,12 @@ export default function HeroSection() {
 					  </h3>
 					</div>
 					<div className="absolute bottom-3 left-3 z-20">
-					  <button className="bg-[#d67f3f] hover:bg-[#c6723a] text-white px-3 py-1.5 text-xs font-medium rounded lg:rounded-full transition-colors">
+					  <Link 
+					    href="/categories?brand=astera"
+					    className="bg-[#d67f3f] hover:bg-[#c6723a] text-white px-3 py-1.5 text-xs font-medium rounded-xl transition-colors cursor-pointer"
+					  >
 						SHOP NOW
-					  </button>
+					  </Link>
 					</div>
 				  </div>
 				</div>

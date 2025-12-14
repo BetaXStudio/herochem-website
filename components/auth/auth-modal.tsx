@@ -252,7 +252,7 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-2 px-4 text-white font-medium rounded-xl transition-colors duration-200 disabled:opacity-50"
+                className="w-full py-2 px-4 text-white font-medium rounded-xl transition-colors duration-200 disabled:opacity-50 cursor-pointer"
                 style={{
                   backgroundColor: loading
                     ? "rgb(180,70,70)"
@@ -286,7 +286,7 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
                     setError("");
                     setSuccess("");
                   }}
-                  className="text-[#e91111] hover:underline font-medium"
+                  className="text-[#e91111] hover:underline font-medium cursor-pointer"
                 >
                   {isLogin ? "Sign up" : "Sign in"}
                 </button>

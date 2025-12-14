@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { featuredProductLists } from "../../lib/featured-products";
 import { productDetails } from "../../lib/product-details-database";
@@ -230,9 +231,12 @@ export default function NewsSection() {
             </h3>
           </div>
           <div className="absolute bottom-6 left-3 z-10">
-            <button className="bg-red-600 hover:bg-red-700 text-white px-2 py-1 text-xs font-medium transition-colors rounded-lg">
+            <Link 
+              href="/categories"
+              className="bg-red-600 hover:bg-red-700 text-white px-2 py-1 text-xs font-medium transition-colors rounded-lg"
+            >
               SHOP NOW
-            </button>
+            </Link>
           </div>
         </div>
 

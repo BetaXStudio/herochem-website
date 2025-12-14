@@ -74,7 +74,7 @@ export default function LabTestsSection() {
         <div className="text-center">
           <button
             onClick={() => setLabReportsModalOpen(true)}
-            className="inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 bg-[#e91111] hover:bg-[#c00d0d] text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 bg-[#e91111] hover:bg-[#c00d0d] text-white font-medium lg:text-lg rounded-xl transition-all duration-300 cursor-pointer"
           >
             <BeakerIcon className="h-4 w-4 mr-2" />
             View All Lab Reports
