@@ -11,11 +11,11 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { useSimpleCart } from "../../../components/cart/simple-cart-context";
+import { ProductDetailModalDesktop } from "../../../components/categories/product-detail-modal-desktop";
+import { ProductDetailOverlay } from "../../../components/categories/product-detail-overlay";
 import ProductCard from "../../../components/product/product-card";
-import { SearchProductModal } from "../../../components/search/search-product-modal";
 import {
-    productDetails,
-    type ProductDetail,
+    productDetails
 } from "../../../lib/product-details-database";
 import { type Product } from "../../../lib/products-database";
 import { searchProductsDatabase } from "../../../lib/search-products";
@@ -85,14 +85,26 @@ function SearchContent() {
   const [searchQuery, setSearchQuery] = useState("");
   const [showToast, setShowToast] = useState(false);
   const [toastFadeOut, setToastFadeOut] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<ProductDetail | null>(
-    null,
-  );
+  const [isMobile, setIsMobile] = useState(false);
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+  const [isDesktopModalOpen, setIsDesktopModalOpen] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
   const searchParams = useSearchParams();
   const router = useRouter();
   const { addItem } = useSimpleCart();
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Hydration safety effect
   useEffect(() => {
@@ -219,17 +231,28 @@ function SearchContent() {
         (detail) => detail.name === product.name,
       );
       if (productDetail) {
-        setSelectedProduct(productDetail);
-        setIsModalOpen(true);
+        setSelectedProductId(productDetail.id);
+        if (isMobile) {
+          // Mobile: Use ProductDetailOverlay
+          setIsProductDetailOpen(true);
+        } else {
+          // Desktop: Use ProductDetailModalDesktop
+          setIsDesktopModalOpen(true);
+        }
       }
     },
-    [],
+    [isMobile],
   );
 
   // Modal handlers
-  const closeModal = useCallback(() => {
-    setIsModalOpen(false);
-    setSelectedProduct(null);
+  const closeProductDetail = useCallback(() => {
+    setIsProductDetailOpen(false);
+    setSelectedProductId(null);
+  }, []);
+
+  const closeDesktopModal = useCallback(() => {
+    setIsDesktopModalOpen(false);
+    setSelectedProductId(null);
   }, []);
 
   // Handle clear search
@@ -422,12 +445,23 @@ function SearchContent() {
       {/* Toast Notification */}
       <SlideUpToast showToast={showToast} toastFadeOut={toastFadeOut} />
 
-      {/* Product Detail Modal */}
-      <SearchProductModal
-        product={selectedProduct}
-        isOpen={isModalOpen}
-        onClose={closeModal}
-      />
+      {/* Product Detail Overlay - Mobile */}
+      {selectedProductId && (
+        <ProductDetailOverlay
+          isOpen={isProductDetailOpen}
+          productId={selectedProductId}
+          onCloseAction={closeProductDetail}
+        />
+      )}
+
+      {/* Desktop Modal - ProductDetailModalDesktop */}
+      {selectedProductId && (
+        <ProductDetailModalDesktop
+          isOpen={isDesktopModalOpen}
+          productId={selectedProductId}
+          onCloseAction={closeDesktopModal}
+        />
+      )}
     </>
   );
 }

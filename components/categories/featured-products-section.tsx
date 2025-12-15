@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { featuredProductLists, type FeaturedListType } from "../../lib/featured-products";
 import { productDetails } from "../../lib/product-details-database";
 import { ProductDetailModalDesktop } from "./product-detail-modal-desktop";
@@ -9,6 +9,205 @@ import { ProductDetailOverlay } from "./product-detail-overlay";
 
 interface FeaturedProductsSectionProps {
   className?: string;
+}
+
+// Individual product card component with its own loading state
+interface FeaturedProductCardProps {
+  product: typeof productDetails[0];
+  isMobile: boolean;
+  isHovered: boolean;
+  onHover: (id: string | null) => void;
+  onOpenModal: (product: typeof productDetails[0]) => void;
+  getActiveIngredientName: (description: string) => string;
+  getProductBrandColor: (productName: string) => string;
+}
+
+function FeaturedProductCard({
+  product,
+  isMobile,
+  isHovered,
+  onHover,
+  onOpenModal,
+  getActiveIngredientName,
+  getProductBrandColor,
+}: FeaturedProductCardProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
+  const isMountedRef = useRef(true);
+
+  // IntersectionObserver for lazy loading AND unloading images
+  // This prevents Safari VRAM crashes by unloading images when they scroll out of view
+  useEffect(() => {
+    isMountedRef.current = true;
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!isMountedRef.current) return;
+          
+          if (entry.isIntersecting) {
+            // Element is visible - load the image
+            setIsVisible(true);
+            setImageSrc(product.image);
+          } else {
+            // Element is NOT visible - unload the image to free VRAM
+            setIsVisible(false);
+            setImageSrc(null);
+            setImageLoaded(false);
+          }
+        });
+      },
+      { 
+        rootMargin: "150px", // Start loading 150px before visible (more for horizontal scroll)
+        threshold: 0 
+      }
+    );
+
+    if (imageRef.current) {
+      observer.observe(imageRef.current);
+    }
+
+    return () => {
+      isMountedRef.current = false;
+      observer.disconnect();
+    };
+  }, [product.image]);
+
+  const handleImageLoad = useCallback(() => {
+    if (isMountedRef.current) {
+      setImageLoaded(true);
+    }
+  }, []);
+
+  return (
+    <div
+      className={`
+        flex-shrink-0 bg-white rounded-lg flex flex-col
+        ${isMobile ? "w-36" : "w-48"}
+      `}
+      onMouseEnter={() => !isMobile && onHover(product.id)}
+      onMouseLeave={() => !isMobile && onHover(null)}
+      onClick={() => isMobile && onHover(isHovered ? null : product.id)}
+    >
+      {/* Product Image Container */}
+      <div 
+        ref={imageRef}
+        className={`w-full rounded-xl mb-1 flex items-center justify-center relative bg-white border border-gray-200 overflow-hidden ${isMobile ? "p-1.5 h-[80px]" : "p-2 h-[120px]"}`}
+        style={{ clipPath: "inset(0)" }}
+      >
+        {/* Loading Animation - show when visible but image not loaded yet */}
+        {isVisible && !imageLoaded && (
+          <div
+            className="absolute inset-0 flex items-center justify-center rounded-xl"
+            style={{
+              background: "rgba(255, 255, 255, 0.9)",
+              zIndex: 5,
+            }}
+          >
+            <div
+              className="animate-spin rounded-full h-6 w-6 border-2 border-gray-300"
+              style={{
+                borderTopColor: product.brand === "astera" ? "#d67f3f" : "#ef4444",
+              }}
+            ></div>
+          </div>
+        )}
+
+        {imageSrc && (
+          <Image
+            src={imageSrc}
+            alt={product.name}
+            width={isMobile ? 80 : 120}
+            height={isMobile ? 80 : 120}
+            className={`object-contain transition-opacity duration-300 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+            style={{
+              transform: product.brand === "astera" ? "scale(0.85)" : "scale(1)"
+            }}
+            loading="lazy"
+            onLoad={handleImageLoad}
+            unoptimized
+          />
+        )}
+        
+        {/* Blur Layer on Hover */}
+        <div
+          className={`absolute inset-0 rounded-xl pointer-events-none transition-opacity duration-150 ${
+            isHovered ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            backgroundColor: "rgba(255, 255, 255, 0.5)",
+            backdropFilter: "blur(4px)",
+            WebkitBackdropFilter: "blur(4px)",
+            zIndex: 10,
+            overflow: "hidden",
+          }}
+        />
+        
+        {/* DETAILS Button Overlay */}
+        <div
+          className={`absolute inset-0 flex items-center justify-center ${
+            isHovered ? "opacity-100 visible" : "opacity-0 invisible"
+          }`}
+          style={{
+            transition: "opacity 150ms ease-out, visibility 150ms ease-out",
+            zIndex: 20,
+            pointerEvents: isHovered ? "auto" : "none",
+            isolation: "isolate",
+          }}
+        >
+          <button
+            className={`text-white font-bold rounded-lg ${isMobile ? "px-2 py-1.5 text-[9px] min-w-[56px]" : "px-3 py-2 text-[10px] min-w-[70px]"}`}
+            style={{
+              backgroundColor: "#2d2d34",
+              cursor: "pointer",
+              pointerEvents: "auto",
+              transform: "translateZ(0)",
+              backfaceVisibility: "hidden",
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              onOpenModal(product);
+            }}
+          >
+            DETAILS
+          </button>
+        </div>
+      </div>
+
+      {/* Product Info */}
+      <div className={`${isMobile ? "px-1.5 pb-1.5" : "px-2 pb-2"}`}>
+        <h3 className={`text-gray-900 font-bold mb-0.5 line-clamp-1 ${isMobile ? "text-xs" : "text-sm"}`}>
+          {product.name}
+        </h3>
+        <div className={`text-gray-600 mb-0.5 overflow-hidden leading-tight ${isMobile ? "text-[8px]" : "text-[9px]"}`}>
+          {(() => {
+            const cleanDescription = getActiveIngredientName(product.description);
+            const firstIngredient = cleanDescription.split(',')[0]?.split(' + ')[0]?.trim() || cleanDescription;
+            const hasMoreIngredients = cleanDescription.includes(',') || cleanDescription.includes(' + ');
+            return hasMoreIngredients ? firstIngredient + "..." : firstIngredient;
+          })()}
+        </div>
+        
+        {/* Price and Category Row */}
+        <div className={`flex items-center justify-between mt-1 ${isMobile ? "gap-1" : "gap-2"}`}>
+          <p className={`text-gray-900 font-bold ${isMobile ? "text-sm" : "text-lg"}`}>
+            €{product.price.toFixed(2)}
+          </p>
+          
+          <span 
+            className={`px-2 py-0.5 rounded text-white font-medium ${isMobile ? "text-[8px]" : "text-[8px]"}`}
+            style={{
+              backgroundColor: getProductBrandColor(product.name)
+            }}
+          >
+            {product.category.toUpperCase()}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default function FeaturedProductsSection({ className = "" }: FeaturedProductsSectionProps) {
@@ -192,223 +391,32 @@ export default function FeaturedProductsSection({ className = "" }: FeaturedProd
               WebkitOverflowScrolling: "touch"
             }}
           >
-            {products.map((product) => {
-              const isHovered = hoveredProductId === product.id;
-              return (
-              <div
+            {products.map((product) => (
+              <FeaturedProductCard
                 key={product.id}
-                className={`
-                  flex-shrink-0 bg-white rounded-lg flex flex-col
-                  ${isMobile ? "w-36" : "w-48"}
-                `}
-                onMouseEnter={() => !isMobile && setHoveredProductId(product.id)}
-                onMouseLeave={() => !isMobile && setHoveredProductId(null)}
-                onClick={() => isMobile && setHoveredProductId(isHovered ? null : product.id)}
-              >
-                {/* Product Image Container */}
-                <div 
-                  className={`w-full rounded-xl mb-1 flex items-center justify-center relative bg-white border border-gray-200 overflow-hidden ${isMobile ? "p-1.5 h-[80px]" : "p-2 h-[120px]"}`}
-                  style={{ clipPath: "inset(0)" }}
-                >
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={isMobile ? 80 : 120}
-                    height={isMobile ? 80 : 120}
-                    className="object-contain"
-                    style={{
-                      transform: product.brand === "astera" ? "scale(0.85)" : "scale(1)"
-                    }}
-                    unoptimized
-                  />
-                  
-                  {/* Blur Layer on Hover */}
-                  <div
-                    className={`absolute inset-0 rounded-xl pointer-events-none transition-opacity duration-150 ${
-                      isHovered ? "opacity-100" : "opacity-0"
-                    }`}
-                    style={{
-                      backgroundColor: "rgba(255, 255, 255, 0.5)",
-                      backdropFilter: "blur(4px)",
-                      WebkitBackdropFilter: "blur(4px)",
-                      zIndex: 10,
-                      overflow: "hidden",
-                    }}
-                  />
-                  
-                  {/* DETAILS Button Overlay */}
-                  <div
-                    className={`absolute inset-0 flex items-center justify-center ${
-                      isHovered ? "opacity-100 visible" : "opacity-0 invisible"
-                    }`}
-                    style={{
-                      transition: "opacity 150ms ease-out, visibility 150ms ease-out",
-                      zIndex: 20,
-                      pointerEvents: isHovered ? "auto" : "none",
-                      isolation: "isolate",
-                    }}
-                  >
-                    <button
-                      className={`text-white font-bold rounded-lg ${isMobile ? "px-2 py-1.5 text-[9px] min-w-[56px]" : "px-3 py-2 text-[10px] min-w-[70px]"}`}
-                      style={{
-                        backgroundColor: "#2d2d34",
-                        cursor: "pointer",
-                        pointerEvents: "auto",
-                        transform: "translateZ(0)",
-                        backfaceVisibility: "hidden",
-                      }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        openModal(product);
-                      }}
-                    >
-                      DETAILS
-                    </button>
-                  </div>
-                </div>
-
-                {/* Product Info */}
-                <div className={`${isMobile ? "px-1.5 pb-1.5" : "px-2 pb-2"}`}>
-                  <h3 className={`text-gray-900 font-bold mb-0.5 line-clamp-1 ${isMobile ? "text-xs" : "text-sm"}`}>
-                    {product.name}
-                  </h3>
-                  <div className={`text-gray-600 mb-0.5 overflow-hidden leading-tight ${isMobile ? "text-[8px]" : "text-[9px]"}`}>
-                    {(() => {
-                      // Extract active ingredient name without dosage
-                      const cleanDescription = getActiveIngredientName(product.description);
-                      const firstIngredient = cleanDescription.split(',')[0]?.split(' + ')[0]?.trim() || cleanDescription;
-                      const hasMoreIngredients = cleanDescription.includes(',') || cleanDescription.includes(' + ');
-                      return hasMoreIngredients ? firstIngredient + "..." : firstIngredient;
-                    })()}
-                  </div>
-                  
-                  {/* Price and Category Row */}
-                  <div className={`flex items-center justify-between mt-1 ${isMobile ? "gap-1" : "gap-2"}`}>
-                    <p className={`text-gray-900 font-bold ${isMobile ? "text-sm" : "text-lg"}`}>
-                      €{product.price.toFixed(2)}
-                    </p>
-                    
-                    <span 
-                      className={`px-2 py-0.5 rounded text-white font-medium ${isMobile ? "text-[8px]" : "text-[8px]"}`}
-                      style={{
-                        backgroundColor: getProductBrandColor(product.name)
-                      }}
-                    >
-                      {product.category.toUpperCase()}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            );
-            })}
+                product={product}
+                isMobile={isMobile}
+                isHovered={hoveredProductId === product.id}
+                onHover={setHoveredProductId}
+                onOpenModal={openModal}
+                getActiveIngredientName={getActiveIngredientName}
+                getProductBrandColor={getProductBrandColor}
+              />
+            ))}
             
             {/* Duplicate products for seamless loop on desktop */}
-            {!isMobile && products.map((product) => {
-              const duplicateId = `${product.id}-duplicate`;
-              const isHovered = hoveredProductId === duplicateId;
-              return (
-              <div
-                key={duplicateId}
-                className="flex-shrink-0 bg-white rounded-lg flex flex-col w-48"
-                onMouseEnter={() => setHoveredProductId(duplicateId)}
-                onMouseLeave={() => setHoveredProductId(null)}
-              >
-                {/* Product Image Container */}
-                <div 
-                  className="w-full rounded-xl mb-1 flex items-center justify-center relative p-2 h-[120px] bg-white border border-gray-200 overflow-hidden"
-                  style={{ clipPath: "inset(0)" }}
-                >
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={120}
-                    height={120}
-                    className="object-contain"
-                    style={{
-                      transform: product.brand === "astera" ? "scale(0.85)" : "scale(1)"
-                    }}
-                    unoptimized
-                  />
-                  
-                  {/* Blur Layer on Hover */}
-                  <div
-                    className={`absolute inset-0 rounded-xl pointer-events-none transition-opacity duration-150 ${
-                      isHovered ? "opacity-100" : "opacity-0"
-                    }`}
-                    style={{
-                      backgroundColor: "rgba(255, 255, 255, 0.5)",
-                      backdropFilter: "blur(4px)",
-                      WebkitBackdropFilter: "blur(4px)",
-                      zIndex: 10,
-                      overflow: "hidden",
-                    }}
-                  />
-                  
-                  {/* DETAILS Button Overlay */}
-                  <div
-                    className={`absolute inset-0 flex items-center justify-center ${
-                      isHovered ? "opacity-100 visible" : "opacity-0 invisible"
-                    }`}
-                    style={{
-                      transition: "opacity 150ms ease-out, visibility 150ms ease-out",
-                      zIndex: 20,
-                      pointerEvents: isHovered ? "auto" : "none",
-                      isolation: "isolate",
-                    }}
-                  >
-                    <button
-                      className="px-3 py-2 text-white font-bold rounded-lg text-[10px] min-w-[70px]"
-                      style={{
-                        backgroundColor: "#2d2d34",
-                        cursor: "pointer",
-                        pointerEvents: "auto",
-                        transform: "translateZ(0)",
-                        backfaceVisibility: "hidden",
-                      }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        openModal(product);
-                      }}
-                    >
-                      DETAILS
-                    </button>
-                  </div>
-                </div>
-
-                {/* Product Info */}
-                <div className="px-2 pb-2">
-                  <h3 className="text-gray-900 font-bold mb-0.5 line-clamp-1 text-sm">
-                    {product.name}
-                  </h3>
-                  <div className="text-gray-600 mb-0.5 overflow-hidden text-[9px] leading-tight">
-                    {(() => {
-                      // Extract active ingredient name without dosage
-                      const cleanDescription = getActiveIngredientName(product.description);
-                      const firstIngredient = cleanDescription.split(',')[0]?.split(' + ')[0]?.trim() || cleanDescription;
-                      const hasMoreIngredients = cleanDescription.includes(',') || cleanDescription.includes(' + ');
-                      return hasMoreIngredients ? firstIngredient + "..." : firstIngredient;
-                    })()}
-                  </div>
-                  
-                  {/* Price and Category Row */}
-                  <div className="flex items-center justify-between gap-2 mt-1">
-                    <p className="text-gray-900 font-bold text-lg">
-                      €{product.price.toFixed(2)}
-                    </p>
-                    
-                    <span 
-                      className="text-[8px] px-2 py-0.5 rounded text-white font-medium"
-                      style={{
-                        backgroundColor: getProductBrandColor(product.name)
-                      }}
-                    >
-                      {product.category.toUpperCase()}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            );
-            })}
+            {!isMobile && products.map((product) => (
+              <FeaturedProductCard
+                key={`${product.id}-duplicate`}
+                product={product}
+                isMobile={false}
+                isHovered={hoveredProductId === `${product.id}-duplicate`}
+                onHover={(id) => setHoveredProductId(id ? `${product.id}-duplicate` : null)}
+                onOpenModal={openModal}
+                getActiveIngredientName={getActiveIngredientName}
+                getProductBrandColor={getProductBrandColor}
+              />
+            ))}
           </div>
         </div>
       </div>

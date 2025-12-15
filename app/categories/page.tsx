@@ -17,14 +17,11 @@ import CategoriesModal from "../../components/categories/categories-modal";
 import FeaturedProductsSection from "../../components/categories/featured-products-section";
 import { ProductDetailModalDesktop } from "../../components/categories/product-detail-modal-desktop";
 import { ProductDetailOverlay } from "../../components/categories/product-detail-overlay";
-import SearchModal from "../../components/categories/search-modal";
 import ProductCard from "../../components/product/product-card";
-import { SearchProductModal } from "../../components/search/search-product-modal";
 import { useCategoriesState } from "../../contexts/categories-state-context";
 import { useModal } from "../../contexts/modal-context";
 import {
-  productDetails,
-  type ProductDetail,
+  productDetails
 } from "../../lib/product-details-database";
 import {
   getAvailableFilters,
@@ -375,10 +372,6 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
   const [productsPerPage] = useState(12); // Fixed products per page
   const [showToast, setShowToast] = useState(false);
   const [toastFadeOut, setToastFadeOut] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<ProductDetail | null>(
-    null,
-  );
   const [isAsteraLoading, setIsAsteraLoading] = useState(false);
   const [isDeusLoading, setIsDeusLoading] = useState(false);
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
@@ -387,7 +380,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null); // For single hover on mobile
   const router = useRouter();
   const { addItem } = useSimpleCart();
-  const { isCategoriesModalOpen, setCategoriesModalOpen, isCategoriesMenuModalOpen, setCategoriesMenuModalOpen, isSearchModalOpen, setSearchModalOpen, resetAllModals } = useModal();
+  const { isCategoriesModalOpen, setCategoriesModalOpen, isCategoriesMenuModalOpen, setCategoriesMenuModalOpen, resetAllModals } = useModal();
   const { saveState } = useCategoriesState();
   const mainRef = useRef<HTMLElement>(null); // Ref für Main-Container
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null); // Ref für Scroll-Timeout
@@ -937,11 +930,6 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
     setSelectedProductId(null);
   }, []);
 
-  const closeModal = useCallback(() => {
-    setIsModalOpen(false);
-    setSelectedProduct(null);
-  }, []);
-
   // Handle URL parameter changes - fully hydration safe
   useEffect(() => {
     // Only proceed after hydration is complete
@@ -1067,7 +1055,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
               style={{
                 fontFamily: "Inter, Arial, sans-serif",
                 paddingTop: "24px",
-                overflowY: isCategoriesModalOpen || isSearchModalOpen ? "hidden" : "auto",
+                overflowY: isCategoriesModalOpen ? "hidden" : "auto",
               }}
             >
               <style>{`@media (min-width: 768px) { main { padding-top: 70px !important; } }`}</style>
@@ -2165,12 +2153,6 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
       {/* Closing tag for isParamsLoaded condition */}
       {/* Toast mit CSS-Transition statt Animation für stabile Position */}
       <SlideUpToast showToast={showToast} toastFadeOut={toastFadeOut} />
-      {/* Search Product Modal - Same as used in search results */}
-      <SearchProductModal
-        product={selectedProduct}
-        isOpen={isModalOpen}
-        onClose={closeModal}
-      />
       {/* Categories Modal */}
       <CategoriesModal
         isOpen={isCategoriesModalOpen}
@@ -2183,11 +2165,6 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
         onClose={() => setCategoriesMenuModalOpen(false)}
         currentBrand={selectedBrand}
         currentCategory={currentCategory}
-      />
-      {/* Search Modal */}
-      <SearchModal
-        isOpen={isSearchModalOpen}
-        onCloseAction={() => setSearchModalOpen(false)}
       />
       {/* Product Detail Overlay - shows instead of navigating (Mobile) */}
       {selectedProductId && (

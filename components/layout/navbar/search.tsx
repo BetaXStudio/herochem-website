@@ -4,14 +4,164 @@ import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Form from "next/form";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useModal } from "../../../contexts/modal-context";
 import { productDetails } from "../../../lib/product-details-database";
 import {
-    getProductStats,
-    searchProductsDatabase,
+  getProductStats,
+  searchProductsDatabase,
 } from "../../../lib/search-products";
-import { SearchProductModal } from "../../search/search-product-modal";
+import { ProductDetailOverlay } from "../../categories/product-detail-overlay";
+
+// Function to get brand color based on product brand (extracted for reuse)
+const getProductBrandColor = (productName: string): string => {
+  if (productName?.toLowerCase().includes("astera")) {
+    return "#d67f3f"; // ASTERA orange/brown
+  }
+  return "#e91111"; // Default DEUS red
+};
+
+// Individual search result item with its own loading state
+interface SearchResultItemProps {
+  product: any;
+  isMobile: boolean;
+  onResultClick: (product: any) => void;
+}
+
+function SearchResultItem({ product, isMobile, onResultClick }: SearchResultItemProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isMountedRef = useRef(true);
+
+  // IntersectionObserver for lazy loading AND unloading images
+  // This prevents Safari VRAM crashes by unloading images when they scroll out of view
+  useEffect(() => {
+    isMountedRef.current = true;
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!isMountedRef.current) return;
+          
+          if (entry.isIntersecting) {
+            // Element is visible - load the image
+            setIsVisible(true);
+            setImageSrc(product.image);
+          } else {
+            // Element is NOT visible - unload the image to free VRAM
+            setIsVisible(false);
+            setImageSrc(null);
+            setImageLoaded(false);
+          }
+        });
+      },
+      { 
+        rootMargin: "100px", // Start loading 100px before visible
+        threshold: 0 
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      isMountedRef.current = false;
+      observer.disconnect();
+    };
+  }, [product.image]);
+
+  const handleImageLoad = useCallback(() => {
+    if (isMountedRef.current) {
+      setImageLoaded(true);
+    }
+  }, []);
+
+  return (
+    <button
+      onClick={() => onResultClick(product)}
+      className={`w-full px-4 py-3 flex items-center gap-3 transition-all duration-200 text-left group relative search-product-item cursor-pointer ${
+        !isMobile ? "hover:translate-x-2" : ""
+      }`}
+      style={{ "--brand-color": getProductBrandColor(product.name) } as React.CSSProperties}
+    >
+      {/* Red Hover Line */}
+      <div
+        className={`absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-16 opacity-0 transition-opacity duration-200 ${
+          !isMobile ? "group-hover:opacity-100" : ""
+        }`}
+        style={{
+          backgroundColor: getProductBrandColor(product.name),
+        }}
+      ></div>
+      {/* Product Image */}
+      <div
+        ref={containerRef}
+        className="relative w-16 h-16 rounded-md overflow-hidden flex-shrink-0 transition-all duration-200"
+        style={{
+          backgroundColor: "rgb(45, 45, 52)",
+          backdropFilter: "blur(10px)",
+          border: "1px solid rgba(255,255,255,0.1)",
+        }}
+      >
+        {/* Loading Animation - show when visible but image not loaded yet */}
+        {isVisible && !imageLoaded && (
+          <div
+            className="absolute inset-0 flex items-center justify-center rounded-md"
+            style={{
+              background: "rgba(45, 45, 52, 0.9)",
+              zIndex: 5,
+            }}
+          >
+            <div
+              className="animate-spin rounded-full h-5 w-5 border-2 border-gray-500"
+              style={{
+                borderTopColor: product.brand === "astera" ? "#d67f3f" : "#ef4444",
+              }}
+            ></div>
+          </div>
+        )}
+        {/* Only render Image when visible - this unloads from VRAM when not visible */}
+        {imageSrc && (
+          <Image
+            src={imageSrc}
+            alt={product.name}
+            width={64}
+            height={64}
+            className={`object-cover w-full h-full transition-opacity duration-300 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+            style={{
+              transform: product.brand === "astera" ? "scale(0.85)" : "scale(1)",
+            }}
+            loading="lazy"
+            onLoad={handleImageLoad}
+            unoptimized
+          />
+        )}
+      </div>
+
+      {/* Product Info */}
+      <div className="flex-1 min-w-0">
+        <h4 className="text-sm font-medium text-white truncate transition-colors duration-200 product-name">
+          {product.name}
+        </h4>
+        <p className={`text-xs text-neutral-400 truncate transition-colors duration-200 ${
+          !isMobile ? "group-hover:text-neutral-300" : ""
+        }`}>
+          {product.description}
+        </p>
+      </div>
+
+      {/* Price */}
+      <div className="text-right flex-shrink-0">
+        <span className="text-sm font-bold text-white transition-colors duration-200 product-price">
+          €{product.price.toFixed(2)}
+        </span>
+      </div>
+    </button>
+  );
+}
 
 export default function Search({
   keepResultsOpen = false,
@@ -31,8 +181,8 @@ export default function Search({
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<any>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const [preventClose, setPreventClose] = useState(false); // New state to prevent dropdown closing
   const [isMobile, setIsMobile] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -42,18 +192,15 @@ export default function Search({
   // Check if we're exactly on /categories (not subpages) and without category filter
   const isExactCategoriesPage = pathname === "/categories";
   const hasNoCategoryFilter = !searchParams?.get("category") && !searchParams?.get("categorie");
-  const showCategoriesOverlay = isExactCategoriesPage && hasNoCategoryFilter && isMobile && scrollY < 60;
   
-  // Get modal context for desktop product detail modal
-  const { openProductDetailModal } = useModal();
-
-  // Function to get brand color based on product brand
-  const getProductBrandColor = (productName: string): string => {
-    if (productName?.toLowerCase().includes("astera")) {
-      return "#d67f3f"; // ASTERA orange/brown
-    }
-    return "#e91111"; // Default DEUS red
-  };
+  // Get modal context for desktop product detail modal and categories menu modal
+  const { openProductDetailModal, isCategoriesMenuModalOpen, setCategoriesMenuModalOpen } = useModal();
+  
+  // Show overlay on: 
+  // 1. ALL PRODUCTS page (normal search focus behavior) OR
+  // 2. ANY categories page when CategoriesMenuModal is open (to allow closing it via search icon tap)
+  const showCategoriesOverlay = (isExactCategoriesPage && hasNoCategoryFilter && isMobile && scrollY < 60 && !isProductDetailOpen) 
+    || (isExactCategoriesPage && isMobile && isCategoriesMenuModalOpen);
 
   // Check if we're on mobile
   useEffect(() => {
@@ -110,22 +257,29 @@ export default function Search({
   }, [isExactCategoriesPage, isMobile, hasNoCategoryFilter]);
 
   // Handle categories overlay tap - focuses input for iOS keyboard
+  // If categories menu modal is open, close it AND also focus search
   const handleCategoriesOverlayTap = () => {
+    // Close the categories menu modal if open
+    if (isCategoriesMenuModalOpen) {
+      setCategoriesMenuModalOpen(false);
+    }
+    
+    // Always focus search input (whether modal was open or not)
     if (inputRef.current) {
       inputRef.current.focus();
       setIsFocused(true);
     }
   };
 
-  const openModal = (product: any) => {
+  const openProductDetail = (productId: string) => {
     setPreventClose(true); // Prevent dropdown from closing
-    setSelectedProduct(product);
-    setIsModalOpen(true);
+    setSelectedProductId(productId);
+    setIsProductDetailOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedProduct(null);
+  const closeProductDetail = () => {
+    setIsProductDetailOpen(false);
+    setSelectedProductId(null);
     setPreventClose(false); // Allow dropdown to close again
   };
 
@@ -152,7 +306,7 @@ export default function Search({
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       // Don't close if modal is open or we're preventing close
-      if (preventClose || isModalOpen) return;
+      if (preventClose || isProductDetailOpen) return;
 
       if (
         searchRef.current &&
@@ -171,7 +325,7 @@ export default function Search({
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [preventClose, isModalOpen]);
+  }, [preventClose, isProductDetailOpen]);
 
   // Call callback when dropdown state changes - memoized to avoid re-renders
   useEffect(() => {
@@ -197,7 +351,7 @@ export default function Search({
     e.target.classList.add('placeholder:text-neutral-300');
 
     // Don't close if modal is open or we're preventing close
-    if (preventClose || isModalOpen) {
+    if (preventClose || isProductDetailOpen) {
       e.target.style.boxShadow = "none";
       e.target.style.backgroundColor = "rgba(45, 45, 52, 0.8)";
       return;
@@ -244,8 +398,11 @@ export default function Search({
         setIsDropdownOpen(false);
         setIsFocused(false);
       } else {
-        // Mobile: Use the existing SearchProductModal
-        openModal(fullProduct);
+        // Mobile: Use the ProductDetailOverlay
+        openProductDetail(fullProduct.id);
+        // Close search dropdown on mobile too
+        setIsDropdownOpen(false);
+        setIsFocused(false);
       }
     }
   };
@@ -366,67 +523,12 @@ export default function Search({
             }}
           >
             {searchResults.map((product) => (
-              <button
+              <SearchResultItem
                 key={product.id}
-                onClick={() => handleResultClick(product)}
-                className={`w-full px-4 py-3 flex items-center gap-3 transition-all duration-200 text-left group relative search-product-item cursor-pointer ${
-                  !isMobile ? "hover:translate-x-2" : ""
-                }`}
-                style={{ "--brand-color": getProductBrandColor(product.name) } as React.CSSProperties}
-              >
-                {/* Custom red border that matches image height */}
-                {/* Red Hover Line */}
-                <div
-                  className={`absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-16 opacity-0 transition-opacity duration-200 ${
-                    !isMobile ? "group-hover:opacity-100" : ""
-                  }`}
-                  style={{
-                    backgroundColor: getProductBrandColor(product.name),
-                  }}
-                ></div>
-                {/* Product Image */}
-                <div
-                  className="relative w-16 h-16 rounded-md overflow-hidden flex-shrink-0 transition-all duration-200"
-                  style={{
-                    backgroundColor: "rgb(45, 45, 52)",
-                    backdropFilter: "blur(10px)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                  }}
-                >
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={16}
-                    height={16}
-                    className="object-cover w-full h-full"
-                    style={{
-                      // Astera Bilder um 15% verkleinern da sie von Natur aus größer skaliert sind
-                      transform:
-                        product.brand === "astera" ? "scale(0.85)" : "scale(1)",
-                    }}
-                    unoptimized
-                  />
-                </div>
-
-                {/* Product Info */}
-                <div className="flex-1 min-w-0">
-                  <h4 className="text-sm font-medium text-white truncate transition-colors duration-200 product-name">
-                    {product.name}
-                  </h4>
-                  <p className={`text-xs text-neutral-400 truncate transition-colors duration-200 ${
-                    !isMobile ? "group-hover:text-neutral-300" : ""
-                  }`}>
-                    {product.description}
-                  </p>
-                </div>
-
-                {/* Price */}
-                <div className="text-right flex-shrink-0">
-                  <span className="text-sm font-bold text-white transition-colors duration-200 product-price">
-                    €{product.price.toFixed(2)}
-                  </span>
-                </div>
-              </button>
+                product={product}
+                isMobile={isMobile}
+                onResultClick={handleResultClick}
+              />
             ))}
           </div>
 
@@ -495,12 +597,14 @@ export default function Search({
         </div>
       )}
 
-      {/* Search Product Modal */}
-      <SearchProductModal
-        product={selectedProduct}
-        isOpen={isModalOpen}
-        onClose={closeModal}
-      />
+      {/* Product Detail Overlay - Mobile */}
+      {selectedProductId && (
+        <ProductDetailOverlay
+          isOpen={isProductDetailOpen}
+          productId={selectedProductId}
+          onCloseAction={closeProductDetail}
+        />
+      )}
 
       {/* Categories Page Touch Overlay - iOS keyboard fix */}
       {showCategoriesOverlay && (
