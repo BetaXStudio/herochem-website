@@ -3,7 +3,7 @@
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Form from "next/form";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useModal } from "../../../contexts/modal-context";
 import { productDetails } from "../../../lib/product-details-database";
@@ -26,6 +26,7 @@ export default function Search({
 }) {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const pathname = usePathname();
   const [query, setQuery] = useState(searchParams?.get("q") || "");
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -34,8 +35,14 @@ export default function Search({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [preventClose, setPreventClose] = useState(false); // New state to prevent dropdown closing
   const [isMobile, setIsMobile] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  
+  // Check if we're exactly on /categories (not subpages) and without category filter
+  const isExactCategoriesPage = pathname === "/categories";
+  const hasNoCategoryFilter = !searchParams?.get("category") && !searchParams?.get("categorie");
+  const showCategoriesOverlay = isExactCategoriesPage && hasNoCategoryFilter && isMobile && scrollY < 60;
   
   // Get modal context for desktop product detail modal
   const { openProductDetailModal } = useModal();
@@ -59,6 +66,56 @@ export default function Search({
 
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  // Track scroll position for categories overlay
+  useEffect(() => {
+    if (!isExactCategoriesPage || !isMobile || !hasNoCategoryFilter) {
+      setScrollY(0); // Reset when not on categories page
+      return;
+    }
+    
+    const handleScroll = () => {
+      // iOS/Mobile uses MobileScrollContainer with data-mobile-scroll-container attribute
+      const mobileScrollContainer = document.querySelector('[data-mobile-scroll-container]') as HTMLElement;
+      
+      if (mobileScrollContainer) {
+        setScrollY(mobileScrollContainer.scrollTop);
+      } else {
+        setScrollY(window.scrollY);
+      }
+    };
+    
+    // Small delay to ensure the scroll container is mounted
+    const initTimeout = setTimeout(() => {
+      const mobileScrollContainer = document.querySelector('[data-mobile-scroll-container]') as HTMLElement;
+      
+      handleScroll(); // Initial check
+      
+      if (mobileScrollContainer) {
+        mobileScrollContainer.addEventListener("scroll", handleScroll, { passive: true });
+      } else {
+        window.addEventListener("scroll", handleScroll, { passive: true });
+      }
+    }, 200);
+    
+    return () => {
+      clearTimeout(initTimeout);
+      const mobileScrollContainer = document.querySelector('[data-mobile-scroll-container]') as HTMLElement;
+      
+      if (mobileScrollContainer) {
+        mobileScrollContainer.removeEventListener("scroll", handleScroll);
+      }
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isExactCategoriesPage, isMobile, hasNoCategoryFilter]);
+
+  // Handle categories overlay tap - focuses input for iOS keyboard
+  const handleCategoriesOverlayTap = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+      setIsFocused(true);
+    }
+  };
 
   const openModal = (product: any) => {
     setPreventClose(true); // Prevent dropdown from closing
@@ -444,6 +501,32 @@ export default function Search({
         isOpen={isModalOpen}
         onClose={closeModal}
       />
+
+      {/* Categories Page Touch Overlay - iOS keyboard fix */}
+      {showCategoriesOverlay && (
+        <div
+          onClick={handleCategoriesOverlayTap}
+          style={{
+            position: "fixed",
+            left: "13px",
+            top: `${64 - scrollY}px`, // Moves up with scroll
+            width: "44px",
+            height: "44px",
+            zIndex: 99999,
+            cursor: "pointer",
+            backgroundColor: "rgba(255, 0, 0, 0.5)", // DEBUG: Red color for visibility
+            borderRadius: "8px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "8px",
+            color: "white",
+            overflow: "hidden",
+          }}
+        >
+          {scrollY}
+        </div>
+      )}
     </div>
   );
 }

@@ -24,8 +24,13 @@ interface ModalContextType {
   setAuthModalOpen: (isOpen: boolean) => void;
   isCategoriesModalOpen: boolean;
   setCategoriesModalOpen: (isOpen: boolean) => void;
+  isCategoriesMenuModalOpen: boolean;
+  setCategoriesMenuModalOpen: (isOpen: boolean) => void;
   isSearchModalOpen: boolean;
   setSearchModalOpen: (isOpen: boolean) => void;
+  // Navbar Search Focus trigger
+  searchFocusTrigger: number;
+  triggerSearchFocus: () => void;
   // Product Detail Modal (Desktop)
   isProductDetailModalOpen: boolean;
   productDetailModalId: string | null;
@@ -47,7 +52,10 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
   const [isWelcomeModalOpen, setIsWelcomeModalOpenState] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpenState] = useState(false);
   const [isCategoriesModalOpen, setIsCategoriesModalOpenState] = useState(false);
+  const [isCategoriesMenuModalOpen, setIsCategoriesMenuModalOpenState] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpenState] = useState(false);
+  // Navbar Search Focus trigger - increment to trigger focus
+  const [searchFocusTrigger, setSearchFocusTrigger] = useState(0);
   // Product Detail Modal (Desktop)
   const [isProductDetailModalOpen, setIsProductDetailModalOpen] = useState(false);
   const [productDetailModalId, setProductDetailModalId] = useState<string | null>(null);
@@ -92,8 +100,16 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
     setIsCategoriesModalOpenState(isOpen);
   };
 
+  const setCategoriesMenuModalOpen = (isOpen: boolean) => {
+    setIsCategoriesMenuModalOpenState(isOpen);
+  };
+
   const setSearchModalOpen = (isOpen: boolean) => {
     setIsSearchModalOpenState(isOpen);
+  };
+
+  const triggerSearchFocus = () => {
+    setSearchFocusTrigger(prev => prev + 1);
   };
 
   const openProductDetailModal = (productId: string) => {
@@ -117,6 +133,7 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
     setIsWelcomeModalOpenState(false);
     setIsAuthModalOpenState(false);
     setIsCategoriesModalOpenState(false);
+    setIsCategoriesMenuModalOpenState(false);
     setIsSearchModalOpenState(false);
     setIsProductDetailModalOpen(false);
     setProductDetailModalId(null);
@@ -151,8 +168,12 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
       setAuthModalOpen,
       isCategoriesModalOpen,
       setCategoriesModalOpen,
+      isCategoriesMenuModalOpen,
+      setCategoriesMenuModalOpen,
       isSearchModalOpen,
       setSearchModalOpen,
+      searchFocusTrigger,
+      triggerSearchFocus,
       isProductDetailModalOpen,
       productDetailModalId,
       openProductDetailModal,

@@ -12,6 +12,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { useSimpleCart } from "../../components/cart/simple-cart-context";
+import CategoriesMenuModal from "../../components/categories/categories-menu-modal";
 import CategoriesModal from "../../components/categories/categories-modal";
 import FeaturedProductsSection from "../../components/categories/featured-products-section";
 import { ProductDetailModalDesktop } from "../../components/categories/product-detail-modal-desktop";
@@ -386,7 +387,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null); // For single hover on mobile
   const router = useRouter();
   const { addItem } = useSimpleCart();
-  const { isCategoriesModalOpen, setCategoriesModalOpen, isSearchModalOpen, setSearchModalOpen, resetAllModals } = useModal();
+  const { isCategoriesModalOpen, setCategoriesModalOpen, isCategoriesMenuModalOpen, setCategoriesMenuModalOpen, isSearchModalOpen, setSearchModalOpen, resetAllModals } = useModal();
   const { saveState } = useCategoriesState();
   const mainRef = useRef<HTMLElement>(null); // Ref für Main-Container
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null); // Ref für Scroll-Timeout
@@ -1131,12 +1132,18 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                 >
                   {currentCategory === "ALL PRODUCTS" ? "CATEGORIES" : currentCategory}
                 </h1>
-                {/* Search Modal Button - nur auf Mobile und nur auf ALL PRODUCTS - LEFT side */}
+                {/* Search Button - nur auf Mobile und nur auf ALL PRODUCTS - LEFT side */}
                 {currentCategory === "ALL PRODUCTS" && (
                   <button
-                    onClick={() => setSearchModalOpen(true)}
+                    onClick={() => {
+                      // Directly focus the navbar search input - this is a real user touch so keyboard will open on iOS
+                      const searchInput = document.querySelector('input[placeholder*="Search"]') as HTMLInputElement;
+                      if (searchInput) {
+                        searchInput.focus();
+                      }
+                    }}
                     className="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 text-gray-900 hover:text-gray-700 transition-colors duration-200 md:hidden"
-                    aria-label="Open search modal"
+                    aria-label="Focus navbar search"
                   >
                     <MagnifyingGlassIcon
                       className="w-5 h-5"
@@ -1149,11 +1156,11 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                     />
                   </button>
                 )}
-                {/* Categories Modal Button - nur auf Mobile - RIGHT side */}
+                {/* Categories Menu Modal Button - nur auf Mobile - RIGHT side */}
                 <button
-                  onClick={() => setCategoriesModalOpen(true)}
+                  onClick={() => setCategoriesMenuModalOpen(true)}
                   className="absolute right-0 top-1/2 transform -translate-y-1/2 p-2 text-gray-900 hover:text-gray-700 transition-colors duration-200 md:hidden"
-                  aria-label="Open categories modal"
+                  aria-label="Open categories menu modal"
                 >
                   <Bars3Icon
                     className="w-6 h-6"
@@ -2175,6 +2182,12 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
       <CategoriesModal
         isOpen={isCategoriesModalOpen}
         onClose={() => setCategoriesModalOpen(false)}
+        currentBrand={selectedBrand}
+      />
+      {/* Categories Menu Modal - for categories page header button */}
+      <CategoriesMenuModal
+        isOpen={isCategoriesMenuModalOpen}
+        onClose={() => setCategoriesMenuModalOpen(false)}
         currentBrand={selectedBrand}
       />
       {/* Search Modal */}
