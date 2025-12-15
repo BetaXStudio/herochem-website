@@ -19,11 +19,11 @@ export default function SimpleCartModal() {
     setIsCheckoutOpen,
   } = useSimpleCart();
   const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null); // null = not yet determined
 
   const toggleCart = () => setIsOpen(!isOpen);
 
-  // Check if we're on mobile
+  // Check if we're on mobile - only render on mobile devices
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 800);
@@ -34,6 +34,11 @@ export default function SimpleCartModal() {
 
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  // Don't render anything on desktop or before hydration
+  if (isMobile === null || isMobile === false) {
+    return null;
+  }
 
   return (
     <>
@@ -99,7 +104,7 @@ export default function SimpleCartModal() {
 
 
       {/* Backdrop - verdeckt weiße Linie von der Navbar */}
-      {isOpen && isMobile && (
+      {isOpen && (
         <div
           className="fixed bg-transparent pointer-events-none"
           style={{
@@ -113,27 +118,27 @@ export default function SimpleCartModal() {
         />
       )}
 
-      {/* Cart Modal */}
+      {/* Cart Modal - Mobile only */}
       <div
+        className="simple-cart-modal"
         style={{
           position: "fixed",
-          top: isMobile ? "88px" : "52px", // Mobile: 88px, Desktop: 52px
-          height: isMobile ? "calc(100vh - 88px)" : "calc(100vh - 52px)", // Responsive height
+          top: "88px", // Mobile navbar height
+          height: "calc(100vh - 88px)", // Mobile height
           zIndex: 10025, // Über der Navbar search bar (10020)
-          transition: "transform 120ms ease-out", // Faster transition
-          // Responsive width and positioning
-          width: isMobile ? "100vw" : "400px",
+          transition: "transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1)", // Opacity fades longer than transform
+          // Mobile full width
+          width: "100vw",
           right: "0px",
-          left: isMobile ? "0px" : "auto",
+          left: "0px",
           transform: isOpen
-            ? "translateX(0)"
-            : isMobile
-              ? "translateX(100vw)" // Mobile: komplette Viewport-Breite verschieben
-              : "translateX(calc(100% + 50px))", // Desktop: Modal-Breite + 50px verschieben
+            ? "translateX(0) translateY(0)"
+            : "translateX(2%) translateY(-0.5vh)", // Tiny offset - almost no movement
+          opacity: isOpen ? 1 : 0,
           background: "#2d2d34", // Match categories page background
           backdropFilter: "blur(20px)", // Match categories page blur effect
-          pointerEvents: "auto",
-          paddingBottom: isMobile ? "100px" : "20px", // Extra space for Safari browser elements
+          pointerEvents: isOpen ? "auto" : "none",
+          paddingBottom: "100px", // Extra space for Safari browser elements
         }}
       >
         {/* Cart Content Container */}

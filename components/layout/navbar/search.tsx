@@ -514,18 +514,9 @@ export default function Search({
             height: "44px",
             zIndex: 99999,
             cursor: "pointer",
-            backgroundColor: "rgba(255, 0, 0, 0.5)", // DEBUG: Red color for visibility
-            borderRadius: "8px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "8px",
-            color: "white",
-            overflow: "hidden",
+            backgroundColor: "transparent",
           }}
-        >
-          {scrollY}
-        </div>
+        />
       )}
     </div>
   );

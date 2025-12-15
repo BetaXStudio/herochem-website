@@ -56,12 +56,14 @@ interface CategoriesMenuModalProps {
   isOpen: boolean;
   onClose: () => void;
   currentBrand?: "deus" | "astera" | null;
+  currentCategory?: string;
 }
 
 export default function CategoriesMenuModal({
   isOpen,
   onClose,
   currentBrand,
+  currentCategory,
 }: CategoriesMenuModalProps) {
   const searchParams = useSearchParams();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -81,6 +83,22 @@ export default function CategoriesMenuModal({
       setCloseButtonOpacity(0);
     }
   }, [isOpen]);
+
+  // Auto-open dropdown for current category when modal opens
+  useEffect(() => {
+    if (isOpen && currentCategory && currentCategory !== "ALL PRODUCTS" && currentCategory !== "CATEGORIES") {
+      // Find matching category label
+      const matchingCategory = categories.find(
+        cat => cat.label === currentCategory || cat.param === currentCategory
+      );
+      if (matchingCategory) {
+        setOpenCategoryDropdowns([matchingCategory.label]);
+      }
+    } else if (!isOpen) {
+      // Reset dropdowns when modal closes
+      setOpenCategoryDropdowns([]);
+    }
+  }, [isOpen, currentCategory]);
 
   // Block scrolling on the mobile scroll container when modal is open
   useEffect(() => {
@@ -170,12 +188,12 @@ export default function CategoriesMenuModal({
       {/* Modal Panel */}
       <Transition.Child
         as="div"
-        enter="transition-all duration-300"
-        enterFrom="transform -translate-y-full opacity-0"
+        enter="transition-all duration-200"
+        enterFrom="transform translate-y-[-20vh] opacity-0"
         enterTo="transform translate-y-0 opacity-100"
-        leave="transition-all ease-in-out duration-200"
+        leave="transition-all ease-in-out duration-150"
         leaveFrom="transform translate-y-0 opacity-100"
-        leaveTo="transform -translate-y-full opacity-0"
+        leaveTo="transform translate-y-[-20vh] opacity-0"
         className="fixed left-0 right-0 z-50 md:hidden flex flex-col"
         style={{
           top: `${88 + scrollTop}px`,
@@ -194,21 +212,15 @@ export default function CategoriesMenuModal({
           }}
         >
           {/* Search Button - MagnifyingGlassIcon positioned top left, fades in after animation */}
-          <button
-            onClick={() => {
-              // Directly focus the navbar search input - this is a real user touch so keyboard will open on iOS
-              const searchInput = document.querySelector('input[placeholder*="Search"]') as HTMLInputElement;
-              if (searchInput) {
-                searchInput.focus();
-              }
-            }}
-            className="absolute left-4 p-2 text-white hover:text-gray-300 z-50"
+          <div
+            className="absolute left-4 p-2 z-50"
             style={{ 
-              top: "20px",
+              top: "22px",
               opacity: closeButtonOpacity,
               transition: "opacity 300ms ease-out",
+              color: "rgb(212, 212, 212)",
             }}
-            aria-label="Focus navbar search"
+            aria-label="Search icon"
           >
             <MagnifyingGlassIcon
               className="w-5 h-5"
@@ -219,16 +231,31 @@ export default function CategoriesMenuModal({
                 minHeight: "20px",
               }}
             />
-          </button>
+          </div>
+
+          {/* CATEGORIES Title - centered between search and close button */}
+          <h1
+            className="absolute left-0 right-0 text-center text-2xl font-semibold z-50"
+            style={{ 
+              top: "24px",
+              opacity: closeButtonOpacity,
+              transition: "opacity 150ms ease-out",
+              fontFamily: "Calibri, Arial, sans-serif",
+              color: "white",
+            }}
+          >
+            {currentCategory && currentCategory !== "ALL PRODUCTS" ? currentCategory : "CATEGORIES"}
+          </h1>
 
           {/* Close Button - Bars3Icon positioned top right, fades in after animation */}
           <button
             onClick={onClose}
-            className="absolute right-4 p-2 text-white hover:text-gray-300 z-50"
+            className="absolute right-4 p-2 hover:text-gray-300 z-50"
             style={{ 
               top: "20px",
               opacity: closeButtonOpacity,
               transition: "opacity 300ms ease-out",
+              color: "rgb(212, 212, 212)",
             }}
             aria-label="Close categories menu modal"
           >
@@ -271,11 +298,7 @@ export default function CategoriesMenuModal({
                   <li key={category.label}>
                     <button
                       onClick={() => toggleCategoryDropdown(category.label)}
-                      className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium uppercase transition-all duration-300 flex items-center justify-between group overflow-hidden focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none ${
-                        isActive
-                          ? "text-white"
-                          : "text-neutral-300 hover:text-white"
-                      }`}
+                      className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium uppercase transition-all duration-300 flex items-center justify-between group overflow-hidden focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none text-white`}
                       style={{
                         background: "transparent",
                         border: "1px solid rgba(255, 255, 255, 0)",

@@ -1134,16 +1134,9 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                 </h1>
                 {/* Search Button - nur auf Mobile und nur auf ALL PRODUCTS - LEFT side */}
                 {currentCategory === "ALL PRODUCTS" && (
-                  <button
-                    onClick={() => {
-                      // Directly focus the navbar search input - this is a real user touch so keyboard will open on iOS
-                      const searchInput = document.querySelector('input[placeholder*="Search"]') as HTMLInputElement;
-                      if (searchInput) {
-                        searchInput.focus();
-                      }
-                    }}
-                    className="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 text-gray-900 hover:text-gray-700 transition-colors duration-200 md:hidden"
-                    aria-label="Focus navbar search"
+                  <div
+                    className="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 text-gray-900 md:hidden"
+                    aria-label="Search icon"
                   >
                     <MagnifyingGlassIcon
                       className="w-5 h-5"
@@ -1154,7 +1147,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                         minHeight: "20px",
                       }}
                     />
-                  </button>
+                  </div>
                 )}
                 {/* Categories Menu Modal Button - nur auf Mobile - RIGHT side */}
                 <button
@@ -2189,6 +2182,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
         isOpen={isCategoriesMenuModalOpen}
         onClose={() => setCategoriesMenuModalOpen(false)}
         currentBrand={selectedBrand}
+        currentCategory={currentCategory}
       />
       {/* Search Modal */}
       <SearchModal

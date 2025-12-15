@@ -130,13 +130,13 @@ export default function CategoriesModal({
       {/* Modal Panel */}
       <Transition.Child
         as="div"
-        enter="transition-all ease-in-out duration-300"
-        enterFrom="transform -translate-y-full opacity-0"
-        enterTo="transform translate-y-0 opacity-100"
-        leave="transition-all ease-in-out duration-200"
-        leaveFrom="transform translate-y-0 opacity-100"
-        leaveTo="transform -translate-y-full opacity-0"
-        className="fixed left-0 right-0 z-50 md:hidden flex flex-col"
+        enter="transition-all duration-200"
+        enterFrom="translate-y-[-20vh] opacity-0"
+        enterTo="translate-y-0 opacity-100"
+        leave="transition-all duration-150"
+        leaveFrom="translate-y-0 opacity-100"
+        leaveTo="translate-y-[-20vh] opacity-0"
+        className="fixed left-0 right-0 z-50 md:hidden flex flex-col categories-modal-panel"
         style={{
           top: `${88 + scrollTop}px`,
           height: "calc(100vh - 88px)",
@@ -145,6 +145,14 @@ export default function CategoriesModal({
           pointerEvents: "auto",
         }}
       >
+        <style>{`
+          .categories-modal-panel {
+            transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1), opacity 180ms cubic-bezier(0.4, 0, 0.2, 1) 20ms !important;
+          }
+          .categories-modal-panel[data-closed] {
+            transition: transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1), opacity 120ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+          }
+        `}</style>
         <div
           className="flex flex-col h-full overflow-y-auto relative"
           style={{

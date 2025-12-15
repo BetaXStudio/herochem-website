@@ -301,23 +301,32 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
         </button>
       )}
       <Transition show={isOpen}>
+        {/* Custom styles for delayed opacity transition */}
+        <style>{`
+          .mobile-menu-panel {
+            transition: transform 100ms ease-in-out, opacity 100ms ease-in-out 0ms !important;
+          }
+          .mobile-menu-panel[data-closed] {
+            transition: transform 100ms ease-in-out, opacity 80ms ease-in-out 0ms !important;
+          }
+        `}</style>
 
         {/* Menu Panel */}
         <Transition.Child
           as="div"
-          className="fixed left-0 right-0 flex w-full flex-col pb-6 overflow-hidden"
+          className="fixed left-0 right-0 flex w-full flex-col pb-6 overflow-hidden mobile-menu-panel"
           style={{
             top: "88px", // 41px navbar + 47px search modal
             height: "calc(100vh - 88px)", // Adjust height accordingly
             background: "rgb(45,45,52)",
             zIndex: 10019, // Under navbar (10020) so shadow is visible
           }}
-          enter="transition-all ease-in-out duration-200"
-          enterFrom="translate-x-[-100%]"
-          enterTo="translate-x-0"
-          leave="transition-all ease-in-out duration-150"
-          leaveFrom="translate-x-0"
-          leaveTo="translate-x-[-100%]"
+          enter="transition-all ease-in-out duration-100"
+          enterFrom="translate-x-[-100%] translate-y-[-8vh] opacity-0"
+          enterTo="translate-x-0 translate-y-0 opacity-100"
+          leave="transition-all ease-in-out duration-100"
+          leaveFrom="translate-x-0 translate-y-0 opacity-100"
+          leaveTo="translate-x-[-100%] translate-y-[-8vh] opacity-0"
         >  <div
             className="p-4 overflow-y-auto flex-1 relative mobile-menu-content"
             data-mobile-menu="true"
@@ -344,11 +353,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                           closeMobileMenu();
                         }, 100);
                       }}
-                      className={`w-full text-left px-4 py-2.5 rounded-lg text-xs font-medium uppercase transition-all duration-300 group overflow-hidden flex items-center justify-between ${
-                        pathname === "/home"
-                          ? "text-white"
-                          : "text-neutral-300 hover:text-white"
-                      }`}
+                      className={`w-full text-left px-4 py-2.5 rounded-lg text-xs font-medium uppercase transition-all duration-300 group overflow-hidden flex items-center justify-between text-white`}
                       style={{
                         background: "transparent",
                         border: "1px solid rgba(255, 255, 255, 0)",
@@ -384,11 +389,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                               closeMobileMenu();
                             }, 100);
                           }}
-                          className={`w-full text-left px-4 py-2.5 rounded-lg text-xs font-medium uppercase transition-all duration-300 group overflow-hidden flex items-center justify-between ${
-                            isActive
-                              ? "text-white"
-                              : "text-neutral-300 hover:text-white"
-                          }`}
+                          className={`w-full text-left px-4 py-2.5 rounded-lg text-xs font-medium uppercase transition-all duration-300 group overflow-hidden flex items-center justify-between text-white`}
                           style={{
                             background: "transparent",
                             border: "1px solid rgba(255, 255, 255, 0)",
@@ -447,9 +448,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                       <li key={category.label} className="rounded-lg overflow-hidden">
                         <button
                           onClick={() => toggleCategoryDropdown(category.label)}
-                          className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium uppercase transition-all duration-300 flex items-center justify-between group overflow-hidden focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none active:ring-0 active:outline-none ${
-                            isActive ? "text-white" : "text-neutral-300 hover:text-white"
-                          }`}
+                          className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium uppercase transition-all duration-300 flex items-center justify-between group overflow-hidden focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none active:ring-0 active:outline-none text-white`}
                           style={{
                             background: "transparent",
                             border: "1px solid rgba(255, 255, 255, 0)",
@@ -586,9 +585,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                               closeMobileMenu();
                             }, 100);
                           }}
-                          className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium uppercase transition-all duration-300 flex items-center justify-between group overflow-hidden block ${
-                            isActive ? "text-white" : "text-neutral-300 hover:text-white"
-                          }`}
+                          className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium uppercase transition-all duration-300 flex items-center justify-between group overflow-hidden block text-white`}
                           style={{
                             background: "transparent",
                             border: "1px solid rgba(255, 255, 255, 0)",
@@ -634,7 +631,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                       );
                       closeMobileMenu();
                     }}
-                    className="w-full text-left px-4 py-3 rounded-lg text-xs font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-neutral-300 hover:text-white"
+                    className="w-full text-left px-4 py-3 rounded-lg text-xs font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-white"
                     style={{
                       background: "transparent",
                       border: "1px solid rgba(255, 255, 255, 0)",
@@ -652,7 +649,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                       window.open("https://asteracheck.com", "_blank");
                       closeMobileMenu();
                     }}
-                    className="w-full text-left px-4 py-3 rounded-lg text-xs font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-neutral-300 hover:text-white"
+                    className="w-full text-left px-4 py-3 rounded-lg text-xs font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-white"
                     style={{
                       background: "transparent",
                       border: "1px solid rgba(255, 255, 255, 0)",
@@ -670,7 +667,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                       setFAQModalOpen(true);
                       closeMobileMenu();
                     }}
-                    className="w-full text-left px-4 py-3 rounded-lg text-xs font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-neutral-300 hover:text-white"
+                    className="w-full text-left px-4 py-3 rounded-lg text-xs font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-white"
                     style={{
                       background: "transparent",
                       border: "1px solid rgba(255, 255, 255, 0)",
@@ -688,7 +685,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                       setContactModalOpen(true);
                       closeMobileMenu();
                     }}
-                    className="w-full text-left px-4 py-3 rounded-lg text-xs font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-neutral-300 hover:text-white"
+                    className="w-full text-left px-4 py-3 rounded-lg text-xs font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-white"
                     style={{
                       background: "transparent",
                       border: "1px solid rgba(255, 255, 255, 0)",
@@ -705,7 +702,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                     onClick={() => {
                       window.location.href = "/about";
                     }}
-                    className="w-full text-left px-4 py-3 rounded-lg text-xs font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-neutral-300 hover:text-white"
+                    className="w-full text-left px-4 py-3 rounded-lg text-xs font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-white"
                     style={{
                       background: "transparent",
                       border: "1px solid rgba(255, 255, 255, 0)",
