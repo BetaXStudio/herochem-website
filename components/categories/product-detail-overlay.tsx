@@ -308,7 +308,7 @@ export function ProductDetailOverlay({
                         transform:
                           product?.brand === "astera" ||
                           product?.name.toLowerCase().includes("astera")
-                            ? "scale(0.7)"
+                            ? "scale(1.0)"
                             : "scale(1.8)",
                       }}
                     />

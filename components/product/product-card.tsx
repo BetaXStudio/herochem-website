@@ -224,11 +224,12 @@ const ProductCardComponent = ({
               transition: "none",
               objectFit: "contain" as const,
               // CPU rendering with more reasonable sizes
+              // Astera: 75% on mobile, 60% on desktop; Deus: 150%
               width: (selectedBrand === "astera" || product.name.toLowerCase().includes("astera")) 
-                ? "60%" 
+                ? (isMobile ? "75%" : "60%")
                 : "150%",
               height: (selectedBrand === "astera" || product.name.toLowerCase().includes("astera")) 
-                ? "60%" 
+                ? (isMobile ? "75%" : "60%")
                 : "150%",
               maxWidth: "none",
               maxHeight: "none",

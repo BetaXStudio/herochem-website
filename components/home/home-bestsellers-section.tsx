@@ -198,7 +198,7 @@ export default function HomeBestsellersSection({ className = "" }: HomeBestselle
                     height={isMobile ? 80 : 120}
                     className="object-contain"
                     style={{
-                      transform: product.brand === "astera" ? "scale(0.85)" : "scale(1)"
+                      transform: product.brand === "astera" ? "scale(0.85)" : "scale(1.15)"
                     }}
                     unoptimized
                   />
@@ -295,7 +295,7 @@ export default function HomeBestsellersSection({ className = "" }: HomeBestselle
                     height={120}
                     className="object-contain"
                     style={{
-                      transform: product.brand === "astera" ? "scale(0.85)" : "scale(1)"
+                      transform: product.brand === "astera" ? "scale(0.85)" : "scale(1.15)"
                     }}
                     unoptimized
                   />

@@ -123,7 +123,7 @@ function FeaturedProductCard({
             height={isMobile ? 80 : 120}
             className={`object-contain transition-opacity duration-300 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
             style={{
-              transform: product.brand === "astera" ? "scale(0.85)" : "scale(1)"
+              transform: product.brand === "astera" ? "scale(0.85)" : "scale(1.15)"
             }}
             loading="lazy"
             onLoad={handleImageLoad}

@@ -132,7 +132,7 @@ function SearchResultItem({ product, isMobile, onResultClick }: SearchResultItem
             height={64}
             className={`object-cover w-full h-full transition-opacity duration-300 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
             style={{
-              transform: product.brand === "astera" ? "scale(0.85)" : "scale(1)",
+              transform: product.brand === "astera" ? "scale(0.85)" : "scale(1.15)",
             }}
             loading="lazy"
             onLoad={handleImageLoad}

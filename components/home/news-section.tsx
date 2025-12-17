@@ -323,7 +323,7 @@ export default function NewsSection() {
                     height: 'auto',
                     maxWidth: '80px',
                     maxHeight: '80px',
-                    transform: product.brand === "astera" ? "scale(0.85)" : "scale(1)"
+                    transform: product.brand === "astera" ? "scale(0.85)" : "scale(1.15)"
                   }}
                   unoptimized
                 />
