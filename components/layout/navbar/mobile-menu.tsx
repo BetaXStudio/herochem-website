@@ -523,7 +523,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                                 style={{ 
                                   backgroundColor: "transparent",
                                   border: "none",
-                                  color: "#ff4444",
+                                  color: "#e91111",
                                   outline: "none",
                                   boxShadow: "none",
                                   paddingLeft: "32px"
@@ -544,7 +544,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                                 style={{ 
                                   backgroundColor: "transparent",
                                   border: "none",
-                                  color: "#ff8c42",
+                                  color: "#d67f3f",
                                   outline: "none",
                                   boxShadow: "none",
                                   paddingLeft: "32px"

@@ -1,8 +1,13 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
+import {
+    clearCartCookie,
+    getCartFromCookie,
+    setCartCookie,
+} from "../../lib/cart-cookie";
 
-// Simple Cart Item structure for localStorage
+// Simple Cart Item structure for cookie storage
 export interface SimpleCartItem {
   id: string;
   name: string;
@@ -34,40 +39,88 @@ const SimpleCartContext = createContext<SimpleCartContextType | undefined>(
 
 export function SimpleCartProvider({
   children,
+  initialCart = [],
 }: {
   children: React.ReactNode;
+  initialCart?: SimpleCartItem[];
 }) {
-  const [items, setItems] = useState<SimpleCartItem[]>([]);
+  // Initialize with cookie data (passed from server or read on client)
+  const [items, setItems] = useState<SimpleCartItem[]>(initialCart);
   // Checkout modal states
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  // Hydration state
-  const [isHydrated, setIsHydrated] = useState(false);
+  // Hydration state - set to true immediately if we have initial data
+  const [isHydrated, setIsHydrated] = useState(initialCart.length > 0);
 
-  // Load cart from localStorage on start
+  // On client mount, sync with cookie (handles case where initialCart was empty)
   useEffect(() => {
-    try {
-      const savedCart = localStorage.getItem("herochem-cart");
-      if (savedCart) {
-        const parsedCart = JSON.parse(savedCart);
-        setItems(parsedCart);
-        console.log("🛒 Cart loaded from localStorage:", parsedCart);
+    let mounted = true;
+    
+    const initializeCart = () => {
+      try {
+        // If no initial cart was provided, try to read from cookie on client
+        if (initialCart.length === 0) {
+          const cookieCart = getCartFromCookie();
+          if (cookieCart.length > 0 && mounted) {
+            setItems(cookieCart);
+            console.log("🍪 Cart loaded from cookie:", cookieCart);
+          }
+        }
+        
+        // Also migrate from old localStorage if exists
+        if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+          const oldCart = localStorage.getItem("herochem-cart");
+          if (oldCart) {
+            try {
+              const parsed = JSON.parse(oldCart);
+              if (Array.isArray(parsed) && parsed.length > 0 && mounted) {
+                // Only migrate if we don't already have items
+                setItems((current) => {
+                  if (current.length === 0) {
+                    setCartCookie(parsed);
+                    console.log("📦 Cart migrated from localStorage to cookie:", parsed);
+                    return parsed;
+                  }
+                  return current;
+                });
+              }
+              // Remove old localStorage cart after migration
+              localStorage.removeItem("herochem-cart");
+            } catch (parseError) {
+              console.error("Error parsing localStorage cart:", parseError);
+              localStorage.removeItem("herochem-cart");
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Error during cart initialization:", error);
       }
-    } catch (error) {
-      console.error("Error loading cart from localStorage:", error);
-    }
-    setIsHydrated(true);
-  }, []);
+      
+      if (mounted) {
+        setIsHydrated(true);
+      }
+    };
+    
+    // Small delay to ensure DOM is ready (helps with Safari)
+    requestAnimationFrame(initializeCart);
+    
+    return () => { mounted = false; };
+  }, [initialCart.length]);
 
-  // Save cart to localStorage on changes
+  // Save cart to cookie on changes (with debounce for performance)
   useEffect(() => {
-    try {
-      localStorage.setItem("herochem-cart", JSON.stringify(items));
-      console.log("💾 Cart saved to localStorage:", items);
-    } catch (error) {
-      console.error("Error saving cart to localStorage:", error);
-    }
-  }, [items]);
+    if (!isHydrated) return;
+    
+    const timeoutId = setTimeout(() => {
+      try {
+        setCartCookie(items);
+      } catch (error) {
+        console.error("Error saving cart to cookie:", error);
+      }
+    }, 100);
+    
+    return () => clearTimeout(timeoutId);
+  }, [items, isHydrated]);
 
   const addItem = (newItem: Omit<SimpleCartItem, "quantity">) => {
     setItems((currentItems) => {
@@ -108,6 +161,7 @@ export function SimpleCartProvider({
 
   const clearCart = () => {
     setItems([]);
+    clearCartCookie();
     console.log("🗑️ Cart cleared");
   };
 

@@ -1,8 +1,8 @@
 "use client";
 
 import {
-    ShoppingCartIcon,
-    TrashIcon,
+  ShoppingCartIcon,
+  TrashIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -19,9 +19,40 @@ export default function SimpleCartModal() {
     setIsCheckoutOpen,
   } = useSimpleCart();
   const [isOpen, setIsOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const [isMobile, setIsMobile] = useState<boolean | null>(null); // null = not yet determined
 
-  const toggleCart = () => setIsOpen(!isOpen);
+  // Animated close function - waits for animation before hiding
+  const closeCart = () => {
+    if (isClosing || !isOpen) return;
+    // Use requestAnimationFrame to ensure the isClosing state triggers a visual update
+    // before we start the timeout. This prevents the animation from being skipped
+    // on pages with heavy DOM updates (like Categories page)
+    requestAnimationFrame(() => {
+      setIsClosing(true);
+      // Use another rAF to ensure the browser has painted the closing state
+      requestAnimationFrame(() => {
+        // Wait for animation to complete (250ms opacity transition)
+        setTimeout(() => {
+          setIsOpen(false);
+          setIsClosing(false);
+        }, 250);
+      });
+    });
+  };
+
+  const openCart = () => {
+    setIsClosing(false);
+    setIsOpen(true);
+  };
+
+  const toggleCart = () => {
+    if (isOpen || isClosing) {
+      closeCart();
+    } else {
+      openCart();
+    }
+  };
 
   // Check if we're on mobile - only render on mobile devices
   useEffect(() => {
@@ -104,7 +135,7 @@ export default function SimpleCartModal() {
 
 
       {/* Backdrop - verdeckt weiße Linie von der Navbar */}
-      {isOpen && (
+      {(isOpen || isClosing) && (
         <div
           className="fixed bg-transparent pointer-events-none"
           style={{
@@ -126,18 +157,18 @@ export default function SimpleCartModal() {
           top: "88px", // Mobile navbar height
           height: "calc(100vh - 88px)", // Mobile height
           zIndex: 10025, // Über der Navbar search bar (10020)
-          transition: "transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1)", // Opacity fades longer than transform
+          transition: "transform 250ms cubic-bezier(0.25, 0.1, 0.25, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1)", // Both 250ms for smooth close
           // Mobile full width
           width: "100vw",
           right: "0px",
           left: "0px",
-          transform: isOpen
+          transform: (isOpen && !isClosing)
             ? "translateX(0) translateY(0)"
             : "translateX(2%) translateY(-0.5vh)", // Tiny offset - almost no movement
-          opacity: isOpen ? 1 : 0,
+          opacity: (isOpen && !isClosing) ? 1 : 0,
           background: "#2d2d34", // Match categories page background
           backdropFilter: "blur(20px)", // Match categories page blur effect
-          pointerEvents: isOpen ? "auto" : "none",
+          pointerEvents: (isOpen && !isClosing) ? "auto" : "none",
           paddingBottom: "100px", // Extra space for Safari browser elements
         }}
       >
@@ -312,7 +343,7 @@ export default function SimpleCartModal() {
                     }}
                     onClick={() => {
                       setIsCheckoutOpen(true);
-                      setIsOpen(false);
+                      closeCart();
                     }}
                   >
                     Proceed to Checkout

@@ -401,7 +401,7 @@ export default function CheckoutModal({
         }
       `}</style>
       <div
-        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] flex items-start justify-center pt-16 p-4"
+        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] flex items-start justify-center pt-28 md:pt-16 p-4"
         style={{ animation: "backdropFadeIn 0.3s ease-out" }}
       >
         <div

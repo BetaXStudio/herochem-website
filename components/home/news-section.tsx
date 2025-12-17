@@ -2,10 +2,194 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { featuredProductLists } from "../../lib/featured-products";
 import { productDetails } from "../../lib/product-details-database";
 import { ProductDetailOverlay } from "../categories/product-detail-overlay";
+
+// Lazy-loaded product card component to prevent VRAM crashes on iOS Safari
+interface LazyProductCardProps {
+  product: typeof productDetails[0];
+  isHovered: boolean;
+  onHover: (id: string | null) => void;
+  onOpenModal: (product: typeof productDetails[0]) => void;
+  getActiveIngredientName: (description: string) => string;
+  getProductBrandColor: (productName: string) => string;
+}
+
+function LazyProductCard({
+  product,
+  isHovered,
+  onHover,
+  onOpenModal,
+  getActiveIngredientName,
+  getProductBrandColor,
+}: LazyProductCardProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isMountedRef = useRef(true);
+
+  // IntersectionObserver for lazy loading AND unloading images
+  // This prevents Safari VRAM crashes by unloading images when they scroll out of view
+  useEffect(() => {
+    isMountedRef.current = true;
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!isMountedRef.current) return;
+          
+          if (entry.isIntersecting) {
+            // Element is visible - load the image
+            setIsVisible(true);
+            setImageSrc(product.image);
+          } else {
+            // Element is NOT visible - unload the image to free VRAM
+            setIsVisible(false);
+            setImageSrc(null);
+            setImageLoaded(false);
+          }
+        });
+      },
+      { 
+        rootMargin: "200px", // Start loading 200px before visible
+        threshold: 0 
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      isMountedRef.current = false;
+      observer.disconnect();
+    };
+  }, [product.image]);
+
+  const handleImageLoad = useCallback(() => {
+    if (isMountedRef.current) {
+      setImageLoaded(true);
+    }
+  }, []);
+
+  return (
+    <div
+      ref={cardRef}
+      onClick={() => onHover(isHovered ? null : product.id)}
+      className="flex-shrink-0 rounded-lg flex flex-col cursor-pointer w-36 md:w-48"
+      style={{ backgroundColor: 'rgb(249, 250, 251)' }}
+    >
+      {/* Product Image Container */}
+      <div className="w-full rounded-xl mb-1 flex items-center justify-center relative border border-gray-200 overflow-hidden p-1.5 md:p-2 h-[80px] md:h-[100px]" style={{ backgroundColor: 'rgb(249, 250, 251)' }}>
+        {/* Loading Animation */}
+        {isVisible && !imageLoaded && (
+          <div
+            className="absolute inset-0 flex items-center justify-center rounded-xl"
+            style={{
+              background: "rgba(249, 250, 251, 0.9)",
+              zIndex: 5,
+            }}
+          >
+            <div
+              className="animate-spin rounded-full h-5 w-5 border-2 border-gray-300"
+              style={{
+                borderTopColor: product.brand === "astera" ? "#d67f3f" : "#ef4444",
+              }}
+            ></div>
+          </div>
+        )}
+        
+        {imageSrc && (
+          <Image
+            src={imageSrc}
+            alt={product.name}
+            width={80}
+            height={80}
+            className={`object-contain transition-opacity duration-300 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+            style={{
+              width: 'auto',
+              height: 'auto',
+              maxWidth: '80px',
+              maxHeight: '80px',
+              transform: product.brand === "astera" ? "scale(0.85)" : "scale(1.15)"
+            }}
+            loading="lazy"
+            onLoad={handleImageLoad}
+            unoptimized
+          />
+        )}
+        
+        {/* Blur Layer */}
+        <div
+          className="absolute inset-0 transition-opacity duration-200 rounded-xl"
+          style={{
+            backgroundColor: "rgba(255, 255, 255, 0.3)",
+            backdropFilter: "blur(4px)",
+            WebkitBackdropFilter: "blur(4px)",
+            opacity: isHovered ? 1 : 0,
+            pointerEvents: "none",
+            zIndex: 10
+          }}
+        />
+        
+        {/* DETAILS Button Overlay */}
+        <div
+          className="absolute inset-0 flex items-center justify-center transition-opacity duration-200 rounded-xl"
+          style={{
+            opacity: isHovered ? 1 : 0,
+            pointerEvents: isHovered ? "auto" : "none",
+            zIndex: 20
+          }}
+        >
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onOpenModal(product);
+              onHover(null);
+            }}
+            className="px-4 py-1.5 text-xs bg-gray-900 text-white font-bold rounded-lg shadow-lg hover:bg-gray-800 transition-all duration-200 transform hover:scale-105"
+          >
+            DETAILS
+          </button>
+        </div>
+      </div>
+
+      {/* Product Info */}
+      <div className="px-1.5 pb-1.5 md:px-2 md:pb-2">
+        <h3 className="text-gray-900 font-bold mb-0.5 line-clamp-1 text-xs md:text-sm">
+          {product.name}
+        </h3>
+        <div className="text-gray-600 mb-0.5 overflow-hidden leading-tight text-[8px] md:text-[9px]">
+          {(() => {
+            const cleanDescription = getActiveIngredientName(product.description);
+            const firstIngredient = cleanDescription.split(',')[0]?.split(' + ')[0]?.trim() || cleanDescription;
+            const hasMoreIngredients = cleanDescription.includes(',') || cleanDescription.includes(' + ');
+            return hasMoreIngredients ? firstIngredient + "..." : firstIngredient;
+          })()}
+        </div>
+        
+        {/* Price and Category Row */}
+        <div className="flex items-center justify-between mt-1 gap-1 md:gap-2">
+          <p className="text-gray-900 font-bold text-sm md:text-lg">
+            €{product.price.toFixed(2)}
+          </p>
+          
+          <span 
+            className="px-2 py-0.5 rounded text-white font-medium text-[8px]"
+            style={{
+              backgroundColor: getProductBrandColor(product.name)
+            }}
+          >
+            {product.category.toUpperCase()}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function NewsSection() {
   const [currentBanner, setCurrentBanner] = useState(0);
@@ -304,96 +488,15 @@ export default function NewsSection() {
           {getBestsellerProducts().map((product) => {
             const isHovered = hoveredProductId === product.id;
             return (
-            <div
-              key={product.id}
-              onClick={() => setHoveredProductId(isHovered ? null : product.id)}
-              className="flex-shrink-0 rounded-lg flex flex-col cursor-pointer w-36 md:w-48"
-              style={{ backgroundColor: 'rgb(249, 250, 251)' }}
-            >
-              {/* Product Image Container */}
-              <div className="w-full rounded-xl mb-1 flex items-center justify-center relative border border-gray-200 overflow-hidden p-1.5 md:p-2" style={{ backgroundColor: 'rgb(249, 250, 251)' }}>
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  width={80}
-                  height={80}
-                  className="object-contain"
-                  style={{
-                    width: 'auto',
-                    height: 'auto',
-                    maxWidth: '80px',
-                    maxHeight: '80px',
-                    transform: product.brand === "astera" ? "scale(0.85)" : "scale(1.15)"
-                  }}
-                  unoptimized
-                />
-                
-                {/* Blur Layer */}
-                <div
-                  className="absolute inset-0 transition-opacity duration-200 rounded-xl"
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.3)",
-                    backdropFilter: "blur(4px)",
-                    WebkitBackdropFilter: "blur(4px)",
-                    opacity: isHovered ? 1 : 0,
-                    pointerEvents: "none",
-                    zIndex: 10
-                  }}
-                />
-                
-                {/* DETAILS Button Overlay */}
-                <div
-                  className="absolute inset-0 flex items-center justify-center transition-opacity duration-200 rounded-xl"
-                  style={{
-                    opacity: isHovered ? 1 : 0,
-                    pointerEvents: isHovered ? "auto" : "none",
-                    zIndex: 20
-                  }}
-                >
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      openModal(product);
-                      setHoveredProductId(null);
-                    }}
-                    className="px-4 py-1.5 text-xs bg-gray-900 text-white font-bold rounded-lg shadow-lg hover:bg-gray-800 transition-all duration-200 transform hover:scale-105"
-                  >
-                    DETAILS
-                  </button>
-                </div>
-              </div>
-
-              {/* Product Info */}
-              <div className="px-1.5 pb-1.5 md:px-2 md:pb-2">
-                <h3 className="text-gray-900 font-bold mb-0.5 line-clamp-1 text-xs md:text-sm">
-                  {product.name}
-                </h3>
-                <div className="text-gray-600 mb-0.5 overflow-hidden leading-tight text-[8px] md:text-[9px]">
-                  {(() => {
-                    const cleanDescription = getActiveIngredientName(product.description);
-                    const firstIngredient = cleanDescription.split(',')[0]?.split(' + ')[0]?.trim() || cleanDescription;
-                    const hasMoreIngredients = cleanDescription.includes(',') || cleanDescription.includes(' + ');
-                    return hasMoreIngredients ? firstIngredient + "..." : firstIngredient;
-                  })()}
-                </div>
-                
-                {/* Price and Category Row */}
-                <div className="flex items-center justify-between mt-1 gap-1 md:gap-2">
-                  <p className="text-gray-900 font-bold text-sm md:text-lg">
-                    €{product.price.toFixed(2)}
-                  </p>
-                  
-                  <span 
-                    className="px-2 py-0.5 rounded text-white font-medium text-[8px]"
-                    style={{
-                      backgroundColor: getProductBrandColor(product.name)
-                    }}
-                  >
-                    {product.category.toUpperCase()}
-                  </span>
-                </div>
-              </div>
-            </div>
+              <LazyProductCard
+                key={product.id}
+                product={product}
+                isHovered={isHovered}
+                onHover={setHoveredProductId}
+                onOpenModal={openModal}
+                getActiveIngredientName={getActiveIngredientName}
+                getProductBrandColor={getProductBrandColor}
+              />
             );
           })}
         </div>
