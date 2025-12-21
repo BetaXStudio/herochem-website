@@ -209,8 +209,9 @@ export function ProductDetailModalDesktop({
             overflowY: "auto",
             zIndex: 9999,
             filter: isAnyNavbarModalOpen ? "blur(4px)" : "none",
-            transition: "filter 0.3s ease-out",
+            // No transition on filter - instant blur to avoid competing with other modal animations
             pointerEvents: isAnyNavbarModalOpen ? "none" : "auto",
+            willChange: "filter",
           }}
         >
           <div className="flex min-h-screen relative overflow-hidden hide-scrollbar" style={{ background: "white" }}>

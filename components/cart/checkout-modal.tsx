@@ -1,5 +1,7 @@
 "use client";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
+import { useModal } from "../../contexts/modal-context";
 import {
   calculateCouponDiscount,
   validateCouponCode,
@@ -56,6 +58,7 @@ export default function CheckoutModal({
 }: CheckoutModalProps) {
   const { user } = useAuth();
   const { clearCart } = useSimpleCart();
+  const { setCheckoutModalOpen } = useModal();
   const [addresses, setAddresses] = useState<UserAddress[]>([]);
   const [selectedAddressId, setSelectedAddressId] = useState<string | null>(
     null,
@@ -75,41 +78,25 @@ export default function CheckoutModal({
   const [appliedCoupon, setAppliedCoupon] = useState<string | null>(null);
   const [couponError, setCouponError] = useState<string | null>(null);
 
-  // Erweiterte Scroll-Isolation für Modal
+  // Einfache Scroll-Sperre für Modal (ohne position:fixed)
   useEffect(() => {
     if (isOpen) {
-      // Speichere den aktuellen Scroll-Zustand
-      const scrollY = window.scrollY;
-
-      // Speichere Scroll-Position im dataset für Wiederherstellung
-      document.body.dataset.scrollPosition = scrollY.toString();
-
-      // Fixiere Body-Position um Scroll-Bleeding zu verhindern
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = "100%";
+      // Verhindere Scrolling auf html und body
+      const originalHtmlOverflow = document.documentElement.style.overflow;
+      const originalBodyOverflow = document.body.style.overflow;
+      
+      document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
+      setCheckoutModalOpen(true);
 
-      // Cleanup: Stelle alles wieder her
+      // Cleanup
       return () => {
-        const savedScrollY = parseInt(
-          document.body.dataset.scrollPosition || "0",
-        );
-
-        // Entferne alle Styles
-        document.body.style.position = "";
-        document.body.style.top = "";
-        document.body.style.width = "";
-        document.body.style.overflow = "";
-
-        // Stelle Scroll-Position wieder her
-        window.scrollTo(0, savedScrollY);
-
-        // Cleanup dataset
-        delete document.body.dataset.scrollPosition;
+        document.documentElement.style.overflow = originalHtmlOverflow;
+        document.body.style.overflow = originalBodyOverflow;
+        setCheckoutModalOpen(false);
       };
     }
-  }, [isOpen]);
+  }, [isOpen, setCheckoutModalOpen]);
 
   const [addressForm, setAddressForm] = useState<AddressForm>({
     full_name: "",
@@ -365,21 +352,6 @@ export default function CheckoutModal({
     }
   };
 
-  // Handler für Scroll-Event-Isolation
-  const handleModalWheel = (e: React.WheelEvent) => {
-    const modal = e.currentTarget as HTMLElement;
-    const { scrollTop, scrollHeight, clientHeight } = modal;
-
-    // Verhindere Scroll-Propagation an Grenzen
-    if (
-      (e.deltaY < 0 && scrollTop === 0) || // Am oberen Ende nach oben scrollen
-      (e.deltaY > 0 && scrollTop + clientHeight >= scrollHeight) // Am unteren Ende nach unten scrollen
-    ) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  };
-
   const formatPrice = (amount: number) => {
     return new Intl.NumberFormat("de-DE", {
       style: "currency",
@@ -391,69 +363,138 @@ export default function CheckoutModal({
 
   return (
     <>
-      <style jsx>{`
-        .hidden-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .hidden-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
+      {/* Unsichtbarer Backdrop für Click-Handling */}
       <div
-        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] flex items-start justify-center pt-28 md:pt-16 p-4"
-        style={{ animation: "backdropFadeIn 0.3s ease-out" }}
+        className="fixed inset-0 z-[9998]"
+        style={{
+          backgroundColor: "transparent",
+          animation: "backdropFadeIn 0.3s ease-out",
+          // CPU/Hardware rendering - no GPU acceleration
+        }}
+        onClick={onClose}
+      />
+      <div
+        className="fixed inset-0 z-[9999] flex items-start justify-center pt-26 md:pt-16 px-4"
+        style={{ 
+          pointerEvents: "none",
+          // CPU/Hardware rendering - no GPU acceleration
+        }}
       >
         <div
-          className="bg-neutral-900 rounded-lg shadow-xl w-full max-w-4xl max-h-[75vh] overflow-y-auto hidden-scrollbar"
-          style={{ animation: "modalSlideIn 0.3s ease-out" }}
-          onWheel={handleModalWheel}
+          className="bg-white w-full max-w-4xl max-h-[70vh] overflow-hidden flex flex-col"
+          style={{ 
+            animation: "modalSlideIn 0.3s ease-out",
+            border: "2px solid rgb(45,45,52)",
+            borderRadius: "0.75rem",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+            pointerEvents: "auto",
+            // CPU/Hardware rendering - no GPU acceleration
+          }}
         >
           {orderPlaced ? (
             // Order Success View
-            <div className="p-8 text-center">
-              <div className="mb-6">
-                <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </div>
-                <h2 className="text-2xl font-bold text-white mb-2">
-                  Order Placed!
+            <>
+              {/* Header */}
+              <div
+                className="flex items-center justify-between"
+                style={{
+                  backgroundColor: 'rgb(45,45,52)',
+                  borderTopLeftRadius: '0.75rem',
+                  borderTopRightRadius: '0.75rem',
+                  margin: '-2px -3px 0 -3px',
+                  padding: '12px 16px',
+                  position: 'relative',
+                  left: '1px',
+                  width: 'calc(100% + 3px)',
+                  zIndex: 10,
+                  overflow: 'hidden'
+                }}
+              >
+                <h2 
+                  className="text-lg font-medium text-white"
+                  style={{ fontFamily: "Calibri, Arial, sans-serif" }}
+                >
+                  Order Complete
                 </h2>
-                <p className="text-neutral-300">
-                  Thank you for your order. You will be redirected to your order
-                  history shortly.
-                </p>
               </div>
-              <div className="bg-green-900/50 border border-green-600 rounded-lg p-4">
-                <p className="text-green-200">
-                  Your order has been successfully placed and is now being
-                  processed.
-                </p>
+              <div className="p-8 text-center">
+                <div className="mb-6">
+                  <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg
+                      className="w-8 h-8 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                    Order Placed!
+                  </h2>
+                  <p className="text-gray-600">
+                    Thank you for your order. You will be redirected to your order
+                    history shortly.
+                  </p>
+                </div>
+                <div 
+                  className="rounded-xl p-4"
+                  style={{
+                    backgroundColor: "rgba(34, 197, 94, 0.1)",
+                    border: "1px solid rgba(34, 197, 94, 0.3)"
+                  }}
+                >
+                  <p className="text-green-700">
+                    Your order has been successfully placed and is now being
+                    processed.
+                  </p>
+                </div>
               </div>
-            </div>
+            </>
           ) : !user ? (
             // Not Logged In View
-            <div className="p-8 text-center">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-bold text-white">Checkout</h2>
+            <>
+              {/* Header */}
+              <div
+                className="flex items-center justify-between"
+                style={{
+                  backgroundColor: 'rgb(45,45,52)',
+                  borderTopLeftRadius: '0.75rem',
+                  borderTopRightRadius: '0.75rem',
+                  margin: '-2px -3px 0 -3px',
+                  padding: '12px 16px',
+                  position: 'relative',
+                  left: '1px',
+                  width: 'calc(100% + 3px)',
+                  zIndex: 10,
+                  overflow: 'hidden'
+                }}
+              >
+                <h2 
+                  className="text-lg font-medium text-white"
+                  style={{ fontFamily: "Calibri, Arial, sans-serif" }}
+                >
+                  Checkout
+                </h2>
                 <button
                   onClick={onClose}
-                  className="text-neutral-400 hover:text-white transition-colors"
+                  className="p-2 rounded-xl transition-colors duration-200 group"
+                  aria-label="Close modal"
                 >
+                  <XMarkIcon className="h-4 w-4 text-white group-hover:text-[#e91111]" />
+                </button>
+              </div>
+
+              {/* Scrollable Content */}
+              <div className="flex-1 overflow-y-auto p-8">
+                <div className="text-center">
                   <svg
-                    className="w-6 h-6"
+                    className="w-16 h-16 mx-auto mb-4 text-gray-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -461,92 +502,109 @@ export default function CheckoutModal({
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
+                      strokeWidth={1.5}
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                     />
                   </svg>
-                </button>
-              </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    Login Required
+                  </h3>
+                  <p className="text-gray-500 mb-6">
+                    Please login or register to proceed with your order.
+                  </p>
 
-              <div className="mb-8">
-                <svg
-                  className="w-16 h-16 mx-auto mb-4 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  />
-                </svg>
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  Login Required
-                </h3>
-                <p className="text-neutral-400 mb-6">
-                  Please login or register to proceed with your order.
-                </p>
-
-                <button
-                  onClick={() => {
-                    if (onAuthRequired) {
-                      onAuthRequired();
-                    } else {
-                      setShowAuthModal(true);
-                    }
-                  }}
-                  className="px-6 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium"
-                >
-                  Login or Register to proceed
-                </button>
+                  <button
+                    onClick={() => {
+                      if (onAuthRequired) {
+                        onAuthRequired();
+                      } else {
+                        setShowAuthModal(true);
+                      }
+                    }}
+                    className="px-6 py-3 text-white rounded-xl font-medium transition-all duration-200 hover:scale-[1.02]"
+                    style={{
+                      background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
+                      boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
+                    }}
+                  >
+                    Login or Register to proceed
+                  </button>
+                </div>
               </div>
-            </div>
+            </>
           ) : (
             // Main Checkout View
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-bold text-white">Checkout</h2>
+            <>
+              {/* Header */}
+              <div
+                className="flex items-center justify-between"
+                style={{
+                  backgroundColor: 'rgb(45,45,52)',
+                  borderTopLeftRadius: '0.75rem',
+                  borderTopRightRadius: '0.75rem',
+                  margin: '-2px -3px 0 -3px',
+                  padding: '12px 16px',
+                  position: 'relative',
+                  left: '1px',
+                  width: 'calc(100% + 3px)',
+                  zIndex: 10,
+                  overflow: 'hidden'
+                }}
+              >
+                <h2 
+                  className="text-lg font-medium text-white"
+                  style={{ fontFamily: "Calibri, Arial, sans-serif" }}
+                >
+                  Checkout
+                </h2>
                 <button
                   onClick={onClose}
-                  className="text-neutral-400 hover:text-white transition-colors"
+                  className="p-2 rounded-xl transition-colors duration-200 group"
+                  aria-label="Close modal"
                 >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
+                  <XMarkIcon className="h-4 w-4 text-white group-hover:text-[#e91111]" />
                 </button>
               </div>
 
-              {/* Success/Error Messages */}
-              {success && (
-                <div className="bg-green-900/50 border border-green-600 rounded-lg p-4 mb-6">
-                  <p className="text-green-200">Address added successfully!</p>
-                </div>
-              )}
+              {/* Scrollable Content */}
+              <div className="flex-1 overflow-y-auto p-6">
+                {/* Success/Error Messages */}
+                {success && (
+                  <div 
+                    className="rounded-xl p-4 mb-6"
+                    style={{
+                      backgroundColor: "rgba(34, 197, 94, 0.1)",
+                      border: "1px solid rgba(34, 197, 94, 0.3)"
+                    }}
+                  >
+                    <p className="text-green-700">Address added successfully!</p>
+                  </div>
+                )}
 
-              {error && (
-                <div className="bg-red-900/50 border border-red-600 rounded-lg p-4 mb-6">
-                  <p className="text-red-200">{error}</p>
-                </div>
-              )}
+                {error && (
+                  <div 
+                    className="rounded-xl p-4 mb-6"
+                    style={{
+                      backgroundColor: "rgba(239, 68, 68, 0.1)",
+                      border: "1px solid rgba(239, 68, 68, 0.3)"
+                    }}
+                  >
+                    <p className="text-red-600">{error}</p>
+                  </div>
+                )}
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Left Column - Order Summary & Address */}
                 <div className="space-y-6">
                   {/* Order Items */}
-                  <div className="bg-neutral-800 rounded-lg p-4">
-                    <h3 className="text-lg font-semibold text-white mb-4">
+                  <div 
+                    className="rounded-xl p-4"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.8)",
+                      border: "1px solid rgba(45, 45, 52, 0.1)",
+                    }}
+                  >
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
                       Order Summary
                     </h3>
                     <div className="space-y-3">
@@ -559,23 +617,24 @@ export default function CheckoutModal({
                             <img
                               src={item.image}
                               alt={item.title}
-                              className="w-12 h-12 object-cover rounded"
+                              className="w-12 h-12 object-cover rounded-lg"
+                              style={{ border: "1px solid rgba(45, 45, 52, 0.2)" }}
                             />
                           )}
                           <div className="flex-1">
-                            <h4 className="text-white font-medium text-sm">
+                            <h4 className="text-gray-900 font-medium text-sm">
                               {item.title}
                             </h4>
                             {item.variant && (
-                              <p className="text-neutral-400 text-xs">
+                              <p className="text-gray-500 text-xs">
                                 {item.variant}
                               </p>
                             )}
                             <div className="flex items-center justify-between">
-                              <span className="text-neutral-300 text-sm">
+                              <span className="text-gray-600 text-sm">
                                 Qty: {item.quantity}
                               </span>
-                              <span className="text-white font-medium text-sm">
+                              <span className="text-gray-900 font-medium text-sm">
                                 {formatPrice(item.price * item.quantity)}
                               </span>
                             </div>
@@ -586,20 +645,30 @@ export default function CheckoutModal({
                   </div>
 
                   {/* Shipping Address */}
-                  <div className="bg-neutral-800 rounded-lg p-4">
-                    <h3 className="text-lg font-semibold text-white mb-4">
+                  <div 
+                    className="rounded-xl p-4"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.8)",
+                      border: "1px solid rgba(45, 45, 52, 0.1)",
+                    }}
+                  >
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
                       Shipping Address
                     </h3>
 
                     {addresses.length === 0 ? (
                       <div>
-                        <p className="text-neutral-400 text-sm mb-4">
+                        <p className="text-gray-500 text-sm mb-4">
                           No saved addresses found. Please add a shipping
                           address.
                         </p>
                         <button
                           onClick={() => setShowAddAddressForm(true)}
-                          className="w-full px-4 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium"
+                          className="w-full px-4 py-2 text-white rounded-xl font-medium transition-all duration-200 hover:scale-[1.02]"
+                          style={{
+                            background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
+                            boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
+                          }}
                         >
                           Add Address
                         </button>
@@ -611,29 +680,36 @@ export default function CheckoutModal({
                           {addresses.map((address) => (
                             <div
                               key={address.id}
-                              className={`p-3 rounded-lg border cursor-pointer transition-colors ${
-                                selectedAddressId === address.id
-                                  ? "border-[#e91111] bg-[#e91111]/10"
-                                  : "border-neutral-600 hover:border-neutral-500"
-                              }`}
+                              className="p-3 rounded-xl cursor-pointer transition-colors"
+                              style={{
+                                backgroundColor: selectedAddressId === address.id 
+                                  ? "rgba(45, 45, 52, 0.1)" 
+                                  : "rgba(255, 255, 255, 0.5)",
+                                border: selectedAddressId === address.id 
+                                  ? "2px solid rgb(45, 45, 52)" 
+                                  : "1px solid rgba(45, 45, 52, 0.2)",
+                              }}
                               onClick={() => setSelectedAddressId(address.id)}
                             >
                               <div className="flex items-start justify-between">
                                 <div>
                                   <div className="flex items-center gap-2">
-                                    <h4 className="text-white font-medium">
+                                    <h4 className="text-gray-900 font-medium">
                                       {address.full_name}
                                     </h4>
                                     {address.is_primary && (
-                                      <span className="px-2 py-1 bg-[#e91111] text-white text-xs rounded">
+                                      <span 
+                                        className="px-2 py-1 text-white text-xs rounded"
+                                        style={{ backgroundColor: "rgb(45, 45, 52)" }}
+                                      >
                                         Primary
                                       </span>
                                     )}
                                   </div>
-                                  <p className="text-neutral-300 text-sm">
+                                  <p className="text-gray-600 text-sm">
                                     {address.street} {address.house_number}
                                   </p>
-                                  <p className="text-neutral-300 text-sm">
+                                  <p className="text-gray-600 text-sm">
                                     {address.postal_code} {address.city},{" "}
                                     {address.country}
                                   </p>
@@ -644,7 +720,8 @@ export default function CheckoutModal({
                                   onChange={() =>
                                     setSelectedAddressId(address.id)
                                   }
-                                  className="text-[#e91111] bg-neutral-700 border-neutral-600"
+                                  className="text-gray-900"
+                                  style={{ accentColor: "rgb(45, 45, 52)" }}
                                 />
                               </div>
                             </div>
@@ -653,7 +730,12 @@ export default function CheckoutModal({
 
                         <button
                           onClick={() => setShowAddAddressForm(true)}
-                          className="w-full px-4 py-2 bg-neutral-600 text-white rounded-md hover:bg-neutral-500 transition-colors duration-200 font-medium"
+                          className="w-full px-4 py-2 rounded-xl font-medium transition-colors"
+                          style={{
+                            backgroundColor: "rgba(45, 45, 52, 0.1)",
+                            border: "1px solid rgba(45, 45, 52, 0.2)",
+                            color: "rgb(45, 45, 52)"
+                          }}
                         >
                           Add New Address
                         </button>
@@ -662,8 +744,14 @@ export default function CheckoutModal({
 
                     {/* Add Address Form */}
                     {showAddAddressForm && (
-                      <div className="mt-4 p-4 bg-neutral-700 rounded-lg">
-                        <h4 className="text-white font-medium mb-3">
+                      <div 
+                        className="mt-4 p-4 rounded-xl"
+                        style={{
+                          backgroundColor: "rgba(45, 45, 52, 0.05)",
+                          border: "1px solid rgba(45, 45, 52, 0.2)",
+                        }}
+                      >
+                        <h4 className="text-gray-900 font-medium mb-3">
                           Add New Address
                         </h4>
                         <div className="space-y-3">
@@ -677,7 +765,11 @@ export default function CheckoutModal({
                                 full_name: e.target.value,
                               })
                             }
-                            className="w-full px-3 py-2 bg-neutral-600 border border-neutral-500 rounded-md text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#e91111] focus:border-[#e91111]"
+                            className="w-full px-3 py-2 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
+                            style={{
+                              backgroundColor: "rgba(255, 255, 255, 0.9)",
+                              border: "1px solid rgba(45, 45, 52, 0.2)",
+                            }}
                           />
                           <div className="grid grid-cols-2 gap-3">
                             <input
@@ -690,7 +782,11 @@ export default function CheckoutModal({
                                   street: e.target.value,
                                 })
                               }
-                              className="w-full px-3 py-2 bg-neutral-600 border border-neutral-500 rounded-md text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#e91111] focus:border-[#e91111]"
+                              className="w-full px-3 py-2 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
+                              style={{
+                                backgroundColor: "rgba(255, 255, 255, 0.9)",
+                                border: "1px solid rgba(45, 45, 52, 0.2)",
+                              }}
                             />
                             <input
                               type="text"
@@ -702,7 +798,11 @@ export default function CheckoutModal({
                                   house_number: e.target.value,
                                 })
                               }
-                              className="w-full px-3 py-2 bg-neutral-600 border border-neutral-500 rounded-md text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#e91111] focus:border-[#e91111]"
+                              className="w-full px-3 py-2 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
+                              style={{
+                                backgroundColor: "rgba(255, 255, 255, 0.9)",
+                                border: "1px solid rgba(45, 45, 52, 0.2)",
+                              }}
                             />
                           </div>
                           <div className="grid grid-cols-2 gap-3">
@@ -716,7 +816,11 @@ export default function CheckoutModal({
                                   city: e.target.value,
                                 })
                               }
-                              className="w-full px-3 py-2 bg-neutral-600 border border-neutral-500 rounded-md text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#e91111] focus:border-[#e91111]"
+                              className="w-full px-3 py-2 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
+                              style={{
+                                backgroundColor: "rgba(255, 255, 255, 0.9)",
+                                border: "1px solid rgba(45, 45, 52, 0.2)",
+                              }}
                             />
                             <input
                               type="text"
@@ -728,7 +832,11 @@ export default function CheckoutModal({
                                   postal_code: e.target.value,
                                 })
                               }
-                              className="w-full px-3 py-2 bg-neutral-600 border border-neutral-500 rounded-md text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#e91111] focus:border-[#e91111]"
+                              className="w-full px-3 py-2 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
+                              style={{
+                                backgroundColor: "rgba(255, 255, 255, 0.9)",
+                                border: "1px solid rgba(45, 45, 52, 0.2)",
+                              }}
                             />
                           </div>
                           <div className="grid grid-cols-2 gap-3">
@@ -742,7 +850,11 @@ export default function CheckoutModal({
                                   state_province: e.target.value,
                                 })
                               }
-                              className="w-full px-3 py-2 bg-neutral-600 border border-neutral-500 rounded-md text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#e91111] focus:border-[#e91111]"
+                              className="w-full px-3 py-2 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
+                              style={{
+                                backgroundColor: "rgba(255, 255, 255, 0.9)",
+                                border: "1px solid rgba(45, 45, 52, 0.2)",
+                              }}
                             />
                             <input
                               type="text"
@@ -754,7 +866,11 @@ export default function CheckoutModal({
                                   country: e.target.value,
                                 })
                               }
-                              className="w-full px-3 py-2 bg-neutral-600 border border-neutral-500 rounded-md text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#e91111] focus:border-[#e91111]"
+                              className="w-full px-3 py-2 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
+                              style={{
+                                backgroundColor: "rgba(255, 255, 255, 0.9)",
+                                border: "1px solid rgba(45, 45, 52, 0.2)",
+                              }}
                             />
                           </div>
                           <div className="flex items-center">
@@ -768,11 +884,12 @@ export default function CheckoutModal({
                                   is_primary: e.target.checked,
                                 })
                               }
-                              className="w-4 h-4 text-[#e91111] bg-neutral-600 border-neutral-500 rounded focus:ring-[#e91111] focus:ring-2"
+                              className="w-4 h-4 rounded focus:ring-2"
+                              style={{ accentColor: "rgb(45, 45, 52)" }}
                             />
                             <label
                               htmlFor="is_primary_checkout"
-                              className="ml-2 text-sm text-neutral-300"
+                              className="ml-2 text-sm text-gray-600"
                             >
                               Set as primary address
                             </label>
@@ -781,13 +898,22 @@ export default function CheckoutModal({
                             <button
                               onClick={handleAddAddress}
                               disabled={loading}
-                              className="flex-1 px-4 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium disabled:opacity-50"
+                              className="flex-1 px-4 py-2 text-white rounded-xl font-medium disabled:opacity-50 transition-all duration-200 hover:scale-[1.02]"
+                              style={{
+                                background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
+                                boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
+                              }}
                             >
-                              {loading ? "Adding..." : "Save Address"}
+                              {loading ? "Adding..." : "Save"}
                             </button>
                             <button
                               onClick={() => setShowAddAddressForm(false)}
-                              className="flex-1 px-4 py-2 bg-neutral-600 text-white rounded-md hover:bg-neutral-500 transition-colors duration-200 font-medium"
+                              className="flex-1 px-4 py-2 rounded-xl font-medium transition-colors"
+                              style={{
+                                backgroundColor: "rgba(45, 45, 52, 0.1)",
+                                border: "1px solid rgba(45, 45, 52, 0.2)",
+                                color: "rgb(45, 45, 52)"
+                              }}
                             >
                               Cancel
                             </button>
@@ -801,46 +927,68 @@ export default function CheckoutModal({
                 {/* Right Column - Shipping & Payment */}
                 <div className="space-y-6">
                   {/* Shipping Method */}
-                  <div className="bg-neutral-800 rounded-lg p-4">
-                    <h3 className="text-lg font-semibold text-white mb-4">
+                  <div 
+                    className="rounded-xl p-4"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.8)",
+                      border: "1px solid rgba(45, 45, 52, 0.1)",
+                    }}
+                  >
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
                       Shipping Method
                     </h3>
                     <div className="space-y-2">
-                      <div className="p-3 border border-[#e91111] bg-[#e91111]/10 rounded-lg">
+                      <div 
+                        className="p-3 rounded-xl"
+                        style={{
+                          backgroundColor: "rgba(45, 45, 52, 0.1)",
+                          border: "2px solid rgb(45, 45, 52)",
+                        }}
+                      >
                         <div className="flex items-center justify-between">
                           <div>
-                            <h4 className="text-white font-medium">
+                            <h4 className="text-gray-900 font-medium">
                               Standard Shipping
                             </h4>
-                            <p className="text-neutral-300 text-sm">
+                            <p className="text-gray-600 text-sm">
                               Delivery within 5-7 business days
                             </p>
                           </div>
                           <div className="text-right">
-                            <span className="text-white font-medium">
+                            <span className="text-gray-900 font-medium">
                               {formatPrice(20.0)}
                             </span>
                           </div>
                         </div>
                       </div>
-                      <p className="text-neutral-400 text-xs">
+                      <p className="text-gray-500 text-xs">
                         More shipping options will be available soon
                       </p>
                     </div>
                   </div>
 
                   {/* Payment Method */}
-                  <div className="bg-neutral-800 rounded-lg p-4">
-                    <h3 className="text-lg font-semibold text-white mb-4">
+                  <div 
+                    className="rounded-xl p-4"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.8)",
+                      border: "1px solid rgba(45, 45, 52, 0.1)",
+                    }}
+                  >
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
                       Payment Method
                     </h3>
                     <div className="space-y-2">
                       <div
-                        className={`p-3 rounded-lg border cursor-pointer transition-colors ${
-                          paymentMethod === "paypal"
-                            ? "border-[#e91111] bg-[#e91111]/10"
-                            : "border-neutral-600 hover:border-neutral-500"
-                        }`}
+                        className="p-3 rounded-xl cursor-pointer transition-colors"
+                        style={{
+                          backgroundColor: paymentMethod === "paypal" 
+                            ? "rgba(45, 45, 52, 0.1)" 
+                            : "rgba(255, 255, 255, 0.5)",
+                          border: paymentMethod === "paypal" 
+                            ? "2px solid rgb(45, 45, 52)" 
+                            : "1px solid rgba(45, 45, 52, 0.2)",
+                        }}
                         onClick={() => setPaymentMethod("paypal")}
                       >
                         <div className="flex items-center justify-between">
@@ -849,24 +997,28 @@ export default function CheckoutModal({
                               type="radio"
                               checked={paymentMethod === "paypal"}
                               onChange={() => setPaymentMethod("paypal")}
-                              className="text-[#e91111] bg-neutral-700 border-neutral-600"
+                              style={{ accentColor: "rgb(45, 45, 52)" }}
                             />
-                            <span className="text-white font-medium">
+                            <span className="text-gray-900 font-medium">
                               PayPal
                             </span>
                           </div>
-                          <span className="text-neutral-300 text-sm">
+                          <span className="text-gray-600 text-sm">
                             No additional fee
                           </span>
                         </div>
                       </div>
 
                       <div
-                        className={`p-3 rounded-lg border cursor-pointer transition-colors ${
-                          paymentMethod === "bitcoin"
-                            ? "border-[#e91111] bg-[#e91111]/10"
-                            : "border-neutral-600 hover:border-neutral-500"
-                        }`}
+                        className="p-3 rounded-xl cursor-pointer transition-colors"
+                        style={{
+                          backgroundColor: paymentMethod === "bitcoin" 
+                            ? "rgba(45, 45, 52, 0.1)" 
+                            : "rgba(255, 255, 255, 0.5)",
+                          border: paymentMethod === "bitcoin" 
+                            ? "2px solid rgb(45, 45, 52)" 
+                            : "1px solid rgba(45, 45, 52, 0.2)",
+                        }}
                         onClick={() => setPaymentMethod("bitcoin")}
                       >
                         <div className="flex items-center justify-between">
@@ -875,24 +1027,28 @@ export default function CheckoutModal({
                               type="radio"
                               checked={paymentMethod === "bitcoin"}
                               onChange={() => setPaymentMethod("bitcoin")}
-                              className="text-[#e91111] bg-neutral-700 border-neutral-600"
+                              style={{ accentColor: "rgb(45, 45, 52)" }}
                             />
-                            <span className="text-white font-medium">
+                            <span className="text-gray-900 font-medium">
                               Bitcoin
                             </span>
                           </div>
-                          <span className="text-green-400 text-sm">
+                          <span className="text-green-600 text-sm font-medium">
                             -5% discount
                           </span>
                         </div>
                       </div>
 
                       <div
-                        className={`p-3 rounded-lg border cursor-pointer transition-colors ${
-                          paymentMethod === "bank_transfer"
-                            ? "border-[#e91111] bg-[#e91111]/10"
-                            : "border-neutral-600 hover:border-neutral-500"
-                        }`}
+                        className="p-3 rounded-xl cursor-pointer transition-colors"
+                        style={{
+                          backgroundColor: paymentMethod === "bank_transfer" 
+                            ? "rgba(45, 45, 52, 0.1)" 
+                            : "rgba(255, 255, 255, 0.5)",
+                          border: paymentMethod === "bank_transfer" 
+                            ? "2px solid rgb(45, 45, 52)" 
+                            : "1px solid rgba(45, 45, 52, 0.2)",
+                        }}
                         onClick={() => setPaymentMethod("bank_transfer")}
                       >
                         <div className="flex items-center justify-between">
@@ -901,13 +1057,13 @@ export default function CheckoutModal({
                               type="radio"
                               checked={paymentMethod === "bank_transfer"}
                               onChange={() => setPaymentMethod("bank_transfer")}
-                              className="text-[#e91111] bg-neutral-700 border-neutral-600"
+                              style={{ accentColor: "rgb(45, 45, 52)" }}
                             />
-                            <span className="text-white font-medium">
+                            <span className="text-gray-900 font-medium">
                               Bank Transfer
                             </span>
                           </div>
-                          <span className="text-orange-400 text-sm">
+                          <span className="text-orange-600 text-sm font-medium">
                             +5% fee
                           </span>
                         </div>
@@ -916,8 +1072,14 @@ export default function CheckoutModal({
                   </div>
 
                   {/* Coupon */}
-                  <div className="bg-neutral-800 rounded-lg p-4">
-                    <h3 className="text-lg font-semibold text-white mb-4">
+                  <div 
+                    className="rounded-xl p-4"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.8)",
+                      border: "1px solid rgba(45, 45, 52, 0.1)",
+                    }}
+                  >
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
                       Coupon
                     </h3>
 
@@ -926,13 +1088,18 @@ export default function CheckoutModal({
                         {!showCouponForm ? (
                           <button
                             onClick={() => setShowCouponForm(true)}
-                            className="w-full px-4 py-2 bg-neutral-700 text-white rounded-md hover:bg-neutral-600 transition-colors duration-200 border border-neutral-600"
+                            className="w-full px-4 py-2 rounded-xl transition-colors duration-200 font-medium"
+                            style={{
+                              backgroundColor: "rgba(45, 45, 52, 0.1)",
+                              border: "1px solid rgba(45, 45, 52, 0.2)",
+                              color: "rgb(45, 45, 52)"
+                            }}
                           >
                             Use Coupon Code
                           </button>
                         ) : (
                           <div className="space-y-4">
-                            <h4 className="text-white font-medium">
+                            <h4 className="text-gray-900 font-medium">
                               Enter Your Code
                             </h4>
                             <div className="space-y-3">
@@ -943,8 +1110,12 @@ export default function CheckoutModal({
                                 onChange={(e) =>
                                   setCouponCode(e.target.value.toUpperCase())
                                 }
-                                className="w-full px-3 py-2 bg-neutral-700 text-white rounded-md border border-neutral-600 focus:border-[#e91111] focus:outline-none placeholder-neutral-400"
-                                style={{ textTransform: "uppercase" }}
+                                className="w-full px-3 py-2 text-gray-900 rounded-lg focus:outline-none focus:ring-2 placeholder-gray-400"
+                                style={{ 
+                                  textTransform: "uppercase",
+                                  backgroundColor: "rgba(255, 255, 255, 0.9)",
+                                  border: "1px solid rgba(45, 45, 52, 0.2)",
+                                }}
                                 onKeyPress={(e) => {
                                   if (e.key === "Enter") {
                                     handleApplyCoupon();
@@ -952,7 +1123,7 @@ export default function CheckoutModal({
                                 }}
                               />
                               {couponError && (
-                                <p className="text-red-400 text-sm">
+                                <p className="text-red-500 text-sm">
                                   {couponError}
                                 </p>
                               )}
@@ -960,13 +1131,22 @@ export default function CheckoutModal({
                                 <button
                                   onClick={handleApplyCoupon}
                                   disabled={!couponCode.trim()}
-                                  className="flex-1 px-4 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                                  className="flex-1 px-4 py-2 text-white rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02]"
+                                  style={{
+                                    background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
+                                    boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
+                                  }}
                                 >
                                   Use Code
                                 </button>
                                 <button
                                   onClick={handleCancelCoupon}
-                                  className="flex-1 px-4 py-2 bg-neutral-600 text-white rounded-md hover:bg-neutral-500 transition-colors duration-200"
+                                  className="flex-1 px-4 py-2 rounded-xl transition-colors duration-200 font-medium"
+                                  style={{
+                                    backgroundColor: "rgba(45, 45, 52, 0.1)",
+                                    border: "1px solid rgba(45, 45, 52, 0.2)",
+                                    color: "rgb(45, 45, 52)"
+                                  }}
                                 >
                                   Cancel
                                 </button>
@@ -976,12 +1156,18 @@ export default function CheckoutModal({
                         )}
                       </>
                     ) : (
-                      <div className="flex items-center justify-between p-3 bg-green-900/20 border border-green-600 rounded-lg">
+                      <div 
+                        className="flex items-center justify-between p-3 rounded-xl"
+                        style={{
+                          backgroundColor: "rgba(34, 197, 94, 0.1)",
+                          border: "1px solid rgba(34, 197, 94, 0.3)",
+                        }}
+                      >
                         <div>
-                          <span className="text-white font-medium">
+                          <span className="text-gray-900 font-medium">
                             Applied: {appliedCoupon}
                           </span>
-                          <p className="text-green-400 text-sm">
+                          <p className="text-green-600 text-sm font-medium">
                             -
                             {
                               validateCouponCode(appliedCoupon)
@@ -992,7 +1178,7 @@ export default function CheckoutModal({
                         </div>
                         <button
                           onClick={handleRemoveCoupon}
-                          className="px-3 py-1 text-red-400 hover:text-red-300 transition-colors"
+                          className="px-3 py-1 text-red-500 hover:text-red-600 transition-colors font-medium"
                         >
                           Remove
                         </button>
@@ -1001,34 +1187,40 @@ export default function CheckoutModal({
                   </div>
 
                   {/* Order Total */}
-                  <div className="bg-neutral-800 rounded-lg p-4">
-                    <h3 className="text-lg font-semibold text-white mb-4">
+                  <div 
+                    className="rounded-xl p-4"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.8)",
+                      border: "1px solid rgba(45, 45, 52, 0.1)",
+                    }}
+                  >
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
                       Order Total
                     </h3>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-neutral-400">Subtotal:</span>
-                        <span className="text-white">
+                        <span className="text-gray-600">Subtotal:</span>
+                        <span className="text-gray-900">
                           {formatPrice(calculateSubtotal())}
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-neutral-400">Shipping:</span>
-                        <span className="text-white">
+                        <span className="text-gray-600">Shipping:</span>
+                        <span className="text-gray-900">
                           {formatPrice(calculateShipping())}
                         </span>
                       </div>
                       {calculatePaymentFee() !== 0 && (
                         <div className="flex justify-between">
-                          <span className="text-neutral-400">
+                          <span className="text-gray-600">
                             Payment{" "}
                             {calculatePaymentFee() > 0 ? "Fee" : "Discount"}:
                           </span>
                           <span
                             className={
                               calculatePaymentFee() > 0
-                                ? "text-orange-400"
-                                : "text-green-400"
+                                ? "text-orange-600 font-medium"
+                                : "text-green-600 font-medium"
                             }
                           >
                             {calculatePaymentFee() > 0 ? "+" : ""}
@@ -1038,10 +1230,10 @@ export default function CheckoutModal({
                       )}
                       {appliedCoupon && (
                         <div className="flex justify-between">
-                          <span className="text-neutral-400">
+                          <span className="text-gray-600">
                             Coupon Discount:
                           </span>
-                          <span className="text-green-400">
+                          <span className="text-green-600 font-medium">
                             -
                             {formatPrice(
                               calculateCouponDiscount(
@@ -1052,10 +1244,13 @@ export default function CheckoutModal({
                           </span>
                         </div>
                       )}
-                      <div className="border-t border-neutral-600 pt-2 mt-2">
+                      <div 
+                        className="pt-2 mt-2"
+                        style={{ borderTop: "1px solid rgba(45, 45, 52, 0.2)" }}
+                      >
                         <div className="flex justify-between font-semibold">
-                          <span className="text-white">Total:</span>
-                          <span className="text-white text-lg">
+                          <span className="text-gray-900">Total:</span>
+                          <span className="text-gray-900 text-lg">
                             {formatPrice(calculateTotal())}
                           </span>
                         </div>
@@ -1067,7 +1262,11 @@ export default function CheckoutModal({
                   <button
                     onClick={handlePlaceOrder}
                     disabled={loading || !selectedAddressId}
-                    className="w-full px-6 py-3 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-6 py-3 text-white rounded-xl font-medium text-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 hover:scale-[1.02]"
+                    style={{
+                      background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
+                      boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
+                    }}
                   >
                     {loading ? (
                       <div className="flex items-center justify-center">
@@ -1080,7 +1279,8 @@ export default function CheckoutModal({
                   </button>
                 </div>
               </div>
-            </div>
+              </div>
+            </>
           )}
         </div>
       </div>

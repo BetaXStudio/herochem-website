@@ -28,6 +28,7 @@ const SlideUpToast = ({
         pointerEvents: "none",
         transition: "all 1.0s ease-in-out",
         opacity: toastFadeOut ? 0 : 1,
+        // CPU/Hardware rendering - no GPU acceleration
       }}
     >
       <div
@@ -81,6 +82,7 @@ export function ProductDetailOverlay({
     isContactModalOpen,
     isWelcomeModalOpen,
     isAuthModalOpen,
+    isCheckoutModalOpen,
   } = useModal();
   
   const isAnyNavbarModalOpen = 
@@ -92,7 +94,8 @@ export function ProductDetailOverlay({
     isAuthModalOpen ||
     isFAQModalOpen || 
     isContactModalOpen ||
-    isWelcomeModalOpen;
+    isWelcomeModalOpen ||
+    isCheckoutModalOpen;
 
   // Load product when opening
   useEffect(() => {
@@ -216,8 +219,9 @@ export function ProductDetailOverlay({
             overflowY: "auto",
             zIndex: 9999,
             filter: isAnyNavbarModalOpen ? "blur(4px)" : "none",
-            transition: "filter 0.3s ease-out",
+            // No transition on filter - instant blur to avoid interfering with other modal animations
             pointerEvents: isAnyNavbarModalOpen ? "none" : "auto",
+            willChange: "filter",
           }}
         >
           <div className="flex min-h-screen relative overflow-hidden hide-scrollbar" style={{ background: "white" }}>

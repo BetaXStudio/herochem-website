@@ -424,7 +424,7 @@ export function Navbar() {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 flex flex-col navbar-mobile-opaque transition-all duration-300"
+        className="fixed top-0 left-0 right-0 flex flex-col navbar-mobile-opaque"
         style={{
           background: "#2d2d34",
           boxShadow:
@@ -432,7 +432,8 @@ export function Navbar() {
           zIndex: 10020,
           filter: isAnyNavbarModalOpen ? "blur(4px)" : "blur(0px)",
           pointerEvents: isAnyNavbarModalOpen ? "none" : "auto",
-          transition: "filter 0.3s ease-out",
+          // No transition on filter - instant blur to avoid competing with modal animations
+          willChange: "filter",
         }}
       >
       {/* First row - Logo, Search, Account */}

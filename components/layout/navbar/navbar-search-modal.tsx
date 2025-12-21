@@ -3,6 +3,7 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { Suspense, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { useSimpleCart } from "../../../components/cart/simple-cart-context";
 import { useModal } from "../../../contexts/modal-context";
 import Search, { SearchSkeleton } from "./search";
 
@@ -17,6 +18,7 @@ export default function NavbarSearchModal({
 }: NavbarSearchModalProps) {
   const [mounted, setMounted] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { isCheckoutOpen } = useSimpleCart();
   const { 
     isCategoriesModalOpen, 
     setCategoriesModalOpen,
@@ -32,7 +34,7 @@ export default function NavbarSearchModal({
   } = useModal();
 
   // Check if ANY navbar modal is open (these blur the search modal)
-  // Same logic as in the navbar component
+  // Same logic as in the navbar component - includes checkout modal
   const isAnyNavbarModalOpen = 
     isProductsModalOpen || 
     isGMPModalOpen || 
@@ -42,7 +44,8 @@ export default function NavbarSearchModal({
     isFAQModalOpen || 
     isContactModalOpen ||
     isWelcomeModalOpen ||
-    isAuthModalOpen;
+    isAuthModalOpen ||
+    isCheckoutOpen;
 
   useEffect(() => {
     setMounted(true);
@@ -82,7 +85,8 @@ export default function NavbarSearchModal({
         pointerEvents: isAnyNavbarModalOpen ? "none" : "auto",
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)",
         filter: isAnyNavbarModalOpen ? "blur(4px)" : "blur(0px)",
-        transition: "filter 0.3s ease-out",
+        // No transition on filter - instant blur to avoid competing with modal animations
+        willChange: "filter",
       }}
     >
         {/* Top separator line */}

@@ -28,6 +28,10 @@ interface ModalContextType {
   setCategoriesMenuModalOpen: (isOpen: boolean) => void;
   isSearchModalOpen: boolean;
   setSearchModalOpen: (isOpen: boolean) => void;
+  isCheckoutModalOpen: boolean;
+  setCheckoutModalOpen: (isOpen: boolean) => void;
+  isSimpleCartModalOpen: boolean;
+  setSimpleCartModalOpen: (isOpen: boolean) => void;
   // Navbar Search Focus trigger
   searchFocusTrigger: number;
   triggerSearchFocus: () => void;
@@ -54,6 +58,8 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
   const [isCategoriesModalOpen, setIsCategoriesModalOpenState] = useState(false);
   const [isCategoriesMenuModalOpen, setIsCategoriesMenuModalOpenState] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpenState] = useState(false);
+  const [isCheckoutModalOpen, setIsCheckoutModalOpenState] = useState(false);
+  const [isSimpleCartModalOpen, setIsSimpleCartModalOpenState] = useState(false);
   // Navbar Search Focus trigger - increment to trigger focus
   const [searchFocusTrigger, setSearchFocusTrigger] = useState(0);
   // Product Detail Modal (Desktop)
@@ -108,6 +114,14 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
     setIsSearchModalOpenState(isOpen);
   };
 
+  const setCheckoutModalOpen = (isOpen: boolean) => {
+    setIsCheckoutModalOpenState(isOpen);
+  };
+
+  const setSimpleCartModalOpen = (isOpen: boolean) => {
+    setIsSimpleCartModalOpenState(isOpen);
+  };
+
   const triggerSearchFocus = () => {
     setSearchFocusTrigger(prev => prev + 1);
   };
@@ -135,6 +149,8 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
     setIsCategoriesModalOpenState(false);
     setIsCategoriesMenuModalOpenState(false);
     setIsSearchModalOpenState(false);
+    setIsCheckoutModalOpenState(false);
+    setIsSimpleCartModalOpenState(false);
     setIsProductDetailModalOpen(false);
     setProductDetailModalId(null);
   };
@@ -172,6 +188,10 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
       setCategoriesMenuModalOpen,
       isSearchModalOpen,
       setSearchModalOpen,
+      isCheckoutModalOpen,
+      setCheckoutModalOpen,
+      isSimpleCartModalOpen,
+      setSimpleCartModalOpen,
       searchFocusTrigger,
       triggerSearchFocus,
       isProductDetailModalOpen,

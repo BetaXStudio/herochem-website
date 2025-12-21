@@ -31,10 +31,14 @@ export default function MobileScrollContainer({
     isAuthModalOpen,
     isCategoriesModalOpen,
     setCategoriesModalOpen,
-    isProductDetailModalOpen
+    isProductDetailModalOpen,
+    isCheckoutModalOpen,
+    isSimpleCartModalOpen
   } = useModal();
   
   // Check if ANY NAVBAR modal is open (NOT including page-specific modals like Categories)
+  // Note: isSimpleCartModalOpen is excluded because the cart modal overlays on top
+  // and doesn't need the background to be blurred
   const isAnyNavbarModalOpen = 
     isProductsModalOpen || 
     isGMPModalOpen || 
@@ -45,10 +49,12 @@ export default function MobileScrollContainer({
     isFAQModalOpen || 
     isContactModalOpen ||
     isWelcomeModalOpen ||
-    isProductDetailModalOpen;
+    isProductDetailModalOpen ||
+    isCheckoutModalOpen;
 
   // Check if ANY modal is open (for scroll blocking purposes)
-  const isAnyModalOpen = isAnyNavbarModalOpen || isCategoriesModalOpen;
+  // Include isSimpleCartModalOpen here to disable scroll/pointer events
+  const isAnyModalOpen = isAnyNavbarModalOpen || isCategoriesModalOpen || isSimpleCartModalOpen;
 
   // CRITICAL: Detect mobile only AFTER mount to prevent hydration mismatch
   // This ensures Server renders with isMobile=false, then Client updates after mount
@@ -99,8 +105,10 @@ export default function MobileScrollContainer({
   // Apply mobile styles through a combination of base class + inline styles
   const containerStyle: React.CSSProperties = {
     height: (isMounted && isMobile) ? "100vh" : "auto",
-    transition: "filter 0.3s ease-out",
+    // No transition on filter - instant blur to avoid competing with modal animations
+    // This significantly improves modal animation performance on pages with many images
     pointerEvents: isAnyModalOpen ? "none" : "auto",
+    willChange: "filter",
   };
 
   // Only add blur filter if a modal is actually open

@@ -2,6 +2,7 @@
 
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { useModal } from "../../contexts/modal-context";
 import { useAuth } from "./auth-context";
 
@@ -21,17 +22,41 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
 
   const { signIn, signUp } = useAuth();
   const { setAuthModalOpen } = useModal();
+  
+  // Portal container for rendering outside of any parent's stacking context
+  const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
+  
+  // State to delay modal render until blur is applied
+  const [shouldRenderModal, setShouldRenderModal] = useState(false);
+  
+  useEffect(() => {
+    setPortalContainer(document.body);
+  }, []);
 
-  // Blockiere Body-Scroll wenn Modal offen ist
+  // Blur + Scroll-Sperre für Modal - Blur ZUERST, dann Modal rendern
   useEffect(() => {
     if (isOpen) {
-      const originalStyle = window.getComputedStyle(document.body).overflow;
+      // Verhindere Scrolling auf html und body
+      const originalHtmlOverflow = document.documentElement.style.overflow;
+      const originalBodyOverflow = document.body.style.overflow;
+      
+      document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
       setAuthModalOpen(true);
+      
+      // Wait for blur to be applied before rendering modal
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setShouldRenderModal(true);
+        });
+      });
 
+      // Cleanup
       return () => {
-        document.body.style.overflow = originalStyle;
+        document.documentElement.style.overflow = originalHtmlOverflow;
+        document.body.style.overflow = originalBodyOverflow;
         setAuthModalOpen(false);
+        setShouldRenderModal(false);
       };
     }
   }, [isOpen, setAuthModalOpen]);
@@ -96,9 +121,10 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
     resetForm();
   };
 
-  if (!isOpen) return null;
+  // Don't render until blur is applied, portal is ready, AND shouldRenderModal is true
+  if (!isOpen || !portalContainer || !shouldRenderModal) return null;
 
-  return (
+  const modalContent = (
     <React.Fragment>
       {/* Unsichtbarer Backdrop für Click-Handling */}
       <div
@@ -106,6 +132,7 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
         style={{
           backgroundColor: "transparent",
           animation: "backdropFadeIn 0.3s ease-out",
+          // CPU/Hardware rendering - no GPU acceleration
         }}
         onClick={handleClose}
       />
@@ -113,7 +140,11 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
       {/* Modal Container */}
       <div
         className="fixed inset-0 z-[10030] flex items-center justify-center max-[800px]:items-start max-[800px]:pt-[107px] max-[800px]:pb-[10px]"
-        style={{ touchAction: "none", pointerEvents: "none" }}
+        style={{ 
+          touchAction: "none", 
+          pointerEvents: "none",
+          // CPU/Hardware rendering - no GPU acceleration
+        }}
       >
         {/* Modal with animation */}
         <div
@@ -123,9 +154,11 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
             border: "2px solid rgb(45,45,52)",
             boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
             animation: "modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-            borderRadius: "0.75rem", // Updated to match cart modal consistency
+            borderRadius: "0.75rem",
             touchAction: "auto",
             pointerEvents: "auto",
+            // CPU/Hardware rendering - no GPU acceleration
+            WebkitBackfaceVisibility: "hidden",
           }}
         >
           {/* Header */}
@@ -297,4 +330,6 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
       </div>
     </React.Fragment>
   );
+
+  return createPortal(modalContent, portalContainer);
 }

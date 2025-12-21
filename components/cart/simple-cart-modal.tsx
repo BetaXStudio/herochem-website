@@ -6,6 +6,8 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { useModal } from "../../contexts/modal-context";
 import { useSimpleCart } from "./simple-cart-context";
 
 export default function SimpleCartModal() {
@@ -18,6 +20,7 @@ export default function SimpleCartModal() {
     isHydrated,
     setIsCheckoutOpen,
   } = useSimpleCart();
+  const { setSimpleCartModalOpen } = useModal();
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [isMobile, setIsMobile] = useState<boolean | null>(null); // null = not yet determined
@@ -25,6 +28,7 @@ export default function SimpleCartModal() {
   // Animated close function - waits for animation before hiding
   const closeCart = () => {
     if (isClosing || !isOpen) return;
+    
     // Use requestAnimationFrame to ensure the isClosing state triggers a visual update
     // before we start the timeout. This prevents the animation from being skipped
     // on pages with heavy DOM updates (like Categories page)
@@ -36,6 +40,8 @@ export default function SimpleCartModal() {
         setTimeout(() => {
           setIsOpen(false);
           setIsClosing(false);
+          // Set modal context to false AFTER animation completes and isOpen is false
+          setSimpleCartModalOpen(false);
         }, 250);
       });
     });
@@ -44,6 +50,7 @@ export default function SimpleCartModal() {
   const openCart = () => {
     setIsClosing(false);
     setIsOpen(true);
+    setSimpleCartModalOpen(true);
   };
 
   const toggleCart = () => {
@@ -66,74 +73,21 @@ export default function SimpleCartModal() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // Portal mount state - needed to render modal outside navbar's blur filter
+  const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
+  
+  useEffect(() => {
+    setPortalContainer(document.body);
+  }, []);
+
   // Don't render anything on desktop or before hydration
   if (isMobile === null || isMobile === false) {
     return null;
   }
 
-  return (
+  // The modal content that will be rendered via portal (outside navbar's blur filter)
+  const modalContent = portalContainer ? createPortal(
     <>
-      {/* Cart Button */}
-      <button
-        aria-label="Toggle cart"
-        onClick={toggleCart}
-        className="relative transition-all duration-200 group"
-        style={{
-          width: "32px",
-          height: "32px",
-          backgroundColor: "transparent !important",
-          border: "none !important",
-          borderRadius: "7px",
-          boxShadow: "none !important",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexShrink: 0,
-          pointerEvents: "auto",
-          outline: "none !important",
-          WebkitAppearance: "none",
-          appearance: "none",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.boxShadow = "none !important";
-          e.currentTarget.style.backgroundColor = "transparent !important";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.boxShadow = "none !important";
-          e.currentTarget.style.backgroundColor = "transparent !important";
-        }}
-        onTouchStart={(e) => {
-          e.currentTarget.style.boxShadow = "none !important";
-          e.currentTarget.style.backgroundColor = "transparent !important";
-        }}
-        onTouchEnd={(e) => {
-          e.currentTarget.style.boxShadow = "none !important";
-          e.currentTarget.style.backgroundColor = "transparent !important";
-        }}
-      >
-        <ShoppingCartIcon className="h-4 w-4 text-white group-hover:text-[#eb1313] transition-colors duration-200" />
-        {/* Always render badge but control visibility with opacity only */}
-        <div
-          className="absolute bg-[#e91111] text-white text-xs font-bold rounded-full flex items-center justify-center transition-opacity duration-200"
-          style={{
-            top: "0px",
-            right: "0px",
-            width: "14px",
-            height: "14px",
-            fontSize: "9px",
-            boxShadow: "0 2px 4px rgba(0,0,0,0.3)",
-            opacity: !isHydrated || totalItems === 0 ? 0 : 1,
-            visibility: "visible", // Always visible, opacity controls display
-          }}
-        >
-          {!isHydrated ? 0 : totalItems}
-        </div>
-      </button>
-
-
-
-
-
       {/* Backdrop - verdeckt weiße Linie von der Navbar */}
       {(isOpen || isClosing) && (
         <div
@@ -149,7 +103,7 @@ export default function SimpleCartModal() {
         />
       )}
 
-      {/* Cart Modal - Mobile only */}
+      {/* Cart Modal - Mobile only - Rendered via Portal to escape navbar blur */}
       <div
         className="simple-cart-modal"
         style={{
@@ -170,6 +124,7 @@ export default function SimpleCartModal() {
           backdropFilter: "blur(20px)", // Match categories page blur effect
           pointerEvents: (isOpen && !isClosing) ? "auto" : "none",
           paddingBottom: "100px", // Extra space for Safari browser elements
+          // CPU/Hardware rendering - no GPU acceleration to reduce memory pressure
         }}
       >
         {/* Cart Content Container */}
@@ -342,8 +297,13 @@ export default function SimpleCartModal() {
                       border: "1px solid rgba(255, 255, 255, 0.1)",
                     }}
                     onClick={() => {
-                      setIsCheckoutOpen(true);
+                      // First close cart (which sets isSimpleCartModalOpen to false)
+                      // Then open checkout AFTER the cart close animation completes
                       closeCart();
+                      // Small delay to allow cart animation to start, then open checkout
+                      setTimeout(() => {
+                        setIsCheckoutOpen(true);
+                      }, 50);
                     }}
                   >
                     Proceed to Checkout
@@ -355,8 +315,71 @@ export default function SimpleCartModal() {
           </div>
         </div>
       </div>
+    </>,
+    portalContainer
+  ) : null;
 
+  return (
+    <>
+      {/* Cart Button - stays in navbar */}
+      <button
+        aria-label="Toggle cart"
+        onClick={toggleCart}
+        className="relative transition-all duration-200 group"
+        style={{
+          width: "32px",
+          height: "32px",
+          backgroundColor: "transparent !important",
+          border: "none !important",
+          borderRadius: "7px",
+          boxShadow: "none !important",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexShrink: 0,
+          pointerEvents: "auto",
+          outline: "none !important",
+          WebkitAppearance: "none",
+          appearance: "none",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.boxShadow = "none !important";
+          e.currentTarget.style.backgroundColor = "transparent !important";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.boxShadow = "none !important";
+          e.currentTarget.style.backgroundColor = "transparent !important";
+        }}
+        onTouchStart={(e) => {
+          e.currentTarget.style.boxShadow = "none !important";
+          e.currentTarget.style.backgroundColor = "transparent !important";
+        }}
+        onTouchEnd={(e) => {
+          e.currentTarget.style.boxShadow = "none !important";
+          e.currentTarget.style.backgroundColor = "transparent !important";
+        }}
+      >
+        <ShoppingCartIcon className="h-4 w-4 text-white group-hover:text-[#eb1313] transition-colors duration-200" />
+        {/* Always render badge but control visibility with opacity only */}
+        <div
+          className="absolute bg-[#e91111] text-white text-xs font-bold rounded-full flex items-center justify-center transition-opacity duration-200"
+          style={{
+            top: "0px",
+            right: "0px",
+            width: "14px",
+            height: "14px",
+            fontSize: "9px",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.3)",
+            opacity: !isHydrated || totalItems === 0 ? 0 : 1,
+            visibility: "visible", // Always visible, opacity controls display
+          }}
+        >
+          {!isHydrated ? 0 : totalItems}
+        </div>
+      </button>
 
+      {/* Modal rendered via portal to escape navbar's blur filter */}
+      {modalContent}
     </>
   );
 }

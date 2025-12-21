@@ -83,14 +83,12 @@ const STATIC_STYLES = {
   },
   gridContainer: {
     contain: "layout style paint" as const,
-    willChange: "transform" as const,
-    transform: "translateZ(0)",
-    backfaceVisibility: "hidden" as const,
+    // CPU/Hardware rendering - removed GPU acceleration (willChange, translateZ, backfaceVisibility)
+    // to reduce memory pressure when many product images are rendered
   },
   button: {
     contain: "layout style paint" as const,
-    transform: "translateZ(0)",
-    backfaceVisibility: "hidden" as const,
+    // CPU/Hardware rendering - no GPU acceleration
   },
 };
 
