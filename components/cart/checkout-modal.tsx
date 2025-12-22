@@ -1,6 +1,7 @@
 "use client";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useModal } from "../../contexts/modal-context";
 import {
   calculateCouponDiscount,
@@ -77,23 +78,52 @@ export default function CheckoutModal({
   const [couponCode, setCouponCode] = useState("");
   const [appliedCoupon, setAppliedCoupon] = useState<string | null>(null);
   const [couponError, setCouponError] = useState<string | null>(null);
+  
+  // Scroll position ref für korrekte Wiederherstellung
+  const scrollYRef = useRef(0);
+  
+  // Portal container for rendering outside of any parent's stacking context
+  const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
+  
+  // State um Modal erst zu rendern wenn Blur bereits aktiv ist
+  const [shouldRenderModal, setShouldRenderModal] = useState(false);
+  
+  // Initialize portal container
+  useEffect(() => {
+    setPortalContainer(document.body);
+  }, []);
 
-  // Einfache Scroll-Sperre für Modal (ohne position:fixed)
+  // Blur + Scroll-Sperre für Modal - Blur ZUERST, dann Modal rendern
+  // EXAKT wie Auth Modal
   useEffect(() => {
     if (isOpen) {
-      // Verhindere Scrolling auf html und body
+      // Speichere Scroll-Position
+      scrollYRef.current = window.scrollY;
+      
+      // Verhindere Scrolling auf html und body - EXAKT wie Auth Modal
       const originalHtmlOverflow = document.documentElement.style.overflow;
       const originalBodyOverflow = document.body.style.overflow;
       
       document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
       setCheckoutModalOpen(true);
+      
+      // Wait for blur to be applied before rendering modal
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setShouldRenderModal(true);
+        });
+      });
 
       // Cleanup
       return () => {
         document.documentElement.style.overflow = originalHtmlOverflow;
         document.body.style.overflow = originalBodyOverflow;
         setCheckoutModalOpen(false);
+        setShouldRenderModal(false);
+        
+        // Stelle die Scroll-Position wieder her
+        window.scrollTo(0, scrollYRef.current);
       };
     }
   }, [isOpen, setCheckoutModalOpen]);
@@ -359,36 +389,40 @@ export default function CheckoutModal({
     }).format(amount);
   };
 
-  if (!isOpen) return null;
+  // Don't render until blur is applied, portal is ready, AND shouldRenderModal is true
+  // EXAKT wie Auth Modal - EINE Bedingung mit ||
+  if (!isOpen || !portalContainer || !shouldRenderModal) return null;
 
-  return (
-    <>
+  const modalContent = (
+    <React.Fragment>
       {/* Unsichtbarer Backdrop für Click-Handling */}
       <div
-        className="fixed inset-0 z-[9998]"
+        className="fixed inset-0 z-[10025]"
         style={{
           backgroundColor: "transparent",
           animation: "backdropFadeIn 0.3s ease-out",
-          // CPU/Hardware rendering - no GPU acceleration
         }}
         onClick={onClose}
       />
       <div
-        className="fixed inset-0 z-[9999] flex items-start justify-center pt-26 md:pt-16 px-4"
+        className="fixed inset-0 z-[10030] flex items-start justify-center pt-26 md:pt-16 px-4"
         style={{ 
+          touchAction: "none",
           pointerEvents: "none",
-          // CPU/Hardware rendering - no GPU acceleration
         }}
       >
         <div
-          className="bg-white w-full max-w-4xl max-h-[70vh] overflow-hidden flex flex-col"
+          className="relative shadow-xl w-full max-w-4xl max-h-[70vh] flex flex-col"
           style={{ 
-            animation: "modalSlideIn 0.3s ease-out",
+            backgroundColor: "white",
             border: "2px solid rgb(45,45,52)",
-            borderRadius: "0.75rem",
             boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+            animation: "modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+            borderRadius: "0.75rem",
+            touchAction: "auto",
             pointerEvents: "auto",
             // CPU/Hardware rendering - no GPU acceleration
+            WebkitBackfaceVisibility: "hidden",
           }}
         >
           {orderPlaced ? (
@@ -396,18 +430,14 @@ export default function CheckoutModal({
             <>
               {/* Header */}
               <div
-                className="flex items-center justify-between"
+                className="sticky top-0 flex items-center justify-between border-b"
                 style={{
+                  borderColor: 'rgb(45,45,52)',
                   backgroundColor: 'rgb(45,45,52)',
                   borderTopLeftRadius: '0.75rem',
                   borderTopRightRadius: '0.75rem',
-                  margin: '-2px -3px 0 -3px',
-                  padding: '12px 16px',
-                  position: 'relative',
-                  left: '1px',
-                  width: 'calc(100% + 3px)',
-                  zIndex: 10,
-                  overflow: 'hidden'
+                  margin: '-2px -2px 0 -2px',
+                  padding: '12px 16px'
                 }}
               >
                 <h2 
@@ -417,7 +447,14 @@ export default function CheckoutModal({
                   Order Complete
                 </h2>
               </div>
-              <div className="p-8 text-center">
+              <div 
+                className="p-8 text-center overflow-y-auto flex-1" 
+                style={{ 
+                  WebkitOverflowScrolling: "touch",
+                  touchAction: "pan-y",
+                  overscrollBehavior: "contain",
+                }}
+              >
                 <div className="mb-6">
                   <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
                     <svg
@@ -461,18 +498,14 @@ export default function CheckoutModal({
             <>
               {/* Header */}
               <div
-                className="flex items-center justify-between"
+                className="sticky top-0 flex items-center justify-between border-b"
                 style={{
+                  borderColor: 'rgb(45,45,52)',
                   backgroundColor: 'rgb(45,45,52)',
                   borderTopLeftRadius: '0.75rem',
                   borderTopRightRadius: '0.75rem',
-                  margin: '-2px -3px 0 -3px',
-                  padding: '12px 16px',
-                  position: 'relative',
-                  left: '1px',
-                  width: 'calc(100% + 3px)',
-                  zIndex: 10,
-                  overflow: 'hidden'
+                  margin: '-2px -2px 0 -2px',
+                  padding: '12px 16px'
                 }}
               >
                 <h2 
@@ -491,7 +524,14 @@ export default function CheckoutModal({
               </div>
 
               {/* Scrollable Content */}
-              <div className="flex-1 overflow-y-auto p-8">
+              <div 
+                className="flex-1 overflow-y-auto p-8" 
+                style={{ 
+                  WebkitOverflowScrolling: "touch",
+                  touchAction: "pan-y",
+                  overscrollBehavior: "contain",
+                }}
+              >
                 <div className="text-center">
                   <svg
                     className="w-16 h-16 mx-auto mb-4 text-gray-400"
@@ -521,10 +561,16 @@ export default function CheckoutModal({
                         setShowAuthModal(true);
                       }
                     }}
-                    className="px-6 py-3 text-white rounded-xl font-medium transition-all duration-200 hover:scale-[1.02]"
+                    className="w-full py-2 px-4 text-white font-medium rounded-xl transition-colors duration-200"
                     style={{
-                      background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
-                      boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
+                      backgroundColor: "#e91111",
+                      boxShadow: "0 4px 15px rgba(233, 17, 17, 0.3)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = "#c00d0d";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = "#e91111";
                     }}
                   >
                     Login or Register to proceed
@@ -537,18 +583,14 @@ export default function CheckoutModal({
             <>
               {/* Header */}
               <div
-                className="flex items-center justify-between"
+                className="sticky top-0 flex items-center justify-between border-b"
                 style={{
+                  borderColor: 'rgb(45,45,52)',
                   backgroundColor: 'rgb(45,45,52)',
                   borderTopLeftRadius: '0.75rem',
                   borderTopRightRadius: '0.75rem',
-                  margin: '-2px -3px 0 -3px',
-                  padding: '12px 16px',
-                  position: 'relative',
-                  left: '1px',
-                  width: 'calc(100% + 3px)',
-                  zIndex: 10,
-                  overflow: 'hidden'
+                  margin: '-2px -2px 0 -2px',
+                  padding: '12px 16px'
                 }}
               >
                 <h2 
@@ -567,7 +609,14 @@ export default function CheckoutModal({
               </div>
 
               {/* Scrollable Content */}
-              <div className="flex-1 overflow-y-auto p-6">
+              <div 
+                className="flex-1 overflow-y-auto p-6" 
+                style={{ 
+                  WebkitOverflowScrolling: "touch",
+                  touchAction: "pan-y",
+                  overscrollBehavior: "contain",
+                }}
+              >
                 {/* Success/Error Messages */}
                 {success && (
                   <div 
@@ -602,6 +651,8 @@ export default function CheckoutModal({
                     style={{
                       backgroundColor: "rgba(255, 255, 255, 0.8)",
                       border: "1px solid rgba(45, 45, 52, 0.1)",
+                      backdropFilter: "blur(10px)",
+                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
                     }}
                   >
                     <h3 className="text-lg font-semibold text-gray-900 mb-4">
@@ -650,6 +701,8 @@ export default function CheckoutModal({
                     style={{
                       backgroundColor: "rgba(255, 255, 255, 0.8)",
                       border: "1px solid rgba(45, 45, 52, 0.1)",
+                      backdropFilter: "blur(10px)",
+                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
                     }}
                   >
                     <h3 className="text-lg font-semibold text-gray-900 mb-4">
@@ -664,10 +717,12 @@ export default function CheckoutModal({
                         </p>
                         <button
                           onClick={() => setShowAddAddressForm(true)}
-                          className="w-full px-4 py-2 text-white rounded-xl font-medium transition-all duration-200 hover:scale-[1.02]"
+                          className="w-full px-4 py-2 text-white rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                           style={{
                             background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
                             boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
+                            minHeight: "44px",
+                            border: "1px solid rgba(255, 255, 255, 0.1)",
                           }}
                         >
                           Add Address
@@ -683,11 +738,12 @@ export default function CheckoutModal({
                               className="p-3 rounded-xl cursor-pointer transition-colors"
                               style={{
                                 backgroundColor: selectedAddressId === address.id 
-                                  ? "rgba(45, 45, 52, 0.1)" 
+                                  ? "rgba(45, 45, 52, 0.08)" 
                                   : "rgba(255, 255, 255, 0.5)",
-                                border: selectedAddressId === address.id 
-                                  ? "2px solid rgb(45, 45, 52)" 
-                                  : "1px solid rgba(45, 45, 52, 0.2)",
+                                border: "1px solid rgba(45, 45, 52, 0.15)",
+                                boxShadow: selectedAddressId === address.id 
+                                  ? "inset 0 0 0 1px rgba(45, 45, 52, 0.2)" 
+                                  : "none",
                               }}
                               onClick={() => setSelectedAddressId(address.id)}
                             >
@@ -898,10 +954,12 @@ export default function CheckoutModal({
                             <button
                               onClick={handleAddAddress}
                               disabled={loading}
-                              className="flex-1 px-4 py-2 text-white rounded-xl font-medium disabled:opacity-50 transition-all duration-200 hover:scale-[1.02]"
+                              className="flex-1 px-4 py-2 text-white rounded-xl font-semibold disabled:opacity-50 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                               style={{
                                 background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
                                 boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
+                                minHeight: "44px",
+                                border: "1px solid rgba(255, 255, 255, 0.1)",
                               }}
                             >
                               {loading ? "Adding..." : "Save"}
@@ -932,6 +990,8 @@ export default function CheckoutModal({
                     style={{
                       backgroundColor: "rgba(255, 255, 255, 0.8)",
                       border: "1px solid rgba(45, 45, 52, 0.1)",
+                      backdropFilter: "blur(10px)",
+                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
                     }}
                   >
                     <h3 className="text-lg font-semibold text-gray-900 mb-4">
@@ -941,8 +1001,9 @@ export default function CheckoutModal({
                       <div 
                         className="p-3 rounded-xl"
                         style={{
-                          backgroundColor: "rgba(45, 45, 52, 0.1)",
-                          border: "2px solid rgb(45, 45, 52)",
+                          backgroundColor: "rgba(45, 45, 52, 0.08)",
+                          border: "1px solid rgba(45, 45, 52, 0.15)",
+                          boxShadow: "inset 0 0 0 1px rgba(45, 45, 52, 0.2)",
                         }}
                       >
                         <div className="flex items-center justify-between">
@@ -973,6 +1034,8 @@ export default function CheckoutModal({
                     style={{
                       backgroundColor: "rgba(255, 255, 255, 0.8)",
                       border: "1px solid rgba(45, 45, 52, 0.1)",
+                      backdropFilter: "blur(10px)",
+                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
                     }}
                   >
                     <h3 className="text-lg font-semibold text-gray-900 mb-4">
@@ -983,11 +1046,12 @@ export default function CheckoutModal({
                         className="p-3 rounded-xl cursor-pointer transition-colors"
                         style={{
                           backgroundColor: paymentMethod === "paypal" 
-                            ? "rgba(45, 45, 52, 0.1)" 
+                            ? "rgba(45, 45, 52, 0.08)" 
                             : "rgba(255, 255, 255, 0.5)",
-                          border: paymentMethod === "paypal" 
-                            ? "2px solid rgb(45, 45, 52)" 
-                            : "1px solid rgba(45, 45, 52, 0.2)",
+                          border: "1px solid rgba(45, 45, 52, 0.15)",
+                          boxShadow: paymentMethod === "paypal" 
+                            ? "inset 0 0 0 1px rgba(45, 45, 52, 0.2)" 
+                            : "none",
                         }}
                         onClick={() => setPaymentMethod("paypal")}
                       >
@@ -1013,11 +1077,12 @@ export default function CheckoutModal({
                         className="p-3 rounded-xl cursor-pointer transition-colors"
                         style={{
                           backgroundColor: paymentMethod === "bitcoin" 
-                            ? "rgba(45, 45, 52, 0.1)" 
+                            ? "rgba(45, 45, 52, 0.08)" 
                             : "rgba(255, 255, 255, 0.5)",
-                          border: paymentMethod === "bitcoin" 
-                            ? "2px solid rgb(45, 45, 52)" 
-                            : "1px solid rgba(45, 45, 52, 0.2)",
+                          border: "1px solid rgba(45, 45, 52, 0.15)",
+                          boxShadow: paymentMethod === "bitcoin" 
+                            ? "inset 0 0 0 1px rgba(45, 45, 52, 0.2)" 
+                            : "none",
                         }}
                         onClick={() => setPaymentMethod("bitcoin")}
                       >
@@ -1043,11 +1108,12 @@ export default function CheckoutModal({
                         className="p-3 rounded-xl cursor-pointer transition-colors"
                         style={{
                           backgroundColor: paymentMethod === "bank_transfer" 
-                            ? "rgba(45, 45, 52, 0.1)" 
+                            ? "rgba(45, 45, 52, 0.08)" 
                             : "rgba(255, 255, 255, 0.5)",
-                          border: paymentMethod === "bank_transfer" 
-                            ? "2px solid rgb(45, 45, 52)" 
-                            : "1px solid rgba(45, 45, 52, 0.2)",
+                          border: "1px solid rgba(45, 45, 52, 0.15)",
+                          boxShadow: paymentMethod === "bank_transfer" 
+                            ? "inset 0 0 0 1px rgba(45, 45, 52, 0.2)" 
+                            : "none",
                         }}
                         onClick={() => setPaymentMethod("bank_transfer")}
                       >
@@ -1077,6 +1143,8 @@ export default function CheckoutModal({
                     style={{
                       backgroundColor: "rgba(255, 255, 255, 0.8)",
                       border: "1px solid rgba(45, 45, 52, 0.1)",
+                      backdropFilter: "blur(10px)",
+                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
                     }}
                   >
                     <h3 className="text-lg font-semibold text-gray-900 mb-4">
@@ -1131,10 +1199,12 @@ export default function CheckoutModal({
                                 <button
                                   onClick={handleApplyCoupon}
                                   disabled={!couponCode.trim()}
-                                  className="flex-1 px-4 py-2 text-white rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02]"
+                                  className="flex-1 px-4 py-2 text-white rounded-xl font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98]"
                                   style={{
                                     background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
                                     boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
+                                    minHeight: "44px",
+                                    border: "1px solid rgba(255, 255, 255, 0.1)",
                                   }}
                                 >
                                   Use Code
@@ -1192,6 +1262,8 @@ export default function CheckoutModal({
                     style={{
                       backgroundColor: "rgba(255, 255, 255, 0.8)",
                       border: "1px solid rgba(45, 45, 52, 0.1)",
+                      backdropFilter: "blur(10px)",
+                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
                     }}
                   >
                     <h3 className="text-lg font-semibold text-gray-900 mb-4">
@@ -1262,10 +1334,12 @@ export default function CheckoutModal({
                   <button
                     onClick={handlePlaceOrder}
                     disabled={loading || !selectedAddressId}
-                    className="w-full px-6 py-3 text-white rounded-xl font-medium text-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 hover:scale-[1.02]"
+                    className="w-full px-6 py-3 text-white rounded-xl font-semibold text-sm disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                     style={{
                       background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
                       boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
+                      minHeight: "44px",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
                     }}
                   >
                     {loading ? (
@@ -1284,6 +1358,8 @@ export default function CheckoutModal({
           )}
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
+  
+  return createPortal(modalContent, portalContainer);
 }

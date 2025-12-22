@@ -97,42 +97,28 @@ export default function WelcomeModal({
         >
           {/* Header */}
           <div
-            className="flex items-center justify-between border-b"
+            className="sticky top-0 flex items-center justify-between border-b"
             style={{
               borderColor: 'rgb(45,45,52)',
               backgroundColor: 'rgb(45,45,52)',
-              borderTopLeftRadius: '0.75rem', // Updated to match cart modal consistency
-              borderTopRightRadius: '0.75rem', // Updated to match cart modal consistency
-              margin: '-2px -3px 0 -3px',
-              padding: '12px 16px',
-              position: 'absolute',
-              top: 0,
-              left: '1px',
-              right: '-3px',
-              width: 'calc(100% + 3px)',
-              zIndex: 10
+              borderTopLeftRadius: '0.75rem',
+              borderTopRightRadius: '0.75rem',
+              margin: '-2px -2px 0 -2px',
+              padding: '12px 16px'
             }}
           >
             <h2
-              className="text-lg font-semibold text-white text-center"
+              className="text-lg font-medium text-white"
               style={{ fontFamily: "Calibri, Arial, sans-serif" }}
             >
-              {"Special Offer - Halloween \ud83c\udf83"}
+              {"Special Offer - Winter Sale 🎄"}
             </h2>
             <button
               onClick={handleClose}
-              className="p-2 rounded-md transition-colors duration-200"
+              className="p-2 rounded-xl transition-colors duration-200 group"
               aria-label="Close modal"
-              onMouseEnter={(e) => {
-                const icon = e.currentTarget.querySelector('svg');
-                if (icon) icon.style.color = '#e91111';
-              }}
-              onMouseLeave={(e) => {
-                const icon = e.currentTarget.querySelector('svg');
-                if (icon) icon.style.color = 'white';
-              }}
             >
-              <XMarkIcon className="h-4 w-4 text-white" style={{ transition: 'color 200ms ease-out' }} />
+              <XMarkIcon className="h-4 w-4 text-white group-hover:text-[#e91111]" />
             </button>
           </div>
 
@@ -143,10 +129,6 @@ export default function WelcomeModal({
               WebkitOverflowScrolling: "touch",
               touchAction: "pan-y",
               overscrollBehavior: "contain",
-              overflowAnchor: "none",
-              paddingTop: "56px",
-              overflow: "hidden",
-              overflowY: "auto",
             }}
             onTouchMove={(e) => {
               // Verhindere Scroll-Durchbruch am oberen und unteren Ende
@@ -177,10 +159,10 @@ export default function WelcomeModal({
                   <span className="text-3xl font-bold text-white">%</span>
                 </div>
                 <h3 className="text-2xl font-bold text-black mb-2">
-                  CODE: GHOST20
+                  CODE: SNOW15
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  Use Coupon Code to get 20% off on all our products. Place your
+                  Use Coupon Code to get 15% off on all our products. Place your
                   order now!
                 </p>
               </div>

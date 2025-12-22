@@ -26,7 +26,7 @@ export function Navbar() {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
   const { openModal } = useAuthModal();
   const { user, signOut, isHydrated } = useAuth();
-  const { totalItems: cartTotalItems, isHydrated: cartIsHydrated, isCheckoutOpen } = useSimpleCart();
+  const { totalItems: cartTotalItems, isHydrated: cartIsHydrated } = useSimpleCart();
   const { 
     isProductsModalOpen, 
     setProductsModalOpen,
@@ -44,6 +44,7 @@ export function Navbar() {
     setContactModalOpen,
     isWelcomeModalOpen,
     isAuthModalOpen,
+    isCheckoutModalOpen,
     isProductDetailModalOpen,
     productDetailModalId,
     openProductDetailModal,
@@ -111,7 +112,7 @@ export function Navbar() {
     isContactModalOpen ||
     isWelcomeModalOpen ||
     isAuthModalOpen ||
-    isCheckoutOpen;
+    isCheckoutModalOpen;
 
   // Check if we're on the account page
   const isAccountPage = pathname?.startsWith("/account");

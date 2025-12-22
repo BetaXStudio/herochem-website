@@ -3,7 +3,6 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { Suspense, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { useSimpleCart } from "../../../components/cart/simple-cart-context";
 import { useModal } from "../../../contexts/modal-context";
 import Search, { SearchSkeleton } from "./search";
 
@@ -18,7 +17,6 @@ export default function NavbarSearchModal({
 }: NavbarSearchModalProps) {
   const [mounted, setMounted] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { isCheckoutOpen } = useSimpleCart();
   const { 
     isCategoriesModalOpen, 
     setCategoriesModalOpen,
@@ -30,7 +28,8 @@ export default function NavbarSearchModal({
     isFAQModalOpen,
     isContactModalOpen,
     isWelcomeModalOpen,
-    isAuthModalOpen
+    isAuthModalOpen,
+    isCheckoutModalOpen
   } = useModal();
 
   // Check if ANY navbar modal is open (these blur the search modal)
@@ -45,7 +44,7 @@ export default function NavbarSearchModal({
     isContactModalOpen ||
     isWelcomeModalOpen ||
     isAuthModalOpen ||
-    isCheckoutOpen;
+    isCheckoutModalOpen;
 
   useEffect(() => {
     setMounted(true);

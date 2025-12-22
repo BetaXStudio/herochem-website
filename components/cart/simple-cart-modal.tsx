@@ -298,12 +298,12 @@ export default function SimpleCartModal() {
                     }}
                     onClick={() => {
                       // First close cart (which sets isSimpleCartModalOpen to false)
-                      // Then open checkout AFTER the cart close animation completes
+                      // Then open checkout AFTER the cart close animation completes (250ms)
                       closeCart();
-                      // Small delay to allow cart animation to start, then open checkout
+                      // Wait for the full 250ms animation + small buffer before opening checkout
                       setTimeout(() => {
                         setIsCheckoutOpen(true);
-                      }, 50);
+                      }, 300); // 250ms animation + 50ms buffer
                     }}
                   >
                     Proceed to Checkout
