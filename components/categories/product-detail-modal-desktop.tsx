@@ -291,19 +291,29 @@ export function ProductDetailModalDesktop({
                       <div 
                         className="w-96 h-72 rounded-lg flex items-center justify-center p-1 bg-white"
                         style={{
-                          border: "1px solid #e5e7eb"
+                          border: "1px solid #e5e7eb",
+                          // CPU rendering - avoid GPU compositing for VRAM optimization
+                          contain: "layout style paint",
+                          WebkitBackfaceVisibility: "hidden",
+                          backfaceVisibility: "hidden",
+                          willChange: "auto",
                         }}
                       >
                         <img
                           src={product.image}
                           alt={product.name}
-                          className="w-full h-full object-cover rounded transition-opacity duration-300"
+                          className="w-full h-full object-cover rounded"
                           style={{
                             transform: (product?.brand === "astera" || product.name.toLowerCase().includes("astera")) ? 
                               "scale(1.0)" : "scale(1.8)",
-                            transition: "opacity 150ms ease-out",
-                            objectFit: "contain"
+                            objectFit: "contain",
+                            // CPU rendering - avoid GPU compositing
+                            WebkitBackfaceVisibility: "hidden",
+                            backfaceVisibility: "hidden",
+                            willChange: "auto",
                           }}
+                          loading="lazy"
+                          decoding="async"
                         />
                       </div>
                       
@@ -534,6 +544,14 @@ export function ProductDetailModalDesktop({
                         src={product?.brand === "astera" ? "/astera_labs.png" : "/deus_medical.png"}
                         alt={product?.brand === "astera" ? "Astera Labs" : "Deus Medical"}
                         className="h-12 object-contain"
+                        style={{
+                          // CPU rendering - avoid GPU compositing
+                          WebkitBackfaceVisibility: "hidden",
+                          backfaceVisibility: "hidden",
+                          willChange: "auto",
+                        }}
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                   </div>

@@ -287,6 +287,11 @@ export function ProductDetailModalDesktop({
                         background: "rgba(255, 255, 255, 0.8)",
                         border: "3px solid lime !important",
                         boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 0 0 1px lime",
+                        // CPU rendering - avoid GPU compositing for VRAM optimization
+                        contain: "layout style paint",
+                        WebkitBackfaceVisibility: "hidden",
+                        backfaceVisibility: "hidden",
+                        willChange: "auto",
                       }}
                     >
                       <img
@@ -304,8 +309,13 @@ export function ProductDetailModalDesktop({
                           borderRadius: "0.75rem", // Updated to match cart modal consistency
                           opacity: "1 !important",
                           transform: "scale(1.0) !important",
-                          transition: "opacity 0.3s ease",
+                          // CPU rendering - avoid GPU compositing
+                          WebkitBackfaceVisibility: "hidden",
+                          backfaceVisibility: "hidden",
+                          willChange: "auto",
                         }}
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                   </div>

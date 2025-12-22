@@ -35,6 +35,9 @@ interface ModalContextType {
   // Navbar Search Focus trigger
   searchFocusTrigger: number;
   triggerSearchFocus: () => void;
+  // Hide Toast trigger - used to immediately hide "Added to Cart" toast
+  hideToastTrigger: number;
+  triggerHideToast: () => void;
   // Product Detail Modal (Desktop)
   isProductDetailModalOpen: boolean;
   productDetailModalId: string | null;
@@ -62,6 +65,8 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
   const [isSimpleCartModalOpen, setIsSimpleCartModalOpenState] = useState(false);
   // Navbar Search Focus trigger - increment to trigger focus
   const [searchFocusTrigger, setSearchFocusTrigger] = useState(0);
+  // Hide Toast trigger - increment to immediately hide "Added to Cart" toast
+  const [hideToastTrigger, setHideToastTrigger] = useState(0);
   // Product Detail Modal (Desktop)
   const [isProductDetailModalOpen, setIsProductDetailModalOpen] = useState(false);
   const [productDetailModalId, setProductDetailModalId] = useState<string | null>(null);
@@ -124,6 +129,10 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
 
   const triggerSearchFocus = () => {
     setSearchFocusTrigger(prev => prev + 1);
+  };
+
+  const triggerHideToast = () => {
+    setHideToastTrigger(prev => prev + 1);
   };
 
   const openProductDetailModal = (productId: string) => {
@@ -194,6 +203,8 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
       setSimpleCartModalOpen,
       searchFocusTrigger,
       triggerSearchFocus,
+      hideToastTrigger,
+      triggerHideToast,
       isProductDetailModalOpen,
       productDetailModalId,
       openProductDetailModal,

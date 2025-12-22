@@ -171,10 +171,11 @@ export default function WelcomeModal({
               <div className="space-y-3">
                 <button
                   onClick={handleClose}
-                  className="w-full py-3 px-4 text-white font-medium rounded-xl transition-colors duration-200 hover:bg-[#d10f0f]"
+                  className="w-full py-2 px-4 text-white font-medium rounded-xl transition-colors duration-200 hover:bg-[#d10f0f]"
                   style={{ 
                     backgroundColor: "#e91111",
-                    boxShadow: "0 4px 15px rgba(233, 17, 17, 0.3)"
+                    boxShadow: "0 4px 15px rgba(233, 17, 17, 0.3)",
+                    border: "2px solid #e91111"
                   }}
                 >
                   Start Shopping

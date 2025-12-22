@@ -72,6 +72,7 @@ export default function CheckoutModal({
   const [success, setSuccess] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [orderSummaryExpanded, setOrderSummaryExpanded] = useState(false);
 
   // Coupon code states
   const [showCouponForm, setShowCouponForm] = useState(false);
@@ -565,6 +566,7 @@ export default function CheckoutModal({
                     style={{
                       backgroundColor: "#e91111",
                       boxShadow: "0 4px 15px rgba(233, 17, 17, 0.3)",
+                      border: "2px solid #e91111",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = "#c00d0d";
@@ -642,38 +644,78 @@ export default function CheckoutModal({
                   </div>
                 )}
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Left Column - Order Summary & Address */}
-                <div className="space-y-6">
-                  {/* Order Items */}
+                <div className="space-y-4">
+                  {/* Order Items - Collapsible */}
                   <div 
-                    className="rounded-xl p-4"
-                    style={{
-                      backgroundColor: "rgba(255, 255, 255, 0.8)",
-                      border: "1px solid rgba(45, 45, 52, 0.1)",
-                      backdropFilter: "blur(10px)",
-                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
-                    }}
+                    className="rounded-xl bg-gray-50 overflow-hidden"
                   >
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                      Order Summary
-                    </h3>
-                    <div className="space-y-3">
-                      {cartItems.map((item) => (
+                    <button
+                      onClick={() => setOrderSummaryExpanded(!orderSummaryExpanded)}
+                      className="w-full p-4 flex items-center justify-between text-left"
+                    >
+                      <div className="flex items-center gap-2">
+                        <h3 className="text-base font-semibold text-gray-900">
+                          Order Summary
+                        </h3>
+                        <span className="text-gray-500 text-sm">
+                          ({cartItems.length} {cartItems.length === 1 ? 'item' : 'items'})
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-gray-900 font-medium text-sm">
+                          {formatPrice(calculateSubtotal())}
+                        </span>
+                        <svg
+                          className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${orderSummaryExpanded ? 'rotate-180' : ''}`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </button>
+                    
+                    {orderSummaryExpanded && (
+                      <div className="px-4 pb-4 space-y-3 border-t border-gray-200">
+                        <div className="pt-3 space-y-3">
+                          {cartItems.map((item) => (
                         <div
                           key={`${item.handle}-${item.variant || "default"}`}
                           className="flex items-center gap-3"
                         >
                           {item.image && (
-                            <img
-                              src={item.image}
-                              alt={item.title}
-                              className="w-12 h-12 object-cover rounded-lg"
-                              style={{ border: "1px solid rgba(45, 45, 52, 0.2)" }}
-                            />
+                            <div
+                              className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                              style={{
+                                background: "rgba(255, 255, 255, 0.8)",
+                                border: "1px solid #e5e7eb",
+                                // CPU rendering - avoid GPU compositing for VRAM optimization
+                                contain: "layout style paint",
+                                WebkitBackfaceVisibility: "hidden",
+                                backfaceVisibility: "hidden",
+                                willChange: "auto",
+                              }}
+                            >
+                              <img
+                                src={item.image}
+                                alt={item.title}
+                                className="w-full h-full object-contain rounded-lg"
+                                style={{
+                                  // CPU rendering - avoid GPU compositing
+                                  WebkitBackfaceVisibility: "hidden",
+                                  backfaceVisibility: "hidden",
+                                  willChange: "auto",
+                                }}
+                                loading="lazy"
+                                decoding="async"
+                              />
+                            </div>
                           )}
-                          <div className="flex-1">
-                            <h4 className="text-gray-900 font-medium text-sm">
+                          <div className="flex-1 min-w-0">
+                            <h4 className="text-gray-900 font-medium text-sm truncate">
                               {item.title}
                             </h4>
                             {item.variant && (
@@ -692,20 +734,16 @@ export default function CheckoutModal({
                           </div>
                         </div>
                       ))}
-                    </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Shipping Address */}
                   <div 
-                    className="rounded-xl p-4"
-                    style={{
-                      backgroundColor: "rgba(255, 255, 255, 0.8)",
-                      border: "1px solid rgba(45, 45, 52, 0.1)",
-                      backdropFilter: "blur(10px)",
-                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
-                    }}
+                    className="rounded-xl p-4 bg-gray-50"
                   >
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                    <h3 className="text-base font-semibold text-gray-900 mb-3">
                       Shipping Address
                     </h3>
 
@@ -738,12 +776,11 @@ export default function CheckoutModal({
                               className="p-3 rounded-xl cursor-pointer transition-colors"
                               style={{
                                 backgroundColor: selectedAddressId === address.id 
-                                  ? "rgba(45, 45, 52, 0.08)" 
-                                  : "rgba(255, 255, 255, 0.5)",
-                                border: "1px solid rgba(45, 45, 52, 0.15)",
-                                boxShadow: selectedAddressId === address.id 
-                                  ? "inset 0 0 0 1px rgba(45, 45, 52, 0.2)" 
-                                  : "none",
+                                  ? "rgba(45, 45, 52, 0.06)" 
+                                  : "white",
+                                border: selectedAddressId === address.id
+                                  ? "1px solid rgba(45, 45, 52, 0.25)"
+                                  : "1px solid #e5e7eb",
                               }}
                               onClick={() => setSelectedAddressId(address.id)}
                             >
@@ -821,7 +858,7 @@ export default function CheckoutModal({
                                 full_name: e.target.value,
                               })
                             }
-                            className="w-full px-3 py-2 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
+                            className="w-full px-3 py-2 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
                             style={{
                               backgroundColor: "rgba(255, 255, 255, 0.9)",
                               border: "1px solid rgba(45, 45, 52, 0.2)",
@@ -838,7 +875,7 @@ export default function CheckoutModal({
                                   street: e.target.value,
                                 })
                               }
-                              className="w-full px-3 py-2 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
+                              className="w-full px-3 py-2 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
                               style={{
                                 backgroundColor: "rgba(255, 255, 255, 0.9)",
                                 border: "1px solid rgba(45, 45, 52, 0.2)",
@@ -854,7 +891,7 @@ export default function CheckoutModal({
                                   house_number: e.target.value,
                                 })
                               }
-                              className="w-full px-3 py-2 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
+                              className="w-full px-3 py-2 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
                               style={{
                                 backgroundColor: "rgba(255, 255, 255, 0.9)",
                                 border: "1px solid rgba(45, 45, 52, 0.2)",
@@ -872,7 +909,7 @@ export default function CheckoutModal({
                                   city: e.target.value,
                                 })
                               }
-                              className="w-full px-3 py-2 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
+                              className="w-full px-3 py-2 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
                               style={{
                                 backgroundColor: "rgba(255, 255, 255, 0.9)",
                                 border: "1px solid rgba(45, 45, 52, 0.2)",
@@ -888,7 +925,7 @@ export default function CheckoutModal({
                                   postal_code: e.target.value,
                                 })
                               }
-                              className="w-full px-3 py-2 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
+                              className="w-full px-3 py-2 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
                               style={{
                                 backgroundColor: "rgba(255, 255, 255, 0.9)",
                                 border: "1px solid rgba(45, 45, 52, 0.2)",
@@ -906,7 +943,7 @@ export default function CheckoutModal({
                                   state_province: e.target.value,
                                 })
                               }
-                              className="w-full px-3 py-2 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
+                              className="w-full px-3 py-2 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
                               style={{
                                 backgroundColor: "rgba(255, 255, 255, 0.9)",
                                 border: "1px solid rgba(45, 45, 52, 0.2)",
@@ -922,7 +959,7 @@ export default function CheckoutModal({
                                   country: e.target.value,
                                 })
                               }
-                              className="w-full px-3 py-2 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
+                              className="w-full px-3 py-2 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
                               style={{
                                 backgroundColor: "rgba(255, 255, 255, 0.9)",
                                 border: "1px solid rgba(45, 45, 52, 0.2)",
@@ -983,40 +1020,29 @@ export default function CheckoutModal({
                 </div>
 
                 {/* Right Column - Shipping & Payment */}
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {/* Shipping Method */}
                   <div 
-                    className="rounded-xl p-4"
-                    style={{
-                      backgroundColor: "rgba(255, 255, 255, 0.8)",
-                      border: "1px solid rgba(45, 45, 52, 0.1)",
-                      backdropFilter: "blur(10px)",
-                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
-                    }}
+                    className="rounded-xl p-4 bg-gray-50"
                   >
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                    <h3 className="text-base font-semibold text-gray-900 mb-3">
                       Shipping Method
                     </h3>
                     <div className="space-y-2">
                       <div 
-                        className="p-3 rounded-xl"
-                        style={{
-                          backgroundColor: "rgba(45, 45, 52, 0.08)",
-                          border: "1px solid rgba(45, 45, 52, 0.15)",
-                          boxShadow: "inset 0 0 0 1px rgba(45, 45, 52, 0.2)",
-                        }}
+                        className="p-3 rounded-xl bg-white"
                       >
                         <div className="flex items-center justify-between">
                           <div>
-                            <h4 className="text-gray-900 font-medium">
+                            <h4 className="text-gray-900 font-medium text-sm">
                               Standard Shipping
                             </h4>
-                            <p className="text-gray-600 text-sm">
+                            <p className="text-gray-500 text-xs">
                               Delivery within 5-7 business days
                             </p>
                           </div>
                           <div className="text-right">
-                            <span className="text-gray-900 font-medium">
+                            <span className="text-gray-900 font-medium text-sm">
                               {formatPrice(20.0)}
                             </span>
                           </div>
@@ -1030,15 +1056,9 @@ export default function CheckoutModal({
 
                   {/* Payment Method */}
                   <div 
-                    className="rounded-xl p-4"
-                    style={{
-                      backgroundColor: "rgba(255, 255, 255, 0.8)",
-                      border: "1px solid rgba(45, 45, 52, 0.1)",
-                      backdropFilter: "blur(10px)",
-                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
-                    }}
+                    className="rounded-xl p-4 bg-gray-50"
                   >
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                    <h3 className="text-base font-semibold text-gray-900 mb-3">
                       Payment Method
                     </h3>
                     <div className="space-y-2">
@@ -1046,12 +1066,11 @@ export default function CheckoutModal({
                         className="p-3 rounded-xl cursor-pointer transition-colors"
                         style={{
                           backgroundColor: paymentMethod === "paypal" 
-                            ? "rgba(45, 45, 52, 0.08)" 
-                            : "rgba(255, 255, 255, 0.5)",
-                          border: "1px solid rgba(45, 45, 52, 0.15)",
-                          boxShadow: paymentMethod === "paypal" 
-                            ? "inset 0 0 0 1px rgba(45, 45, 52, 0.2)" 
-                            : "none",
+                            ? "rgba(45, 45, 52, 0.06)" 
+                            : "rgba(249, 250, 251, 1)",
+                          border: paymentMethod === "paypal"
+                            ? "1px solid rgba(45, 45, 52, 0.25)"
+                            : "1px solid #e5e7eb",
                         }}
                         onClick={() => setPaymentMethod("paypal")}
                       >
@@ -1063,11 +1082,11 @@ export default function CheckoutModal({
                               onChange={() => setPaymentMethod("paypal")}
                               style={{ accentColor: "rgb(45, 45, 52)" }}
                             />
-                            <span className="text-gray-900 font-medium">
+                            <span className="text-gray-900 font-medium text-sm">
                               PayPal
                             </span>
                           </div>
-                          <span className="text-gray-600 text-sm">
+                          <span className="text-gray-500 text-xs">
                             No additional fee
                           </span>
                         </div>
@@ -1077,12 +1096,11 @@ export default function CheckoutModal({
                         className="p-3 rounded-xl cursor-pointer transition-colors"
                         style={{
                           backgroundColor: paymentMethod === "bitcoin" 
-                            ? "rgba(45, 45, 52, 0.08)" 
-                            : "rgba(255, 255, 255, 0.5)",
-                          border: "1px solid rgba(45, 45, 52, 0.15)",
-                          boxShadow: paymentMethod === "bitcoin" 
-                            ? "inset 0 0 0 1px rgba(45, 45, 52, 0.2)" 
-                            : "none",
+                            ? "rgba(45, 45, 52, 0.06)" 
+                            : "rgba(249, 250, 251, 1)",
+                          border: paymentMethod === "bitcoin"
+                            ? "1px solid rgba(45, 45, 52, 0.25)"
+                            : "1px solid #e5e7eb",
                         }}
                         onClick={() => setPaymentMethod("bitcoin")}
                       >
@@ -1094,11 +1112,11 @@ export default function CheckoutModal({
                               onChange={() => setPaymentMethod("bitcoin")}
                               style={{ accentColor: "rgb(45, 45, 52)" }}
                             />
-                            <span className="text-gray-900 font-medium">
+                            <span className="text-gray-900 font-medium text-sm">
                               Bitcoin
                             </span>
                           </div>
-                          <span className="text-green-600 text-sm font-medium">
+                          <span className="text-green-600 text-xs font-medium">
                             -5% discount
                           </span>
                         </div>
@@ -1108,12 +1126,11 @@ export default function CheckoutModal({
                         className="p-3 rounded-xl cursor-pointer transition-colors"
                         style={{
                           backgroundColor: paymentMethod === "bank_transfer" 
-                            ? "rgba(45, 45, 52, 0.08)" 
-                            : "rgba(255, 255, 255, 0.5)",
-                          border: "1px solid rgba(45, 45, 52, 0.15)",
-                          boxShadow: paymentMethod === "bank_transfer" 
-                            ? "inset 0 0 0 1px rgba(45, 45, 52, 0.2)" 
-                            : "none",
+                            ? "rgba(45, 45, 52, 0.06)" 
+                            : "rgba(249, 250, 251, 1)",
+                          border: paymentMethod === "bank_transfer"
+                            ? "1px solid rgba(45, 45, 52, 0.25)"
+                            : "1px solid #e5e7eb",
                         }}
                         onClick={() => setPaymentMethod("bank_transfer")}
                       >
@@ -1125,11 +1142,11 @@ export default function CheckoutModal({
                               onChange={() => setPaymentMethod("bank_transfer")}
                               style={{ accentColor: "rgb(45, 45, 52)" }}
                             />
-                            <span className="text-gray-900 font-medium">
+                            <span className="text-gray-900 font-medium text-sm">
                               Bank Transfer
                             </span>
                           </div>
-                          <span className="text-orange-600 text-sm font-medium">
+                          <span className="text-orange-600 text-xs font-medium">
                             +5% fee
                           </span>
                         </div>
@@ -1139,15 +1156,9 @@ export default function CheckoutModal({
 
                   {/* Coupon */}
                   <div 
-                    className="rounded-xl p-4"
-                    style={{
-                      backgroundColor: "rgba(255, 255, 255, 0.8)",
-                      border: "1px solid rgba(45, 45, 52, 0.1)",
-                      backdropFilter: "blur(10px)",
-                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
-                    }}
+                    className="rounded-xl p-4 bg-gray-50"
                   >
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                    <h3 className="text-base font-semibold text-gray-900 mb-3">
                       Coupon
                     </h3>
 
@@ -1178,7 +1189,7 @@ export default function CheckoutModal({
                                 onChange={(e) =>
                                   setCouponCode(e.target.value.toUpperCase())
                                 }
-                                className="w-full px-3 py-2 text-gray-900 rounded-lg focus:outline-none focus:ring-2 placeholder-gray-400"
+                                className="w-full px-3 py-2 text-gray-900 rounded-xl focus:outline-none focus:ring-2 placeholder-gray-400"
                                 style={{ 
                                   textTransform: "uppercase",
                                   backgroundColor: "rgba(255, 255, 255, 0.9)",
@@ -1258,15 +1269,9 @@ export default function CheckoutModal({
 
                   {/* Order Total */}
                   <div 
-                    className="rounded-xl p-4"
-                    style={{
-                      backgroundColor: "rgba(255, 255, 255, 0.8)",
-                      border: "1px solid rgba(45, 45, 52, 0.1)",
-                      backdropFilter: "blur(10px)",
-                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
-                    }}
+                    className="rounded-xl p-4 bg-gray-50"
                   >
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                    <h3 className="text-base font-semibold text-gray-900 mb-3">
                       Order Total
                     </h3>
                     <div className="space-y-2 text-sm">

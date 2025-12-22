@@ -4,7 +4,6 @@ import {
   ShoppingCartIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useModal } from "../../contexts/modal-context";
@@ -173,72 +172,78 @@ export default function SimpleCartModal() {
                   {items.map((item) => (
                     <div
                       key={item.id}
-                      className="flex items-center space-x-4 p-3 rounded-xl transition-all duration-300 group"
+                      className="flex items-center space-x-4 p-3 rounded-xl group"
                       style={{
-                        backgroundColor: "rgba(255, 255, 255, 0.8)",
+                        backgroundColor: "rgba(255, 255, 255, 0.95)",
                         border: "1px solid rgba(45, 45, 52, 0.1)",
-                        backdropFilter: "blur(10px)",
+                        // CPU rendering - no backdropFilter (GPU-intensive)
+                        contain: "layout style paint",
+                        WebkitBackfaceVisibility: "hidden",
+                        backfaceVisibility: "hidden",
+                        willChange: "auto",
                       }}
                     >
-                      {/* Product Image */}
-                      <div className="relative h-14 w-14 overflow-hidden rounded-lg flex-shrink-0" style={{
-                        backgroundColor: "rgba(45, 45, 52, 0.1)",
-                        border: "1px solid rgba(45, 45, 52, 0.2)"
+                      {/* Product Image - CPU rendering, no caching */}
+                      <div className="relative h-14 w-14 overflow-hidden rounded-lg flex-shrink-0 bg-white" style={{
+                        border: "1px solid rgba(45, 45, 52, 0.2)",
+                        // CPU rendering - avoid GPU compositing
+                        contain: "layout style paint",
+                        WebkitBackfaceVisibility: "hidden",
+                        backfaceVisibility: "hidden",
+                        willChange: "auto",
                       }}>
-                        <Image
+                        <img
                           className="h-full w-full object-cover"
-                          fill
                           alt={item.name}
                           src={item.image}
-                          unoptimized
+                          style={{
+                            // CPU rendering - avoid GPU compositing
+                            WebkitBackfaceVisibility: "hidden",
+                            backfaceVisibility: "hidden",
+                            willChange: "auto",
+                          }}
+                          loading="lazy"
+                          decoding="async"
                         />
                       </div>
 
-                      {/* Product Details */}
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-sm font-medium text-gray-900" style={{ whiteSpace: 'nowrap' }}>
+                      {/* Product Details - spacing matched to 56px image height */}
+                      <div className="flex-1 min-w-0 flex flex-col" style={{ height: '56px', paddingTop: '0px', paddingBottom: '0px' }}>
+                        <h3 className="text-xs font-medium text-gray-900" style={{ whiteSpace: 'nowrap', marginBottom: '4px' }}>
                           {item.name}
                         </h3>
-                        <p className="text-xs text-gray-500 mt-0.5">
+                        <p className="text-xs text-gray-500" style={{ marginBottom: '4px' }}>
                           €{item.price.toFixed(2)}
                         </p>
-                        <p className="text-sm font-semibold text-gray-900 mt-1">
+                        <p className="text-xs font-semibold text-gray-900">
                           €{(item.price * item.quantity).toFixed(2)}
                         </p>
                       </div>
 
                       {/* Quantity Controls */}
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden">
                         <button
                           onClick={() =>
                             updateQuantity(item.id, item.quantity - 1)
                           }
-                          className="h-5 w-5 rounded flex items-center justify-center transition-all duration-200 hover:scale-105"
-                          style={{
-                            backgroundColor: "rgba(45, 45, 52, 0.1)",
-                            border: "1px solid rgba(45, 45, 52, 0.2)",
-                          }}
+                          className="flex items-center justify-center text-gray-600 hover:bg-gray-200 hover:text-gray-900 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                          style={{ width: '22px', height: '22px', fontSize: '12px', lineHeight: '1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                          disabled={item.quantity <= 1}
                         >
-                          <span className="text-gray-600 text-xs font-medium">
-                            -
-                          </span>
+                          −
                         </button>
-                        <span className="w-6 text-center text-sm font-medium text-gray-900">
+                        <span className="px-2 border-x border-gray-300 min-w-[26px] text-center font-medium text-gray-900" style={{ fontSize: '12px', height: '22px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           {item.quantity}
                         </span>
                         <button
                           onClick={() =>
                             updateQuantity(item.id, item.quantity + 1)
                           }
-                          className="h-5 w-5 rounded flex items-center justify-center transition-all duration-200 hover:scale-105"
-                          style={{
-                            backgroundColor: "rgba(45, 45, 52, 0.1)",
-                            border: "1px solid rgba(45, 45, 52, 0.2)",
-                          }}
+                          className="flex items-center justify-center text-gray-600 hover:bg-gray-200 hover:text-gray-900 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                          style={{ width: '22px', height: '22px', fontSize: '12px' }}
+                          disabled={item.quantity >= 99}
                         >
-                          <span className="text-gray-600 text-xs font-medium">
-                            +
-                          </span>
+                          +
                         </button>
                       </div>
 
@@ -247,11 +252,10 @@ export default function SimpleCartModal() {
                         onClick={() => removeItem(item.id)}
                         className="p-2 rounded-lg transition-all duration-200 hover:scale-105"
                         style={{
-                          backgroundColor: "rgba(239, 68, 68, 0.1)",
-                          border: "1px solid rgba(239, 68, 68, 0.2)",
+                          backgroundColor: "#e91111",
                         }}
                       >
-                        <TrashIcon className="h-4 w-4 text-red-500" />
+                        <TrashIcon className="h-4 w-4 text-white" />
                       </button>
                     </div>
                   ))}

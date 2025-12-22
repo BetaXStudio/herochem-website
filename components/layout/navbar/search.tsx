@@ -2,7 +2,6 @@
 
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Form from "next/form";
-import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useModal } from "../../../contexts/modal-context";
@@ -26,52 +25,75 @@ interface SearchResultItemProps {
   product: any;
   isMobile: boolean;
   onResultClick: (product: any) => void;
+  scrollContainerRef: React.RefObject<HTMLDivElement | null>;
 }
 
-function SearchResultItem({ product, isMobile, onResultClick }: SearchResultItemProps) {
+function SearchResultItem({ product, isMobile, onResultClick, scrollContainerRef }: SearchResultItemProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isMountedRef = useRef(true);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
 
   // IntersectionObserver for lazy loading AND unloading images
   // This prevents Safari VRAM crashes by unloading images when they scroll out of view
+  // CRITICAL: Use the scroll container as root, not the viewport!
   useEffect(() => {
-    isMountedRef.current = true;
+    const container = containerRef.current;
+    const scrollRoot = scrollContainerRef?.current;
     
+    // Wait until both container AND scroll root are available
+    if (!container || !scrollRoot) {
+      return;
+    }
+
+    // Disconnect any existing observer
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!isMountedRef.current) return;
           
           if (entry.isIntersecting) {
-            // Element is visible - load the image
+            // Element is visible in scroll container - load the image
             setIsVisible(true);
             setImageSrc(product.image);
           } else {
-            // Element is NOT visible - unload the image to free VRAM
+            // Element is NOT visible - IMMEDIATELY unload the image to free VRAM
             setIsVisible(false);
-            setImageSrc(null);
-            setImageLoaded(false);
+            setImageSrc(null); // This removes the Image from DOM, freeing VRAM
+            setImageLoaded(false); // Reset for next load
           }
         });
+        // IMPORTANT: No observer.unobserve() here! Must keep observing for unload detection
       },
       { 
-        rootMargin: "100px", // Start loading 100px before visible
+        root: scrollRoot, // MUST use scroll container as root
+        rootMargin: "50px 0px", // Small buffer - load 50px before visible
         threshold: 0 
       }
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
+    observerRef.current = observer;
+    observer.observe(container);
 
     return () => {
-      isMountedRef.current = false;
       observer.disconnect();
+      observerRef.current = null;
     };
-  }, [product.image]);
+  }, [product.image, scrollContainerRef?.current]); // Re-run when scrollRoot becomes available
 
   const handleImageLoad = useCallback(() => {
     if (isMountedRef.current) {
@@ -79,31 +101,51 @@ function SearchResultItem({ product, isMobile, onResultClick }: SearchResultItem
     }
   }, []);
 
+  // CPU-only rendering styles - avoid GPU acceleration to prevent VRAM crashes
+  const cpuRenderingStyles: React.CSSProperties = {
+    // Force CPU rendering instead of GPU
+    transform: "none",
+    willChange: "auto",
+    // Disable GPU compositing layers
+    WebkitBackfaceVisibility: "hidden",
+    backfaceVisibility: "hidden",
+    // Prevent 3D transforms that trigger GPU
+    perspective: "none",
+    WebkitPerspective: "none",
+  };
+
   return (
     <button
       onClick={() => onResultClick(product)}
-      className={`w-full px-4 py-3 flex items-center gap-3 transition-all duration-200 text-left group relative search-product-item cursor-pointer ${
-        !isMobile ? "hover:translate-x-2" : ""
-      }`}
-      style={{ "--brand-color": getProductBrandColor(product.name) } as React.CSSProperties}
+      className={`w-full px-4 py-3 flex items-center gap-3 text-left group relative search-product-item cursor-pointer`}
+      style={{ 
+        "--brand-color": getProductBrandColor(product.name),
+        // CPU-only rendering - no GPU acceleration
+        contain: "layout style paint",
+        ...cpuRenderingStyles,
+      } as React.CSSProperties}
     >
       {/* Red Hover Line */}
       <div
-        className={`absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-16 opacity-0 transition-opacity duration-200 ${
+        className={`absolute left-0 top-1/2 w-1 h-16 opacity-0 transition-opacity duration-200 ${
           !isMobile ? "group-hover:opacity-100" : ""
         }`}
         style={{
           backgroundColor: getProductBrandColor(product.name),
+          transform: "translateY(-50%)",
+          ...cpuRenderingStyles,
         }}
       ></div>
       {/* Product Image */}
       <div
         ref={containerRef}
-        className="relative w-16 h-16 rounded-md overflow-hidden flex-shrink-0 transition-all duration-200"
+        className="relative w-16 h-16 rounded-md overflow-hidden flex-shrink-0"
         style={{
           backgroundColor: "rgb(45, 45, 52)",
-          backdropFilter: "blur(10px)",
           border: "1px solid rgba(255,255,255,0.1)",
+          // CPU rendering - avoid GPU compositing
+          contain: "layout style paint",
+          ...cpuRenderingStyles,
         }}
       >
         {/* Loading Animation - show when visible but image not loaded yet */}
@@ -113,6 +155,7 @@ function SearchResultItem({ product, isMobile, onResultClick }: SearchResultItem
             style={{
               background: "rgba(45, 45, 52, 0.9)",
               zIndex: 5,
+              ...cpuRenderingStyles,
             }}
           >
             <div
@@ -123,20 +166,28 @@ function SearchResultItem({ product, isMobile, onResultClick }: SearchResultItem
             ></div>
           </div>
         )}
-        {/* Only render Image when visible - this unloads from VRAM when not visible */}
+        {/* Only render img when visible - completely removes from DOM when not visible */}
+        {/* Using native img tag instead of Next.js Image to ensure NO caching in VRAM */}
         {imageSrc && (
-          <Image
+          <img
             src={imageSrc}
             alt={product.name}
             width={64}
             height={64}
-            className={`object-cover w-full h-full transition-opacity duration-300 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+            className={`object-cover w-full h-full ${imageLoaded ? "opacity-100" : "opacity-0"}`}
             style={{
+              // Simple scale without GPU-intensive transforms
               transform: product.brand === "astera" ? "scale(0.85)" : "scale(1.15)",
+              // CPU rendering - avoid GPU compositing
+              WebkitBackfaceVisibility: "hidden",
+              backfaceVisibility: "hidden",
+              // No will-change to avoid GPU layer creation
+              willChange: "auto",
             }}
             loading="lazy"
             onLoad={handleImageLoad}
-            unoptimized
+            // Async decoding to reduce main thread blocking
+            decoding="async"
           />
         )}
       </div>
@@ -188,13 +239,21 @@ export default function Search({
   const [scrollY, setScrollY] = useState(0);
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null); // Ref for scroll container - needed for IntersectionObserver root
+  const [scrollContainerReady, setScrollContainerReady] = useState(false); // State to trigger re-render when container is ready
+  
+  // Callback ref to detect when scroll container is mounted
+  const scrollContainerCallbackRef = useCallback((node: HTMLDivElement | null) => {
+    scrollContainerRef.current = node;
+    setScrollContainerReady(!!node);
+  }, []);
   
   // Check if we're exactly on /categories (not subpages) and without category filter
   const isExactCategoriesPage = pathname === "/categories";
   const hasNoCategoryFilter = !searchParams?.get("category") && !searchParams?.get("categorie");
   
   // Get modal context for desktop product detail modal and categories menu modal
-  const { openProductDetailModal, isCategoriesMenuModalOpen, setCategoriesMenuModalOpen } = useModal();
+  const { openProductDetailModal, isCategoriesMenuModalOpen, setCategoriesMenuModalOpen, triggerHideToast } = useModal();
   
   // Show overlay on: 
   // 1. ALL PRODUCTS page (normal search focus behavior) OR
@@ -333,6 +392,9 @@ export default function Search({
   }, [isDropdownOpen, onDropdownStateChange]);
 
   const handleInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    // Immediately hide any active "Added to Cart" toast to prevent transition conflicts
+    triggerHideToast();
+    
     setIsFocused(true);
     if (searchResults.length > 0) {
       setIsDropdownOpen(true);
@@ -394,15 +456,19 @@ export default function Search({
       if (!isMobile) {
         // Desktop: Use the global ProductDetailModalDesktop via context
         openProductDetailModal(fullProduct.id);
-        // Close search dropdown
+        // Close search dropdown and reset search state
         setIsDropdownOpen(false);
         setIsFocused(false);
+        setQuery("");
+        setSearchResults([]);
       } else {
         // Mobile: Use the ProductDetailOverlay
         openProductDetail(fullProduct.id);
-        // Close search dropdown on mobile too
+        // Close search dropdown on mobile too and reset search state
         setIsDropdownOpen(false);
         setIsFocused(false);
+        setQuery("");
+        setSearchResults([]);
       }
     }
   };
@@ -513,21 +579,33 @@ export default function Search({
             display: "flex",
             flexDirection: "column",
             boxShadow: isMobile ? "0 4px 8px rgba(0, 0, 0, 0.3)" : "none",
+            // CPU-only rendering - avoid GPU acceleration to prevent VRAM crashes
+            contain: "layout style paint",
+            WebkitBackfaceVisibility: "hidden",
+            backfaceVisibility: "hidden",
+            willChange: "auto",
           }}
         >
           <div
+            ref={scrollContainerCallbackRef}
             className={`overflow-y-auto overflow-x-hidden flex-1 ${isMobile ? "py-4" : "py-2"}`}
             style={{
               overscrollBehavior: "contain",
               WebkitOverflowScrolling: "touch",
+              // CPU rendering for scroll container
+              contain: "layout style paint",
+              WebkitBackfaceVisibility: "hidden",
+              backfaceVisibility: "hidden",
             }}
           >
-            {searchResults.map((product) => (
+            {/* Only render items when scroll container is ready for proper IntersectionObserver */}
+            {scrollContainerReady && searchResults.map((product) => (
               <SearchResultItem
                 key={product.id}
                 product={product}
                 isMobile={isMobile}
                 onResultClick={handleResultClick}
+                scrollContainerRef={scrollContainerRef}
               />
             ))}
           </div>

@@ -301,12 +301,17 @@ export function ProductDetailOverlay({
                     style={{
                       background: "rgba(255, 255, 255, 0.8)",
                       border: "1px solid #e5e7eb",
+                      // CPU rendering - avoid GPU compositing for VRAM optimization
+                      contain: "layout style paint",
+                      WebkitBackfaceVisibility: "hidden",
+                      backfaceVisibility: "hidden",
+                      willChange: "auto",
                     }}
                   >
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-contain rounded transition-opacity duration-300"
+                      className="w-full h-full object-contain rounded"
                       style={{
                         opacity: 1,
                         transform:
@@ -314,7 +319,13 @@ export function ProductDetailOverlay({
                           product?.name.toLowerCase().includes("astera")
                             ? "scale(1.0)"
                             : "scale(1.8)",
+                        // CPU rendering - avoid GPU compositing
+                        WebkitBackfaceVisibility: "hidden",
+                        backfaceVisibility: "hidden",
+                        willChange: "auto",
                       }}
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   
@@ -323,6 +334,14 @@ export function ProductDetailOverlay({
                     src={product?.brand === "astera" ? "/astera_labs.png" : "/deus_medical.png"}
                     alt={product?.brand === "astera" ? "Astera Labs" : "Deus Medical"}
                     className="h-8 object-contain flex-shrink-0"
+                    style={{
+                      // CPU rendering - avoid GPU compositing
+                      WebkitBackfaceVisibility: "hidden",
+                      backfaceVisibility: "hidden",
+                      willChange: "auto",
+                    }}
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
 

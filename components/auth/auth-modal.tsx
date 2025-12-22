@@ -291,6 +291,7 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
                     ? "rgb(180,70,70)"
                     : "#e91111",
                   boxShadow: "0 4px 15px rgba(233, 17, 17, 0.3)", // Subtle shadow like cart modal
+                  border: "2px solid #e91111",
                 }}
                 onMouseEnter={(e) => {
                   if (!loading) {

@@ -378,7 +378,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null); // For single hover on mobile
   const router = useRouter();
   const { addItem } = useSimpleCart();
-  const { isCategoriesModalOpen, setCategoriesModalOpen, isCategoriesMenuModalOpen, setCategoriesMenuModalOpen, resetAllModals } = useModal();
+  const { isCategoriesModalOpen, setCategoriesModalOpen, isCategoriesMenuModalOpen, setCategoriesMenuModalOpen, resetAllModals, hideToastTrigger } = useModal();
   const { saveState } = useCategoriesState();
   const mainRef = useRef<HTMLElement>(null); // Ref für Main-Container
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null); // Ref für Scroll-Timeout
@@ -469,6 +469,18 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
       console.debug("[Categories] Component unmounted, cleaned up all timeouts/intervals");
     };
   }, []);
+
+  // Hide toast immediately when triggered (e.g., when search bar is focused)
+  // This prevents transition conflicts that can cause page refresh
+  useEffect(() => {
+    if (hideToastTrigger > 0 && showToast) {
+      // Immediately hide toast without animation
+      setShowToast(false);
+      setToastFadeOut(false);
+      // Clear any pending toast timeouts
+      clearAllPendingTimeouts();
+    }
+  }, [hideToastTrigger, showToast, clearAllPendingTimeouts]);
 
   // Page Freezing Effect - Speichert State beim Verlassen und stellt ihn wieder her
   // WICHTIG: Wir verwenden KEINE beforeunload Events, da diese BFCache brechen!
