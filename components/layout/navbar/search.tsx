@@ -133,7 +133,9 @@ function SearchResultItem({ product, isMobile, onResultClick, scrollContainerRef
         style={{
           backgroundColor: getProductBrandColor(product.name),
           transform: "translateY(-50%)",
-          ...cpuRenderingStyles,
+          willChange: "auto",
+          WebkitBackfaceVisibility: "hidden",
+          backfaceVisibility: "hidden",
         }}
       ></div>
       {/* Product Image */}
@@ -535,7 +537,9 @@ export default function Search({
           }`}
           style={{
             backgroundColor: disabled ? "rgba(45, 45, 52, 0.4)" : "rgba(45, 45, 52, 0.8)",
-            border: isMobile ? "1px solid rgba(255, 255, 255, 0)" : "1px solid rgba(255, 255, 255, 0.1)",
+            // isNavbarModal means we're in the mobile modal - always hide border there
+            // This prevents flash of border on initial render before isMobile state is set
+            border: (isNavbarModal || isMobile) ? "1px solid rgba(255, 255, 255, 0)" : "1px solid rgba(255, 255, 255, 0.1)",
             boxShadow: "none",
             minWidth: "280px",
             width: "100%",

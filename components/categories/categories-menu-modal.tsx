@@ -71,15 +71,15 @@ export default function CategoriesMenuModal({
   const [scrollTop, setScrollTop] = useState(0);
   const [closeButtonOpacity, setCloseButtonOpacity] = useState(0);
 
-  // Fade in close button after modal animation (300ms) + fade delay (300ms)
+  // Handler called when modal enter animation completes
+  const handleAfterEnter = () => {
+    // No delay - fade in header immediately when animation completes
+    setCloseButtonOpacity(1);
+  };
+
+  // Reset opacity when modal closes
   useEffect(() => {
-    if (isOpen) {
-      // Wait for modal animation to complete, then fade in button
-      const timer = setTimeout(() => {
-        setCloseButtonOpacity(1);
-      }, 300 + 10); // Modal animation (300ms) + small buffer for render
-      return () => clearTimeout(timer);
-    } else {
+    if (!isOpen) {
       setCloseButtonOpacity(0);
     }
   }, [isOpen]);
@@ -194,6 +194,7 @@ export default function CategoriesMenuModal({
         leave="transition-all ease-in-out duration-150"
         leaveFrom="transform translate-y-0 opacity-100"
         leaveTo="transform translate-y-[-20vh] opacity-0"
+        afterEnter={handleAfterEnter}
         className="fixed left-0 right-0 z-50 md:hidden flex flex-col"
         style={{
           top: `${88 + scrollTop}px`,
@@ -239,7 +240,7 @@ export default function CategoriesMenuModal({
             style={{ 
               top: "24px",
               opacity: closeButtonOpacity,
-              transition: "opacity 150ms ease-out",
+              transition: "opacity 300ms ease-out",
               fontFamily: "Calibri, Arial, sans-serif",
               color: "white",
             }}

@@ -304,10 +304,10 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
         {/* Custom styles for delayed opacity transition */}
         <style>{`
           .mobile-menu-panel {
-            transition: transform 100ms ease-in-out, opacity 100ms ease-in-out 0ms !important;
+            transition: transform 50ms ease-out, opacity 150ms ease-in-out 0ms !important;
           }
           .mobile-menu-panel[data-closed] {
-            transition: transform 100ms ease-in-out, opacity 80ms ease-in-out 0ms !important;
+            transition: transform 40ms ease-in, opacity 100ms ease-in-out 0ms !important;
           }
         `}</style>
 
@@ -321,10 +321,10 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
             background: "rgb(45,45,52)",
             zIndex: 10019, // Under navbar (10020) so shadow is visible
           }}
-          enter="transition-all ease-in-out duration-100"
+          enter="transition-all ease-out duration-50"
           enterFrom="translate-x-[-100%] translate-y-[-8vh] opacity-0"
           enterTo="translate-x-0 translate-y-0 opacity-100"
-          leave="transition-all ease-in-out duration-100"
+          leave="transition-all ease-in duration-50"
           leaveFrom="translate-x-0 translate-y-0 opacity-100"
           leaveTo="translate-x-[-100%] translate-y-[-8vh] opacity-0"
         >  <div
