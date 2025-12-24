@@ -41,7 +41,7 @@ const categories: {
     label: "PEPTIDES & HGH",
     icon: "/peptides.png",
     path: "/categories",
-    param: "PEPTIDES %26 HGH",
+    param: "PEPTIDES & HGH",
   },
   { label: "SARMS", icon: "/sarms.png", path: "/categories", param: "SARMS" },
   {
@@ -286,11 +286,8 @@ export default function CategoriesMenuModal({
               <ul className="space-y-2">
               {categories.map((category) => {
                 const categoryParam = searchParams.get("category");
-                const expectedParam =
-                  category.param === "PEPTIDES %26 HGH"
-                    ? "PEPTIDES & HGH"
-                    : category.param;
-                const isActive = categoryParam === expectedParam;
+                // Vergleiche direkt mit dem param (nicht mehr pre-encoded)
+                const isActive = categoryParam === category.param;
 
                 // All categories have dropdown functionality
                 const isDropdownOpenForCategory = openCategoryDropdowns.includes(category.label);
