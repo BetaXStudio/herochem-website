@@ -623,7 +623,7 @@ export default function HeroSection() {
 				boxShadow: '0 4px 15px rgba(255, 255, 255, 0.05)'
 			  }}
 			>
-			  <ShieldCheckIcon className="h-2.5 w-2.5 lg:h-3 lg:w-3 text-green-400" />
+			  <ShieldCheckIcon className="h-2.5 w-2.5 lg:h-3 lg:w-3 text-white" />
 			  <span>Certified Pharmaceutical Products</span>
 			</div>
 
@@ -729,12 +729,12 @@ export default function HeroSection() {
 			<div className="space-y-3 text-center lg:text-left">
 			{/* Hero Badge */}
 			<div 
-			  className={`inline-flex items-center space-x-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-3 lg:px-4 py-1.5 lg:py-2 text-gray-300 text-[10px] lg:text-xs font-medium mt-8 transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-2' : 'opacity-100 transform translate-y-0'}`}
+			  className={`inline-flex items-center space-x-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-3 lg:px-4 py-1.5 lg:py-2 text-gray-300 text-[10px] lg:text-xs font-medium mt-6 transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-2' : 'opacity-100 transform translate-y-0'}`}
 			  style={{
 				boxShadow: '0 4px 15px rgba(255, 255, 255, 0.05)'
 			  }}
 			>
-			  <ShieldCheckIcon className="h-2.5 w-2.5 lg:h-3 lg:w-3 text-green-400" />
+			  <ShieldCheckIcon className="h-2.5 w-2.5 lg:h-3 lg:w-3 text-white" />
 			  <span>Certified Pharmaceutical Products</span>
 			</div>
 
