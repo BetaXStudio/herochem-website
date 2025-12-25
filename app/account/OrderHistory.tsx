@@ -302,7 +302,7 @@ export default function OrderHistory() {
                       <div className="flex-1">
                         <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3 mb-2">
                           <h4 className="text-gray-900 font-medium text-base">
-                            Order #{order.order_number}
+                            #{order.order_number}
                           </h4>
                           <span
                             className={`px-2 py-0.5 text-white text-xs rounded-full w-fit ${statusColors[order.status]}`}
@@ -438,7 +438,7 @@ export default function OrderHistory() {
                             </div>
 
                             {/* Order Summary */}
-                            <div className="mt-3 bg-white rounded-lg p-3" style={{ border: "1px solid #e5e7eb" }}>
+                            <div className="mt-2 bg-white rounded-lg p-3" style={{ border: "1px solid #e5e7eb" }}>
                               <div className="space-y-1 text-sm">
                                 <div className="flex justify-between">
                                   <span className="text-gray-500">

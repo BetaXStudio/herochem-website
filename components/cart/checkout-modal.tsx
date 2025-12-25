@@ -373,7 +373,7 @@ export default function CheckoutModal({
       // Redirect to order history after 3 seconds
       setTimeout(() => {
         onClose();
-        window.location.href = "/account";
+        window.location.href = "/account?section=orders";
       }, 3000);
     } catch (error: any) {
       console.error("Error placing order:", error);

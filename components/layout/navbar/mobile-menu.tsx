@@ -22,12 +22,6 @@ const categories: {
   param: string;
 }[] = [
   {
-    label: "CATEGORIES",
-    icon: "/products.png",
-    path: "/categories",
-    param: "",
-  },
-  {
     label: "INJECTION",
     icon: "/inject.png",
     path: "/categories",

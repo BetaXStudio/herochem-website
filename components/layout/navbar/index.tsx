@@ -831,9 +831,10 @@ export function Navbar() {
                         </li>
                         <li style={{ borderTop: "1px solid rgba(255,255,255,0.1)", marginTop: "4px", paddingTop: "4px" }}>
                           <button
-                            onClick={() => {
+                            onClick={async () => {
                               setAccountDropdownOpen(false);
-                              signOut();
+                              await signOut();
+                              window.location.href = "/";
                             }}
                             className="block w-full px-4 py-2 text-left text-white text-sm transition-all duration-300 hover:text-[#e91111] cursor-pointer"
                             style={{ background: "none", border: "none" }}
