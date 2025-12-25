@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import AccountSidebar from "./AccountSidebar";
 import AddressBook from "./AddressBook";
@@ -9,8 +10,26 @@ import RewardPoints from "./RewardPoints";
 import SecuritySettings from "./SecuritySettings";
 
 function AccountContent() {
+  const searchParams = useSearchParams();
   const [selectedSection, setSelectedSection] = useState("PROFILE SETTINGS");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  // Map URL parameter to section name
+  const sectionMap: Record<string, string> = {
+    "profile": "PROFILE SETTINGS",
+    "security": "SECURITY SETTINGS",
+    "orders": "ORDER HISTORY",
+    "addresses": "ADDRESS BOOK",
+    "rewards": "REWARD POINTS",
+  };
+
+  // Read section from URL parameter on mount and when it changes
+  useEffect(() => {
+    const sectionParam = searchParams.get("section");
+    if (sectionParam && sectionMap[sectionParam]) {
+      setSelectedSection(sectionMap[sectionParam]);
+    }
+  }, [searchParams]);
 
   // Set page title
   useEffect(() => {

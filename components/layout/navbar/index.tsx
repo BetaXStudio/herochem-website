@@ -22,6 +22,7 @@ export function Navbar() {
   const [bundlesDropdownOpen, setBundlesDropdownOpen] = useState(false);
   const [verifyDropdownOpen, setVerifyDropdownOpen] = useState(false);
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
+  const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
   const { openModal } = useAuthModal();
@@ -90,6 +91,7 @@ export function Navbar() {
     setBundlesDropdownOpen(false);
     setVerifyDropdownOpen(false);
     setLanguageDropdownOpen(false);
+    setAccountDropdownOpen(false);
     setActiveDropdown(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
@@ -99,6 +101,7 @@ export function Navbar() {
   let productsCloseTimeout: NodeJS.Timeout | null = null;
   let bundlesCloseTimeout: NodeJS.Timeout | null = null;
   let verifyCloseTimeout: NodeJS.Timeout | null = null;
+  let accountCloseTimeout: NodeJS.Timeout | null = null;
 
   // Check if ANY navbar modal is open (these blur the navbar)
   // All extracted modals should blur the navbar since they render at root level
@@ -186,6 +189,45 @@ export function Navbar() {
   const handleLanguageDropdownLeave = () => {
     languageCloseTimeout = setTimeout(() => {
       setLanguageDropdownOpen(false);
+      setActiveDropdown(null);
+    }, 200);
+  };
+
+  const handleAccountDropdownEnter = () => {
+    if (accountCloseTimeout) {
+      clearTimeout(accountCloseTimeout);
+      accountCloseTimeout = null;
+    }
+    // Schließe alle anderen Dropdowns sofort ohne Animation
+    if (activeDropdown !== "account") {
+      if (activeDropdown === "shop") {
+        if (closeTimeout) clearTimeout(closeTimeout);
+        setDropdownOpen(false);
+      }
+      if (activeDropdown === "products") {
+        if (productsCloseTimeout) clearTimeout(productsCloseTimeout);
+        setProductsDropdownOpen(false);
+      }
+      if (activeDropdown === "bundles") {
+        if (bundlesCloseTimeout) clearTimeout(bundlesCloseTimeout);
+        setBundlesDropdownOpen(false);
+      }
+      if (activeDropdown === "verify") {
+        if (verifyCloseTimeout) clearTimeout(verifyCloseTimeout);
+        setVerifyDropdownOpen(false);
+      }
+      if (activeDropdown === "language") {
+        if (languageCloseTimeout) clearTimeout(languageCloseTimeout);
+        setLanguageDropdownOpen(false);
+      }
+    }
+    setActiveDropdown("account");
+    setAccountDropdownOpen(true);
+  };
+
+  const handleAccountDropdownLeave = () => {
+    accountCloseTimeout = setTimeout(() => {
+      setAccountDropdownOpen(false);
       setActiveDropdown(null);
     }, 200);
   };
@@ -600,9 +642,10 @@ export function Navbar() {
           >
               {isHydrated && user ? (
                 <>
+                  {/* Desktop: MY ACCOUNT Link + LOGOUT Button */}
                   <Link
                     href="/account"
-                    className={`uppercase px-2 py-1 rounded flex items-center gap-1 text-sm whitespace-nowrap group ${
+                    className={`hidden md:flex uppercase px-2 py-1 rounded items-center gap-1 text-sm whitespace-nowrap group ${
                       isAccountPage
                         ? "text-[#e91111]"
                         : "text-white hover:text-[#e91111]"
@@ -640,16 +683,142 @@ export function Navbar() {
                   </Link>
                   <button
                     onClick={signOut}
-                    className="text-white uppercase hover:text-[#e91111] px-2 py-1 rounded text-sm whitespace-nowrap md:-mr-1 max-[800px]:hidden cursor-pointer"
+                    className="hidden md:block text-white uppercase hover:text-[#e91111] px-2 py-1 rounded text-sm whitespace-nowrap md:-mr-1 cursor-pointer"
                     style={{ textDecoration: "none" }}
                   >
                     LOGOUT
                   </button>
+
+                  {/* Mobile: Account Dropdown */}
+                  <div
+                    className="relative md:hidden -mr-3"
+                    style={{ zIndex: 10030 }}
+                    onMouseEnter={handleAccountDropdownEnter}
+                    onMouseLeave={handleAccountDropdownLeave}
+                  >
+                    <button
+                      className={`uppercase px-2 py-1 rounded flex items-center gap-1 text-sm whitespace-nowrap ${
+                        isAccountPage
+                          ? "text-[#e91111]"
+                          : "text-white"
+                      }`}
+                      onClick={() => setAccountDropdownOpen(!accountDropdownOpen)}
+                    >
+                      <img
+                        src="/login.png"
+                        alt="Account Icon"
+                        className="object-contain w-[22px] h-[22px] min-w-[22px] min-h-[22px] max-w-[22px] max-h-[22px] flex-shrink-0"
+                        style={{
+                          filter: isAccountPage
+                            ? "brightness(0) saturate(100%) invert(18%) sepia(99%) saturate(7490%) hue-rotate(357deg) brightness(97%) contrast(108%)"
+                            : "brightness(0) invert(1)",
+                        }}
+                      />
+                      MY ACCOUNT
+                      <ChevronDownIcon
+                        className={`h-3 w-3 transition-transform duration-200 ${
+                          accountDropdownOpen ? "rotate-180" : "rotate-0"
+                        }`}
+                      />
+                    </button>
+                    <div
+                      className="absolute top-full"
+                      style={{
+                        right: "-16px",
+                        minWidth: "180px",
+                        marginTop: "70px",
+                        transform: accountDropdownOpen
+                          ? "translateY(0)"
+                          : "translateY(-10px)",
+                        zIndex: 10030,
+                        opacity: accountDropdownOpen ? 1 : 0,
+                        pointerEvents: accountDropdownOpen ? "auto" : "none",
+                        willChange: "transform, opacity",
+                        transition: accountDropdownOpen 
+                          ? "opacity 0.3s ease, transform 0.3s ease"
+                          : "opacity 0.1s ease, transform 0.3s ease 0.1s",
+                      }}
+                    >
+                      <ul
+                        className="rounded-lg"
+                        style={{
+                          backgroundColor: "rgb(45, 45, 52)",
+                          borderRadius: "0.5rem",
+                          overflow: "hidden",
+                          padding: "4px 0",
+                          boxShadow: "0 4px 12px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.1)",
+                        }}
+                      >
+                        <li>
+                          <Link
+                            href="/account?section=profile"
+                            className="block w-full px-4 py-2 text-left text-white text-sm transition-all duration-300 hover:text-[#e91111]"
+                            style={{ textDecoration: "none" }}
+                            onClick={() => setAccountDropdownOpen(false)}
+                          >
+                            PROFILE SETTINGS
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/account?section=security"
+                            className="block w-full px-4 py-2 text-left text-white text-sm transition-all duration-300 hover:text-[#e91111]"
+                            style={{ textDecoration: "none" }}
+                            onClick={() => setAccountDropdownOpen(false)}
+                          >
+                            SECURITY SETTINGS
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/account?section=orders"
+                            className="block w-full px-4 py-2 text-left text-white text-sm transition-all duration-300 hover:text-[#e91111]"
+                            style={{ textDecoration: "none" }}
+                            onClick={() => setAccountDropdownOpen(false)}
+                          >
+                            ORDER HISTORY
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/account?section=addresses"
+                            className="block w-full px-4 py-2 text-left text-white text-sm transition-all duration-300 hover:text-[#e91111]"
+                            style={{ textDecoration: "none" }}
+                            onClick={() => setAccountDropdownOpen(false)}
+                          >
+                            ADDRESS BOOK
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/account?section=rewards"
+                            className="block w-full px-4 py-2 text-left text-white text-sm transition-all duration-300 hover:text-[#e91111]"
+                            style={{ textDecoration: "none" }}
+                            onClick={() => setAccountDropdownOpen(false)}
+                          >
+                            REWARD POINTS
+                          </Link>
+                        </li>
+                        <li style={{ borderTop: "1px solid rgba(255,255,255,0.1)", marginTop: "4px", paddingTop: "4px" }}>
+                          <button
+                            onClick={() => {
+                              setAccountDropdownOpen(false);
+                              signOut();
+                            }}
+                            className="block w-full px-4 py-2 text-left text-white text-sm transition-all duration-300 hover:text-[#e91111] cursor-pointer"
+                            style={{ background: "none", border: "none" }}
+                          >
+                            LOGOUT
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </>
               ) : (
                 <button
                   onClick={isHydrated ? openModal : undefined}
-                  className="text-white uppercase hover:text-[#e91111] px-2 py-1 md:px-4 md:py-2 rounded md:rounded-lg flex items-center gap-1 md:gap-2 text-sm whitespace-nowrap group -mr-2 md:-mr-3 cursor-pointer"
+                  className="text-white uppercase hover:text-[#e91111] px-2 py-1 md:px-4 md:py-2 rounded md:rounded-lg flex items-center gap-1 md:gap-2 text-sm whitespace-nowrap group -mr-3 md:-mr-3 cursor-pointer"
                   style={{ 
                     textDecoration: "none",
                   }}
