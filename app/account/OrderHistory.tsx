@@ -219,31 +219,37 @@ export default function OrderHistory() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-8">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#e91111]"></div>
-        <span className="ml-3 text-neutral-300">Loading order history...</span>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-600"></div>
+        <span className="ml-3 text-gray-500">Loading order history...</span>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Error Message */}
       {error && (
-        <div className="bg-red-900/50 border border-red-600 rounded-lg p-4">
-          <p className="text-red-200">{error}</p>
+        <div 
+          className="rounded-xl p-4"
+          style={{
+            backgroundColor: "rgba(239, 68, 68, 0.1)",
+            border: "1px solid rgba(239, 68, 68, 0.3)"
+          }}
+        >
+          <p className="text-red-600">{error}</p>
         </div>
       )}
 
       {/* No Orders Message */}
       {orders.length === 0 && !loading ? (
-        <div className="bg-neutral-800 rounded-lg p-8 text-center">
-          <h3 className="text-lg font-semibold text-white mb-4">
+        <div className="rounded-xl p-6 bg-gray-50 text-center">
+          <h3 className="text-base font-semibold text-gray-900 mb-4">
             Order History
           </h3>
           <div className="space-y-4">
-            <div className="text-neutral-400 mb-6">
+            <div className="text-gray-400 mb-6">
               <svg
-                className="w-16 h-16 mx-auto mb-4 text-white"
+                className="w-16 h-16 mx-auto mb-4 text-gray-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -255,15 +261,21 @@ export default function OrderHistory() {
                   d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
                 />
               </svg>
-              <p className="text-lg text-neutral-300 mb-2">No orders yet</p>
-              <p className="text-neutral-400">
+              <p className="text-base text-gray-700 mb-2">No orders yet</p>
+              <p className="text-gray-500 text-sm">
                 You haven&apos;t placed any orders yet. Start shopping to see
                 your order history here.
               </p>
             </div>
             <button
               onClick={() => (window.location.href = "/categories")}
-              className="px-6 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium"
+              className="w-full px-4 py-2 text-white rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              style={{
+                background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
+                boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
+                minHeight: "44px",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+              }}
             >
               PLACE YOUR FIRST ORDER
             </button>
@@ -272,51 +284,52 @@ export default function OrderHistory() {
       ) : (
         <>
           {/* Orders List */}
-          <div className="bg-neutral-800 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-white mb-6">
+          <div className="rounded-xl p-4 bg-gray-50">
+            <h3 className="text-base font-semibold text-gray-900 mb-4">
               Order History
             </h3>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {orders.map((order) => (
                 <div
                   key={order.id}
-                  className="bg-neutral-700 rounded-lg overflow-hidden"
+                  className="rounded-xl overflow-hidden bg-white"
+                  style={{ border: "1px solid #e5e7eb" }}
                 >
                   {/* Order Header */}
-                  <div className="p-4">
-                    <div className="flex items-start justify-between mb-3">
+                  <div className="p-3">
+                    <div className="flex items-start justify-between mb-2">
                       <div className="flex-1">
                         <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3 mb-2">
-                          <h4 className="text-white font-medium text-lg">
+                          <h4 className="text-gray-900 font-medium text-base">
                             Order #{order.order_number}
                           </h4>
                           <span
-                            className={`px-3 py-1 text-white text-sm rounded-full w-fit ${statusColors[order.status]}`}
+                            className={`px-2 py-0.5 text-white text-xs rounded-full w-fit ${statusColors[order.status]}`}
                           >
                             {statusLabels[order.status]}
                           </span>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
                           <div>
-                            <span className="text-neutral-400">
+                            <span className="text-gray-500 text-xs">
                               Total Amount:
                             </span>
-                            <p className="text-white font-medium text-lg">
+                            <p className="text-gray-900 font-medium">
                               {formatPrice(order.total_amount, order.currency)}
                             </p>
                           </div>
                           <div>
-                            <span className="text-neutral-400">
+                            <span className="text-gray-500 text-xs">
                               Order Date:
                             </span>
-                            <p className="text-neutral-300">
+                            <p className="text-gray-700 text-sm">
                               {formatDate(order.created_at)}
                             </p>
                           </div>
                           <div>
-                            <span className="text-neutral-400">Status:</span>
-                            <p className="text-neutral-300">
+                            <span className="text-gray-500 text-xs">Status:</span>
+                            <p className="text-gray-700 text-sm">
                               {order.shipped_at &&
                                 "Shipped on " + formatDate(order.shipped_at)}
                               {order.delivered_at &&
@@ -338,15 +351,19 @@ export default function OrderHistory() {
                           }
                         }}
                         disabled={loadingDetails === order.id}
-                        className="px-4 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium disabled:opacity-50"
+                        className="px-3 py-1.5 text-white rounded-lg font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 text-sm"
+                        style={{
+                          background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
+                          boxShadow: "0 2px 8px rgba(45, 45, 52, 0.3)",
+                        }}
                       >
                         {loadingDetails === order.id ? (
                           <div className="flex items-center">
-                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                            <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-white mr-2"></div>
                             Loading...
                           </div>
                         ) : expandedOrder === order.id ? (
-                          "Hide Details"
+                          "Hide"
                         ) : (
                           "Details"
                         )}
@@ -356,14 +373,14 @@ export default function OrderHistory() {
 
                   {/* Order Details (Expanded) */}
                   {expandedOrder === order.id && order.items && (
-                    <div className="border-t border-neutral-600 bg-neutral-800/50">
-                      <div className="p-4">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div className="border-t border-gray-200 bg-gray-50">
+                      <div className="p-3">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                           {/* Order Items */}
                           <div>
-                            <h5 className="text-white font-medium mb-3 flex items-center">
+                            <h5 className="text-gray-900 font-medium mb-2 flex items-center text-sm">
                               <svg
-                                className="w-5 h-5 mr-2"
+                                className="w-4 h-4 mr-2"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -377,37 +394,38 @@ export default function OrderHistory() {
                               </svg>
                               Order Items ({order.items.length})
                             </h5>
-                            <div className="space-y-3">
+                            <div className="space-y-2">
                               {order.items.map((item) => (
                                 <div
                                   key={item.id}
-                                  className="flex items-start gap-3 bg-neutral-800 rounded-lg p-3"
+                                  className="flex items-start gap-2 bg-white rounded-lg p-2"
+                                  style={{ border: "1px solid #e5e7eb" }}
                                 >
                                   {item.product_image_url && (
                                     <img
                                       src={item.product_image_url}
                                       alt={item.product_name}
-                                      className="w-16 h-16 object-cover rounded-md"
+                                      className="w-12 h-12 object-cover rounded-md"
                                     />
                                   )}
                                   <div className="flex-1">
-                                    <h6 className="text-white font-medium">
+                                    <h6 className="text-gray-900 font-medium text-sm">
                                       {item.product_name}
                                     </h6>
                                     {item.product_variant && (
-                                      <p className="text-neutral-400 text-sm">
+                                      <p className="text-gray-500 text-xs">
                                         {item.product_variant}
                                       </p>
                                     )}
                                     <div className="flex items-center justify-between mt-1">
-                                      <span className="text-neutral-300 text-sm">
+                                      <span className="text-gray-500 text-xs">
                                         Qty: {item.quantity} ×{" "}
                                         {formatPrice(
                                           item.unit_price,
                                           order.currency,
                                         )}
                                       </span>
-                                      <span className="text-white font-medium">
+                                      <span className="text-gray-900 font-medium text-sm">
                                         {formatPrice(
                                           item.total_price,
                                           order.currency,
@@ -420,13 +438,13 @@ export default function OrderHistory() {
                             </div>
 
                             {/* Order Summary */}
-                            <div className="mt-4 bg-neutral-800 rounded-lg p-3">
+                            <div className="mt-3 bg-white rounded-lg p-3" style={{ border: "1px solid #e5e7eb" }}>
                               <div className="space-y-1 text-sm">
                                 <div className="flex justify-between">
-                                  <span className="text-neutral-400">
+                                  <span className="text-gray-500">
                                     Subtotal:
                                   </span>
-                                  <span className="text-neutral-300">
+                                  <span className="text-gray-700">
                                     {formatPrice(
                                       order.total_amount -
                                         order.shipping_cost -
@@ -438,10 +456,10 @@ export default function OrderHistory() {
                                 </div>
                                 {order.discount_amount > 0 && (
                                   <div className="flex justify-between">
-                                    <span className="text-neutral-400">
+                                    <span className="text-gray-500">
                                       Discount:
                                     </span>
-                                    <span className="text-green-400">
+                                    <span className="text-green-600">
                                       -
                                       {formatPrice(
                                         order.discount_amount,
@@ -451,10 +469,10 @@ export default function OrderHistory() {
                                   </div>
                                 )}
                                 <div className="flex justify-between">
-                                  <span className="text-neutral-400">
+                                  <span className="text-gray-500">
                                     Shipping:
                                   </span>
-                                  <span className="text-neutral-300">
+                                  <span className="text-gray-700">
                                     {formatPrice(
                                       order.shipping_cost,
                                       order.currency,
@@ -462,18 +480,18 @@ export default function OrderHistory() {
                                   </span>
                                 </div>
                                 <div className="flex justify-between">
-                                  <span className="text-neutral-400">Tax:</span>
-                                  <span className="text-neutral-300">
+                                  <span className="text-gray-500">Tax:</span>
+                                  <span className="text-gray-700">
                                     {formatPrice(
                                       order.tax_amount,
                                       order.currency,
                                     )}
                                   </span>
                                 </div>
-                                <div className="border-t border-neutral-600 pt-1 mt-1">
+                                <div className="border-t border-gray-200 pt-1 mt-1">
                                   <div className="flex justify-between font-medium">
-                                    <span className="text-white">Total:</span>
-                                    <span className="text-white text-lg">
+                                    <span className="text-gray-900">Total:</span>
+                                    <span className="text-gray-900 text-base">
                                       {formatPrice(
                                         order.total_amount,
                                         order.currency,
@@ -487,9 +505,9 @@ export default function OrderHistory() {
 
                           {/* Shipping Address */}
                           <div>
-                            <h5 className="text-white font-medium mb-3 flex items-center">
+                            <h5 className="text-gray-900 font-medium mb-3 flex items-center">
                               <svg
-                                className="w-5 h-5 mr-2"
+                                className="w-5 h-5 mr-2 text-gray-600"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -510,11 +528,11 @@ export default function OrderHistory() {
                               Shipping Address
                             </h5>
                             {order.shipping_address ? (
-                              <div className="bg-neutral-800 rounded-lg p-3">
-                                <h6 className="text-white font-medium">
+                              <div className="bg-white rounded-lg p-3" style={{ border: "1px solid #e5e7eb" }}>
+                                <h6 className="text-gray-900 font-medium">
                                   {order.shipping_address.full_name}
                                 </h6>
-                                <div className="text-neutral-300 text-sm mt-1 space-y-1">
+                                <div className="text-gray-600 text-sm mt-1 space-y-1">
                                   <p>
                                     {order.shipping_address.street}{" "}
                                     {order.shipping_address.house_number}
@@ -529,8 +547,8 @@ export default function OrderHistory() {
                                 </div>
                               </div>
                             ) : (
-                              <div className="bg-neutral-800 rounded-lg p-3">
-                                <p className="text-neutral-400 text-sm">
+                              <div className="bg-gray-50 rounded-lg p-3" style={{ border: "1px solid #e5e7eb" }}>
+                                <p className="text-gray-500 text-sm">
                                   No shipping address available
                                 </p>
                               </div>
@@ -539,21 +557,36 @@ export default function OrderHistory() {
                             {/* Order Actions */}
                             <div className="mt-4 space-y-2">
                               {order.status === "delivered" && (
-                                <button className="w-full px-4 py-2 bg-neutral-600 text-white rounded-md hover:bg-neutral-500 transition-colors duration-200 font-medium">
+                                <button 
+                                  className="w-full px-4 py-2 text-white rounded-xl font-medium transition-all duration-200"
+                                  style={{ 
+                                    background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
+                                    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                                    minHeight: "44px"
+                                  }}
+                                >
                                   Reorder Items
                                 </button>
                               )}
                               {["shipped", "delivered"].includes(
                                 order.status,
                               ) && (
-                                <button className="w-full px-4 py-2 bg-neutral-600 text-white rounded-md hover:bg-neutral-500 transition-colors duration-200 font-medium">
+                                <button 
+                                  className="w-full px-4 py-2 text-white rounded-xl font-medium transition-all duration-200"
+                                  style={{ 
+                                    background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
+                                    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                                    minHeight: "44px"
+                                  }}
+                                >
                                   Track Package
                                 </button>
                               )}
                               {order.status === "pending" && (
                                 <button
                                   onClick={() => cancelOrder(order.id)}
-                                  className="w-full px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-500 transition-colors duration-200 font-medium"
+                                  className="w-full px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-500 transition-colors duration-200 font-medium"
+                                  style={{ minHeight: "44px" }}
                                 >
                                   Cancel Order
                                 </button>

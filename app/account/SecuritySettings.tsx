@@ -148,59 +148,89 @@ export default function SecuritySettings() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Password Success Message */}
       {passwordSuccess && (
-        <div className="bg-green-900/50 border border-green-600 rounded-lg p-4">
-          <p className="text-green-200">{passwordSuccess}</p>
+        <div 
+          className="rounded-xl p-4"
+          style={{
+            backgroundColor: "rgba(34, 197, 94, 0.1)",
+            border: "1px solid rgba(34, 197, 94, 0.3)"
+          }}
+        >
+          <p className="text-green-700">{passwordSuccess}</p>
         </div>
       )}
 
       {/* Email Success Message */}
       {emailSuccess && (
-        <div className="bg-green-900/50 border border-green-600 rounded-lg p-4">
-          <p className="text-green-200">{emailSuccess}</p>
+        <div 
+          className="rounded-xl p-4"
+          style={{
+            backgroundColor: "rgba(34, 197, 94, 0.1)",
+            border: "1px solid rgba(34, 197, 94, 0.3)"
+          }}
+        >
+          <p className="text-green-700">{emailSuccess}</p>
         </div>
       )}
 
       {/* Password Error Message */}
       {passwordError && (
-        <div className="bg-red-900/50 border border-red-600 rounded-lg p-4">
-          <p className="text-red-200">{passwordError}</p>
+        <div 
+          className="rounded-xl p-4"
+          style={{
+            backgroundColor: "rgba(239, 68, 68, 0.1)",
+            border: "1px solid rgba(239, 68, 68, 0.3)"
+          }}
+        >
+          <p className="text-red-600">{passwordError}</p>
         </div>
       )}
 
       {/* Email Error Message */}
       {emailError && (
-        <div className="bg-red-900/50 border border-red-600 rounded-lg p-4">
-          <p className="text-red-200">{emailError}</p>
+        <div 
+          className="rounded-xl p-4"
+          style={{
+            backgroundColor: "rgba(239, 68, 68, 0.1)",
+            border: "1px solid rgba(239, 68, 68, 0.3)"
+          }}
+        >
+          <p className="text-red-600">{emailError}</p>
         </div>
       )}
 
       {/* Password Change Section */}
-      <div className="bg-neutral-800 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-white mb-4">
+      <div className="rounded-xl p-4 bg-gray-50">
+        <h3 className="text-base font-semibold text-gray-900 mb-3">
           Change Password
         </h3>
 
         {!isChangingPassword ? (
           <div className="space-y-4">
-            <p className="text-neutral-300">
+            <p className="text-gray-500 text-sm">
               Update your account password for enhanced security.
             </p>
             <button
               onClick={() => setIsChangingPassword(true)}
-              className="px-6 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium"
+              className="w-full px-4 py-2 text-white rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              style={{
+                background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
+                boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
+                minHeight: "44px",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+              }}
             >
               Change Password
             </button>
           </div>
         ) : (
-          <div className="space-y-4">
+          <div className="space-y-3">
             <div>
               <label
                 htmlFor="current-password"
-                className="block text-sm font-medium text-neutral-300 mb-2"
+                className="block text-sm font-medium text-gray-700 mb-1"
               >
                 Current Password
               </label>
@@ -209,15 +239,16 @@ export default function SecuritySettings() {
                 id="current-password"
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
-                className="w-full px-3 py-2 bg-neutral-700 border border-neutral-600 rounded-md text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#e91111] focus:border-[#e91111]"
+                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400"
                 placeholder="Enter your current password"
                 autoComplete="current-password"
+                style={{ minHeight: "44px" }}
               />
             </div>
             <div>
               <label
                 htmlFor="new-password"
-                className="block text-sm font-medium text-neutral-300 mb-2"
+                className="block text-sm font-medium text-gray-700 mb-1"
               >
                 New Password
               </label>
@@ -226,15 +257,16 @@ export default function SecuritySettings() {
                 id="new-password"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                className="w-full px-3 py-2 bg-neutral-700 border border-neutral-600 rounded-md text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#e91111] focus:border-[#e91111]"
+                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400"
                 placeholder="Enter your new password"
                 autoComplete="new-password"
+                style={{ minHeight: "44px" }}
               />
             </div>
             <div>
               <label
                 htmlFor="confirm-password"
-                className="block text-sm font-medium text-neutral-300 mb-2"
+                className="block text-sm font-medium text-gray-700 mb-1"
               >
                 Confirm New Password
               </label>
@@ -243,23 +275,31 @@ export default function SecuritySettings() {
                 id="confirm-password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full px-3 py-2 bg-neutral-700 border border-neutral-600 rounded-md text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#e91111] focus:border-[#e91111]"
+                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400"
                 placeholder="Confirm your new password"
                 autoComplete="new-password"
+                style={{ minHeight: "44px" }}
               />
             </div>
-            <div className="flex space-x-3">
+            <div className="flex space-x-3 pt-2">
               <button
                 onClick={handleChangePassword}
                 disabled={passwordSaving}
-                className="px-6 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 px-4 py-2 text-white rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{
+                  background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
+                  boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
+                  minHeight: "44px",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                }}
               >
                 {passwordSaving ? "Updating..." : "Update Password"}
               </button>
               <button
                 onClick={handleCancelPasswordChange}
                 disabled={passwordSaving}
-                className="px-6 py-2 bg-neutral-600 text-white rounded-md hover:bg-neutral-500 transition-colors duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-gray-200 text-gray-700 rounded-xl font-medium hover:bg-gray-300 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{ minHeight: "44px" }}
               >
                 Cancel
               </button>
@@ -269,42 +309,48 @@ export default function SecuritySettings() {
       </div>
 
       {/* Email Change Section */}
-      <div className="bg-neutral-800 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-white mb-4">
+      <div className="rounded-xl p-4 bg-gray-50">
+        <h3 className="text-base font-semibold text-gray-900 mb-3">
           Change Email Address
         </h3>
 
         {!isChangingEmail ? (
           <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-neutral-300 mb-1">
+            <div className="p-3 rounded-xl bg-white" style={{ border: "1px solid #e5e7eb" }}>
+              <label className="block text-sm font-medium text-gray-500 mb-1">
                 Current Email
               </label>
-              <p className="text-white">{user?.email}</p>
+              <p className="text-gray-900">{user?.email}</p>
             </div>
-            <p className="text-neutral-300">
+            <p className="text-gray-500 text-sm">
               Update your email address. You&apos;ll need to verify the new
               email.
             </p>
             <button
               onClick={() => setIsChangingEmail(true)}
-              className="px-6 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium"
+              className="w-full px-4 py-2 text-white rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              style={{
+                background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
+                boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
+                minHeight: "44px",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+              }}
             >
               Change Email
             </button>
           </div>
         ) : (
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-neutral-300 mb-1">
+          <div className="space-y-3">
+            <div className="p-3 rounded-xl bg-white" style={{ border: "1px solid #e5e7eb" }}>
+              <label className="block text-sm font-medium text-gray-500 mb-1">
                 Current Email
               </label>
-              <p className="text-neutral-400">{user?.email}</p>
+              <p className="text-gray-600">{user?.email}</p>
             </div>
             <div>
               <label
                 htmlFor="new-email"
-                className="block text-sm font-medium text-neutral-300 mb-2"
+                className="block text-sm font-medium text-gray-700 mb-1"
               >
                 New Email Address
               </label>
@@ -313,15 +359,16 @@ export default function SecuritySettings() {
                 id="new-email"
                 value={newEmail}
                 onChange={(e) => setNewEmail(e.target.value)}
-                className="w-full px-3 py-2 bg-neutral-700 border border-neutral-600 rounded-md text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#e91111] focus:border-[#e91111]"
+                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400"
                 placeholder="Enter your new email address"
                 autoComplete="email"
+                style={{ minHeight: "44px" }}
               />
             </div>
             <div>
               <label
                 htmlFor="email-password"
-                className="block text-sm font-medium text-neutral-300 mb-2"
+                className="block text-sm font-medium text-gray-700 mb-1"
               >
                 Confirm with Password
               </label>
@@ -330,23 +377,31 @@ export default function SecuritySettings() {
                 id="email-password"
                 value={emailPassword}
                 onChange={(e) => setEmailPassword(e.target.value)}
-                className="w-full px-3 py-2 bg-neutral-700 border border-neutral-600 rounded-md text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#e91111] focus:border-[#e91111]"
+                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400"
                 placeholder="Enter your current password"
                 autoComplete="current-password"
+                style={{ minHeight: "44px" }}
               />
             </div>
-            <div className="flex space-x-3">
+            <div className="flex space-x-3 pt-2">
               <button
                 onClick={handleChangeEmail}
                 disabled={emailSaving}
-                className="px-6 py-2 bg-[#e91111] text-white rounded-md hover:bg-[#d10f0f] transition-colors duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 px-4 py-2 text-white rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{
+                  background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
+                  boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
+                  minHeight: "44px",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                }}
               >
                 {emailSaving ? "Updating..." : "Update Email"}
               </button>
               <button
                 onClick={handleCancelEmailChange}
                 disabled={emailSaving}
-                className="px-6 py-2 bg-neutral-600 text-white rounded-md hover:bg-neutral-500 transition-colors duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-gray-200 text-gray-700 rounded-xl font-medium hover:bg-gray-300 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{ minHeight: "44px" }}
               >
                 Cancel
               </button>

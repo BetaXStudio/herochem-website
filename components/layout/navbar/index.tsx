@@ -754,7 +754,13 @@ export function Navbar() {
                             href="/account?section=profile"
                             className="block w-full px-4 py-2 text-left text-white text-sm transition-all duration-300 hover:text-[#e91111]"
                             style={{ textDecoration: "none" }}
-                            onClick={() => setAccountDropdownOpen(false)}
+                            onClick={() => {
+                              setAccountDropdownOpen(false);
+                              const mobileScrollContainer = document.querySelector('[data-mobile-scroll-container]') as HTMLElement;
+                              if (mobileScrollContainer) {
+                                mobileScrollContainer.scrollTo({ top: 0, behavior: "instant" });
+                              }
+                            }}
                           >
                             PROFILE SETTINGS
                           </Link>
@@ -764,7 +770,13 @@ export function Navbar() {
                             href="/account?section=security"
                             className="block w-full px-4 py-2 text-left text-white text-sm transition-all duration-300 hover:text-[#e91111]"
                             style={{ textDecoration: "none" }}
-                            onClick={() => setAccountDropdownOpen(false)}
+                            onClick={() => {
+                              setAccountDropdownOpen(false);
+                              const mobileScrollContainer = document.querySelector('[data-mobile-scroll-container]') as HTMLElement;
+                              if (mobileScrollContainer) {
+                                mobileScrollContainer.scrollTo({ top: 0, behavior: "instant" });
+                              }
+                            }}
                           >
                             SECURITY SETTINGS
                           </Link>
@@ -774,7 +786,13 @@ export function Navbar() {
                             href="/account?section=orders"
                             className="block w-full px-4 py-2 text-left text-white text-sm transition-all duration-300 hover:text-[#e91111]"
                             style={{ textDecoration: "none" }}
-                            onClick={() => setAccountDropdownOpen(false)}
+                            onClick={() => {
+                              setAccountDropdownOpen(false);
+                              const mobileScrollContainer = document.querySelector('[data-mobile-scroll-container]') as HTMLElement;
+                              if (mobileScrollContainer) {
+                                mobileScrollContainer.scrollTo({ top: 0, behavior: "instant" });
+                              }
+                            }}
                           >
                             ORDER HISTORY
                           </Link>
@@ -784,7 +802,13 @@ export function Navbar() {
                             href="/account?section=addresses"
                             className="block w-full px-4 py-2 text-left text-white text-sm transition-all duration-300 hover:text-[#e91111]"
                             style={{ textDecoration: "none" }}
-                            onClick={() => setAccountDropdownOpen(false)}
+                            onClick={() => {
+                              setAccountDropdownOpen(false);
+                              const mobileScrollContainer = document.querySelector('[data-mobile-scroll-container]') as HTMLElement;
+                              if (mobileScrollContainer) {
+                                mobileScrollContainer.scrollTo({ top: 0, behavior: "instant" });
+                              }
+                            }}
                           >
                             ADDRESS BOOK
                           </Link>
@@ -794,7 +818,13 @@ export function Navbar() {
                             href="/account?section=rewards"
                             className="block w-full px-4 py-2 text-left text-white text-sm transition-all duration-300 hover:text-[#e91111]"
                             style={{ textDecoration: "none" }}
-                            onClick={() => setAccountDropdownOpen(false)}
+                            onClick={() => {
+                              setAccountDropdownOpen(false);
+                              const mobileScrollContainer = document.querySelector('[data-mobile-scroll-container]') as HTMLElement;
+                              if (mobileScrollContainer) {
+                                mobileScrollContainer.scrollTo({ top: 0, behavior: "instant" });
+                              }
+                            }}
                           >
                             REWARD POINTS
                           </Link>
