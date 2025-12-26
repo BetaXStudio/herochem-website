@@ -102,42 +102,16 @@ const SORTING_OPTIONS = [
 
 // ASTERA Loading Screen Component - Simple layer approach with fullscreen
 const AsteraLoadingScreen = ({ isVisible }: { isVisible: boolean }) => {
-  // Handle fullscreen for mobile loading
-  useEffect(() => {
-    const isMobile = window.innerWidth <= 768;
-
-    if (isVisible && isMobile) {
-      // Enter fullscreen mode on mobile
-      if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen().catch((err) => {
-          console.log("Fullscreen failed:", err);
-        });
-      } else if ((document.documentElement as any).webkitRequestFullscreen) {
-        (document.documentElement as any).webkitRequestFullscreen();
-      }
-    } else if (!isVisible && document.fullscreenElement) {
-      // Exit fullscreen when loading is done
-      if (document.exitFullscreen) {
-        document.exitFullscreen().catch((err) => {
-          console.log("Exit fullscreen failed:", err);
-        });
-      } else if ((document as any).webkitExitFullscreen) {
-        (document as any).webkitExitFullscreen();
-      }
-    }
-  }, [isVisible]);
-
   if (!isVisible) return null;
 
   return (
     <>
-      {/* Full screen black layer - simple and effective */}
+      {/* Full screen white layer */}
       <div
         className="fixed inset-0 transition-opacity duration-300 opacity-100"
         style={{
-          backgroundColor: "#000000",
+          backgroundColor: "#ffffff",
           zIndex: 9998,
-          // Ensure coverage in fullscreen mode
           width: "100vw",
           height: "100vh",
         }}
@@ -147,11 +121,8 @@ const AsteraLoadingScreen = ({ isVisible }: { isVisible: boolean }) => {
       <div
         className="fixed inset-0 flex items-center justify-center transition-opacity duration-300 opacity-100"
         style={{
-          backgroundColor: "rgba(0, 0, 0, 0.8)",
-          backdropFilter: "blur(4px)",
-          WebkitBackdropFilter: "blur(4px)",
+          backgroundColor: "#ffffff",
           zIndex: 9999,
-          // Ensure coverage in fullscreen mode
           width: "100vw",
           height: "100vh",
         }}
@@ -159,32 +130,32 @@ const AsteraLoadingScreen = ({ isVisible }: { isVisible: boolean }) => {
         <div className="flex flex-col items-center gap-4 relative z-10">
           {/* Main spinner */}
           <div
-            className="animate-spin rounded-full h-16 w-16 border-4 border-gray-300"
+            className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200"
             style={{
               borderTopColor: "#2d2d34",
             }}
           ></div>
 
           {/* Loading text */}
-          <div className="text-white text-lg font-medium">Loading...</div>
+          <div className="text-gray-900 text-lg font-medium">Loading...</div>
 
           {/* Loading dots animation */}
           <div className="flex space-x-1">
             <div
               className="w-2 h-2 rounded-full animate-bounce"
-              style={{ backgroundColor: "white" }}
+              style={{ backgroundColor: "#2d2d34" }}
             ></div>
             <div
               className="w-2 h-2 rounded-full animate-bounce"
               style={{
-                backgroundColor: "white",
+                backgroundColor: "#2d2d34",
                 animationDelay: "0.1s",
               }}
             ></div>
             <div
               className="w-2 h-2 rounded-full animate-bounce"
               style={{
-                backgroundColor: "white",
+                backgroundColor: "#2d2d34",
                 animationDelay: "0.2s",
               }}
             ></div>
@@ -195,42 +166,17 @@ const AsteraLoadingScreen = ({ isVisible }: { isVisible: boolean }) => {
   );
 };
 
-// DEUS Loading Screen Component - Simple layer approach with fullscreen
+// DEUS Loading Screen Component - Simple layer approach
 const DeusLoadingScreen = ({ isVisible }: { isVisible: boolean }) => {
-  // Handle fullscreen for mobile loading
-  useEffect(() => {
-    const isMobile = window.innerWidth <= 768;
-
-    if (isVisible && isMobile) {
-      // Enter fullscreen mode on mobile
-      if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen().catch((err) => {
-          console.log("Fullscreen failed:", err);
-        });
-      } else if ((document.documentElement as any).webkitRequestFullscreen) {
-        (document.documentElement as any).webkitRequestFullscreen();
-      }
-    } else if (!isVisible && document.fullscreenElement) {
-      // Exit fullscreen when loading is done
-      if (document.exitFullscreen) {
-        document.exitFullscreen().catch((err) => {
-          console.log("Exit fullscreen failed:", err);
-        });
-      } else if ((document as any).webkitExitFullscreen) {
-        (document as any).webkitExitFullscreen();
-      }
-    }
-  }, [isVisible]);
-
   if (!isVisible) return null;
 
   return (
     <>
-      {/* Full screen black layer - simple and effective */}
+      {/* Full screen white layer */}
       <div
         className="fixed inset-0 transition-opacity duration-300 opacity-100"
         style={{
-          backgroundColor: "#000000",
+          backgroundColor: "#ffffff",
           zIndex: 9998,
           width: "100vw",
           height: "100vh",
@@ -241,9 +187,7 @@ const DeusLoadingScreen = ({ isVisible }: { isVisible: boolean }) => {
       <div
         className="fixed inset-0 flex items-center justify-center transition-opacity duration-300 opacity-100"
         style={{
-          backgroundColor: "rgba(0, 0, 0, 0.8)",
-          backdropFilter: "blur(4px)",
-          WebkitBackdropFilter: "blur(4px)",
+          backgroundColor: "#ffffff",
           zIndex: 9999,
           width: "100vw",
           height: "100vh",
@@ -252,28 +196,28 @@ const DeusLoadingScreen = ({ isVisible }: { isVisible: boolean }) => {
         <div className="flex flex-col items-center gap-4 relative z-10">
           {/* Main spinner */}
           <div
-            className="animate-spin rounded-full h-16 w-16 border-4 border-gray-300"
+            className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200"
             style={{
               borderTopColor: "#2d2d34",
             }}
           ></div>
 
           {/* Loading text */}
-          <div className="text-white text-lg font-medium">Loading...</div>
+          <div className="text-gray-900 text-lg font-medium">Loading...</div>
 
           {/* Loading dots animation */}
           <div className="flex space-x-1">
             <div
               className="w-2 h-2 rounded-full animate-bounce"
-              style={{ backgroundColor: "white" }}
+              style={{ backgroundColor: "#2d2d34" }}
             ></div>
             <div
               className="w-2 h-2 rounded-full animate-bounce"
-              style={{ backgroundColor: "white", animationDelay: "0.1s" }}
+              style={{ backgroundColor: "#2d2d34", animationDelay: "0.1s" }}
             ></div>
             <div
               className="w-2 h-2 rounded-full animate-bounce"
-              style={{ backgroundColor: "white", animationDelay: "0.2s" }}
+              style={{ backgroundColor: "#2d2d34", animationDelay: "0.2s" }}
             ></div>
           </div>
         </div>
@@ -342,7 +286,47 @@ const categoryContent: Record<CategoryLabel, string> = {
 
 export default function CategoriesPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={
+      <div
+        className="flex min-h-screen items-center justify-center bg-white"
+        style={{ marginTop: "-80px" }}
+      >
+        <div className="flex flex-col items-center gap-4">
+          {/* Main spinner */}
+          <div
+            className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200"
+            style={{
+              borderTopColor: "#2d2d34",
+            }}
+          ></div>
+
+          {/* Loading text */}
+          <div className="text-gray-900 text-lg font-medium">Loading...</div>
+
+          {/* Loading dots animation */}
+          <div className="flex space-x-1">
+            <div
+              className="w-2 h-2 rounded-full animate-bounce"
+              style={{ backgroundColor: "#2d2d34" }}
+            ></div>
+            <div
+              className="w-2 h-2 rounded-full animate-bounce"
+              style={{
+                backgroundColor: "#2d2d34",
+                animationDelay: "0.1s",
+              }}
+            ></div>
+            <div
+              className="w-2 h-2 rounded-full animate-bounce"
+              style={{
+                backgroundColor: "#2d2d34",
+                animationDelay: "0.2s",
+              }}
+            ></div>
+          </div>
+        </div>
+      </div>
+    }>
       <CategoriesContentMemo />
     </Suspense>
   );
@@ -1059,7 +1043,40 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
           className="flex min-h-screen items-center justify-center bg-white"
           style={{ marginTop: "-80px" }}
         >
-          <div className="text-gray-900 text-lg">Loading...</div>
+          <div className="flex flex-col items-center gap-4">
+            {/* Main spinner */}
+            <div
+              className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200"
+              style={{
+                borderTopColor: "#2d2d34",
+              }}
+            ></div>
+
+            {/* Loading text */}
+            <div className="text-gray-900 text-lg font-medium">Loading...</div>
+
+            {/* Loading dots animation */}
+            <div className="flex space-x-1">
+              <div
+                className="w-2 h-2 rounded-full animate-bounce"
+                style={{ backgroundColor: "#2d2d34" }}
+              ></div>
+              <div
+                className="w-2 h-2 rounded-full animate-bounce"
+                style={{
+                  backgroundColor: "#2d2d34",
+                  animationDelay: "0.1s",
+                }}
+              ></div>
+              <div
+                className="w-2 h-2 rounded-full animate-bounce"
+                style={{
+                  backgroundColor: "#2d2d34",
+                  animationDelay: "0.2s",
+                }}
+              ></div>
+            </div>
+          </div>
         </div>
       ) : (
         <div
@@ -1510,9 +1527,141 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                     <div className="mb-6 ml-1">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
-                          {/* Filter Button - nur anzeigen wenn Filter verfügbar sind */}
+                          {/* Brand Filter Button - Mobile only */}
+                          <div className="relative dropdown-container md:hidden">
+                            <button
+                              onClick={toggleFilterDropdown}
+                              className="flex items-center gap-1 rounded-md px-1.5 py-1 text-xs transition-colors duration-300"
+                              style={{
+                                color: "#2d2d34",
+                                background: "rgba(255, 255, 255, 0.9)",
+                                backdropFilter: "blur(16px)",
+                                border: "1px solid #2d2d34",
+                                ...STATIC_STYLES.button,
+                              }}
+                            >
+                              <svg
+                                className="w-3 h-3 object-contain"
+                                fill="none"
+                                stroke="#2d2d34"
+                                viewBox="0 0 24 24"
+                                style={{
+                                  transform: "translateZ(0)",
+                                }}
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+                                />
+                              </svg>
+                              <span>Brand</span>
+                              <svg
+                                className={`w-3 h-3 transition-transform ${isFilterOpen ? "rotate-180" : ""}`}
+                                fill="none"
+                                stroke="#2d2d34"
+                                viewBox="0 0 24 24"
+                                style={{ transform: "translateZ(0)" }}
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M19 9l-7 7-7-7"
+                                />
+                              </svg>
+                            </button>
+
+                            {/* Brand Dropdown */}
+                            <div
+                              className="absolute top-full left-0 rounded-md z-10"
+                              style={{
+                                width: "152px",
+                                marginTop: "5pt",
+                                background: "rgba(249, 250, 251, 1)",
+                                backdropFilter: "blur(20px)",
+                                contain: "layout style paint",
+                                backfaceVisibility: "hidden",
+                                opacity: isFilterOpen ? 1 : 0,
+                                transform: isFilterOpen ? "translateY(0)" : "translateY(-10px)",
+                                pointerEvents: isFilterOpen ? "auto" : "none",
+                                willChange: "transform, opacity",
+                                transition: isFilterOpen 
+                                  ? "opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease"
+                                  : "opacity 0.1s ease, transform 0.3s ease 0.1s, box-shadow 0.1s ease, border-color 0.1s ease",
+                                boxShadow: isFilterOpen ? "0 20px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)" : "0 20px 40px rgba(0,0,0,0)",
+                                borderWidth: "1px",
+                                borderStyle: "solid",
+                                borderColor: isFilterOpen ? "#2d2d34" : "rgba(45, 45, 52, 0)",
+                              }}
+                            >
+                              {isFilterOpen && (
+                                <div className="py-3">
+                                  <button
+                                    onClick={() => {
+                                      handleBrandSelection("deus");
+                                      setIsFilterOpen(false);
+                                    }}
+                                    className="flex items-center justify-center gap-2 px-6 py-3 w-full uppercase text-center text-gray-900 brand-aware-filter-button-hover"
+                                    style={{
+                                      textDecoration: "none",
+                                      borderRadius: 0,
+                                      fontWeight: "500",
+                                      fontSize: "8.4px",
+                                      letterSpacing: "0.5px",
+                                      transition:
+                                        "color 0.15s ease",
+                                      transform: "translateZ(0)",
+                                    }}
+                                  >
+                                    <span>DEUS MEDICAL</span>
+                                    <span 
+                                      className="rounded-full"
+                                      style={{ 
+                                        backgroundColor: "#e91111",
+                                        width: "8px",
+                                        height: "8px",
+                                        opacity: selectedBrand === "deus" ? 1 : 0,
+                                      }}
+                                    />
+                                  </button>
+                                  <button
+                                    onClick={() => {
+                                      handleBrandSelection("astera");
+                                      setIsFilterOpen(false);
+                                    }}
+                                    className="flex items-center justify-center gap-2 px-6 py-3 w-full uppercase text-center text-gray-900 brand-aware-filter-button-hover"
+                                    style={{
+                                      textDecoration: "none",
+                                      borderRadius: 0,
+                                      fontWeight: "500",
+                                      fontSize: "8.4px",
+                                      letterSpacing: "0.5px",
+                                      transition:
+                                        "color 0.15s ease",
+                                      transform: "translateZ(0)",
+                                    }}
+                                  >
+                                    <span>ASTERA LABS</span>
+                                    <span 
+                                      className="rounded-full"
+                                      style={{ 
+                                        backgroundColor: "#d67f3f",
+                                        width: "8px",
+                                        height: "8px",
+                                        opacity: selectedBrand === "astera" ? 1 : 0,
+                                      }}
+                                    />
+                                  </button>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Filter Button - Desktop only, nur anzeigen wenn Filter verfügbar sind */}
                           {availableFilters.length > 0 && (
-                            <div className="relative dropdown-container">
+                            <div className="relative dropdown-container hidden md:block">
                               <button
                                 onClick={toggleFilterDropdown}
                                 className="flex items-center gap-1 rounded-md px-1.5 py-1 text-xs transition-colors duration-300"
@@ -1559,8 +1708,9 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
 
                               {/* Filter Dropdown */}
                               <div
-                                className="absolute top-full left-0 w-48 rounded-md z-10"
+                                className="absolute top-full left-0 rounded-md z-10"
                                 style={{
+                                  width: "152px",
                                   marginTop: "5pt",
                                   background: "rgba(249, 250, 251, 1)",
                                   backdropFilter: "blur(20px)",
@@ -1657,8 +1807,9 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
 
                             {/* Sorting Dropdown */}
                             <div
-                              className="absolute top-full left-0 w-48 rounded-md z-10"
+                              className="absolute top-full left-0 rounded-md z-10"
                               style={{
+                                width: "152px",
                                 marginTop: "5pt",
                                 background: "rgba(249, 250, 251, 1)",
                                 backdropFilter: "blur(20px)",
@@ -1760,8 +1911,9 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
 
                             {/* Brand Dropdown */}
                             <div
-                              className="absolute top-full left-0 w-48 rounded-md z-10"
+                              className="absolute top-full left-0 rounded-md z-10"
                               style={{
+                                width: "152px",
                                 marginTop: "5pt",
                                 background: "rgba(249, 250, 251, 1)",
                                 backdropFilter: "blur(20px)",
@@ -1784,29 +1936,10 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                                 <div className="py-3">
                                   <button
                                     onClick={() => {
-                                      handleBrandSelection(null);
-                                      setIsBrandFilterDropdownOpen(false);
-                                    }}
-                                    className="block px-6 py-3 w-full uppercase text-center text-gray-900 brand-aware-filter-button-hover"
-                                    style={{
-                                      textDecoration: "none",
-                                      borderRadius: 0,
-                                      fontWeight: "500",
-                                      fontSize: "8.4px",
-                                      letterSpacing: "0.5px",
-                                      transition:
-                                        "color 0.15s ease",
-                                      transform: "translateZ(0)",
-                                    }}
-                                  >
-                                    ALL BRANDS
-                                  </button>
-                                  <button
-                                    onClick={() => {
                                       handleBrandSelection("deus");
                                       setIsBrandFilterDropdownOpen(false);
                                     }}
-                                    className="block px-6 py-3 w-full uppercase text-center text-gray-900 brand-aware-filter-button-hover"
+                                    className="flex items-center justify-center gap-2 px-6 py-3 w-full uppercase text-center text-gray-900 brand-aware-filter-button-hover"
                                     style={{
                                       textDecoration: "none",
                                       borderRadius: 0,
@@ -1818,14 +1951,23 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                                       transform: "translateZ(0)",
                                     }}
                                   >
-                                    DEUS MEDICAL
+                                    <span>DEUS MEDICAL</span>
+                                    <span 
+                                      className="rounded-full"
+                                      style={{ 
+                                        backgroundColor: "#e91111",
+                                        width: "8px",
+                                        height: "8px",
+                                        opacity: selectedBrand === "deus" ? 1 : 0,
+                                      }}
+                                    />
                                   </button>
                                   <button
                                     onClick={() => {
                                       handleBrandSelection("astera");
                                       setIsBrandFilterDropdownOpen(false);
                                     }}
-                                    className="block px-6 py-3 w-full uppercase text-center text-gray-900 brand-aware-filter-button-hover"
+                                    className="flex items-center justify-center gap-2 px-6 py-3 w-full uppercase text-center text-gray-900 brand-aware-filter-button-hover"
                                     style={{
                                       textDecoration: "none",
                                       borderRadius: 0,
@@ -1837,7 +1979,16 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                                       transform: "translateZ(0)",
                                     }}
                                   >
-                                    ASTERA LABS
+                                    <span>ASTERA LABS</span>
+                                    <span 
+                                      className="rounded-full"
+                                      style={{ 
+                                        backgroundColor: "#d67f3f",
+                                        width: "8px",
+                                        height: "8px",
+                                        opacity: selectedBrand === "astera" ? 1 : 0,
+                                      }}
+                                    />
                                   </button>
                                 </div>
                               )}
@@ -1899,8 +2050,9 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
 
                             {/* Category Dropdown */}
                             <div
-                              className="absolute top-full left-0 w-48 rounded-md z-10"
+                              className="absolute top-full left-0 rounded-md z-10"
                               style={{
+                                width: "152px",
                                 marginTop: "5pt",
                                 background: "rgba(249, 250, 251, 1)",
                                 backdropFilter: "blur(20px)",
@@ -2076,15 +2228,40 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                           {/* Filter Indicator - anzeigen wenn ein Filter ausgewählt ist */}
                           {selectedFilter && (
                             <div className="flex items-center gap-2 text-sm" style={{ color: "#2d2d34" }}>
-                              <img
-                                src="/filter.png"
-                                alt="Active Filter"
-                                className="w-5 h-5 object-contain"
+                              {/* Mobile Icon */}
+                              <svg
+                                className="w-3 h-3 object-contain md:hidden"
+                                fill="none"
+                                stroke="#2d2d34"
+                                viewBox="0 0 24 24"
                                 style={{
-                                  filter: "brightness(0) saturate(0%)",
-                                  opacity: 1,
+                                  transform: "translateZ(0)",
                                 }}
-                              />
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+                                />
+                              </svg>
+                              {/* Desktop Icon */}
+                              <svg
+                                className="hidden md:block w-4 h-4 object-contain"
+                                fill="none"
+                                stroke="#2d2d34"
+                                viewBox="0 0 24 24"
+                                style={{
+                                  transform: "translateZ(0)",
+                                }}
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+                                />
+                              </svg>
                               <span style={{ color: "#2d2d34" }}>
                                 {selectedFilter}
                               </span>
