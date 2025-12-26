@@ -821,17 +821,19 @@ export default function CheckoutModal({
                           ))}
                         </div>
 
-                        <button
+                        <div
                           onClick={() => setShowAddAddressForm(true)}
-                          className="w-full px-4 py-2 rounded-xl font-medium transition-colors"
+                          role="button"
+                          tabIndex={0}
+                          className="w-full px-4 py-2 rounded-xl font-medium transition-colors cursor-pointer flex items-center justify-center"
                           style={{
                             backgroundColor: "rgba(45, 45, 52, 0.1)",
-                            border: "1px solid rgba(45, 45, 52, 0.2)",
-                            color: "rgb(45, 45, 52)"
+                            color: "rgb(45, 45, 52)",
+                            minHeight: "44px",
                           }}
                         >
                           Add New Address
-                        </button>
+                        </div>
                       </div>
                     )}
 
@@ -1001,17 +1003,19 @@ export default function CheckoutModal({
                             >
                               {loading ? "Adding..." : "Save"}
                             </button>
-                            <button
+                            <div
                               onClick={() => setShowAddAddressForm(false)}
-                              className="flex-1 px-4 py-2 rounded-xl font-medium transition-colors"
+                              role="button"
+                              tabIndex={0}
+                              className="flex-1 px-4 py-2 rounded-xl font-medium transition-colors cursor-pointer flex items-center justify-center"
                               style={{
                                 backgroundColor: "rgba(45, 45, 52, 0.1)",
-                                border: "1px solid rgba(45, 45, 52, 0.2)",
-                                color: "rgb(45, 45, 52)"
+                                color: "rgb(45, 45, 52)",
+                                minHeight: "44px",
                               }}
                             >
                               Cancel
-                            </button>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -1165,17 +1169,19 @@ export default function CheckoutModal({
                     {!appliedCoupon ? (
                       <>
                         {!showCouponForm ? (
-                          <button
+                          <div
                             onClick={() => setShowCouponForm(true)}
-                            className="w-full px-4 py-2 rounded-xl transition-colors duration-200 font-medium"
+                            role="button"
+                            tabIndex={0}
+                            className="w-full px-4 py-2 rounded-xl font-medium transition-colors cursor-pointer flex items-center justify-center"
                             style={{
                               backgroundColor: "rgba(45, 45, 52, 0.1)",
-                              border: "1px solid rgba(45, 45, 52, 0.2)",
-                              color: "rgb(45, 45, 52)"
+                              color: "rgb(45, 45, 52)",
+                              minHeight: "44px",
                             }}
                           >
                             Use Coupon Code
-                          </button>
+                          </div>
                         ) : (
                           <div className="space-y-4">
                             <h4 className="text-gray-900 font-medium">
@@ -1220,17 +1226,19 @@ export default function CheckoutModal({
                                 >
                                   Use Code
                                 </button>
-                                <button
+                                <div
                                   onClick={handleCancelCoupon}
-                                  className="flex-1 px-4 py-2 rounded-xl transition-colors duration-200 font-medium"
+                                  role="button"
+                                  tabIndex={0}
+                                  className="flex-1 px-4 py-2 rounded-xl font-medium transition-colors cursor-pointer flex items-center justify-center"
                                   style={{
                                     backgroundColor: "rgba(45, 45, 52, 0.1)",
-                                    border: "1px solid rgba(45, 45, 52, 0.2)",
-                                    color: "rgb(45, 45, 52)"
+                                    color: "rgb(45, 45, 52)",
+                                    minHeight: "44px",
                                   }}
                                 >
                                   Cancel
-                                </button>
+                                </div>
                               </div>
                             </div>
                           </div>

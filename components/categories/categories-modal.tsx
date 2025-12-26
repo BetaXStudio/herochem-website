@@ -377,6 +377,16 @@ export default function CategoriesModal({
                         </div>
                         <ChevronRightIcon className="w-3.5 h-3.5 text-white flex-shrink-0" />
                       </Link>
+                      {/* Separator line after CATEGORIES button */}
+                      <div 
+                        
+                        style={{
+                          marginTop: "12px",
+                          marginBottom: "18px",
+                          height: "1px",
+                          backgroundColor: "rgba(255, 255, 255, 0.1)",
+                        }}
+                      />
                     </li>
                   );
                 }
@@ -390,7 +400,7 @@ export default function CategoriesModal({
         <div 
           className="absolute left-0 right-0 flex justify-center items-center pt-6 pb-3 transition-all duration-300" 
           style={{ 
-            top: "524px",
+            top: "480px",
             opacity: isDropdownOpen ? 0 : 1,
             pointerEvents: isDropdownOpen ? "none" : "auto"
           }}

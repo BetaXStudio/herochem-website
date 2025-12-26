@@ -12,6 +12,27 @@ const WelcomeModalContext = createContext<WelcomeModalContextType | undefined>(
   undefined,
 );
 
+// Helper function to set a cookie with expiration
+const setCookie = (name: string, value: string, hours: number) => {
+  const date = new Date();
+  date.setTime(date.getTime() + hours * 60 * 60 * 1000);
+  const expires = `expires=${date.toUTCString()}`;
+  document.cookie = `${name}=${value};${expires};path=/`;
+};
+
+// Helper function to get a cookie
+const getCookie = (name: string): string | null => {
+  const nameEQ = `${name}=`;
+  const cookies = document.cookie.split(";");
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i]?.trim();
+    if (cookie && cookie.indexOf(nameEQ) === 0) {
+      return cookie.substring(nameEQ.length, cookie.length);
+    }
+  }
+  return null;
+};
+
 export function WelcomeModalProvider({
   children,
 }: {
@@ -28,13 +49,14 @@ export function WelcomeModalProvider({
 
   const closeModal = (dontShowAgain = false) => {
     setIsOpen(false);
-    // Only mark as permanently hidden if user checked "don't show again"
+    // Only mark as hidden for 24 hours if user checked "don't show again"
     if (dontShowAgain) {
       try {
-        localStorage.setItem("herochem-welcome-shown", "true");
+        // Set cookie that expires in 24 hours
+        setCookie("herochem-welcome-hidden", "true", 24);
       } catch (error) {
-        // In case localStorage is not available
-        console.log("Storage not available");
+        // In case cookies are not available
+        console.log("Cookies not available");
       }
     }
   };
@@ -52,17 +74,18 @@ export function WelcomeModalProvider({
     // Only run on client side and after a small delay to ensure everything is loaded
     const timer = setTimeout(() => {
       try {
-        const hasSeenWelcome = localStorage.getItem("herochem-welcome-shown");
+        // Check if user has hidden the modal within the last 24 hours
+        const isHidden = getCookie("herochem-welcome-hidden");
 
-        // Show always unless user has permanently disabled it
-        if (!hasSeenWelcome) {
+        // Show the modal unless user has hidden it (cookie still valid)
+        if (!isHidden) {
           setIsOpen(true);
         }
       } catch (error) {
-        // In case localStorage is not available, show the modal
+        // In case cookies are not available, show the modal
         setIsOpen(true);
       }
-    }, 1500); // 1.5 second delay after page load
+    }, 1000); // 1 second delay after page load
 
     return () => clearTimeout(timer);
   }, [pathname, isClient]);

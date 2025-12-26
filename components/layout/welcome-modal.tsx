@@ -13,7 +13,7 @@ export default function WelcomeModal({
   isOpen,
   onCloseAction,
 }: WelcomeModalProps) {
-  const [dontShowAgain, setDontShowAgain] = useState(false);
+  const [dontShowAgain, setDontShowAgain] = useState(true);
   const [isClient, setIsClient] = useState(false);
   const { setWelcomeModalOpen } = useModal();
 
@@ -195,11 +195,14 @@ export default function WelcomeModal({
                     id="dontShowAgain"
                     checked={dontShowAgain}
                     onChange={(e) => setDontShowAgain(e.target.checked)}
-                    className="w-4 h-4 text-[#e91111] bg-gray-100 border-gray-300 rounded focus:ring-[#e91111] focus:ring-2"
+                    className="w-4 h-4 rounded cursor-pointer"
+                    style={{ 
+                      accentColor: "rgb(45, 45, 52)"
+                    }}
                   />
                   <label
                     htmlFor="dontShowAgain"
-                    className="ml-2 text-sm text-gray-600"
+                    className="ml-2 text-sm text-gray-600 cursor-pointer"
                   >
                     Do not show again
                   </label>

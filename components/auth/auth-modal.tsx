@@ -290,31 +290,35 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
                 </div>
               )}
 
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full py-2 px-4 text-white font-medium rounded-xl transition-colors duration-200 disabled:opacity-50 cursor-pointer"
-                style={{
-                  backgroundColor: loading
-                    ? "rgb(180,70,70)"
-                    : "#e91111",
-                  boxShadow: "0 4px 15px rgba(233, 17, 17, 0.3)", // Subtle shadow like cart modal
-                  border: "2px solid #e91111",
-                }}
-                onMouseEnter={(e) => {
-                  if (!loading) {
-                    e.currentTarget.style.backgroundColor = "#c00d0d";
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!loading) {
-                    e.currentTarget.style.backgroundColor = "#e91111";
-                  }
-                }}
-              >
-                {loading ? "Please wait..." : isLogin ? "Sign In" : "Sign Up"}
-              </button>
+              {/* Submit Button - hide when success */}
+              {!success && (
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full py-2 px-4 text-white font-medium rounded-xl transition-colors duration-200 disabled:opacity-50 cursor-pointer"
+                  style={{
+                    backgroundColor: loading
+                      ? "rgb(180,70,70)"
+                      : "#e91111",
+                    boxShadow: "0 4px 15px rgba(233, 17, 17, 0.3)", // Subtle shadow like cart modal
+                    border: loading
+                      ? "2px solid rgb(180,70,70)"
+                      : "2px solid #e91111",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!loading) {
+                      e.currentTarget.style.backgroundColor = "#c00d0d";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!loading) {
+                      e.currentTarget.style.backgroundColor = "#e91111";
+                    }
+                  }}
+                >
+                  {loading ? "Please wait..." : isLogin ? "Sign In" : "Sign Up"}
+                </button>
+              )}
             </form>
 
             {/* Toggle between Login/Register */}
