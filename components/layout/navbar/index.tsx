@@ -559,7 +559,7 @@ export function Navbar() {
           {/* Language Selector - Mobile Only */}
           <div
             className="relative md:hidden ml-[38pt]"
-            style={{ zIndex: 10030 }}
+            style={{ zIndex: 10020 }}
             onMouseEnter={handleLanguageDropdownEnter}
             onMouseLeave={handleLanguageDropdownLeave}
           >
@@ -582,7 +582,7 @@ export function Navbar() {
                 transform: languageDropdownOpen
                   ? "translateX(-50%) translateY(0)"
                   : "translateX(-50%) translateY(-10px)",
-                zIndex: 10030,
+                zIndex: 10020,
                 opacity: languageDropdownOpen ? 1 : 0,
                 pointerEvents: languageDropdownOpen ? "auto" : "none",
                 willChange: "transform, opacity",
@@ -692,7 +692,7 @@ export function Navbar() {
                   {/* Mobile: Account Dropdown */}
                   <div
                     className="relative md:hidden -mr-3"
-                    style={{ zIndex: 10030 }}
+                    style={{ zIndex: 10020 }}
                     onMouseEnter={handleAccountDropdownEnter}
                     onMouseLeave={handleAccountDropdownLeave}
                   >
@@ -730,7 +730,7 @@ export function Navbar() {
                         transform: accountDropdownOpen
                           ? "translateY(0)"
                           : "translateY(-10px)",
-                        zIndex: 10030,
+                        zIndex: 10020,
                         opacity: accountDropdownOpen ? 1 : 0,
                         pointerEvents: accountDropdownOpen ? "auto" : "none",
                         willChange: "transform, opacity",
@@ -756,6 +756,7 @@ export function Navbar() {
                             style={{ textDecoration: "none" }}
                             onClick={() => {
                               setAccountDropdownOpen(false);
+                              window.dispatchEvent(new CustomEvent("close-simple-cart-modal"));
                               const mobileScrollContainer = document.querySelector('[data-mobile-scroll-container]') as HTMLElement;
                               if (mobileScrollContainer) {
                                 mobileScrollContainer.scrollTo({ top: 0, behavior: "instant" });
@@ -772,6 +773,7 @@ export function Navbar() {
                             style={{ textDecoration: "none" }}
                             onClick={() => {
                               setAccountDropdownOpen(false);
+                              window.dispatchEvent(new CustomEvent("close-simple-cart-modal"));
                               const mobileScrollContainer = document.querySelector('[data-mobile-scroll-container]') as HTMLElement;
                               if (mobileScrollContainer) {
                                 mobileScrollContainer.scrollTo({ top: 0, behavior: "instant" });
@@ -788,6 +790,7 @@ export function Navbar() {
                             style={{ textDecoration: "none" }}
                             onClick={() => {
                               setAccountDropdownOpen(false);
+                              window.dispatchEvent(new CustomEvent("close-simple-cart-modal"));
                               const mobileScrollContainer = document.querySelector('[data-mobile-scroll-container]') as HTMLElement;
                               if (mobileScrollContainer) {
                                 mobileScrollContainer.scrollTo({ top: 0, behavior: "instant" });
@@ -804,6 +807,7 @@ export function Navbar() {
                             style={{ textDecoration: "none" }}
                             onClick={() => {
                               setAccountDropdownOpen(false);
+                              window.dispatchEvent(new CustomEvent("close-simple-cart-modal"));
                               const mobileScrollContainer = document.querySelector('[data-mobile-scroll-container]') as HTMLElement;
                               if (mobileScrollContainer) {
                                 mobileScrollContainer.scrollTo({ top: 0, behavior: "instant" });
@@ -820,6 +824,7 @@ export function Navbar() {
                             style={{ textDecoration: "none" }}
                             onClick={() => {
                               setAccountDropdownOpen(false);
+                              window.dispatchEvent(new CustomEvent("close-simple-cart-modal"));
                               const mobileScrollContainer = document.querySelector('[data-mobile-scroll-container]') as HTMLElement;
                               if (mobileScrollContainer) {
                                 mobileScrollContainer.scrollTo({ top: 0, behavior: "instant" });

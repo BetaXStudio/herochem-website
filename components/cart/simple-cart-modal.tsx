@@ -72,6 +72,18 @@ export default function SimpleCartModal() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // Listen for close-simple-cart-modal event
+  useEffect(() => {
+    const handleCloseCart = () => {
+      if (isOpen && !isClosing) {
+        closeCart();
+      }
+    };
+
+    window.addEventListener("close-simple-cart-modal", handleCloseCart);
+    return () => window.removeEventListener("close-simple-cart-modal", handleCloseCart);
+  }, [isOpen, isClosing]);
+
   // Portal mount state - needed to render modal outside navbar's blur filter
   const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
   
@@ -96,7 +108,7 @@ export default function SimpleCartModal() {
             left: "0",
             right: "0",
             bottom: "0",
-            zIndex: 10025, // Über der Navbar search bar
+            zIndex: 10019, // Unter den Navbar dropdowns (10020)
           }}
           aria-hidden="true"
         />
@@ -109,7 +121,7 @@ export default function SimpleCartModal() {
           position: "fixed",
           top: "88px", // Mobile navbar height
           height: "calc(100vh - 88px)", // Mobile height
-          zIndex: 10025, // Über der Navbar search bar (10020)
+          zIndex: 10019, // Unter den Navbar dropdowns (10020)
           transition: "transform 250ms cubic-bezier(0.25, 0.1, 0.25, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1)", // Both 250ms for smooth close
           // Mobile full width
           width: "100vw",

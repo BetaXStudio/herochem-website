@@ -109,6 +109,13 @@ export default function ProfileSettings() {
     setIsEditing(false);
     setNewUsername(profile?.username || "");
     setError(null);
+    // Scroll to top of the correct container
+    const mobileScrollContainer = document.querySelector("[data-mobile-scroll-container]") as HTMLElement;
+    if (mobileScrollContainer) {
+      mobileScrollContainer.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   if (loading) {
@@ -188,11 +195,13 @@ export default function ProfileSettings() {
                 id="username"
                 value={newUsername}
                 onChange={(e) => setNewUsername(e.target.value)}
-                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400"
+                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 transition-colors duration-200"
                 placeholder="Enter your username"
                 autoComplete="username"
                 autoFocus
-                style={{ minHeight: "44px" }}
+                style={{ minHeight: "44px", outline: "none", boxShadow: "none" }}
+                onFocus={(e) => { e.target.style.borderColor = "#e91111"; }}
+                onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; }}
               />
             </div>
             <div className="flex space-x-3">

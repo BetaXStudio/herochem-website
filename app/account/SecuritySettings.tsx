@@ -83,6 +83,13 @@ export default function SecuritySettings() {
     setNewPassword("");
     setConfirmPassword("");
     setPasswordError(null);
+    // Scroll to top of the correct container
+    const mobileScrollContainer = document.querySelector("[data-mobile-scroll-container]") as HTMLElement;
+    if (mobileScrollContainer) {
+      mobileScrollContainer.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   const handleChangeEmail = async () => {
@@ -145,6 +152,13 @@ export default function SecuritySettings() {
     setNewEmail("");
     setEmailPassword("");
     setEmailError(null);
+    // Scroll to top of the correct container
+    const mobileScrollContainer = document.querySelector("[data-mobile-scroll-container]") as HTMLElement;
+    if (mobileScrollContainer) {
+      mobileScrollContainer.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (
@@ -239,10 +253,12 @@ export default function SecuritySettings() {
                 id="current-password"
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
-                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400"
+                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 transition-colors duration-200"
                 placeholder="Enter your current password"
                 autoComplete="current-password"
-                style={{ minHeight: "44px" }}
+                style={{ minHeight: "44px", outline: "none", boxShadow: "none" }}
+                onFocus={(e) => { e.target.style.borderColor = "#e91111"; }}
+                onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; }}
               />
             </div>
             <div>
@@ -257,10 +273,12 @@ export default function SecuritySettings() {
                 id="new-password"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400"
+                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 transition-colors duration-200"
                 placeholder="Enter your new password"
                 autoComplete="new-password"
-                style={{ minHeight: "44px" }}
+                style={{ minHeight: "44px", outline: "none", boxShadow: "none" }}
+                onFocus={(e) => { e.target.style.borderColor = "#e91111"; }}
+                onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; }}
               />
             </div>
             <div>
@@ -275,10 +293,12 @@ export default function SecuritySettings() {
                 id="confirm-password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400"
+                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 transition-colors duration-200"
                 placeholder="Confirm your new password"
                 autoComplete="new-password"
-                style={{ minHeight: "44px" }}
+                style={{ minHeight: "44px", outline: "none", boxShadow: "none" }}
+                onFocus={(e) => { e.target.style.borderColor = "#e91111"; }}
+                onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; }}
               />
             </div>
             <div className="flex space-x-3 pt-2">
@@ -359,10 +379,12 @@ export default function SecuritySettings() {
                 id="new-email"
                 value={newEmail}
                 onChange={(e) => setNewEmail(e.target.value)}
-                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400"
+                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 transition-colors duration-200"
                 placeholder="Enter your new email address"
                 autoComplete="email"
-                style={{ minHeight: "44px" }}
+                style={{ minHeight: "44px", outline: "none", boxShadow: "none" }}
+                onFocus={(e) => { e.target.style.borderColor = "#e91111"; }}
+                onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; }}
               />
             </div>
             <div>
@@ -377,10 +399,12 @@ export default function SecuritySettings() {
                 id="email-password"
                 value={emailPassword}
                 onChange={(e) => setEmailPassword(e.target.value)}
-                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400"
+                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 transition-colors duration-200"
                 placeholder="Enter your current password"
                 autoComplete="current-password"
-                style={{ minHeight: "44px" }}
+                style={{ minHeight: "44px", outline: "none", boxShadow: "none" }}
+                onFocus={(e) => { e.target.style.borderColor = "#e91111"; }}
+                onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; }}
               />
             </div>
             <div className="flex space-x-3 pt-2">

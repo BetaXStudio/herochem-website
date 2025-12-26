@@ -218,7 +218,10 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#e91111] focus:border-[#e91111] text-black"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-xl text-black transition-colors duration-200"
+                  style={{ outline: "none", boxShadow: "none" }}
+                  onFocus={(e) => { e.target.style.borderColor = "#e91111"; }}
+                  onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; }}
                   placeholder="Enter your email"
                 />
               </div>
@@ -239,7 +242,10 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#e91111] focus:border-[#e91111] text-black"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-xl text-black transition-colors duration-200"
+                  style={{ outline: "none", boxShadow: "none" }}
+                  onFocus={(e) => { e.target.style.borderColor = "#e91111"; }}
+                  onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; }}
                   placeholder="Enter your password"
                 />
               </div>
@@ -261,7 +267,10 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#e91111] focus:border-[#e91111] text-black"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-xl text-black transition-colors duration-200"
+                    style={{ outline: "none", boxShadow: "none" }}
+                    onFocus={(e) => { e.target.style.borderColor = "#e91111"; }}
+                    onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; }}
                     placeholder="Confirm your password"
                   />
                 </div>

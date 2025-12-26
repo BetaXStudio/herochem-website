@@ -833,19 +833,30 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
 
     // Debounced scroll to top of container when changing page
     scrollTimeoutRef.current = setTimeout(() => {
-      // Check for mobile scroll container first (via data attribute), then main container
-      const mobileScrollContainer = document.querySelector(
-        "[data-mobile-scroll-container]",
-      ) as HTMLElement;
-      if (mobileScrollContainer) {
-        // Mobile: scroll the mobile container
-        mobileScrollContainer.scrollTo({ top: 0, behavior: "smooth" });
-      } else if (mainRef.current) {
-        // Non-iOS: scroll the main container
-        mainRef.current.scrollTo({ top: 0, behavior: "smooth" });
-      } else if (typeof window !== "undefined") {
-        // Fallback: scroll window
-        window.scrollTo({ top: 0, behavior: "smooth" });
+      // Check if we're on desktop (md breakpoint = 768px)
+      const isDesktop = window.innerWidth >= 768;
+      
+      if (isDesktop) {
+        // Desktop: scroll the main container
+        if (mainRef.current) {
+          mainRef.current.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          // Fallback: scroll window
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      } else {
+        // Mobile: check for mobile scroll container first (via data attribute)
+        const mobileScrollContainer = document.querySelector(
+          "[data-mobile-scroll-container]",
+        ) as HTMLElement;
+        if (mobileScrollContainer) {
+          mobileScrollContainer.scrollTo({ top: 0, behavior: "smooth" });
+        } else if (mainRef.current) {
+          mainRef.current.scrollTo({ top: 0, behavior: "smooth" });
+        } else if (typeof window !== "undefined") {
+          // Fallback: scroll window
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
       }
     }, 100); // 100ms delay to prevent event conflicts
   }, []);
