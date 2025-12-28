@@ -319,7 +319,8 @@ export default function HeroSection() {
 
   return (
 	<div 
-	  className="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden"
+	  className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden md:min-h-screen"
+	  style={{ minHeight: isMobile ? '780px' : undefined }}
 	  onTouchStart={onTouchStart}
 	  onTouchMove={onTouchMove}
 	  onTouchEnd={onTouchEnd}
@@ -397,10 +398,13 @@ export default function HeroSection() {
 		})}
 	  </div>
 
-	  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-14 lg:pt-[95px] pb-16">
+	  <div 
+	    className="relative z-10 max-w-7xl mx-auto sm:px-6 lg:px-8 sm:pt-14 lg:pt-[95px]"
+	    style={{ paddingLeft: isMobile ? '16px' : undefined, paddingRight: isMobile ? '16px' : undefined, paddingTop: isMobile ? '20px' : undefined, paddingBottom: isMobile ? '64px' : '64px' }}
+	  >
 		{/* HEROCHEM Logo Text - Mobile Only */}
-		<div className="block lg:hidden text-center mb-1.5 sm:mb-3">
-		  <h1 className="text-5xl sm:text-6xl font-bold leading-tight">
+		<div className="block lg:hidden text-center" style={{ marginBottom: isMobile ? '6px' : '12px' }}>
+		  <h1 className="font-bold leading-tight" style={{ fontSize: isMobile ? '48px' : '60px' }}>
 			<span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
 			  HERO
 			</span>
@@ -588,11 +592,11 @@ export default function HeroSection() {
 		  )}
 		</div>
 
-		<div className="grid lg:grid-cols-1 grid-cols-1 lg:gap-0 gap-12 items-center min-h-0 lg:min-h-0 sm:min-h-[70vh] lg:-mt-120">
+		<div className="grid lg:grid-cols-1 grid-cols-1 lg:gap-0 items-center min-h-0 lg:min-h-0 lg:-mt-120" style={{ gap: isMobile ? '48px' : undefined }}>
 		  {/* Navigation Container - Desktop Only */}
 		  <div className="hidden lg:flex items-start justify-start relative">
 			{/* Content Container */}
-			<div className="space-y-6 text-left rounded-xl relative w-[600px]">
+			<div className="text-left rounded-xl relative w-[600px]" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
 			{/* Left Arrow */}
 			{isClient && (
 			  <button
@@ -617,14 +621,16 @@ export default function HeroSection() {
 			  </button>
 			)}
 			{/* Hero Badge */}
-			<div 
-			  className={`inline-flex items-center space-x-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-3 lg:px-4 py-1.5 lg:py-2 text-gray-300 text-[10px] lg:text-xs font-medium mt-8 transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-2' : 'opacity-100 transform translate-y-0'}`}
-			  style={{
-				boxShadow: '0 4px 15px rgba(255, 255, 255, 0.05)'
-			  }}
-			>
-			  <ShieldCheckIcon className="h-2.5 w-2.5 lg:h-3 lg:w-3 text-white" />
-			  <span>Certified Pharmaceutical Products</span>
+			<div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+			  <div 
+			    className={`inline-flex items-center space-x-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-3 lg:px-4 py-1.5 lg:py-2 text-gray-300 text-[10px] lg:text-xs font-medium mt-8 transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-2' : 'opacity-100 transform translate-y-0'}`}
+			    style={{
+				  boxShadow: '0 4px 15px rgba(255, 255, 255, 0.05)'
+			    }}
+			  >
+			    <ShieldCheckIcon className="h-2.5 w-2.5 lg:h-3 lg:w-3 text-white" />
+			    <span>Certified Pharmaceutical Products</span>
+			  </div>
 			</div>
 
 			{/* Main Title */}
@@ -726,21 +732,33 @@ export default function HeroSection() {
 			</div>
 		  </div>		  {/* Mobile Content */}
 		  <div className="lg:hidden">
-			<div className="space-y-3 text-center lg:text-left">
+			<div className="text-center lg:text-left" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
 			{/* Hero Badge */}
-			<div 
-			  className={`inline-flex items-center space-x-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-3 lg:px-4 py-1.5 lg:py-2 text-gray-300 text-[10px] lg:text-xs font-medium mt-6 transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-2' : 'opacity-100 transform translate-y-0'}`}
-			  style={{
-				boxShadow: '0 4px 15px rgba(255, 255, 255, 0.05)'
-			  }}
-			>
-			  <ShieldCheckIcon className="h-2.5 w-2.5 lg:h-3 lg:w-3 text-white" />
-			  <span>Certified Pharmaceutical Products</span>
+			<div style={{ display: 'flex', justifyContent: 'center' }}>
+			  <div 
+			    className={`inline-flex items-center bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-gray-300 font-medium transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-2' : 'opacity-100 transform translate-y-0'}`}
+			    style={{
+				  boxShadow: '0 4px 15px rgba(255, 255, 255, 0.05)',
+				  gap: '6px',
+				  paddingLeft: '12px',
+				  paddingRight: '12px',
+				  paddingTop: '6px',
+				  paddingBottom: '6px',
+				  fontSize: '10px',
+				  marginTop: '24px'
+			    }}
+			  >
+			    <ShieldCheckIcon className="text-white" style={{ width: '10px', height: '10px' }} />
+			    <span>Certified Pharmaceutical Products</span>
+			  </div>
 			</div>
 
 			{/* Main Title */}
-			<div className={`space-y-4 lg:space-y-5 transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
-			  <h1 className="text-3xl lg:text-6xl font-bold text-white leading-tight">
+			<div 
+			  className={`transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}
+			  style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
+			>
+			  <h1 className="font-bold text-white leading-tight" style={{ fontSize: '30px' }}>
 				<span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
 				  {currentSlideData?.title === 'Labor Tested'
 					? 'Labor'
@@ -758,11 +776,11 @@ export default function HeroSection() {
 				</span>
 			  </h1>
 
-			  <h2 className="text-base lg:text-xl text-gray-300 font-medium">
+			  <h2 className="text-gray-300 font-medium" style={{ fontSize: '16px' }}>
 				{currentSlideData?.subtitle}
 			  </h2>
 
-			  <p className="text-sm lg:text-base text-gray-400 max-w-lg lg:max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+			  <p className="text-gray-400 mx-auto lg:mx-0 leading-relaxed" style={{ fontSize: '14px', maxWidth: '512px' }}>
 				{currentSlideData?.title === 'Global Delivery Network' ? (
 				  <>Fast and secure delivery to customers around<br />the globe</>
 				) : (
@@ -772,24 +790,35 @@ export default function HeroSection() {
 			</div>
 
 			{/* CTA Buttons */}
-			<div className={`flex flex-col sm:flex-row gap-3 lg:gap-4 transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
+			<div 
+			  className={`flex flex-col sm:flex-row transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}
+			  style={{ gap: '12px' }}
+			>
 			  {/* Mobile: Original simple button */}
 			  <button
 				onClick={() => handleCtaClick(currentSlideData?.cta || '')}
-				className="inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
+				className="inline-flex items-center justify-center border border-gray-600 hover:border-red-600 text-gray-300 hover:text-white font-medium rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
 				style={{
-				  boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)'
+				  boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)',
+				  paddingLeft: '20px',
+				  paddingRight: '20px',
+				  paddingTop: '10px',
+				  paddingBottom: '10px'
 				}}
 			  >
 				<span>{currentSlideData?.cta}</span>
-				<ChevronRightIcon className="ml-2 h-3.5 w-3.5 lg:h-4 lg:w-4" />
+				<ChevronRightIcon className="h-3.5 w-3.5" style={{ marginLeft: '8px' }} />
 			  </button>
 
 			  <Link
 				href="/categories"
-				className="inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
+				className="inline-flex items-center justify-center border border-gray-600 hover:border-red-600 text-gray-300 hover:text-white font-medium rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
 				style={{
-				  boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)'
+				  boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)',
+				  paddingLeft: '20px',
+				  paddingRight: '20px',
+				  paddingTop: '10px',
+				  paddingBottom: '10px'
 				}}
 			  >
 				Discover Products
@@ -797,14 +826,18 @@ export default function HeroSection() {
 			</div>
 
 			{/* Slide Indicators */}
-			<div className={`flex space-x-2 lg:space-x-3 justify-center lg:justify-start transition-all duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+			<div 
+			  className={`flex justify-center lg:justify-start transition-all duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
+			  style={{ gap: '8px' }}
+			>
 			  {heroSlides.map((_, index) => (
 				<button
 				  key={index}
 				  onClick={() => changeSlide(index)}
-				  className={`w-2 h-2 lg:w-2.5 lg:h-2.5 rounded-full transition-colors duration-300 ${
+				  className={`rounded-full transition-colors duration-300 ${
 					index === currentSlide ? 'bg-red-600' : 'bg-gray-600'
 				  }`}
+				  style={{ width: '8px', height: '8px' }}
 				/>
 			  ))}
 			</div>
@@ -813,9 +846,9 @@ export default function HeroSection() {
 		</div>
 	  </div>
 
-	  {/* Bottom Wave */}
-	  <div className="absolute left-0 right-0" style={{ bottom: isMobile ? 'calc(20px + 220px)' : '-20px' }}>
-		<svg viewBox="0 0 1200 120" className="w-full h-16 lg:h-20">
+	  {/* Bottom Wave - Fixed position and height for consistent mobile layout */}
+	  <div className="absolute left-0 right-0" style={{ bottom: isMobile ? '240px' : '-20px' }}>
+		<svg viewBox="0 0 1200 120" className="w-full" style={{ height: isMobile ? '60px' : '80px' }}>
 		  <path
 			d="M0,60 C400,0 800,120 1200,60 L1200,120 L0,120 Z"
 			fill="rgb(249, 250, 251)"

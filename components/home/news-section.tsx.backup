@@ -7,8 +7,7 @@ import { featuredProductLists } from "../../lib/featured-products";
 import { productDetails } from "../../lib/product-details-database";
 import { ProductDetailOverlay } from "../categories/product-detail-overlay";
 
-// Lazy-loaded product card component for all mobile devices
-// Optimizes memory by loading/unloading images based on visibility
+// Lazy-loaded product card component to prevent VRAM crashes on iOS Safari
 interface LazyProductCardProps {
   product: typeof productDetails[0];
   isHovered: boolean;
@@ -33,7 +32,7 @@ function LazyProductCard({
   const isMountedRef = useRef(true);
 
   // IntersectionObserver for lazy loading AND unloading images
-  // Optimizes memory on all mobile devices by unloading images when scrolled out of view
+  // This prevents Safari VRAM crashes by unloading images when they scroll out of view
   useEffect(() => {
     isMountedRef.current = true;
     
@@ -195,7 +194,6 @@ function LazyProductCard({
 export default function NewsSection() {
   const [currentBanner, setCurrentBanner] = useState(0);
   const [isClient, setIsClient] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
@@ -204,18 +202,11 @@ export default function NewsSection() {
   const productsContainerRef = useRef<HTMLDivElement>(null);
   const productsScrollRef = useRef<HTMLDivElement>(null);
 
-  // Check if mobile and set up resize listener
+  // Rotate banners every 10 seconds
   useEffect(() => {
     setIsClient(true);
-    
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
+    // No rotation needed - only one banner
+    return () => {};
   }, []);
 
   // Center scroll on load - start at middle product
@@ -345,70 +336,63 @@ export default function NewsSection() {
   };
 
   // ...existing code...
-  // Don't render on desktop
-  if (!isMobile) {
-    return null;
-  }
-
   return (
-    <div>
-      {/* Scrolling Text Banner - Fixed margin to match Hero Section bottom wave position */}
-      <div className="bg-gradient-to-br from-gray-50 to-white relative z-10" style={{ marginTop: '-260px' }}>
-        <div className="max-w-7xl mx-auto relative z-20" style={{ paddingTop: '12px', paddingBottom: '12px', paddingLeft: '16px', paddingRight: '16px' }}>
+    <div className="md:hidden">
+      {/* Scrolling Text Banner */}
+      <div className="bg-gradient-to-br from-gray-50 to-white md:mt-0 relative z-10" style={{ marginTop: '-260px' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 relative z-20">
           <div className="overflow-hidden relative">
             <div
               className="flex whitespace-nowrap animate-scroll"
               style={{
                 animation: "scroll-left 15.4s linear infinite",
-                fontSize: '18px',
               }}
             >
-              <span className="text-red-600 font-bold" style={{ marginRight: '16px' }}>
+              <span className="text-red-600 font-bold text-lg mr-4">
                 CRYPTO DISCOUNT
               </span>
-              <span className="text-gray-900 font-bold" style={{ marginRight: '16px' }}>•</span>
-              <span className="text-gray-900 font-bold" style={{ marginRight: '16px' }}>
+              <span className="text-gray-900 font-bold text-lg mr-4">•</span>
+              <span className="text-gray-900 font-bold text-lg mr-4">
                 5% OFF EVERY ORDER
               </span>
-              <span className="text-gray-900 font-bold" style={{ marginRight: '16px' }}>•</span>
-              <span className="text-red-600 font-bold" style={{ marginRight: '16px' }}>
+              <span className="text-gray-900 font-bold text-lg mr-4">•</span>
+              <span className="text-red-600 font-bold text-lg mr-4">
                 CRYPTO DISCOUNT
               </span>
-              <span className="text-gray-900 font-bold" style={{ marginRight: '16px' }}>•</span>
-              <span className="text-gray-900 font-bold" style={{ marginRight: '16px' }}>
+              <span className="text-gray-900 font-bold text-lg mr-4">•</span>
+              <span className="text-gray-900 font-bold text-lg mr-4">
                 5% OFF EVERY ORDER
               </span>
-              <span className="text-gray-900 font-bold" style={{ marginRight: '16px' }}>•</span>
-              <span className="text-red-600 font-bold" style={{ marginRight: '16px' }}>
+              <span className="text-gray-900 font-bold text-lg mr-4">•</span>
+              <span className="text-red-600 font-bold text-lg mr-4">
                 CRYPTO DISCOUNT
               </span>
-              <span className="text-gray-900 font-bold" style={{ marginRight: '16px' }}>•</span>
-              <span className="text-gray-900 font-bold" style={{ marginRight: '16px' }}>
+              <span className="text-gray-900 font-bold text-lg mr-4">•</span>
+              <span className="text-gray-900 font-bold text-lg mr-4">
                 5% OFF EVERY ORDER
               </span>
-              <span className="text-gray-900 font-bold" style={{ marginRight: '16px' }}>•</span>
-              <span className="text-red-600 font-bold" style={{ marginRight: '16px' }}>
+              <span className="text-gray-900 font-bold text-lg mr-4">•</span>
+              <span className="text-red-600 font-bold text-lg mr-4">
                 CRYPTO DISCOUNT
               </span>
-              <span className="text-gray-900 font-bold" style={{ marginRight: '16px' }}>•</span>
-              <span className="text-gray-900 font-bold" style={{ marginRight: '16px' }}>
+              <span className="text-gray-900 font-bold text-lg mr-4">•</span>
+              <span className="text-gray-900 font-bold text-lg mr-4">
                 5% OFF EVERY ORDER
               </span>
-              <span className="text-gray-900 font-bold" style={{ marginRight: '16px' }}>•</span>
+              <span className="text-gray-900 font-bold text-lg mr-4">•</span>
             </div>
 
-            {/* Fade out effects - Fixed 32px width */}
-            <div className="absolute top-0 left-0 h-full bg-gradient-to-r from-gray-50 to-transparent pointer-events-none" style={{ width: '32px' }}></div>
-            <div className="absolute top-0 right-0 h-full bg-gradient-to-l from-gray-50 to-transparent pointer-events-none" style={{ width: '32px' }}></div>
+            {/* Fade out effects */}
+            <div className="absolute top-0 left-0 w-8 h-full bg-gradient-to-r from-gray-50 to-transparent pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-gray-50 to-transparent pointer-events-none"></div>
           </div>
         </div>
-        <div className="absolute left-0 right-0 bottom-0 bg-white pointer-events-none z-0" style={{ height: '32px' }}></div>
+        <div className="absolute left-0 right-0 bottom-0 h-8 bg-white pointer-events-none z-0"></div>
       </div>
 
-      {/* Banner Container with Alternating Images - Fixed 192px height */}
+      {/* Banner Container with Alternating Images */}
       <div 
-        className="relative w-full bg-white overflow-hidden cursor-grab active:cursor-grabbing"
-        style={{ height: '192px' }}
+        className="relative w-full h-48 bg-white overflow-hidden cursor-grab active:cursor-grabbing"
         onTouchStart={isClient ? handleTouchStart : undefined}
         onTouchEnd={isClient ? handleTouchEnd : undefined}
       >
@@ -424,84 +408,82 @@ export default function NewsSection() {
             className="object-cover"
             sizes="100vw"
           />
-          {/* Overlay Content - Fixed pixel positions */}
-          <div className="absolute z-20" style={{ top: '8px', left: '12px' }}>
-            <h3 className="font-bold" style={{ fontSize: '18px', marginBottom: '12px' }}>
+          {/* Overlay Content */}
+          <div className="absolute top-2 left-3 z-20">
+            <h3 className="text-lg font-bold mb-3">
               <span className="text-black">DEUS</span>
               <span className="text-red-600">MEDICAL</span>
             </h3>
           </div>
-          <div className="absolute z-10" style={{ bottom: '24px', left: '12px' }}>
+          <div className="absolute bottom-6 left-3 z-10">
             <Link 
               href="/categories"
-              className="bg-red-600 hover:bg-red-700 text-white font-medium transition-colors rounded-lg"
-              style={{ paddingLeft: '8px', paddingRight: '8px', paddingTop: '4px', paddingBottom: '4px', fontSize: '12px' }}
+              className="bg-red-600 hover:bg-red-700 text-white px-2 py-1 text-xs font-medium transition-colors rounded-lg"
             >
               SHOP NOW
             </Link>
           </div>
         </div>
 
-        {/* Banner Indicators - Fixed pixel positions */}
-        <div className="absolute z-20 flex" style={{ bottom: '24px', right: '8px', gap: '8px' }}>
+        {/* Banner Indicators */}
+        <div className="absolute bottom-6 right-2 z-20 flex gap-2">
           <button
             onClick={() => setCurrentBanner(0)}
-            className="rounded-full transition-all"
+            className="w-2 h-2 rounded-full transition-all"
             style={{
               backgroundColor: '#e91111',
               width: '24px',
-              height: '8px',
             }}
             aria-label="Show Deus banner"
           />
         </div>
 
-        {/* Top Fade Out Effect - Fixed 64px height */}
-        <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-white via-white/50 to-transparent pointer-events-none z-10" style={{ height: '64px' }}></div>
+        {/* Top Fade Out Effect */}
+        <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-white via-white/50 to-transparent pointer-events-none z-10"></div>
 
-        {/* Bottom Fade Out Effect - Fixed 32px height */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[rgb(249,250,251)] via-[rgb(249,250,251)]/50 to-transparent pointer-events-none z-10" style={{ height: '32px' }}></div>
+        {/* Bottom Fade Out Effect */}
+        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[rgb(249,250,251)] via-[rgb(249,250,251)]/50 to-transparent pointer-events-none z-10"></div>
       </div>
 
-      {/* bottom wave - Fixed 64px height */}
+      {/* bottom wave */}
       <div className="relative z-10" style={{ marginTop: '-12px' }}>
-        <svg viewBox="0 0 1200 120" className="w-full" style={{ transform: 'scaleY(-1) scaleX(-1)', height: '60px' }}>
+        <svg viewBox="0 0 1200 120" className="w-full h-16 lg:h-20" style={{ transform: 'scaleY(-1) scaleX(-1)' }}>
           <path
             d="M0,60 C400,0 800,120 1200,60 L1200,120 L0,120 Z"
-            fill="rgba(249, 251, 249, 1)"
+            fill="rgb(249, 250, 251)"
           />
         </svg>
       </div>
       
 
-      {/* Info Section Background - Fixed padding for consistent mobile layout */}
-      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white relative" style={{ marginTop: '-40px', paddingTop: '0px', paddingBottom: '532px', marginBottom: '0' }}>
-        <div className="space-y-0" style={{ paddingTop: '40px', paddingLeft: '16px', paddingRight: '16px' }}>
-          {/* Main Info first the wave element - Fixed 64px height */}
+      {/* Info Section Background*/}
+      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white pt-0 relative" style={{ marginTop: '-40px', paddingBottom: 'calc(2rem + 500px)', marginBottom: '0' }}>
+        <div className="space-y-0 pt-10 px-4">
+          {/* Main Info first the wave element */}
           <div className="absolute left-0 right-0" style={{ marginTop: '86px' }}>
-		          <svg viewBox="0 0 1200 120" className="w-full" style={{ height: '69px' }}>
+		          <svg viewBox="0 0 1200 120" className="w-full h-16 lg:h-20">
 		          <path
 			        d="M0,60 C400,0 800,120 1200,60 L1200,120 L0,120 Z"
-			          fill="rgba(249, 250, 251, 1)"
+			          fill="rgb(249, 250, 251)"
 		              />
 		              </svg>
 	        </div>
 
 
-          <div className="absolute left-0 right-0 px-0" style={{ top: '48px' }}>
-                <p className="text-gray-400 leading-relaxed space-y-0 text-center" style={{ fontSize: '14px', paddingLeft: '48px', paddingRight: '48px' }}>
+          <div className="absolute left-0 right-0 top-12 px-0">
+                <p className="text-sm text-gray-400 leading-relaxed space-y-0 px-12 text-center">
                   Discover our exclusive selection of premium health and performance products from trusted brands worldwide.
                 </p>
                 {/* Container with white background and Bestseller Section - Full Width */}
-      <div className="absolute left-0 right-0 relative w-full" style={{ height: '200px', marginTop: '64px', marginBottom: '-16px', backgroundColor: 'rgb(249, 250, 251)' }}>
+      <div className="absolute left-0 right-0 h-[200px] relative w-full" style={{ marginTop: '64px', marginBottom: '-16px', backgroundColor: 'rgb(249, 250, 251)' }}>
         {/* Bestseller Products Container */}
         <div 
           ref={productsScrollRef}
-          className="flex overflow-x-auto scrollbar-hide h-full w-full relative"
+          className="flex gap-4 py-2 pl-4 md:pl-6 overflow-x-auto scrollbar-hide h-full w-full relative"
           onTouchStart={isClient ? handleProductTouchStart : undefined}
           onTouchEnd={isClient ? handleProductTouchEnd : undefined}
           suppressHydrationWarning
-          style={{ scrollBehavior: 'auto', paddingTop: '20px', paddingBottom: '8px', gap: '16px', paddingLeft: '16px' }}
+          style={{ scrollBehavior: 'auto', paddingTop: '20px' }}
         >
           {getBestsellerProducts().map((product) => {
             const isHovered = hoveredProductId === product.id;
@@ -518,18 +500,18 @@ export default function NewsSection() {
             );
           })}
         </div>
-        {/* Left Fade Out Effect - Fixed 24px width */}
-        <div className="absolute left-0 top-0 h-full bg-gradient-to-r from-[rgb(249,250,251)] via-[rgb(249,250,251)]/50 to-transparent pointer-events-none z-10" style={{ width: '24px' }}></div>
-        {/* Right Fade Out Effect - Fixed 24px width */}
-        <div className="absolute right-0 top-0 h-full bg-gradient-to-l from-[rgb(249,250,251)] to-transparent pointer-events-none z-10" style={{ width: '24px' }}></div>
+        {/* Left Fade Out Effect */}
+        <div className="absolute left-0 top-0 h-full w-6 bg-gradient-to-r from-[rgb(249,250,251)] via-[rgb(249,250,251)]/50 to-transparent pointer-events-none z-10"></div>
+        {/* Right Fade Out Effect */}
+        <div className="absolute right-0 top-0 h-full w-6 bg-gradient-to-l from-[rgb(249,250,251)] to-transparent pointer-events-none z-10"></div>
       </div>
 
-      {/* Bottom Wave - connects to next section - Fixed 64px height */}
+      {/* Bottom Wave - connects to next section */}
       <div className="relative w-full" style={{ marginTop: '4px' }}>
-        <svg viewBox="0 0 1200 120" className="w-full" style={{ transform: 'scaleY(-1) scaleX(-1)', height: '60px' }}>
+        <svg viewBox="0 0 1200 120" className="w-full h-16 lg:h-20" style={{ transform: 'scaleY(-1) scaleX(-1)' }}>
           <path
             d="M0,60 C400,0 800,120 1200,60 L1200,120 L0,120 Z"
-            fill="rgba(249, 250, 251, 1)"
+            fill="rgb(249, 250, 251)"
           />
         </svg>
       </div>
@@ -542,17 +524,17 @@ export default function NewsSection() {
 
           {/** Info Section second text for heroguide*/}
           <div className="absolute left-0 right-0" style={{ marginTop: '-120px' }}>
-                <p className="text-gray-400 leading-relaxed space-y-0 text-center" style={{ fontSize: '14px', paddingLeft: '48px', paddingRight: '48px' }}>
+                <p className="text-sm text-gray-400 leading-relaxed space-y-0 px-12 text-center">
                   Plan and track your complete cycle journey with our intelligent guidance system.
                 </p>
           </div>
 
-            {/* Top Wave Element for labreports section - Fixed 64px height */}
+            {/* Top Wave Element for labreports section*/}
           <div className="absolute left-0 right-0" style={{ marginTop: '-52px' }}>
-		          <svg viewBox="0 0 1200 120" className="w-full" style={{ height: '69px' }}>
+		          <svg viewBox="0 0 1200 120" className="w-full h-16 lg:h-20">
 		          <path
 			        d="M0,60 C400,0 800,120 1200,60 L1200,120 L0,120 Z"
-			          fill="rgba(249, 250, 251, 1)"
+			          fill="rgb(249, 250, 251)"
 		              />
 		              </svg>
 	        </div>

@@ -70,11 +70,14 @@ export default function MobileScrollContainer({
         "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
       // Check screen size (mobile-like dimensions)
-      const isSmallScreen =
-        window.innerWidth <= 768 || window.innerHeight <= 768;
+      // Use window.innerWidth < 768 to match Tailwind's md: breakpoint
+      const isSmallScreen = window.innerWidth < 768;
 
-      // Device is mobile if it matches user agent OR has touch AND small screen
-      const result = isMobileUA || (isTouchDevice && isSmallScreen);
+      // Device is mobile if:
+      // 1. Matches mobile user agent, OR
+      // 2. Has touch AND small screen, OR
+      // 3. Just small screen (for DevTools compatibility)
+      const result = isMobileUA || (isTouchDevice && isSmallScreen) || isSmallScreen;
       console.log('Mobile detection:', { isMobileUA, isTouchDevice, isSmallScreen, result });
       return result;
     };
@@ -120,6 +123,7 @@ export default function MobileScrollContainer({
   if (isMounted && isMobile) {
     containerStyle.position = "fixed" as const;
     containerStyle.inset = "0px" as any;
+    // Use fixed 88px - the navbar already handles safe-area-inset-top
     containerStyle.paddingTop = "88px";
     containerStyle.overflowY = "auto" as const;
     containerStyle.WebkitOverflowScrolling = "touch";
