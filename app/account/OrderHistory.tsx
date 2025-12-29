@@ -269,7 +269,7 @@ export default function OrderHistory() {
             </div>
             <button
               onClick={() => (window.location.href = "/categories")}
-              className="w-full px-4 py-2 text-white rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full px-4 py-2 text-white rounded-xl font-semibold transition-all duration-300"
               style={{
                 background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
                 boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
@@ -351,7 +351,7 @@ export default function OrderHistory() {
                           }
                         }}
                         disabled={loadingDetails === order.id}
-                        className="px-3 py-1.5 text-white rounded-lg font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 text-sm"
+                        className="px-3 py-1.5 text-white rounded-lg font-medium transition-all duration-300 disabled:opacity-50 text-sm"
                         style={{
                           background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
                           boxShadow: "0 2px 8px rgba(45, 45, 52, 0.3)",

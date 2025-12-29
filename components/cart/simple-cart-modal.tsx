@@ -4,9 +4,10 @@ import {
   ShoppingCartIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useModal } from "../../contexts/modal-context";
+import CartItemImage from "./cart-item-image";
 import { useSimpleCart } from "./simple-cart-context";
 
 export default function SimpleCartModal() {
@@ -23,6 +24,9 @@ export default function SimpleCartModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [isMobile, setIsMobile] = useState<boolean | null>(null); // null = not yet determined
+  
+  // Ref for scroll container - needed for IntersectionObserver VRAM optimization
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   // Animated close function - waits for animation before hiding
   const closeCart = () => {
@@ -178,8 +182,8 @@ export default function SimpleCartModal() {
             </div>
           ) : (
             <>
-              {/* Cart Items */}
-              <div className="flex-1 overflow-y-auto p-4 pb-2">
+              {/* Cart Items - with scrollContainerRef for VRAM-optimized image loading */}
+              <div ref={scrollContainerRef} className="flex-1 overflow-y-auto p-4 pb-2">
                 <div className="space-y-3">
                   {items.map((item) => (
                     <div
@@ -195,29 +199,15 @@ export default function SimpleCartModal() {
                         willChange: "auto",
                       }}
                     >
-                      {/* Product Image - CPU rendering, no caching */}
-                      <div className="relative h-14 w-14 overflow-hidden rounded-lg flex-shrink-0 bg-white" style={{
-                        border: "1px solid rgba(45, 45, 52, 0.2)",
-                        // CPU rendering - avoid GPU compositing
-                        contain: "layout style paint",
-                        WebkitBackfaceVisibility: "hidden",
-                        backfaceVisibility: "hidden",
-                        willChange: "auto",
-                      }}>
-                        <img
-                          className="h-full w-full object-cover"
-                          alt={item.name}
-                          src={item.image}
-                          style={{
-                            // CPU rendering - avoid GPU compositing
-                            WebkitBackfaceVisibility: "hidden",
-                            backfaceVisibility: "hidden",
-                            willChange: "auto",
-                          }}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
+                      {/* Product Image - VRAM optimized with IntersectionObserver */}
+                      <CartItemImage
+                        src={item.image}
+                        alt={item.name}
+                        size={56}
+                        scrollContainerRef={scrollContainerRef}
+                        className="rounded-lg"
+                        style={{ border: "1px solid rgba(45, 45, 52, 0.2)" }}
+                      />
 
                       {/* Product Details - spacing matched to 56px image height */}
                       <div className="flex-1 min-w-0 flex flex-col" style={{ height: '56px', paddingTop: '0px', paddingBottom: '0px' }}>

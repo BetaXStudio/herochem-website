@@ -88,8 +88,8 @@ export default function CommunitySection() {
                   onClick={() => {
                     setFAQModalOpen(true);
                   }}
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 cursor-pointer"
-                  style={{ boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)' }}
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-[#e91111] lg:border-2 text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/20 cursor-pointer max-[800px]:bg-gray-800/40 max-[800px]:backdrop-blur-sm max-[800px]:border-gray-700/30"
+                  style={{ boxShadow: '0 4px 15px rgba(233, 17, 17, 0.3)' }}
                 >
                   FAQ
                 </button>
@@ -97,8 +97,8 @@ export default function CommunitySection() {
                   onClick={() => {
                     setContactModalOpen(true);
                   }}
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 cursor-pointer"
-                  style={{ boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)' }}
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-[#e91111] lg:border-2 text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/20 cursor-pointer max-[800px]:bg-gray-800/40 max-[800px]:backdrop-blur-sm max-[800px]:border-gray-700/30"
+                  style={{ boxShadow: '0 4px 15px rgba(233, 17, 17, 0.3)' }}
                 >
                   Contact
                 </button>

@@ -320,7 +320,7 @@ export default function HeroSection() {
   return (
 	<div 
 	  className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden md:min-h-screen"
-	  style={{ minHeight: isMobile ? '780px' : undefined }}
+	  style={{ minHeight: isMobile ? '760px' : undefined }}
 	  onTouchStart={onTouchStart}
 	  onTouchMove={onTouchMove}
 	  onTouchEnd={onTouchEnd}
@@ -402,17 +402,8 @@ export default function HeroSection() {
 	    className="relative z-10 max-w-7xl mx-auto sm:px-6 lg:px-8 sm:pt-14 lg:pt-[95px]"
 	    style={{ paddingLeft: isMobile ? '16px' : undefined, paddingRight: isMobile ? '16px' : undefined, paddingTop: isMobile ? '20px' : undefined, paddingBottom: isMobile ? '64px' : '64px' }}
 	  >
-		{/* HEROCHEM Logo Text - Mobile Only */}
-		<div className="block lg:hidden text-center" style={{ marginBottom: isMobile ? '6px' : '12px' }}>
-		  <h1 className="font-bold leading-tight" style={{ fontSize: isMobile ? '48px' : '60px' }}>
-			<span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-			  HERO
-			</span>
-			<span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
-			  CHEM
-			</span>
-		  </h1>
-		</div>
+		{/* PLACEMARKER FOR ANY TOP ITEM TO BE PLACED ON MOBILE VERSION HERO SECTION */}
+		
 
 		{/* Desktop Layout - Logo and Dynamic Elements at same height */}
 		<div className="hidden lg:block">
@@ -733,30 +724,36 @@ export default function HeroSection() {
 		  </div>		  {/* Mobile Content */}
 		  <div className="lg:hidden">
 			<div className="text-center lg:text-left" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-			{/* Hero Badge */}
-			<div style={{ display: 'flex', justifyContent: 'center' }}>
-			  <div 
-			    className={`inline-flex items-center bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-gray-300 font-medium transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-2' : 'opacity-100 transform translate-y-0'}`}
-			    style={{
-				  boxShadow: '0 4px 15px rgba(255, 255, 255, 0.05)',
-				  gap: '6px',
-				  paddingLeft: '12px',
-				  paddingRight: '12px',
-				  paddingTop: '6px',
-				  paddingBottom: '6px',
-				  fontSize: '10px',
-				  marginTop: '24px'
-			    }}
-			  >
-			    <ShieldCheckIcon className="text-white" style={{ width: '10px', height: '10px' }} />
-			    <span>Certified Pharmaceutical Products</span>
-			  </div>
+			{/* Feature Items - Mobile Only - At Top */}
+			<div className="flex justify-center" style={{ gap: '12px', marginTop: '24px' }}>
+			  {heroFeatures.map((feature, index) => (
+				<div
+				  key={index}
+				  className="bg-gray-800/40 backdrop-blur-sm border border-gray-600 rounded-xl flex flex-col items-center justify-center animate-float"
+				  style={{
+					padding: '12px',
+					width: '100px',
+					boxShadow: '0 4px 15px rgba(255, 255, 255, 0.05)',
+					animationDelay: `${index * 0.2}s`,
+					animationDuration: '3s'
+				  }}
+				>
+				  <div className="flex flex-col items-center" style={{ gap: '6px' }}>
+					<div className="bg-[#e91111] rounded-xl flex items-center justify-center" style={{ width: '28px', height: '28px' }}>
+					  <feature.icon className="text-white" style={{ width: '14px', height: '14px' }} />
+					</div>
+					<h3 className="font-semibold text-white text-center leading-tight" style={{ fontSize: '9px' }}>
+					  {feature.title.split(' ').slice(0, 2).join(' ')}
+					</h3>
+				  </div>
+				</div>
+			  ))}
 			</div>
 
 			{/* Main Title */}
 			<div 
 			  className={`transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}
-			  style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
+			  style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '324px', margin: '0 auto' }}
 			>
 			  <h1 className="font-bold text-white leading-tight" style={{ fontSize: '30px' }}>
 				<span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
@@ -780,9 +777,9 @@ export default function HeroSection() {
 				{currentSlideData?.subtitle}
 			  </h2>
 
-			  <p className="text-gray-400 mx-auto lg:mx-0 leading-relaxed" style={{ fontSize: '14px', maxWidth: '512px' }}>
+			  <p className="text-gray-400 leading-relaxed" style={{ fontSize: '14px' }}>
 				{currentSlideData?.title === 'Global Delivery Network' ? (
-				  <>Fast and secure delivery to customers around<br />the globe</>
+				  <>Fast and secure delivery to customers around the globe</>
 				) : (
 				  currentSlideData?.description
 				)}
@@ -792,18 +789,19 @@ export default function HeroSection() {
 			{/* CTA Buttons */}
 			<div 
 			  className={`flex flex-col sm:flex-row transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}
-			  style={{ gap: '12px' }}
+			  style={{ gap: '12px', width: '324px', margin: '0 auto' }}
 			>
 			  {/* Mobile: Original simple button */}
 			  <button
 				onClick={() => handleCtaClick(currentSlideData?.cta || '')}
-				className="inline-flex items-center justify-center border border-gray-600 hover:border-red-600 text-gray-300 hover:text-white font-medium rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
+				className="inline-flex items-center justify-center bg-gray-800/40 backdrop-blur-sm border border-gray-600 hover:border-red-600 text-gray-300 hover:text-white font-medium rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
 				style={{
-				  boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)',
+				  boxShadow: '0 4px 15px rgba(255, 255, 255, 0.08)',
 				  paddingLeft: '20px',
 				  paddingRight: '20px',
 				  paddingTop: '10px',
-				  paddingBottom: '10px'
+				  paddingBottom: '10px',
+				  flex: 1
 				}}
 			  >
 				<span>{currentSlideData?.cta}</span>
@@ -812,13 +810,14 @@ export default function HeroSection() {
 
 			  <Link
 				href="/categories"
-				className="inline-flex items-center justify-center border border-gray-600 hover:border-red-600 text-gray-300 hover:text-white font-medium rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
+				className="inline-flex items-center justify-center bg-gray-800/40 backdrop-blur-sm border border-gray-600 hover:border-red-600 text-gray-300 hover:text-white font-medium rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
 				style={{
-				  boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)',
+				  boxShadow: '0 4px 15px rgba(255, 255, 255, 0.08)',
 				  paddingLeft: '20px',
 				  paddingRight: '20px',
 				  paddingTop: '10px',
-				  paddingBottom: '10px'
+				  paddingBottom: '10px',
+				  flex: 1
 				}}
 			  >
 				Discover Products
@@ -828,7 +827,7 @@ export default function HeroSection() {
 			{/* Slide Indicators */}
 			<div 
 			  className={`flex justify-center lg:justify-start transition-all duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
-			  style={{ gap: '8px' }}
+			  style={{ gap: '8px', width: '324px', margin: '0 auto' }}
 			>
 			  {heroSlides.map((_, index) => (
 				<button
@@ -841,6 +840,7 @@ export default function HeroSection() {
 				/>
 			  ))}
 			</div>
+
 		  </div>
 		  </div>
 		</div>

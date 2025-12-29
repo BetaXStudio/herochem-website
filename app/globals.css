@@ -18,6 +18,11 @@ html {
   user-select: none;
 }
 
+/* Root element background for transitions */
+:root {
+  background-color: #2d2d34 !important;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -28,6 +33,11 @@ body {
   /* Disable zoom on iOS */
   touch-action: manipulation;
   -webkit-touch-callout: none;
+}
+
+/* Ensure root containers have the same background for dark theme areas */
+#__next {
+  background-color: #2d2d34;
 }
 
 @layer base {
@@ -353,6 +363,12 @@ button {
   }
 }
 
+/* Utility class for page fade-in animation */
+.animate-fade-in-page {
+  opacity: 0;
+  animation: fadeInPage 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
 @keyframes categoryTransitionOut {
   from {
     opacity: 1;
@@ -520,18 +536,17 @@ nav button[aria-label="Open search"] svg {
 
 /* Navbar search modal delayed opacity animation */
 .navbar-search-modal-enter {
-  animation: delayed-fade-in 0.3s ease-in-out forwards;
+  animation: navbar-search-fade-in 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-@keyframes delayed-fade-in {
+@keyframes navbar-search-fade-in {
   0% {
     opacity: 0;
-  }
-  75% {
-    opacity: 0;
+    transform: translateY(-5px);
   }
   100% {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 

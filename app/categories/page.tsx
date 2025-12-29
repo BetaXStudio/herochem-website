@@ -2,13 +2,13 @@
 import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
-  memo,
-  Suspense,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
+    memo,
+    Suspense,
+    useCallback,
+    useEffect,
+    useMemo,
+    useRef,
+    useState
 } from "react";
 import { createPortal } from "react-dom";
 import { useSimpleCart } from "../../components/cart/simple-cart-context";
@@ -21,15 +21,15 @@ import ProductCard from "../../components/product/product-card";
 import { useCategoriesState } from "../../contexts/categories-state-context";
 import { useModal } from "../../contexts/modal-context";
 import {
-  productDetails
+    productDetails
 } from "../../lib/product-details-database";
 import {
-  getAvailableFilters,
-  getFilteredProducts as getFilteredProductsFromDB,
-  products,
-  type Brand,
-  type CategoryLabel,
-  type Product,
+    getAvailableFilters,
+    getFilteredProducts as getFilteredProductsFromDB,
+    products,
+    type Brand,
+    type CategoryLabel,
+    type Product,
 } from "../../lib/products-database";
 // import CategoriesSidebar from "./CategoriesSidebar";
 // Desktop sidebar ausgelagert in categories-desktop-sidebar.tsx
@@ -821,13 +821,8 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
       const isDesktop = window.innerWidth >= 768;
       
       if (isDesktop) {
-        // Desktop: scroll the main container
-        if (mainRef.current) {
-          mainRef.current.scrollTo({ top: 0, behavior: "smooth" });
-        } else {
-          // Fallback: scroll window
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
+        // Desktop: scroll the window (main container has no fixed height)
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         // Mobile: check for mobile scroll container first (via data attribute)
         const mobileScrollContainer = document.querySelector(
@@ -1531,7 +1526,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                           <div className="relative dropdown-container md:hidden">
                             <button
                               onClick={toggleFilterDropdown}
-                              className="flex items-center gap-1 rounded-md px-1.5 py-1 text-xs transition-colors duration-300"
+                              className="flex items-center gap-1 rounded-xl px-1.5 py-1 text-xs transition-colors duration-300"
                               style={{
                                 color: "#2d2d34",
                                 background: "rgba(255, 255, 255, 0.9)",
@@ -1575,7 +1570,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
 
                             {/* Brand Dropdown */}
                             <div
-                              className="absolute top-full left-0 rounded-md z-10"
+                              className="absolute top-full left-0 rounded-xl z-10"
                               style={{
                                 width: "152px",
                                 marginTop: "5pt",
@@ -1664,7 +1659,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                             <div className="relative dropdown-container hidden md:block">
                               <button
                                 onClick={toggleFilterDropdown}
-                                className="flex items-center gap-1 rounded-md px-1.5 py-1 text-xs transition-colors duration-300"
+                                className="flex items-center gap-1 rounded-xl px-1.5 py-1 text-xs transition-colors duration-300"
                                 style={{
                                   color: "#2d2d34",
                                   background: "rgba(255, 255, 255, 0.9)",
@@ -1708,7 +1703,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
 
                               {/* Filter Dropdown */}
                               <div
-                                className="absolute top-full left-0 rounded-md z-10"
+                                className="absolute top-full left-0 rounded-xl z-10"
                                 style={{
                                   width: "152px",
                                   marginTop: "5pt",
@@ -1763,7 +1758,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                           <div className="relative dropdown-container">
                             <button
                               onClick={toggleSortingDropdown}
-                              className="flex items-center gap-1 text-gray-900 rounded-md px-1.5 py-1 text-xs transition-colors duration-300"
+                              className="flex items-center gap-1 text-gray-900 rounded-xl px-1.5 py-1 text-xs transition-colors duration-300"
                               style={{
                                 background: "rgba(255, 255, 255, 0.9)",
                                 backdropFilter: "blur(16px)",
@@ -1807,7 +1802,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
 
                             {/* Sorting Dropdown */}
                             <div
-                              className="absolute top-full left-0 rounded-md z-10"
+                              className="absolute top-full left-0 rounded-xl z-10"
                               style={{
                                 width: "152px",
                                 marginTop: "5pt",
@@ -1865,7 +1860,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                                 setIsSortingOpen(false);
                                 setIsCategoryFilterDropdownOpen(false);
                               }}
-                              className="flex items-center gap-1 text-gray-900 rounded-md px-1.5 py-1 text-xs transition-colors duration-300"
+                              className="flex items-center gap-1 text-gray-900 rounded-xl px-1.5 py-1 text-xs transition-colors duration-300"
                               style={{
                                 background: "rgba(255, 255, 255, 0.9)",
                                 backdropFilter: "blur(16px)",
@@ -1911,7 +1906,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
 
                             {/* Brand Dropdown */}
                             <div
-                              className="absolute top-full left-0 rounded-md z-10"
+                              className="absolute top-full left-0 rounded-xl z-10"
                               style={{
                                 width: "152px",
                                 marginTop: "5pt",
@@ -2004,7 +1999,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                                 setIsSortingOpen(false);
                                 setIsBrandFilterDropdownOpen(false);
                               }}
-                              className="flex items-center gap-1 text-gray-900 rounded-md px-1.5 py-1 text-xs transition-colors duration-300"
+                              className="flex items-center gap-1 text-gray-900 rounded-xl px-1.5 py-1 text-xs transition-colors duration-300"
                               style={{
                                 background: "rgba(255, 255, 255, 0.9)",
                                 backdropFilter: "blur(16px)",
@@ -2050,7 +2045,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
 
                             {/* Category Dropdown */}
                             <div
-                              className="absolute top-full left-0 rounded-md z-10"
+                              className="absolute top-full left-0 rounded-xl z-10"
                               style={{
                                 width: "152px",
                                 marginTop: "5pt",

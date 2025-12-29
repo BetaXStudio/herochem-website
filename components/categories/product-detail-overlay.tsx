@@ -1,7 +1,7 @@
 "use client";
 
-import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { useEffect, useRef, useState } from "react";
+import { MinusIcon, PlusIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useSimpleCart } from "../../components/cart/simple-cart-context";
 import { useModal } from "../../contexts/modal-context";
@@ -68,6 +68,21 @@ export function ProductDetailOverlay({
   const [toastFadeOut, setToastFadeOut] = useState(false);
   const [titleFontSize, setTitleFontSize] = useState("2xl");
   const [quantity, setQuantity] = useState(1);
+  const [isImageZoomed, setIsImageZoomed] = useState(false);
+  
+  // Pinch-to-zoom - use refs for real-time tracking to avoid React re-renders during gestures
+  const [isPinching, setIsPinching] = useState(false);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
+  const pinchStateRef = useRef({
+    scale: 1,
+    translateX: 0,
+    translateY: 0,
+    lastDistance: 0,
+    lastCenterX: 0,
+    lastCenterY: 0,
+  });
+  
   const { addItem } = useSimpleCart();
   const titleRef = useRef<HTMLHeadingElement>(null);
   
@@ -120,8 +135,136 @@ export function ProductDetailOverlay({
     if (!isOpen) {
       setProduct(null);
       setQuantity(1);
+      setIsImageZoomed(false);
+      // Reset pinch-to-zoom state
+      pinchStateRef.current = {
+        scale: 1,
+        translateX: 0,
+        translateY: 0,
+        lastDistance: 0,
+        lastCenterX: 0,
+        lastCenterY: 0,
+      };
+      // Note: Don't reset transform here - modal is closing anyway
+      // and resetting causes a visual glitch
     }
   }, [isOpen]);
+
+  // Reset pinch-to-zoom state when zoom is toggled off (but only if modal is still open)
+  // Note: We don't touch imageRef.current.style.transform here - React's style prop handles it
+  useEffect(() => {
+    if (!isImageZoomed && isOpen) {
+      pinchStateRef.current = {
+        scale: 1,
+        translateX: 0,
+        translateY: 0,
+        lastDistance: 0,
+        lastCenterX: 0,
+        lastCenterY: 0,
+      };
+    }
+  }, [isImageZoomed, isOpen]);
+
+  // Apply transform directly to DOM for smooth performance
+  // baseScale is 1.8 for Deus, 1.0 for Astera
+  const applyTransform = useCallback((baseScale: number) => {
+    if (!imageRef.current) return;
+    const { scale, translateX, translateY } = pinchStateRef.current;
+    const totalScale = baseScale * scale;
+    imageRef.current.style.transform = `scale(${totalScale}) translate(${translateX / scale}px, ${translateY / scale}px)`;
+  }, []);
+
+  // Handle pinch-to-zoom touch events - direct DOM manipulation for performance
+  const handleTouchStart = useCallback((e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isImageZoomed) return;
+    
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      const touch1 = e.touches[0]!;
+      const touch2 = e.touches[1]!;
+      
+      const dx = touch1.clientX - touch2.clientX;
+      const dy = touch1.clientY - touch2.clientY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      
+      pinchStateRef.current.lastDistance = distance;
+      pinchStateRef.current.lastCenterX = (touch1.clientX + touch2.clientX) / 2;
+      pinchStateRef.current.lastCenterY = (touch1.clientY + touch2.clientY) / 2;
+      setIsPinching(true);
+    }
+  }, [isImageZoomed]);
+
+  const handleTouchMove = useCallback((e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isImageZoomed || e.touches.length !== 2) return;
+    
+    e.preventDefault();
+    const touch1 = e.touches[0]!;
+    const touch2 = e.touches[1]!;
+    
+    const dx = touch1.clientX - touch2.clientX;
+    const dy = touch1.clientY - touch2.clientY;
+    const newDistance = Math.sqrt(dx * dx + dy * dy);
+    const newCenterX = (touch1.clientX + touch2.clientX) / 2;
+    const newCenterY = (touch1.clientY + touch2.clientY) / 2;
+    
+    const state = pinchStateRef.current;
+    
+    if (state.lastDistance > 0) {
+      // Calculate scale change
+      const scaleChange = newDistance / state.lastDistance;
+      state.scale = Math.max(1, Math.min(4, state.scale * scaleChange));
+      
+      // Calculate pan/translate change
+      const deltaX = newCenterX - state.lastCenterX;
+      const deltaY = newCenterY - state.lastCenterY;
+      
+      // Only allow panning when zoomed in
+      if (state.scale > 1) {
+        state.translateX += deltaX;
+        state.translateY += deltaY;
+      }
+      
+      // Apply transform directly - baseScale is 1.8 for Deus, 1.0 for Astera
+      const isAstera = product?.brand === "astera" || product?.name.toLowerCase().includes("astera");
+      const baseScale = isAstera ? 1.0 : 1.8;
+      applyTransform(baseScale);
+    }
+    
+    state.lastDistance = newDistance;
+    state.lastCenterX = newCenterX;
+    state.lastCenterY = newCenterY;
+  }, [isImageZoomed, product, applyTransform]);
+
+  const handleTouchEnd = useCallback(() => {
+    // Only process if we were actually pinching
+    const wasPinching = pinchStateRef.current.lastDistance > 0;
+    setIsPinching(false);
+    pinchStateRef.current.lastDistance = 0;
+    
+    if (!wasPinching) return; // Don't modify transform if we weren't pinching
+    
+    // Get base scale for this product
+    const isAstera = product?.brand === "astera" || product?.name.toLowerCase().includes("astera");
+    const baseScale = isAstera ? 1.0 : 1.8;
+    
+    // If scale is close to 1, reset to base scale
+    if (pinchStateRef.current.scale <= 1.1) {
+      pinchStateRef.current.scale = 1;
+      pinchStateRef.current.translateX = 0;
+      pinchStateRef.current.translateY = 0;
+      if (imageRef.current) {
+        // Animate back to base scale and keep it there
+        imageRef.current.style.transition = "transform 0.3s ease-out";
+        imageRef.current.style.transform = `scale(${baseScale})`;
+        setTimeout(() => {
+          if (imageRef.current) {
+            imageRef.current.style.transition = "";
+            // Keep the baseScale set - don't clear it
+          }
+        }, 300);
+      }
+    }
+  }, [product]);
 
   // Adjust font size based on product name length
   useEffect(() => {
@@ -295,50 +438,117 @@ export function ProductDetailOverlay({
                 />
 
                 {/* Product Image with Brand Label */}
-                <div className="flex items-start justify-between mb-4">
+                <div className="relative mb-4">
                   <div
-                    className="w-32 h-24 rounded-lg flex items-center justify-center p-1 flex-shrink-0"
+                    ref={imageContainerRef}
+                    className="rounded-lg flex items-center justify-center p-1 relative overflow-hidden"
                     style={{
+                      width: isImageZoomed ? "100%" : "128px",
+                      height: isImageZoomed ? "200px" : "96px",
                       background: "rgba(255, 255, 255, 0.8)",
                       border: "1px solid #e5e7eb",
                       // CPU rendering - avoid GPU compositing for VRAM optimization
-                      contain: "layout style paint",
+                      transform: "none",
+                      willChange: "auto",
                       WebkitBackfaceVisibility: "hidden",
                       backfaceVisibility: "hidden",
-                      willChange: "auto",
+                      contain: "layout style paint",
+                      transition: "width 0.5s cubic-bezier(0.4, 0, 0.2, 1), height 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+                      touchAction: isImageZoomed ? "none" : "auto",
                     }}
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
                   >
+                    {/* Zoom Toggle Button */}
+                    <button
+                      onClick={() => {
+                        if (isImageZoomed) {
+                          // When closing zoom, first reset image to base scale
+                          const isAstera = product?.brand === "astera" || product?.name.toLowerCase().includes("astera");
+                          const baseScale = isAstera ? 1.0 : 1.8;
+                          
+                          // Reset pinch state
+                          pinchStateRef.current = {
+                            scale: 1,
+                            translateX: 0,
+                            translateY: 0,
+                            lastDistance: 0,
+                            lastCenterX: 0,
+                            lastCenterY: 0,
+                          };
+                          
+                          // Animate image back to base scale first
+                          if (imageRef.current) {
+                            imageRef.current.style.transition = "transform 0.2s ease-out";
+                            imageRef.current.style.transform = `scale(${baseScale})`;
+                          }
+                          
+                          // Then start container transition after a short delay
+                          setTimeout(() => {
+                            if (imageRef.current) {
+                              imageRef.current.style.transition = "";
+                            }
+                            setIsImageZoomed(false);
+                          }, 200);
+                        } else {
+                          setIsImageZoomed(true);
+                        }
+                      }}
+                      className="absolute top-1 right-1 p-1 rounded-md hover:bg-gray-100 z-10"
+                      style={{
+                        color: "#9ca3af",
+                        transition: "background-color 0.2s ease",
+                      }}
+                      aria-label={isImageZoomed ? "Zoom out" : "Zoom in"}
+                    >
+                      {isImageZoomed ? (
+                        <MinusIcon className="w-4 h-4" />
+                      ) : (
+                        <PlusIcon className="w-4 h-4" />
+                      )}
+                    </button>
+                    
                     <img
+                      ref={imageRef}
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-contain rounded"
+                      className="object-contain rounded"
                       style={{
                         opacity: 1,
+                        width: "100%",
+                        height: "100%",
+                        // Keep scale constant - container size change handles the zoom
                         transform:
                           product?.brand === "astera" ||
                           product?.name.toLowerCase().includes("astera")
-                            ? "scale(1.0)"
-                            : "scale(1.8)",
+                            ? "scale(1.0)" // Astera images are already large
+                            : "scale(1.8)", // Deus always at 1.8x - container growth makes it bigger
                         // CPU rendering - avoid GPU compositing
                         WebkitBackfaceVisibility: "hidden",
                         backfaceVisibility: "hidden",
                         willChange: "auto",
+                        transition: isPinching ? "none" : "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+                        pointerEvents: "none",
                       }}
                       loading="lazy"
                       decoding="async"
                     />
                   </div>
                   
-                  {/* Brand Label */}
+                  {/* Brand Label - absolutely positioned so it doesn't affect layout */}
                   <img
                     src={product?.brand === "astera" ? "/astera_labs.png" : "/deus_medical.png"}
                     alt={product?.brand === "astera" ? "Astera Labs" : "Deus Medical"}
-                    className="h-8 object-contain flex-shrink-0"
+                    className="h-8 object-contain absolute top-0 right-0"
                     style={{
                       // CPU rendering - avoid GPU compositing
                       WebkitBackfaceVisibility: "hidden",
                       backfaceVisibility: "hidden",
                       willChange: "auto",
+                      opacity: isImageZoomed ? 0 : 1,
+                      transition: "opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+                      pointerEvents: isImageZoomed ? "none" : "auto",
                     }}
                     loading="lazy"
                     decoding="async"

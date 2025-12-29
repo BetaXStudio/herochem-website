@@ -151,7 +151,6 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
           className="relative bg-white shadow-xl w-full max-w-md mx-4 max-h-[90vh] max-[800px]:max-h-[calc(90vh-105px)]"
           style={{
             backgroundColor: "white",
-            border: "2px solid rgb(45,45,52)",
             boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
             animation: "modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
             borderRadius: "0.75rem",
@@ -167,9 +166,9 @@ export default function AuthModal({ isOpen, onCloseAction }: AuthModalProps) {
             style={{
               borderColor: 'rgb(45,45,52)',
               backgroundColor: 'rgb(45,45,52)',
-              borderTopLeftRadius: '0.75rem', // Updated to match cart modal consistency
-              borderTopRightRadius: '0.75rem', // Updated to match cart modal consistency
-              margin: '-2px -2px 0 -2px',
+              borderTopLeftRadius: '0.75rem',
+              borderTopRightRadius: '0.75rem',
+              margin: '-1px 0 -1px 0',
               padding: '12px 16px'
             }}
           >

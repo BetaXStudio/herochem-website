@@ -1,6 +1,6 @@
 "use client";
 
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { GlobeAltIcon, LockClosedIcon, TruckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import React, { useEffect, useState } from "react";
 import { useModal } from "../../contexts/modal-context";
 
@@ -74,25 +74,20 @@ export default function WelcomeModal({
         style={{ 
           touchAction: "none", 
           pointerEvents: "none",
-          overflow: "hidden"
         }}
         onTouchMove={(e) => e.preventDefault()}
       >
         {/* Modal with animation */}
         <div
-          className="relative bg-white shadow-xl max-w-lg max-h-[80vh] max-[800px]:max-h-[calc(90vh-105px)] flex flex-col"
+          className="relative bg-white shadow-xl w-full max-w-lg mx-4 max-h-[80vh] max-[800px]:max-h-[calc(90vh-105px)] flex flex-col"
           style={{
             backgroundColor: "white",
-            border: "2px solid rgb(45,45,52)",
             boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
             animation: "modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-            borderRadius: "0.75rem", // Updated to match cart modal consistency
+            borderRadius: "0.75rem",
             touchAction: "auto",
             pointerEvents: "auto",
-            overflow: "visible",
-            width: "calc(100% - 28px)",
-            marginLeft: "auto",
-            marginRight: "auto",
+            WebkitBackfaceVisibility: "hidden",
           }}
         >
           {/* Header */}
@@ -103,15 +98,29 @@ export default function WelcomeModal({
               backgroundColor: 'rgb(45,45,52)',
               borderTopLeftRadius: '0.75rem',
               borderTopRightRadius: '0.75rem',
-              margin: '-2px -2px 0 -2px',
+              margin: '-1px 0 -1px 0',
               padding: '12px 16px'
             }}
           >
             <h2
-              className="text-lg font-medium text-white"
+              className="text-lg font-medium text-white flex items-center"
               style={{ fontFamily: "Calibri, Arial, sans-serif" }}
             >
-              {"Special Offer - Winter Sale 🎄"}
+              Special Offer - Winter Sale
+              <svg
+                className="h-4 w-4 ml-2 text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="12" y1="2" x2="12" y2="22" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+                <line x1="19.07" y1="4.93" x2="4.93" y2="19.07" />
+              </svg>
             </h2>
             <button
               onClick={handleClose}
@@ -124,7 +133,7 @@ export default function WelcomeModal({
 
           {/* Content */}
           <div
-            className="p-6 overflow-y-auto flex-1"
+            className="px-6 pb-6 pt-3 overflow-y-auto flex-1"
             style={{
               WebkitOverflowScrolling: "touch",
               touchAction: "pan-y",
@@ -211,10 +220,19 @@ export default function WelcomeModal({
 
               {/* Footer Info */}
               <div className="text-center pt-4 pb-4 border-t border-gray-200">
-                <p className="text-xs text-gray-500">
-                  🔒 Secure payments • 📦 Discrete shipping{" "}
-                  <span className="max-[800px]:block">
-                    🌍 Worldwide delivery
+                <p className="text-xs text-gray-500 flex items-center justify-center flex-wrap gap-x-2">
+                  <span className="inline-flex items-center">
+                    <LockClosedIcon className="h-3.5 w-3.5 text-gray-400 mr-1" />
+                    Secure payments
+                  </span>
+                  <span className="mx-2">•</span>
+                  <span className="inline-flex items-center">
+                    <TruckIcon className="h-3.5 w-3.5 text-gray-400 mr-1" />
+                    Discrete shipping
+                  </span>
+                  <span className="inline-flex items-center max-[800px]:basis-full max-[800px]:justify-center max-[800px]:mt-1">
+                    <GlobeAltIcon className="h-3.5 w-3.5 text-gray-400 mr-1" />
+                    Worldwide delivery
                   </span>
                 </p>
               </div>

@@ -14,7 +14,8 @@ export default function MobileScrollContainer({
   children,
 }: MobileScrollContainerProps) {
   const [isMounted, setIsMounted] = useState(false); // CRITICAL: Track if mounted to prevent hydration mismatch
-  const [isMobile, setIsMobile] = useState(false); // Start with false for SSR consistency
+  const [isVisible, setIsVisible] = useState(false); // Delayed visibility for smooth transition
+  const [isMobile, setIsMobile] = useState<boolean | null>(null); // Start with null - unknown state until detected
   const pathname = usePathname(); // Track route changes
   const containerRef = useRef<HTMLDivElement>(null); // Ref for scroll container
   
@@ -86,6 +87,19 @@ export default function MobileScrollContainer({
     const detected = detectMobile();
     setIsMobile(detected);
     setIsMounted(true);
+    
+    // Delay visibility to ensure:
+    // 1. React has processed the state updates (isMobile, isMounted)
+    // 2. The browser has painted the correct layout (mobile vs desktop)
+    // Using a small timeout after double rAF ensures the layout is stable
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        // Additional microtask to ensure React has flushed all updates
+        setTimeout(() => {
+          setIsVisible(true);
+        }, 0);
+      });
+    });
 
     // Add resize listener to update mobile detection
     const handleResize = () => {
@@ -93,25 +107,33 @@ export default function MobileScrollContainer({
     };
 
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+
+  // Derived state: explicitly check if mobile is true (not null or false)
+  const isMobileDetected = isMobile === true;
 
   // Scroll to top on route change for mobile
   useEffect(() => {
-    if (isMounted && isMobile && containerRef.current) {
+    if (isMounted && isMobileDetected && containerRef.current) {
       // Reset scroll position to 0 on route change
       containerRef.current.scrollTop = 0;
     }
-  }, [pathname, isMounted, isMobile]);
+  }, [pathname, isMounted, isMobileDetected]);
 
   // Keep DOM structure consistent: always render the same way
   // Apply mobile styles through a combination of base class + inline styles
   const containerStyle: React.CSSProperties = {
-    height: (isMounted && isMobile) ? "100vh" : "auto",
+    height: (isMounted && isMobileDetected) ? "100vh" : "auto",
     // No transition on filter - instant blur to avoid competing with modal animations
     // This significantly improves modal animation performance on pages with many images
     pointerEvents: isAnyModalOpen ? "none" : "auto",
     willChange: "filter",
+    // Only hide until mobile state is detected - no transition needed
+    // The page content has its own fadeInPage animation that handles the smooth entry
+    opacity: (isVisible && isMobile !== null) ? 1 : 0,
   };
 
   // Only add blur filter if a modal is actually open
@@ -120,7 +142,7 @@ export default function MobileScrollContainer({
   }
 
   // Mobile layout overrides - only apply if truly mounted and mobile
-  if (isMounted && isMobile) {
+  if (isMounted && isMobileDetected) {
     containerStyle.position = "fixed" as const;
     containerStyle.inset = "0px" as any;
     // Use fixed 88px - the navbar already handles safe-area-inset-top
@@ -132,9 +154,9 @@ export default function MobileScrollContainer({
   }
 
   // Only add paddingTop override if on mobile after mount - use !important to override Tailwind class
-  const mainClassName = (isMounted && isMobile) 
-    ? "min-h-screen bg-neutral-950 text-neutral-100 hide-scrollbar"  // Remove pt-[41px] on mobile
-    : "min-h-screen bg-neutral-950 text-neutral-100 hide-scrollbar pt-[41px]";
+  const mainClassName = (isMounted && isMobileDetected) 
+    ? "min-h-screen bg-white text-neutral-100 hide-scrollbar"  // Remove pt-[41px] on mobile
+    : "min-h-screen bg-white text-neutral-100 hide-scrollbar pt-[41px]";
 
   return (
     <div ref={containerRef} className="hide-scrollbar" style={containerStyle} data-mobile-scroll-container>

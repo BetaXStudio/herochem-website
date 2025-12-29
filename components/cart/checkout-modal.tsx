@@ -4,11 +4,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useModal } from "../../contexts/modal-context";
 import {
-  calculateCouponDiscount,
-  validateCouponCode,
+    calculateCouponDiscount,
+    validateCouponCode,
 } from "../../lib/coupon-codes";
 import { supabase } from "../../lib/supabase";
 import { useAuth } from "../auth/auth-context";
+import CartItemImage from "./cart-item-image";
 import { useSimpleCart } from "./simple-cart-context";
 
 interface CartItem {
@@ -82,6 +83,9 @@ export default function CheckoutModal({
   
   // Scroll position ref für korrekte Wiederherstellung
   const scrollYRef = useRef(0);
+  
+  // Ref for order summary scroll container - needed for IntersectionObserver VRAM optimization
+  const orderSummaryScrollRef = useRef<HTMLDivElement>(null);
   
   // Portal container for rendering outside of any parent's stacking context
   const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
@@ -416,7 +420,6 @@ export default function CheckoutModal({
           className="relative shadow-xl w-full max-w-4xl max-h-[70vh] flex flex-col"
           style={{ 
             backgroundColor: "white",
-            border: "2px solid rgb(45,45,52)",
             boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
             animation: "modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
             borderRadius: "0.75rem",
@@ -431,13 +434,11 @@ export default function CheckoutModal({
             <>
               {/* Header */}
               <div
-                className="sticky top-0 flex items-center justify-between border-b"
+                className="sticky top-0 flex items-center justify-between"
                 style={{
-                  borderColor: 'rgb(45,45,52)',
                   backgroundColor: 'rgb(45,45,52)',
                   borderTopLeftRadius: '0.75rem',
                   borderTopRightRadius: '0.75rem',
-                  margin: '-2px -2px 0 -2px',
                   padding: '12px 16px'
                 }}
               >
@@ -499,13 +500,11 @@ export default function CheckoutModal({
             <>
               {/* Header */}
               <div
-                className="sticky top-0 flex items-center justify-between border-b"
+                className="sticky top-0 flex items-center justify-between"
                 style={{
-                  borderColor: 'rgb(45,45,52)',
                   backgroundColor: 'rgb(45,45,52)',
                   borderTopLeftRadius: '0.75rem',
                   borderTopRightRadius: '0.75rem',
-                  margin: '-2px -2px 0 -2px',
                   padding: '12px 16px'
                 }}
               >
@@ -585,13 +584,11 @@ export default function CheckoutModal({
             <>
               {/* Header */}
               <div
-                className="sticky top-0 flex items-center justify-between border-b"
+                className="sticky top-0 flex items-center justify-between"
                 style={{
-                  borderColor: 'rgb(45,45,52)',
                   backgroundColor: 'rgb(45,45,52)',
                   borderTopLeftRadius: '0.75rem',
                   borderTopRightRadius: '0.75rem',
-                  margin: '-2px -2px 0 -2px',
                   padding: '12px 16px'
                 }}
               >
@@ -679,41 +676,22 @@ export default function CheckoutModal({
                     </button>
                     
                     {orderSummaryExpanded && (
-                      <div className="px-4 pb-4 space-y-3 border-t border-gray-200">
+                      <div ref={orderSummaryScrollRef} className="px-4 pb-4 space-y-3 border-t border-gray-200 max-h-60 overflow-y-auto">
                         <div className="pt-3 space-y-3">
                           {cartItems.map((item) => (
                         <div
                           key={`${item.handle}-${item.variant || "default"}`}
                           className="flex items-center gap-3"
                         >
-                          {item.image && (
-                            <div
-                              className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                              style={{
-                                background: "rgba(255, 255, 255, 0.8)",
-                                border: "1px solid #e5e7eb",
-                                // CPU rendering - avoid GPU compositing for VRAM optimization
-                                contain: "layout style paint",
-                                WebkitBackfaceVisibility: "hidden",
-                                backfaceVisibility: "hidden",
-                                willChange: "auto",
-                              }}
-                            >
-                              <img
-                                src={item.image}
-                                alt={item.title}
-                                className="w-full h-full object-contain rounded-lg"
-                                style={{
-                                  // CPU rendering - avoid GPU compositing
-                                  WebkitBackfaceVisibility: "hidden",
-                                  backfaceVisibility: "hidden",
-                                  willChange: "auto",
-                                }}
-                                loading="lazy"
-                                decoding="async"
-                              />
-                            </div>
-                          )}
+                          {/* Product Image - VRAM optimized with IntersectionObserver */}
+                          <CartItemImage
+                            src={item.image}
+                            alt={item.title}
+                            size={48}
+                            scrollContainerRef={orderSummaryScrollRef}
+                            className="rounded-xl"
+                            style={{ border: "1px solid #e5e7eb" }}
+                          />
                           <div className="flex-1 min-w-0">
                             <h4 className="text-gray-900 font-medium text-sm truncate">
                               {item.title}

@@ -7,8 +7,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useModal } from "../../../contexts/modal-context";
 import { productDetails } from "../../../lib/product-details-database";
 import {
-  getProductStats,
-  searchProductsDatabase,
+    getProductStats,
+    searchProductsDatabase,
 } from "../../../lib/search-products";
 import { ProductDetailOverlay } from "../../categories/product-detail-overlay";
 
@@ -336,6 +336,8 @@ export default function Search({
     setPreventClose(true); // Prevent dropdown from closing
     setSelectedProductId(productId);
     setIsProductDetailOpen(true);
+    // Close categories menu modal when product detail opens
+    setCategoriesMenuModalOpen(false);
   };
 
   const closeProductDetail = () => {

@@ -138,6 +138,9 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
   const openProductDetailModal = (productId: string) => {
     setProductDetailModalId(productId);
     setIsProductDetailModalOpen(true);
+    // Close categories menu modal when product detail opens
+    setIsCategoriesMenuModalOpenState(false);
+    setIsCategoriesModalOpenState(false);
   };
 
   const closeProductDetailModal = () => {

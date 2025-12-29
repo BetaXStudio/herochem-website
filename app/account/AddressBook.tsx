@@ -260,7 +260,7 @@ export default function AddressBook() {
             </p>
             <button
               onClick={() => setIsAdding(true)}
-              className="w-full px-4 py-2 text-white rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full px-4 py-2 text-white rounded-xl font-semibold transition-all duration-300"
               style={{
                 background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
                 boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",
@@ -284,7 +284,7 @@ export default function AddressBook() {
                 {!isAdding && (
                   <button
                     onClick={() => setIsAdding(true)}
-                    className="px-3 py-1.5 text-white rounded-lg font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] text-sm"
+                    className="px-3 py-1.5 text-white rounded-lg font-medium transition-all duration-300 text-sm"
                     style={{
                       background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
                       boxShadow: "0 2px 8px rgba(45, 45, 52, 0.3)",
@@ -544,7 +544,8 @@ export default function AddressBook() {
                         is_primary: e.target.checked,
                       })
                     }
-                    className="w-4 h-4 text-gray-900 bg-white border-gray-300 rounded focus:ring-gray-400 focus:ring-2"
+                    className="w-4 h-4 rounded focus:ring-2"
+                    style={{ accentColor: "rgb(45, 45, 52)" }}
                   />
                   <label
                     htmlFor="is_primary"
@@ -558,7 +559,7 @@ export default function AddressBook() {
                   <button
                     onClick={handleSaveAddress}
                     disabled={saving}
-                    className="flex-1 px-4 py-2 text-white rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 px-4 py-2 text-white rounded-xl font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{
                       background: "linear-gradient(135deg, #2d2d34 0%, #3a3a42 100%)",
                       boxShadow: "0 4px 15px rgba(45, 45, 52, 0.3)",

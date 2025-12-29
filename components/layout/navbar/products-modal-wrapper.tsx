@@ -1,6 +1,6 @@
 "use client";
 
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { BuildingOffice2Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useEffect } from "react";
 import { useModal } from "../../../contexts/modal-context";
 
@@ -46,10 +46,9 @@ export default function ProductsModalWrapper() {
           className="relative bg-white shadow-xl w-full max-w-2xl mx-4 max-h-[80vh] max-[800px]:max-h-[calc(90vh-105px)]"
           style={{
             backgroundColor: 'white',
-            border: '2px solid rgb(45,45,52)',
             boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
             animation: 'modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-            borderRadius: '0.75rem', // Matches "Proceed to Checkout" button rounded-xl
+            borderRadius: '0.75rem',
             touchAction: "auto",
             pointerEvents: "auto",
           }}
@@ -59,9 +58,9 @@ export default function ProductsModalWrapper() {
           style={{
             borderColor: 'rgb(45,45,52)',
             backgroundColor: 'rgb(45,45,52)',
-            borderTopLeftRadius: '0.75rem', // Updated to match cart modal consistency
-            borderTopRightRadius: '0.75rem', // Updated to match cart modal consistency
-            margin: '-2px -2px 0 -2px',
+            borderTopLeftRadius: '0.75rem',
+            borderTopRightRadius: '0.75rem',
+            margin: '-1px 0 -1px 0',
             padding: '12px 16px'
           }}
         >
@@ -83,22 +82,9 @@ export default function ProductsModalWrapper() {
         </div>
 
         <div className="p-6 overflow-y-auto max-h-[calc(80vh-120px)] max-[800px]:max-h-[calc(90vh-225px)]">
-          {/* HeroChem Logo */}
+          {/* Factory Icon */}
           <div className="flex justify-center mb-6">
-            <div 
-              className="w-20 h-20 rounded-full flex items-center justify-center"
-              style={{ 
-                backgroundColor: 'rgb(45,45,52)',
-                boxShadow: '0 4px 15px rgba(233, 17, 17, 0.3)'
-              }}
-            >
-              <img 
-                src="/HC_Logo.png" 
-                alt="HeroChem Logo" 
-                className="w-12 h-12 object-contain"
-                style={{ marginLeft: '2px' }}
-              />
-            </div>
+            <BuildingOffice2Icon className="w-16 h-16 text-gray-400" />
           </div>
           
           <div className="prose prose-gray max-w-none">

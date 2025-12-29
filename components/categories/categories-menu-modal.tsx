@@ -361,13 +361,29 @@ export default function CategoriesMenuModal({
                         />
                         <span className="truncate text-xs">{category.label}</span>
                       </div>
-                      <span className="text-white">
-                        {isDropdownOpenForCategory ? '−' : '+'}
+                      <span 
+                        className="text-white transition-transform duration-200"
+                        style={{
+                          display: "inline-block",
+                          transform: isDropdownOpenForCategory ? "rotate(180deg)" : "rotate(0deg)",
+                        }}
+                      >
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                       </span>
                     </button>
-                    {isDropdownOpenForCategory && (
-                      <div className="px-4 py-1 border-t border-white/10" style={{ backgroundColor: "rgb(45, 45, 52)", marginTop: "-6px", position: "relative", zIndex: 20 }}>
-                        <div className="space-y-2">
+                    <div 
+                      className="overflow-hidden transition-all duration-300 ease-in-out"
+                      style={{ 
+                        maxHeight: isDropdownOpenForCategory ? "120px" : "0px",
+                        opacity: isDropdownOpenForCategory ? 1 : 0,
+                      }}
+                    >
+                      <div className="py-1" style={{ backgroundColor: "rgb(45, 45, 52)", position: "relative", zIndex: 20 }}>
+                        {/* Separator line - aligned with button content */}
+                        <div style={{ height: "1px", backgroundColor: "rgba(255, 255, 255, 0.1)", marginLeft: "16px", marginRight: "16px", marginBottom: "4px" }} />
+                        <div className="space-y-2 px-4">
                           <button
                             onClick={() => {
                               // DEUS MEDICAL Navigation
@@ -414,7 +430,7 @@ export default function CategoriesMenuModal({
                           </button>
                         </div>
                       </div>
-                    )}
+                    </div>
                   </li>
                 );
               })}

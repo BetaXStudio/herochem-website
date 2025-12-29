@@ -142,6 +142,9 @@ export default function RewardPoints() {
                 src="/diamond.png"
                 alt="Diamond Reward Points"
                 className="w-16 h-16 object-contain"
+                style={{
+                  filter: "brightness(0) saturate(100%) invert(9%) sepia(6%) saturate(541%) hue-rotate(182deg) brightness(97%) contrast(91%)",
+                }}
               />
             </div>
             <h4 className="text-xl font-semibold text-gray-900 mb-3">

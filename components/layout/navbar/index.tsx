@@ -592,10 +592,10 @@ export function Navbar() {
               }}
             >
               <ul
-                className="rounded-lg"
+                className="rounded-xl"
                 style={{
                   backgroundColor: "rgb(45, 45, 52)",
-                  borderRadius: "0.5rem",
+                  borderRadius: "0.75rem",
                   overflow: "hidden",
                   padding: "4px 0",
                   boxShadow: "0 4px 12px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.1)",
@@ -740,10 +740,10 @@ export function Navbar() {
                       }}
                     >
                       <ul
-                        className="rounded-lg"
+                        className="rounded-xl"
                         style={{
                           backgroundColor: "rgb(45, 45, 52)",
-                          borderRadius: "0.5rem",
+                          borderRadius: "0.75rem",
                           overflow: "hidden",
                           padding: "4px 0",
                           boxShadow: "0 4px 12px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.1)",
