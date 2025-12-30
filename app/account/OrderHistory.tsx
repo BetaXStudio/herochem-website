@@ -395,21 +395,34 @@ export default function OrderHistory() {
                               Order Items ({order.items.length})
                             </h5>
                             <div className="space-y-2">
-                              {order.items.map((item) => (
+                              {order.items.map((item) => {
+                                const isDeus = item.product_image_url?.toLowerCase().includes('deus');
+                                return (
                                 <div
                                   key={item.id}
                                   className="flex items-start gap-2 bg-white rounded-lg p-2"
                                   style={{ border: "1px solid #e5e7eb" }}
                                 >
                                   {item.product_image_url && (
-                                    <img
-                                      src={item.product_image_url}
-                                      alt={item.product_name}
-                                      className="w-12 h-12 object-cover rounded-md"
-                                    />
+                                    <div 
+                                      className="rounded-md overflow-hidden flex-shrink-0"
+                                      style={{ 
+                                        width: '48px', 
+                                        height: '48px',
+                                      }}
+                                    >
+                                      <img
+                                        src={item.product_image_url}
+                                        alt={item.product_name}
+                                        className="object-cover w-full h-full"
+                                        style={{
+                                          transform: isDeus ? 'scale(1.25)' : 'scale(0.85)',
+                                        }}
+                                      />
+                                    </div>
                                   )}
-                                  <div className="flex-1">
-                                    <h6 className="text-gray-900 font-medium text-sm">
+                                  <div className="flex-1 min-w-0">
+                                    <h6 className="text-gray-900 font-medium text-sm truncate">
                                       {item.product_name}
                                     </h6>
                                     {item.product_variant && (
@@ -434,7 +447,7 @@ export default function OrderHistory() {
                                     </div>
                                   </div>
                                 </div>
-                              ))}
+                              )})}
                             </div>
 
                             {/* Order Summary */}
