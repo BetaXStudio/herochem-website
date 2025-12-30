@@ -14,7 +14,7 @@ const nextConfig = {
     ],
   },
   // Allow dev server access from local network devices
-  allowedDevOrigins: ["192.168.1.6", "172.20.10.2", "localhost", "127.0.0.1"],
+  allowedDevOrigins: ["192.168.1.6", "192.168.1.7", "172.20.10.2", "localhost", "127.0.0.1"],
   async redirects() {
     return [
       {

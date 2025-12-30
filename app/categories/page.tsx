@@ -1,5 +1,6 @@
 "use client";
 import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
     memo,
@@ -342,6 +343,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
   );
   const [isHydrated, setIsHydrated] = useState(false);
   const [isParamsLoaded, setIsParamsLoaded] = useState(false); // New state to prevent flash
+  const [isPageReady, setIsPageReady] = useState(false); // For page enter animation
   const searchParams = useSearchParams();
   const [isBrandDropdownOpen, setIsBrandDropdownOpen] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -429,6 +431,57 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
   useEffect(() => {
     setIsHydrated(true);
   }, []);
+
+  // Page enter animation - triggers after params are loaded (only on initial page load)
+  useEffect(() => {
+    if (!isParamsLoaded) return;
+    
+    // Wait for layout to stabilize using double rAF like home page
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          setIsPageReady(true);
+        }, 0);
+      });
+    });
+  }, [isParamsLoaded]);
+
+  // Trigger fade-in animation on soft navigation (when searchParams change)
+  const prevSearchParamsRef = useRef<string | null>(null);
+  useEffect(() => {
+    const currentParamsString = searchParams?.toString() ?? "";
+    
+    // Only trigger animation if params actually changed (not on initial mount)
+    if (prevSearchParamsRef.current !== null && prevSearchParamsRef.current !== currentParamsString) {
+      // Reset animation by setting isPageReady to false, then back to true
+      setIsPageReady(false);
+      
+      // Reset scroll position of MobileScrollContainer to top
+      const scrollContainer = 
+        document.querySelector('[data-scroll-container]')?.parentElement ||
+        document.querySelector('.fixed.inset-0.overflow-y-auto') as HTMLElement ||
+        document.querySelector(".fixed.inset-0.pt-\\[41px\\].overflow-y-auto") as HTMLElement;
+      
+      if (scrollContainer) {
+        scrollContainer.scrollTop = 0;
+      }
+      // Also reset main container scroll
+      if (mainRef.current) {
+        mainRef.current.scrollTop = 0;
+      }
+      // And window scroll as fallback
+      window.scrollTo(0, 0);
+      
+      // Use double rAF to ensure the opacity:0 state is painted before starting animation
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsPageReady(true);
+        });
+      });
+    }
+    
+    prevSearchParamsRef.current = currentParamsString;
+  }, [searchParams]);
 
   // Cleanup timeouts on unmount
   useEffect(() => {
@@ -593,8 +646,12 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
       // Reset all modals before navigation to prevent blur overlay issues
       resetAllModals();
       
-      // Update category state
-      setCurrentCategory(category);
+      // Hide the page content immediately to prevent flicker
+      // The searchParams useEffect will show it again after URL is processed
+      setIsPageReady(false);
+      
+      // DON'T set currentCategory here - let the searchParams useEffect handle it
+      // This prevents the double-render flicker
 
       // Build new URL
       let newUrl: string;
@@ -1076,7 +1133,11 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
       ) : (
         <div
           className={`flex min-h-screen relative hide-scrollbar bg-white ${isCategoriesModalOpen ? "overflow-hidden" : "overflow-hidden"}`}
-          style={{ contain: "layout style" }}
+          style={{ 
+            contain: "layout style",
+            opacity: isPageReady ? 1 : 0,
+            animation: isPageReady ? "fadeInPage 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none",
+          }}
         >
           {/* Content with relative positioning */}
           <div className="relative z-10 flex w-full">
@@ -1125,8 +1186,8 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                         />
                       </svg>
                     </button>
-                    {/* Mobile Version - Regular href routing */}
-                    <a
+                    {/* Mobile Version - Soft navigation with Next.js Link */}
+                    <Link
                       href={searchParams.get("brand") ? `/categories?brand=${searchParams.get("brand")}` : "/categories"}
                       className="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 text-gray-900 hover:text-red-600 cursor-pointer md:hidden"
                       aria-label="Back to All Products"
@@ -1144,7 +1205,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                           d="M15 19l-7-7 7-7"
                         />
                       </svg>
-                    </a>
+                    </Link>
                   </>
                 )}
                 <h1

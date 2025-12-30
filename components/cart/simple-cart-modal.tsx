@@ -23,7 +23,6 @@ export default function SimpleCartModal() {
   const { setSimpleCartModalOpen } = useModal();
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const [isMobile, setIsMobile] = useState<boolean | null>(null); // null = not yet determined
   
   // Ref for scroll container - needed for IntersectionObserver VRAM optimization
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -65,6 +64,9 @@ export default function SimpleCartModal() {
   };
 
   // Check if we're on mobile - only render on mobile devices
+  // Initialize with true for SSR to render immediately on mobile
+  const [isMobile, setIsMobile] = useState<boolean>(true);
+  
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 800);
@@ -95,10 +97,9 @@ export default function SimpleCartModal() {
     setPortalContainer(document.body);
   }, []);
 
-  // Don't render anything on desktop or before hydration
-  if (isMobile === null || isMobile === false) {
-    return null;
-  }
+  // On desktop, hide with CSS instead of return null to avoid hydration mismatch
+  // (SSR renders with isMobile=true, desktop client corrects to false)
+  const hideOnDesktop = !isMobile;
 
   // The modal content that will be rendered via portal (outside navbar's blur filter)
   const modalContent = portalContainer ? createPortal(
@@ -326,7 +327,7 @@ export default function SimpleCartModal() {
   ) : null;
 
   return (
-    <>
+    <div className={hideOnDesktop ? "hidden" : ""}>
       {/* Cart Button - stays in navbar */}
       <button
         aria-label="Toggle cart"
@@ -386,6 +387,6 @@ export default function SimpleCartModal() {
 
       {/* Modal rendered via portal to escape navbar's blur filter */}
       {modalContent}
-    </>
+    </div>
   );
 }

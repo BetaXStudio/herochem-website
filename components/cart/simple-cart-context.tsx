@@ -101,8 +101,9 @@ export function SimpleCartProvider({
       }
     };
     
-    // Small delay to ensure DOM is ready (helps with Safari)
-    requestAnimationFrame(initializeCart);
+    // Run initialization immediately instead of waiting for requestAnimationFrame
+    // This reduces the cart button render delay
+    initializeCart();
     
     return () => { mounted = false; };
   }, [initialCart.length]);

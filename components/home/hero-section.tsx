@@ -663,8 +663,8 @@ export default function HeroSection() {
 				  transition: 'background-color 0.3s ease, border-color 0.3s ease !important' 
 				}}
 			  >
-				<button
-				  onClick={() => handleCtaClick(currentSlideData?.cta || '')}
+				<Link
+				  href="/categories"
 				  className="inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
 				  style={{
 					boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)'
@@ -682,12 +682,12 @@ export default function HeroSection() {
 				>
 				  <span>{currentSlideData?.cta}</span>
 				  <ChevronRightIcon className="ml-2 h-3.5 w-3.5 lg:h-4 lg:w-4" />
-				</button>
+				</Link>
 			  </div>
 
 			  {/* Mobile: Original simple button */}
-			  <button
-				onClick={() => handleCtaClick(currentSlideData?.cta || '')}
+			  <Link
+				href="/categories"
 				className="sm:hidden inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
 				style={{
 				  boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)'
@@ -695,7 +695,7 @@ export default function HeroSection() {
 			  >
 				<span>{currentSlideData?.cta}</span>
 				<ChevronRightIcon className="ml-2 h-3.5 w-3.5 lg:h-4 lg:w-4" />
-			  </button>
+			  </Link>
 
 			  <Link
 				href="/categories"
@@ -792,8 +792,8 @@ export default function HeroSection() {
 			  style={{ gap: '12px', width: '324px', margin: '0 auto' }}
 			>
 			  {/* Mobile: Original simple button */}
-			  <button
-				onClick={() => handleCtaClick(currentSlideData?.cta || '')}
+			  <Link
+				href="/categories"
 				className="inline-flex items-center justify-center bg-gray-800/40 backdrop-blur-sm border border-gray-600 hover:border-red-600 text-gray-300 hover:text-white font-medium rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
 				style={{
 				  boxShadow: '0 4px 15px rgba(255, 255, 255, 0.08)',
@@ -806,7 +806,7 @@ export default function HeroSection() {
 			  >
 				<span>{currentSlideData?.cta}</span>
 				<ChevronRightIcon className="h-3.5 w-3.5" style={{ marginLeft: '8px' }} />
-			  </button>
+			  </Link>
 
 			  <Link
 				href="/categories"
