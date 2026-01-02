@@ -98,6 +98,8 @@ export function ProductDetailOverlay({
     isWelcomeModalOpen,
     isAuthModalOpen,
     isCheckoutModalOpen,
+    isWishlistCheckoutModalOpen,
+    isCategoriesModalOpen,
   } = useModal();
   
   const isAnyNavbarModalOpen = 
@@ -110,7 +112,8 @@ export function ProductDetailOverlay({
     isFAQModalOpen || 
     isContactModalOpen ||
     isWelcomeModalOpen ||
-    isCheckoutModalOpen;
+    isCheckoutModalOpen ||
+    isWishlistCheckoutModalOpen;
 
   // Load product when opening
   useEffect(() => {
@@ -319,7 +322,6 @@ export function ProductDetailOverlay({
   };
 
   const handleClose = () => {
-    // Close the modal - Headless UI handles the animation
     onCloseAction();
   };
 
@@ -360,7 +362,7 @@ export function ProductDetailOverlay({
             inset: 0,
             background: "white",
             overflowY: "auto",
-            zIndex: 9999,
+            zIndex: 45,
             filter: isAnyNavbarModalOpen ? "blur(4px)" : "none",
             // No transition on filter - instant blur to avoid interfering with other modal animations
             pointerEvents: isAnyNavbarModalOpen ? "none" : "auto",

@@ -10,8 +10,6 @@ export default function HomePage() {
 
   // Set page title and wait for layout to be stable before rendering
   useEffect(() => {
-    document.title = "HEROCHEM - Official Deus & Astera Reseller";
-    
     // Wait for layout to stabilize:
     // - Double rAF ensures browser has painted
     // - setTimeout(0) ensures React state updates are flushed

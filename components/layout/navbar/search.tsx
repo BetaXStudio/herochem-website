@@ -346,6 +346,43 @@ export default function Search({
     setPreventClose(false); // Allow dropdown to close again
   };
 
+  // Cache for product ID when categories modal opens
+  const cachedProductIdForCategoriesRef = useRef<string | null>(null);
+
+  // Listen for categories modal events to close/reopen product detail overlay
+  useEffect(() => {
+    const handleCategoriesOpened = () => {
+      // If product detail is open, cache it and close
+      if (isProductDetailOpen && selectedProductId) {
+        cachedProductIdForCategoriesRef.current = selectedProductId;
+        setTimeout(() => {
+          setIsProductDetailOpen(false);
+          setSelectedProductId(null);
+        }, 300);
+      }
+    };
+
+    const handleCategoriesClosed = () => {
+      // Reopen cached product if we had one
+      if (cachedProductIdForCategoriesRef.current) {
+        const productId = cachedProductIdForCategoriesRef.current;
+        cachedProductIdForCategoriesRef.current = null;
+        setTimeout(() => {
+          setSelectedProductId(productId);
+          setIsProductDetailOpen(true);
+        }, 300);
+      }
+    };
+
+    window.addEventListener("categories-modal-opened", handleCategoriesOpened);
+    window.addEventListener("categories-modal-closed", handleCategoriesClosed);
+
+    return () => {
+      window.removeEventListener("categories-modal-opened", handleCategoriesOpened);
+      window.removeEventListener("categories-modal-closed", handleCategoriesClosed);
+    };
+  }, [isProductDetailOpen, selectedProductId]);
+
   // Handle search query changes using the new product database
   useEffect(() => {
     if (query.trim()) {

@@ -2,7 +2,7 @@
 
 import { Transition } from "@headlessui/react";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 import { Bars3Icon, ChevronRightIcon } from "@heroicons/react/24/outline";
@@ -68,6 +68,7 @@ const categories: {
 
 export default function MobileMenu({ menu }: { menu: Menu[] }) {
   const pathname = usePathname();
+  const router = useRouter();
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -506,10 +507,14 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                           </span>
                         </button>
                         <div 
-                          className="overflow-hidden transition-all duration-300 ease-in-out"
+                          className="overflow-hidden"
                           style={{ 
                             maxHeight: isDropdownOpen ? "120px" : "0px",
                             opacity: isDropdownOpen ? 1 : 0,
+                            transition: isDropdownOpen 
+                              ? "max-height 280ms cubic-bezier(0.4, 0, 0.2, 1), opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 40ms"
+                              : "max-height 200ms cubic-bezier(0.4, 0, 0.6, 1), opacity 150ms cubic-bezier(0.4, 0, 0.6, 1)",
+                            willChange: isDropdownOpen ? "max-height, opacity" : "auto",
                           }}
                         >
                           <div className="py-1" style={{ backgroundColor: "rgb(45, 45, 52)", position: "relative", zIndex: 20 }}>
@@ -522,7 +527,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                                   closeMobileMenu();
                                   const href = `/categories?category=${encodeURIComponent(category.param)}`;
                                   setTimeout(() => {
-                                    window.location.href = href;
+                                    router.push(href);
                                   }, 100);
                                 }}
                                 className="w-full text-left py-2 text-xs font-medium uppercase rounded transition-colors focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none"
@@ -543,7 +548,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                                   closeMobileMenu();
                                   const href = `/categories?category=${encodeURIComponent(category.param)}&brand=astera`;
                                   setTimeout(() => {
-                                    window.location.href = href;
+                                    router.push(href);
                                   }, 100);
                                 }}
                                 className="w-full text-left py-2 text-xs font-medium uppercase rounded transition-colors focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none"
@@ -706,7 +711,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                 <li>
                   <button
                     onClick={() => {
-                      window.location.href = "/about";
+                      router.push("/about");
                     }}
                     className="w-full text-left px-4 py-3 rounded-lg text-xs font-medium uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden text-white"
                     style={{

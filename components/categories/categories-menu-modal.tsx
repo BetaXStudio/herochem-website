@@ -2,7 +2,7 @@
 
 import { Transition } from "@headlessui/react";
 import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 // Categories without the "CATEGORIES" button - starts with INJECTION
@@ -65,6 +65,7 @@ export default function CategoriesMenuModal({
   currentBrand,
   currentCategory,
 }: CategoriesMenuModalProps) {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [openCategoryDropdowns, setOpenCategoryDropdowns] = useState<string[]>([]);
@@ -374,10 +375,14 @@ export default function CategoriesMenuModal({
                       </span>
                     </button>
                     <div 
-                      className="overflow-hidden transition-all duration-300 ease-in-out"
+                      className="overflow-hidden"
                       style={{ 
                         maxHeight: isDropdownOpenForCategory ? "120px" : "0px",
                         opacity: isDropdownOpenForCategory ? 1 : 0,
+                        transition: isDropdownOpenForCategory 
+                          ? "max-height 280ms cubic-bezier(0.4, 0, 0.2, 1), opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 40ms"
+                          : "max-height 200ms cubic-bezier(0.4, 0, 0.6, 1), opacity 150ms cubic-bezier(0.4, 0, 0.6, 1)",
+                        willChange: isDropdownOpenForCategory ? "max-height, opacity" : "auto",
                       }}
                     >
                       <div className="py-1" style={{ backgroundColor: "rgb(45, 45, 52)", position: "relative", zIndex: 20 }}>
@@ -390,7 +395,7 @@ export default function CategoriesMenuModal({
                               onClose();
                               const href = `/categories?category=${encodeURIComponent(category.param)}`;
                               setTimeout(() => {
-                                window.location.href = href;
+                                router.push(href);
                               }, 100);
                             }}
                             className="w-full text-left py-2 text-xs font-medium uppercase rounded transition-colors focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none"
@@ -412,7 +417,7 @@ export default function CategoriesMenuModal({
                               onClose();
                               const href = `/categories?category=${encodeURIComponent(category.param)}&brand=astera`;
                               setTimeout(() => {
-                                window.location.href = href;
+                                router.push(href);
                               }, 100);
                             }}
                             className="w-full text-left py-2 text-xs font-medium uppercase rounded transition-colors focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none"

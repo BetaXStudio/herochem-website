@@ -13,6 +13,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { useSimpleCart } from "../../components/cart/simple-cart-context";
+import { useWishlist } from "../../components/cart/wishlist-context";
 import CategoriesMenuModal from "../../components/categories/categories-menu-modal";
 import CategoriesModal from "../../components/categories/categories-modal";
 import FeaturedProductsSection from "../../components/categories/featured-products-section";
@@ -364,6 +365,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null); // For single hover on mobile
   const router = useRouter();
   const { addItem } = useSimpleCart();
+  const { addItem: addToWishlist } = useWishlist();
   const { isCategoriesModalOpen, setCategoriesModalOpen, isCategoriesMenuModalOpen, setCategoriesMenuModalOpen, resetAllModals, hideToastTrigger } = useModal();
   const { saveState } = useCategoriesState();
   const mainRef = useRef<HTMLElement>(null); // Ref für Main-Container
@@ -943,6 +945,25 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
       }, 2500);
     },
     [addItem, safeSetTimeout],
+  );
+
+  // Handle wishlist click - adds product to wishlist
+  const handleWishlistClick = useCallback(
+    (e: React.MouseEvent, product: Product) => {
+      e.stopPropagation();
+
+      // Add to wishlist
+      addToWishlist({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+      });
+
+      // TODO: Optional - show a toast notification for wishlist
+      console.log("💖 Added to wishlist:", product.name);
+    },
+    [addToWishlist],
   );
 
   // Handle hover change for mobile - ensures only one product is hovered at a time
@@ -2347,6 +2368,7 @@ const CategoriesContentMemo = memo(function CategoriesContent() {
                           key={`${product.id}-${index}`}
                           product={product}
                           onAddToCart={handleKaufenClick}
+                          onAddToWishlist={handleWishlistClick}
                           onDetailsClick={handleDetailsClick}
                           selectedBrand={selectedBrand}
                           hoveredProductId={hoveredProductId}

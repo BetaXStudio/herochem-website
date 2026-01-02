@@ -1,7 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef } from "react";
 import { useModal } from "../../contexts/modal-context";
+import { useAuth } from "../auth/auth-context";
+import { useAuthModal } from "../auth/auth-modal-context";
 
 // Helper function to reset scroll position on mobile before navigation
 const resetMobileScroll = () => {
@@ -16,6 +20,36 @@ const resetMobileScroll = () => {
 
 export default function Footer() {
   const { setFAQModalOpen, setContactModalOpen } = useModal();
+  const { openModal: openAuthModal, isOpen: isAuthModalOpen } = useAuthModal();
+  const { user } = useAuth();
+  const router = useRouter();
+  
+  // Store the pending navigation target when user needs to authenticate
+  const pendingNavigationRef = useRef<string | null>(null);
+  
+  // Effect to handle navigation after successful authentication
+  useEffect(() => {
+    // If auth modal just closed and we have a pending navigation and user is now logged in
+    if (!isAuthModalOpen && pendingNavigationRef.current && user) {
+      const targetPath = pendingNavigationRef.current;
+      pendingNavigationRef.current = null;
+      router.push(targetPath);
+    }
+  }, [isAuthModalOpen, user, router]);
+  
+  // Handler for account navigation - checks auth and navigates or opens auth modal
+  const handleAccountNavigation = (section: string) => {
+    const targetPath = `/account?section=${section}`;
+    
+    if (user) {
+      // User is logged in, navigate directly
+      router.push(targetPath);
+    } else {
+      // User is not logged in, store pending navigation and open auth modal
+      pendingNavigationRef.current = targetPath;
+      openAuthModal();
+    }
+  };
 
   return (
     <>
@@ -235,9 +269,14 @@ export default function Footer() {
                   </button>
                 </li>
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
+                  <a 
+                    href="https://deusmedical.com/verify/verify-product/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer"
+                  >
                     Verify Product
-                  </button>
+                  </a>
                 </li>
                 <li>
                   <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
@@ -252,27 +291,42 @@ export default function Footer() {
               <h4 className="font-semibold text-white mb-3 text-sm">Account</h4>
               <ul className="space-y-2">
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
+                  <button 
+                    className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer"
+                    onClick={() => handleAccountNavigation("profile")}
+                  >
                     My Account
                   </button>
                 </li>
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
+                  <button 
+                    className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer"
+                    onClick={() => handleAccountNavigation("profile")}
+                  >
                     Profile Settings
                   </button>
                 </li>
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
+                  <button 
+                    className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer"
+                    onClick={() => handleAccountNavigation("orders")}
+                  >
                     Order History
                   </button>
                 </li>
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
+                  <button 
+                    className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer"
+                    onClick={() => handleAccountNavigation("addresses")}
+                  >
                     Address Book
                   </button>
                 </li>
                 <li>
-                  <button className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer">
+                  <button 
+                    className="text-xs text-gray-300 hover:text-white transition-colors cursor-pointer"
+                    onClick={() => handleAccountNavigation("rewards")}
+                  >
                     Reward Points
                   </button>
                 </li>

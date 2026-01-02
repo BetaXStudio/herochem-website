@@ -3,8 +3,9 @@
 import { Transition } from "@headlessui/react";
 import { ChevronRightIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 // Brand selection component
 
@@ -71,20 +72,18 @@ export default function CategoriesModal({
   onClose,
   currentBrand,
 }: CategoriesModalProps) {
+  const router = useRouter();
   const searchParams = useSearchParams();
+  const [mounted, setMounted] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [openCategoryDropdowns, setOpenCategoryDropdowns] = useState<string[]>([]);
-  const [scrollTop, setScrollTop] = useState(0);
 
-  // Capture scroll position when modal opens
+  // Mount state for portal
   useEffect(() => {
-    if (isOpen) {
-      const scrollContainer = document.querySelector('.fixed.inset-0.pt-\\[88px\\]');
-      if (scrollContainer) {
-        setScrollTop(scrollContainer.scrollTop);
-      }
-    }
-  }, [isOpen]);
+    setMounted(true);
+  }, []);
+  
+  
 
   const toggleCategoryDropdown = (categoryLabel: string) => {
     setOpenCategoryDropdowns(prev => 
@@ -111,50 +110,39 @@ export default function CategoriesModal({
     [currentBrand],
   );
 
-  return (
-    <Transition show={isOpen}>
-      {/* Backdrop */}
-      <Transition.Child
-        as="div"
-        enter="transition-opacity ease-in-out duration-300"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition-opacity ease-in-out duration-200"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-        className="fixed inset-0 z-40 bg-black bg-opacity-30 md:hidden"
-        onClick={onClose}
-        style={{ pointerEvents: isOpen ? "auto" : "none" }}
-      />
+  // Don't render until mounted (for createPortal)
+  if (!mounted) return null;
 
-      {/* Modal Panel */}
+  return createPortal(
+    <Transition show={isOpen}>
+      {/* Modal Panel - no backdrop, just like mobile-menu */}
       <Transition.Child
         as="div"
-        enter="transition-all duration-200"
-        enterFrom="translate-y-[-20vh] opacity-0"
+        enter="transition-all ease-out duration-500"
+        enterFrom="translate-y-[-100%] opacity-0"
         enterTo="translate-y-0 opacity-100"
-        leave="transition-all duration-150"
+        leave="transition-all ease-in duration-300"
         leaveFrom="translate-y-0 opacity-100"
-        leaveTo="translate-y-[-20vh] opacity-0"
-        className="fixed left-0 right-0 z-50 md:hidden flex flex-col categories-modal-panel"
+        leaveTo="translate-y-[-100%] opacity-0"
+        className="fixed left-0 right-0 md:hidden flex flex-col overflow-hidden categories-modal-panel"
         style={{
-          top: `${88 + scrollTop}px`,
+          top: "88px",
           height: "calc(100vh - 88px)",
           background: "#2d2d34",
-          backdropFilter: "blur(20px)",
           pointerEvents: "auto",
+          zIndex: 10019,
         }}
       >
         <style>{`
           .categories-modal-panel {
-            transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1), opacity 180ms cubic-bezier(0.4, 0, 0.2, 1) 20ms !important;
+            transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), opacity 400ms cubic-bezier(0.22, 1, 0.36, 1) !important;
           }
           .categories-modal-panel[data-closed] {
-            transition: transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1), opacity 120ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+            transition: transform 300ms cubic-bezier(0.4, 0, 0.6, 1), opacity 250ms cubic-bezier(0.4, 0, 0.6, 1) !important;
           }
         `}</style>
         <div
-          className="flex flex-col h-full overflow-y-auto relative"
+          className="px-4 pt-6 overflow-y-auto flex-1 relative"
           style={{
             overscrollBehavior: "contain",
             WebkitOverflowScrolling: "touch",
@@ -162,7 +150,7 @@ export default function CategoriesModal({
         >
           {/* Categories List */}
           <div 
-            className="flex-1 overflow-y-auto px-4 pt-6"
+            className="flex-1"
             style={{
               opacity: isDropdownOpen ? 0 : 1,
               pointerEvents: isDropdownOpen ? "none" : "auto",
@@ -274,10 +262,14 @@ export default function CategoriesModal({
                         </span>
                       </button>
                       <div 
-                        className="overflow-hidden transition-all duration-300 ease-in-out"
+                        className="overflow-hidden"
                         style={{ 
                           maxHeight: isDropdownOpen ? "120px" : "0px",
                           opacity: isDropdownOpen ? 1 : 0,
+                          transition: isDropdownOpen 
+                            ? "max-height 280ms cubic-bezier(0.4, 0, 0.2, 1), opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 40ms"
+                            : "max-height 200ms cubic-bezier(0.4, 0, 0.6, 1), opacity 150ms cubic-bezier(0.4, 0, 0.6, 1)",
+                          willChange: isDropdownOpen ? "max-height, opacity" : "auto",
                         }}
                       >
                         <div className="py-1" style={{ backgroundColor: "rgb(45, 45, 52)", position: "relative", zIndex: 20 }}>
@@ -290,7 +282,7 @@ export default function CategoriesModal({
                                 onClose();
                                 const href = `/categories?category=${encodeURIComponent(category.param)}`;
                                 setTimeout(() => {
-                                  window.location.href = href;
+                                  router.push(href);
                                 }, 100);
                               }}
                               className="w-full text-left py-2 text-xs font-medium uppercase rounded transition-colors focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none"
@@ -312,7 +304,7 @@ export default function CategoriesModal({
                                 onClose();
                                 const href = `/categories?category=${encodeURIComponent(category.param)}&brand=astera`;
                                 setTimeout(() => {
-                                  window.location.href = href;
+                                  router.push(href);
                                 }, 100);
                               }}
                               className="w-full text-left py-2 text-xs font-medium uppercase rounded transition-colors focus:ring-0 focus-visible:ring-0 focus:outline-none focus-visible:outline-none"
@@ -422,9 +414,13 @@ export default function CategoriesModal({
                 <ChevronUpIcon className="h-6 w-6 text-white/60 group-hover:text-red-400 transition-colors duration-300" />
               </button>
             </div>
+            
+            {/* Extra scroll space - extends content below viewport for Safari browser color */}
+            <div style={{ height: "100px", flexShrink: 0, background: "#2d2d34" }} aria-hidden="true" />
             </div>
         </div>
       </Transition.Child>
-    </Transition>
+    </Transition>,
+    document.body
   );
 }

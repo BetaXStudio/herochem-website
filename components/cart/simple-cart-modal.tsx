@@ -50,9 +50,18 @@ export default function SimpleCartModal() {
   };
 
   const openCart = () => {
+    // Dispatch event so categories modal can close
+    window.dispatchEvent(new CustomEvent("open-simple-cart-modal"));
+    
+    // First open the cart modal
     setIsClosing(false);
     setIsOpen(true);
     setSimpleCartModalOpen(true);
+    
+    // Then close wishlist modal after a delay so both overlap during transition
+    setTimeout(() => {
+      window.dispatchEvent(new CustomEvent("close-wishlist-modal"));
+    }, 300);
   };
 
   const toggleCart = () => {

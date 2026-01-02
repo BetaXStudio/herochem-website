@@ -32,6 +32,10 @@ interface ModalContextType {
   setCheckoutModalOpen: (isOpen: boolean) => void;
   isSimpleCartModalOpen: boolean;
   setSimpleCartModalOpen: (isOpen: boolean) => void;
+  isWishlistModalOpen: boolean;
+  setWishlistModalOpen: (isOpen: boolean) => void;
+  isWishlistCheckoutModalOpen: boolean;
+  setWishlistCheckoutModalOpen: (isOpen: boolean) => void;
   // Navbar Search Focus trigger
   searchFocusTrigger: number;
   triggerSearchFocus: () => void;
@@ -63,6 +67,8 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
   const [isSearchModalOpen, setIsSearchModalOpenState] = useState(false);
   const [isCheckoutModalOpen, setIsCheckoutModalOpenState] = useState(false);
   const [isSimpleCartModalOpen, setIsSimpleCartModalOpenState] = useState(false);
+  const [isWishlistModalOpen, setIsWishlistModalOpenState] = useState(false);
+  const [isWishlistCheckoutModalOpen, setIsWishlistCheckoutModalOpenState] = useState(false);
   // Navbar Search Focus trigger - increment to trigger focus
   const [searchFocusTrigger, setSearchFocusTrigger] = useState(0);
   // Hide Toast trigger - increment to immediately hide "Added to Cart" toast
@@ -127,6 +133,14 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
     setIsSimpleCartModalOpenState(isOpen);
   };
 
+  const setWishlistModalOpen = (isOpen: boolean) => {
+    setIsWishlistModalOpenState(isOpen);
+  };
+
+  const setWishlistCheckoutModalOpen = (isOpen: boolean) => {
+    setIsWishlistCheckoutModalOpenState(isOpen);
+  };
+
   const triggerSearchFocus = () => {
     setSearchFocusTrigger(prev => prev + 1);
   };
@@ -163,6 +177,8 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
     setIsSearchModalOpenState(false);
     setIsCheckoutModalOpenState(false);
     setIsSimpleCartModalOpenState(false);
+    setIsWishlistModalOpenState(false);
+    setIsWishlistCheckoutModalOpenState(false);
     setIsProductDetailModalOpen(false);
     setProductDetailModalId(null);
   };
@@ -204,6 +220,10 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
       setCheckoutModalOpen,
       isSimpleCartModalOpen,
       setSimpleCartModalOpen,
+      isWishlistModalOpen,
+      setWishlistModalOpen,
+      isWishlistCheckoutModalOpen,
+      setWishlistCheckoutModalOpen,
       searchFocusTrigger,
       triggerSearchFocus,
       hideToastTrigger,

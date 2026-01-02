@@ -147,6 +147,17 @@ export default function HeroSection() {
     setLabReportsModalOpen
   } = useModal();
 
+  // Click handler for hero feature items
+  const handleFeatureClick = (featureTitle: string) => {
+    if (featureTitle.includes('Pharmaceutical')) {
+      setGMPModalOpen(true);
+    } else if (featureTitle.includes('Laboratory')) {
+      setLabReportsModalOpen(true);
+    } else if (featureTitle.includes('Discreet') || featureTitle.includes('Shipping')) {
+      setDeliveryModalOpen(true);
+    }
+  };
+
   // Touch/Swipe state
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
@@ -423,9 +434,10 @@ export default function HeroSection() {
 			{/* Dynamic Elements - Desktop Only (Right) - Quadratic Layout */}
 			<div className="flex space-x-5">
 			  {heroFeatures.map((feature, index) => (
-				<div
+				<button
 				  key={index}
-				  className="bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 rounded-xl p-5 hover:bg-gray-800/80 transition-colors duration-300 w-31 h-30 flex flex-col items-center justify-center animate-float"
+				  onClick={() => handleFeatureClick(feature.title)}
+				  className="bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 rounded-xl p-5 hover:bg-gray-800/80 hover:border-gray-600 transition-all duration-300 w-31 h-30 flex flex-col items-center justify-center animate-float cursor-pointer"
 				  style={{
 					animationDelay: `${index * 0.2}s`,
 					animationDuration: '3s',
@@ -440,7 +452,7 @@ export default function HeroSection() {
 					  {feature.title.split(' ').slice(0, 2).join(' ')}
 					</h3>
 				  </div>
-				</div>
+				</button>
 			  ))}
 			</div>
 		  </div>
@@ -655,7 +667,7 @@ export default function HeroSection() {
 
 			{/* CTA Buttons */}
 			<div className={`flex flex-col sm:flex-row gap-3 lg:gap-4 justify-start transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
-			  {/* Desktop: Anti-scaling wrapper, Mobile: Normal button */}
+			  {/* Desktop: Anti-scaling wrapper */}
 			  <div className="hidden sm:block"
 				style={{ 
 				  transform: 'none !important', 
@@ -663,39 +675,57 @@ export default function HeroSection() {
 				  transition: 'background-color 0.3s ease, border-color 0.3s ease !important' 
 				}}
 			  >
+				{currentSlideData?.cta === 'Go to Shop' ? (
+				  <Link
+					href="/categories"
+					className="inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
+					style={{
+					  boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)'
+					}}
+				  >
+					<span>{currentSlideData?.cta}</span>
+					<ChevronRightIcon className="ml-2 h-3.5 w-3.5 lg:h-4 lg:w-4" />
+				  </Link>
+				) : (
+				  <button
+					onClick={() => currentSlideData?.cta && handleCtaClick(currentSlideData.cta)}
+					className="inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+					style={{
+					  boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)',
+					  background: 'transparent'
+					}}
+				  >
+					<span>{currentSlideData?.cta}</span>
+					<ChevronRightIcon className="ml-2 h-3.5 w-3.5 lg:h-4 lg:w-4" />
+				  </button>
+				)}
+			  </div>
+
+			  {/* Mobile: Conditional Link or Button */}
+			  {currentSlideData?.cta === 'Go to Shop' ? (
 				<Link
 				  href="/categories"
-				  className="inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
+				  className="sm:hidden inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
 				  style={{
 					boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)'
-				  }}
-				  onMouseEnter={(e) => { 
-					e.currentTarget.style.transform = 'none !important'; 
-					e.currentTarget.style.scale = '1 !important'; 
-					e.currentTarget.parentElement!.style.transform = 'none !important';
-				  }}
-				  onMouseLeave={(e) => { 
-					e.currentTarget.style.transform = 'none !important'; 
-					e.currentTarget.style.scale = '1 !important';
-					e.currentTarget.parentElement!.style.transform = 'none !important';
 				  }}
 				>
 				  <span>{currentSlideData?.cta}</span>
 				  <ChevronRightIcon className="ml-2 h-3.5 w-3.5 lg:h-4 lg:w-4" />
 				</Link>
-			  </div>
-
-			  {/* Mobile: Original simple button */}
-			  <Link
-				href="/categories"
-				className="sm:hidden inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
-				style={{
-				  boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)'
-				}}
-			  >
-				<span>{currentSlideData?.cta}</span>
-				<ChevronRightIcon className="ml-2 h-3.5 w-3.5 lg:h-4 lg:w-4" />
-			  </Link>
+			  ) : (
+				<button
+				  onClick={() => currentSlideData?.cta && handleCtaClick(currentSlideData.cta)}
+				  className="sm:hidden inline-flex items-center justify-center px-5 lg:px-6 py-2.5 lg:py-3 border border-gray-600 lg:border-2 hover:border-red-600 text-gray-300 hover:text-white font-medium lg:text-lg rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+				  style={{
+					boxShadow: '0 4px 15px rgba(75, 85, 99, 0.3)',
+					background: 'transparent'
+				  }}
+				>
+				  <span>{currentSlideData?.cta}</span>
+				  <ChevronRightIcon className="ml-2 h-3.5 w-3.5 lg:h-4 lg:w-4" />
+				</button>
+			  )}
 
 			  <Link
 				href="/categories"
@@ -727,9 +757,10 @@ export default function HeroSection() {
 			{/* Feature Items - Mobile Only - At Top */}
 			<div className="flex justify-center" style={{ gap: '12px', marginTop: '24px' }}>
 			  {heroFeatures.map((feature, index) => (
-				<div
+				<button
 				  key={index}
-				  className="bg-gray-800/40 backdrop-blur-sm border border-gray-600 rounded-xl flex flex-col items-center justify-center animate-float"
+				  onClick={() => handleFeatureClick(feature.title)}
+				  className="bg-gray-800/40 backdrop-blur-sm border border-gray-600 rounded-xl flex flex-col items-center justify-center animate-float cursor-pointer hover:bg-gray-800/60 hover:border-gray-500 transition-all duration-300"
 				  style={{
 					padding: '12px',
 					width: '100px',
@@ -746,7 +777,7 @@ export default function HeroSection() {
 					  {feature.title.split(' ').slice(0, 2).join(' ')}
 					</h3>
 				  </div>
-				</div>
+				</button>
 			  ))}
 			</div>
 
@@ -791,22 +822,41 @@ export default function HeroSection() {
 			  className={`flex flex-col sm:flex-row transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}
 			  style={{ gap: '12px', width: '324px', margin: '0 auto' }}
 			>
-			  {/* Mobile: Original simple button */}
-			  <Link
-				href="/categories"
-				className="inline-flex items-center justify-center bg-gray-800/40 backdrop-blur-sm border border-gray-600 hover:border-red-600 text-gray-300 hover:text-white font-medium rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
-				style={{
-				  boxShadow: '0 4px 15px rgba(255, 255, 255, 0.08)',
-				  paddingLeft: '20px',
-				  paddingRight: '20px',
-				  paddingTop: '10px',
-				  paddingBottom: '10px',
-				  flex: 1
-				}}
-			  >
-				<span>{currentSlideData?.cta}</span>
-				<ChevronRightIcon className="h-3.5 w-3.5" style={{ marginLeft: '8px' }} />
-			  </Link>
+			  {/* Mobile: Conditional Link or Button based on CTA text */}
+			  {currentSlideData?.cta === 'Go to Shop' ? (
+				<Link
+				  href="/categories"
+				  className="inline-flex items-center justify-center bg-gray-800/40 backdrop-blur-sm border border-gray-600 hover:border-red-600 text-gray-300 hover:text-white font-medium rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98]"
+				  style={{
+					boxShadow: '0 4px 15px rgba(255, 255, 255, 0.08)',
+					paddingLeft: '20px',
+					paddingRight: '20px',
+					paddingTop: '10px',
+					paddingBottom: '10px',
+					flex: 1
+				  }}
+				>
+				  <span>{currentSlideData?.cta}</span>
+				  <ChevronRightIcon className="h-3.5 w-3.5" style={{ marginLeft: '8px' }} />
+				</Link>
+			  ) : (
+				<button
+				  onClick={() => currentSlideData?.cta && handleCtaClick(currentSlideData.cta)}
+				  className="inline-flex items-center justify-center bg-gray-800/40 backdrop-blur-sm border border-gray-600 hover:border-red-600 text-gray-300 hover:text-white font-medium rounded-xl transition-all duration-300 hover:bg-red-600/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+				  style={{
+					boxShadow: '0 4px 15px rgba(255, 255, 255, 0.08)',
+					paddingLeft: '20px',
+					paddingRight: '20px',
+					paddingTop: '10px',
+					paddingBottom: '10px',
+					flex: 1,
+					background: 'transparent'
+				  }}
+				>
+				  <span>{currentSlideData?.cta}</span>
+				  <ChevronRightIcon className="h-3.5 w-3.5" style={{ marginLeft: '8px' }} />
+				</button>
+			  )}
 
 			  <Link
 				href="/categories"

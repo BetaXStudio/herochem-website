@@ -1,9 +1,10 @@
 "use client";
-import { ChevronDownIcon, HeartIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { ChevronDownIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { useAuth } from "components/auth/auth-context";
 import { useAuthModal } from "components/auth/auth-modal-context";
 import { useSimpleCart } from "components/cart/simple-cart-context";
 import SimpleCartModal from "components/cart/simple-cart-modal";
+import WishlistModal from "components/cart/wishlist-modal";
 import LogoSquare from "components/logo-square";
 import { products, type Brand, type CategoryLabel } from "lib/products-database";
 import Link from "next/link";
@@ -46,6 +47,7 @@ export function Navbar() {
     isWelcomeModalOpen,
     isAuthModalOpen,
     isCheckoutModalOpen,
+    isWishlistCheckoutModalOpen,
     isProductDetailModalOpen,
     productDetailModalId,
     openProductDetailModal,
@@ -115,7 +117,8 @@ export function Navbar() {
     isContactModalOpen ||
     isWelcomeModalOpen ||
     isAuthModalOpen ||
-    isCheckoutModalOpen;
+    isCheckoutModalOpen ||
+    isWishlistCheckoutModalOpen;
 
   // Check if we're on the account page
   const isAccountPage = pathname?.startsWith("/account");
@@ -487,55 +490,7 @@ export function Navbar() {
           {/* Mobile Menu & Search - Only on Mobile */}
           <div className="flex items-center gap-0 flex-none md:hidden">
             <MobileMenu menu={menu} />
-            <button
-              aria-label="Open search"
-              className="flex items-center justify-center transition-all duration-200 group outline-none"
-              style={{
-                width: "32px",
-                height: "32px",
-                minWidth: "32px",
-                minHeight: "32px",
-                maxWidth: "32px",
-                maxHeight: "32px",
-                flexShrink: 0,
-                backgroundColor: "transparent",
-                border: "none",
-                outline: "none",
-              }}
-              onClick={() => {
-                // TODO: Implement wishlist modal functionality
-                console.log("Wishlist button clicked - functionality to be implemented");
-              }}
-              onFocus={(e) => {
-                e.currentTarget.style.outline = "none";
-                e.currentTarget.style.boxShadow = "none";
-              }}
-              onBlur={(e) => {
-                e.currentTarget.style.outline = "none";
-                e.currentTarget.style.boxShadow = "none";
-              }}
-              onTouchStart={(e) => {
-                e.currentTarget.style.boxShadow = "none !important";
-                e.currentTarget.style.backgroundColor = "transparent !important";
-              }}
-              onTouchEnd={(e) => {
-                e.currentTarget.style.boxShadow = "none !important";
-                e.currentTarget.style.backgroundColor = "transparent !important";
-              }}
-            >
-              <HeartIcon
-                className="text-white group-hover:text-[#eb1313] transition-colors duration-200"
-                style={{
-                  width: "17px !important",
-                  height: "17px !important",
-                  minWidth: "17px",
-                  minHeight: "17px",
-                  maxWidth: "17px",
-                  maxHeight: "17px",
-                  flexShrink: 0,
-                }}
-              />
-            </button>
+            <WishlistModal />
           </div>
         <div className="flex w-full md:w-1/4 gap-0 md:gap-0 lg:gap-0">
           <a

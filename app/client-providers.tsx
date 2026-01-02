@@ -6,9 +6,11 @@ import { AuthModalProvider } from "../components/auth/auth-modal-context";
 import AuthModalWrapper from "../components/auth/auth-modal-wrapper";
 import CheckoutModalWrapper from "../components/cart/checkout-modal-wrapper";
 import {
-    SimpleCartItem,
-    SimpleCartProvider,
+  SimpleCartItem,
+  SimpleCartProvider,
 } from "../components/cart/simple-cart-context";
+import WishlistCheckoutModalWrapper from "../components/cart/wishlist-checkout-modal-wrapper";
+import { WishlistItem, WishlistProvider } from "../components/cart/wishlist-context";
 import LabTestsModalWrapper from "../components/home/lab-tests-modal-wrapper";
 import GlobalLoading from "../components/layout/global-loading";
 import MobileScrollContainer from "../components/layout/mobile-scroll-container";
@@ -29,38 +31,43 @@ import { ModalProvider } from "../contexts/modal-context";
 interface ClientProvidersProps {
   children: React.ReactNode;
   initialCart: SimpleCartItem[];
+  initialWishlist: WishlistItem[];
 }
 
 export default function ClientProviders({
   children,
   initialCart,
+  initialWishlist,
 }: ClientProvidersProps) {
   return (
     <AuthProvider>
       <AuthModalProvider>
         <SimpleCartProvider initialCart={initialCart}>
-          <WelcomeModalProvider>
-            <ModalProvider>
-              <CategoriesStateProvider>
-                <Navbar />
-                <NavbarCoverLayer />
-                <MobileScrollContainer>{children}</MobileScrollContainer>
+          <WishlistProvider initialWishlist={initialWishlist}>
+            <WelcomeModalProvider>
+              <ModalProvider>
+                <CategoriesStateProvider>
+                  <Navbar />
+                  <NavbarCoverLayer />
+                  <MobileScrollContainer>{children}</MobileScrollContainer>
 
-                <AuthModalWrapper />
-                <CheckoutModalWrapper />
-                <WelcomeModalWrapper />
-                <LabTestsModalWrapper />
-                <GMPModalWrapper />
-                <DeliveryModalWrapper />
-                <FAQModalWrapper />
-                <ContactModalWrapper />
-                <CommunityModalWrapper />
-                <ProductsModalWrapper />
-                <ProductDetailModalWrapper />
-                <GlobalLoading />
-              </CategoriesStateProvider>
-            </ModalProvider>
-          </WelcomeModalProvider>
+                  <AuthModalWrapper />
+                  <CheckoutModalWrapper />
+                  <WishlistCheckoutModalWrapper />
+                  <WelcomeModalWrapper />
+                  <LabTestsModalWrapper />
+                  <GMPModalWrapper />
+                  <DeliveryModalWrapper />
+                  <FAQModalWrapper />
+                  <ContactModalWrapper />
+                  <CommunityModalWrapper />
+                  <ProductsModalWrapper />
+                  <ProductDetailModalWrapper />
+                  <GlobalLoading />
+                </CategoriesStateProvider>
+              </ModalProvider>
+            </WelcomeModalProvider>
+          </WishlistProvider>
         </SimpleCartProvider>
       </AuthModalProvider>
     </AuthProvider>

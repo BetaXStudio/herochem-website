@@ -31,6 +31,7 @@ const IMAGE_SCALE_CLASSES = {
 const ProductCardComponent = ({
     product,
     onAddToCart,
+    onAddToWishlist,
     onDetailsClick,
     selectedBrand,
     hoveredProductId,
@@ -38,6 +39,7 @@ const ProductCardComponent = ({
   }: {
     product: Product;
     onAddToCart: (e: React.MouseEvent, product: Product) => void;
+    onAddToWishlist?: (e: React.MouseEvent, product: Product) => void;
     onDetailsClick: (e: React.MouseEvent, product: Product) => void;
     selectedBrand?: "deus" | "astera" | null;
     hoveredProductId?: string | null;
@@ -346,8 +348,9 @@ const ProductCardComponent = ({
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                // TODO: Click handler will be implemented later
-                console.log("Heart clicked for product:", product.id);
+                if (onAddToWishlist) {
+                  onAddToWishlist(e, product);
+                }
               }}
               className="font-medium rounded-lg flex items-center justify-center text-[8px] md:text-[10px] p-[3px] md:p-[3.5px] min-w-[24px] md:min-w-[30px] h-[24px] md:h-[30px]"
               style={{

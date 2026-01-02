@@ -2,20 +2,21 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import {
-    Suspense,
-    useCallback,
-    useEffect,
-    useMemo,
-    useRef,
-    useState
+  Suspense,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
 } from "react";
 import { createPortal } from "react-dom";
 import { useSimpleCart } from "../../../components/cart/simple-cart-context";
+import { useWishlist } from "../../../components/cart/wishlist-context";
 import { ProductDetailModalDesktop } from "../../../components/categories/product-detail-modal-desktop";
 import { ProductDetailOverlay } from "../../../components/categories/product-detail-overlay";
 import ProductCard from "../../../components/product/product-card";
 import {
-    productDetails
+  productDetails
 } from "../../../lib/product-details-database";
 import { type Product } from "../../../lib/products-database";
 import { searchProductsDatabase } from "../../../lib/search-products";
@@ -92,6 +93,7 @@ function SearchContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { addItem } = useSimpleCart();
+  const { addItem: addToWishlist } = useWishlist();
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Check if we're on mobile
@@ -220,6 +222,23 @@ function SearchContent() {
       }, 1000);
     },
     [addItem],
+  );
+
+  // Handle wishlist click - adds product to wishlist
+  const handleWishlistClick = useCallback(
+    (e: React.MouseEvent, product: Product) => {
+      e.stopPropagation();
+
+      addToWishlist({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+      });
+
+      console.log("💖 Added to wishlist:", product.name);
+    },
+    [addToWishlist],
   );
 
   // Handle "INFO" button click
@@ -430,6 +449,7 @@ function SearchContent() {
                           key={`${product.id}-${index}`}
                           product={product}
                           onAddToCart={handleKaufenClick}
+                          onAddToWishlist={handleWishlistClick}
                           onDetailsClick={handleDetailsClick}
                         />
                       ))}

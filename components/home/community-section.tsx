@@ -27,10 +27,6 @@ export default function CommunitySection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-14">
-          <div className="inline-flex items-center space-x-2 bg-red-600/20 border border-red-600/30 text-red-400 px-3 py-1.5 rounded-full text-xs font-medium mb-3">
-            <ChatBubbleLeftRightIcon className="h-3 w-3" />
-            <span>Community & Support</span>
-          </div>
           <h2 className="text-3xl lg:text-4xl font-bold mb-5">
             Join Our
             <span className="text-red-500"> Community</span>

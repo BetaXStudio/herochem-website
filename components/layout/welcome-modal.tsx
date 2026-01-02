@@ -168,7 +168,7 @@ export default function WelcomeModal({
                   <span className="text-3xl font-bold text-white">%</span>
                 </div>
                 <h3 className="text-2xl font-bold text-black mb-2">
-                  CODE: SNOW15
+                  CODE: XMAS15
                 </h3>
                 <p className="text-gray-600 text-sm">
                   Use Coupon Code to get 15% off on all our products. Place your

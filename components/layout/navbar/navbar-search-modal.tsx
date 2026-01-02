@@ -29,7 +29,8 @@ export default function NavbarSearchModal({
     isContactModalOpen,
     isWelcomeModalOpen,
     isAuthModalOpen,
-    isCheckoutModalOpen
+    isCheckoutModalOpen,
+    isWishlistCheckoutModalOpen
   } = useModal();
 
   // Check if ANY navbar modal is open (these blur the search modal)
@@ -44,7 +45,8 @@ export default function NavbarSearchModal({
     isContactModalOpen ||
     isWelcomeModalOpen ||
     isAuthModalOpen ||
-    isCheckoutModalOpen;
+    isCheckoutModalOpen ||
+    isWishlistCheckoutModalOpen;
 
   useEffect(() => {
     setMounted(true);
@@ -65,9 +67,42 @@ export default function NavbarSearchModal({
     };
   }, [onCloseAction]);
 
+  // Close categories modal when cart or wishlist opens
+  useEffect(() => {
+    const handleCloseCategories = () => {
+      if (isCategoriesModalOpen) {
+        // Delay closing so modals overlap during transition
+        setTimeout(() => {
+          setCategoriesModalOpen(false);
+        }, 300);
+      }
+    };
+
+    window.addEventListener("open-simple-cart-modal", handleCloseCategories);
+    window.addEventListener("open-wishlist-modal", handleCloseCategories);
+
+    return () => {
+      window.removeEventListener("open-simple-cart-modal", handleCloseCategories);
+      window.removeEventListener("open-wishlist-modal", handleCloseCategories);
+    };
+  }, [isCategoriesModalOpen, setCategoriesModalOpen]);
+
   // Handle categories modal toggle
   const handleCategoriesToggle = () => {
-    setCategoriesModalOpen(!isCategoriesModalOpen);
+    // If we're about to open the categories modal
+    if (!isCategoriesModalOpen) {
+      // Open categories modal
+      setCategoriesModalOpen(true);
+      
+      // Close cart and wishlist modals after a delay
+      setTimeout(() => {
+        window.dispatchEvent(new CustomEvent("close-simple-cart-modal"));
+        window.dispatchEvent(new CustomEvent("close-wishlist-modal"));
+      }, 300);
+    } else {
+      // Close the categories modal
+      setCategoriesModalOpen(false);
+    }
   };
 
   if (!mounted) return null;

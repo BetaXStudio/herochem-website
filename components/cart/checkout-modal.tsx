@@ -4,8 +4,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useModal } from "../../contexts/modal-context";
 import {
-    calculateCouponDiscount,
-    validateCouponCode,
+  calculateCouponDiscount,
+  validateCouponCode,
 } from "../../lib/coupon-codes";
 import { supabase } from "../../lib/supabase";
 import { useAuth } from "../auth/auth-context";
@@ -402,7 +402,7 @@ export default function CheckoutModal({
     <React.Fragment>
       {/* Unsichtbarer Backdrop für Click-Handling */}
       <div
-        className="fixed inset-0 z-[10025]"
+        className="fixed inset-0 z-[10025] max-[800px]:top-0 min-[801px]:top-[99px]"
         style={{
           backgroundColor: "transparent",
           animation: "backdropFadeIn 0.3s ease-out",
@@ -410,14 +410,14 @@ export default function CheckoutModal({
         onClick={onClose}
       />
       <div
-        className="fixed inset-0 z-[10030] flex items-start justify-center pt-26 md:pt-16 px-4"
+        className="fixed inset-0 z-[10030] flex items-center justify-center max-[800px]:items-start max-[800px]:pt-[107px] max-[800px]:pb-[10px]"
         style={{ 
           touchAction: "none",
           pointerEvents: "none",
         }}
       >
         <div
-          className="relative shadow-xl w-full max-w-4xl max-h-[70vh] flex flex-col"
+          className="relative shadow-xl w-full max-w-md mx-4 max-h-[70vh] flex flex-col"
           style={{ 
             backgroundColor: "white",
             boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
@@ -434,11 +434,13 @@ export default function CheckoutModal({
             <>
               {/* Header */}
               <div
-                className="sticky top-0 flex items-center justify-between"
+                className="sticky top-0 flex items-center justify-between border-b"
                 style={{
+                  borderColor: 'rgb(45,45,52)',
                   backgroundColor: 'rgb(45,45,52)',
                   borderTopLeftRadius: '0.75rem',
                   borderTopRightRadius: '0.75rem',
+                  margin: '-1px 0 -1px 0',
                   padding: '12px 16px'
                 }}
               >
@@ -500,11 +502,13 @@ export default function CheckoutModal({
             <>
               {/* Header */}
               <div
-                className="sticky top-0 flex items-center justify-between"
+                className="sticky top-0 flex items-center justify-between border-b"
                 style={{
+                  borderColor: 'rgb(45,45,52)',
                   backgroundColor: 'rgb(45,45,52)',
                   borderTopLeftRadius: '0.75rem',
                   borderTopRightRadius: '0.75rem',
+                  margin: '-1px 0 -1px 0',
                   padding: '12px 16px'
                 }}
               >
@@ -584,11 +588,13 @@ export default function CheckoutModal({
             <>
               {/* Header */}
               <div
-                className="sticky top-0 flex items-center justify-between"
+                className="sticky top-0 flex items-center justify-between border-b"
                 style={{
+                  borderColor: 'rgb(45,45,52)',
                   backgroundColor: 'rgb(45,45,52)',
                   borderTopLeftRadius: '0.75rem',
                   borderTopRightRadius: '0.75rem',
+                  margin: '-1px 0 -1px 0',
                   padding: '12px 16px'
                 }}
               >
@@ -614,6 +620,7 @@ export default function CheckoutModal({
                   WebkitOverflowScrolling: "touch",
                   touchAction: "pan-y",
                   overscrollBehavior: "contain",
+                  marginTop: '1px',
                 }}
               >
                 {/* Success/Error Messages */}

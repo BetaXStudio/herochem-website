@@ -34,6 +34,7 @@ export default function MobileScrollContainer({
     setCategoriesModalOpen,
     isProductDetailModalOpen,
     isCheckoutModalOpen,
+    isWishlistCheckoutModalOpen,
     isSimpleCartModalOpen
   } = useModal();
   
@@ -51,7 +52,8 @@ export default function MobileScrollContainer({
     isContactModalOpen ||
     isWelcomeModalOpen ||
     isProductDetailModalOpen ||
-    isCheckoutModalOpen;
+    isCheckoutModalOpen ||
+    isWishlistCheckoutModalOpen;
 
   // Check if ANY modal is open (for scroll blocking purposes)
   // Include isSimpleCartModalOpen here to disable scroll/pointer events

@@ -1,20 +1,25 @@
 import { cookies } from "next/headers";
 import { parseCartCookie } from "../lib/cart-cookie";
+import { parseWishlistCookie } from "../lib/wishlist-cookie";
 import ClientProviders from "./client-providers";
 import "./globals.css";
 
 export const metadata = {
-  title: "HeroChem",
+  title: {
+    default: "HEROCHEM - Official Deus & Astera Reseller",
+    template: "%s | Herochem",
+  },
   description: "Premium supplements and performance enhancement products",
+  applicationName: "Herochem",
   openGraph: {
-    title: "HeroChem",
+    title: "Herochem",
     description: "Premium supplements and performance enhancement products",
-    siteName: "HeroChem",
+    siteName: "Herochem",
     locale: "en_US",
     type: "website",
   },
   twitter: {
-    title: "HeroChem",
+    title: "Herochem",
     description: "Premium supplements and performance enhancement products",
   },
 };
@@ -30,9 +35,29 @@ export default async function RootLayout({
   const initialCart = parseCartCookie(
     cartCookie ? `herochem-cart=${cartCookie.value}` : undefined
   );
+  
+  // Read wishlist from cookies on server-side for hydration
+  const wishlistCookie = cookieStore.get("herochem-wishlist");
+  const initialWishlist = parseWishlistCookie(
+    wishlistCookie ? `herochem-wishlist=${wishlistCookie.value}` : undefined
+  );
   return (
     <html lang="en" className="dark hide-scrollbar" data-scroll-behavior="smooth">
       <head>
+        {/* Structured Data for Google Site Name */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Herochem",
+              "alternateName": ["HeroChem", "HEROCHEM", "Hero Chem"],
+              "url": "https://herochem.shop"
+            })
+          }}
+        />
+        
         {/* Theme Color für verschiedene Browser */}
         <meta name="theme-color" content="#2d2d34" />
         <meta name="msapplication-navbutton-color" content="#2d2d34" />
@@ -101,7 +126,7 @@ export default async function RootLayout({
             `,
           }}
         />
-        <ClientProviders initialCart={initialCart}>{children}</ClientProviders>
+        <ClientProviders initialCart={initialCart} initialWishlist={initialWishlist}>{children}</ClientProviders>
       </body>
     </html>
   );

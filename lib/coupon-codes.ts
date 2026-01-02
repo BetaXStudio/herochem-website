@@ -26,6 +26,12 @@ export const couponCodes: CouponCode[] = [
     description: "15% Winter Sale discount on your order",
     isActive: true,
   },
+  {
+    code: "XMAS15",
+    discountPercentage: 15, // 15% discount (price * 0.85)
+    description: "15% Christmas Sale discount on your order",
+    isActive: true,
+  },
   // Add more coupon codes here as needed
   // {
   //   code: 'WELCOME10',
